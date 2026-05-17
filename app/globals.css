@@ -88,6 +88,10 @@ body {
   animation: productScrollMobile 16s cubic-bezier(0.45, 0, 0.25, 1) infinite;
 }
 
+.top-picks-loop {
+  animation: topPicksLoop 13s linear infinite;
+}
+
 @keyframes accentPulse {
   0%,
   100% {
@@ -142,6 +146,16 @@ body {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+@keyframes topPicksLoop {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
   }
 }
 

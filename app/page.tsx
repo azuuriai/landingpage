@@ -813,7 +813,7 @@ function MacBook({
           <button
             type="button"
             onClick={onOpenDetails}
-            className="absolute bottom-4 right-4 rounded-full border border-white/14 bg-[#071012]/72 px-4 py-2 text-[11px] font-semibold text-white shadow-[0_16px_38px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-[#00b8ad]/60 hover:text-[#79fff4] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+            className="absolute right-5 top-8 rounded-full border border-white/14 bg-[#071012]/72 px-4 py-2 text-[11px] font-semibold text-white shadow-[0_16px_38px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-[#00b8ad]/60 hover:text-[#79fff4] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
           >
             {labels.moreDetails}
           </button>
@@ -849,21 +849,40 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
-          <PhoneScreen key={`phone-${panel.id}`} panel={panel} />
+          <TopPicksLoop />
         </div>
       </div>
     </button>
   );
 }
 
-function PhoneScreen({ panel }: { panel: Panel }) {
+function TopPicksLoop() {
   return (
-    <div className="pointer-events-none absolute inset-x-3 bottom-3 animate-[softReveal_0.34s_cubic-bezier(0.22,1,0.36,1)_both] rounded-[18px] border border-white/12 bg-[#071012]/72 p-2 shadow-[0_16px_34px_rgba(0,0,0,0.24)] backdrop-blur">
-      <div className="flex items-center gap-1.5">
-        <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
-        <span className="truncate text-[8px] font-bold text-white">{panel.title}</span>
+    <div className="pointer-events-none absolute inset-x-3 top-[34%] overflow-hidden" aria-hidden="true">
+      <div className="top-picks-loop flex w-max gap-1.5">
+        {[
+          "Schlosspark",
+          "Festwochen",
+          "Theater im Park",
+          "Eurovision",
+          "Museumsabend",
+          "Schlosspark",
+          "Festwochen",
+          "Theater im Park",
+        ].map((title, index) => (
+          <div
+            key={`${title}-${index}`}
+            className="h-[42px] w-[78px] shrink-0 overflow-hidden rounded-[9px] border border-[#00b8ad]/24 bg-[linear-gradient(135deg,rgba(2,20,22,0.86),rgba(0,184,173,0.17)),url('/case-studies/vienna-ios-app.png')] bg-cover bg-center p-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
+          >
+            <span className="mb-1 inline-flex rounded-full bg-[#00b8ad]/86 px-1.5 py-0.5 text-[5px] font-bold uppercase tracking-[0.08em] text-[#061112]">
+              Pick
+            </span>
+            <span className="block text-[7px] font-bold leading-[0.95] tracking-[-0.03em] text-white">
+              {title}
+            </span>
+          </div>
+        ))}
       </div>
-      <p className="mt-1 line-clamp-2 text-[8px] leading-3 text-white/68">{panel.subtitle}</p>
     </div>
   );
 }
