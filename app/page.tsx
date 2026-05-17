@@ -813,7 +813,7 @@ function MacBook({
           <button
             type="button"
             onClick={onOpenDetails}
-            className="absolute right-6 top-7 rounded-full border border-white/10 bg-[#071012]/42 px-3 py-1.5 text-[10px] font-semibold text-white/78 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur transition hover:border-[#00b8ad]/40 hover:bg-[#071012]/58 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
+            className="absolute right-6 top-7 z-20 rounded-full border border-white/70 bg-white/[0.86] px-3.5 py-1.5 text-[10px] font-semibold text-[#111211] shadow-[0_12px_28px_rgba(0,0,0,0.22)] backdrop-blur transition hover:border-white hover:bg-white hover:text-[#071012] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
           >
             {labels.moreDetails}
           </button>
