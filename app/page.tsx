@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Mail, X } from "lucide-react";
 
@@ -833,7 +833,7 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
     <button
       type="button"
       onClick={onOpenDetails}
-      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.24)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.24)] transition focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
       aria-label={`Open details for ${panel.title}`}
     >
       <span className="absolute -left-[3px] top-[23%] h-10 w-[3px] rounded-l-full bg-[#c4cac2]" />
@@ -841,17 +841,100 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
       <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
       <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
         <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[#071012]">
-          <Image
-            src="/case-studies/vienna-ios-app.png"
-            alt="Vienna Event Radar iOS app"
-            width={1206}
-            height={2622}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
+          <IPhonePreview />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
         </div>
       </div>
     </button>
+  );
+}
+
+function IPhonePreview() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [isVideoStable, setIsVideoStable] = useState(false);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (reducedMotion.matches) {
+      return;
+    }
+
+    const timer = window.setTimeout(() => {
+      setShouldLoadVideo(true);
+    }, 700);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!shouldLoadVideo) {
+      return;
+    }
+
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    video.playbackRate = 0.94;
+
+    if (video.readyState >= 3) {
+      video.play().catch(() => setIsVideoStable(false));
+    }
+
+    const stabilityTimer = window.setInterval(() => {
+      if (!video.duration) {
+        return;
+      }
+
+      const isNearLoopEnd = video.duration - video.currentTime < 0.5;
+      const hasRestarted = video.currentTime > 0.34;
+      const isReady = video.readyState >= 3 && !video.paused;
+
+      setIsVideoStable(isReady && hasRestarted && !isNearLoopEnd);
+    }, 120);
+
+    return () => window.clearInterval(stabilityTimer);
+  }, [shouldLoadVideo]);
+
+  return (
+    <>
+      <Image
+        src="/case-studies/vienna-ios-app.png"
+        alt="Vienna Event Radar iOS app"
+        width={1206}
+        height={2622}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {shouldLoadVideo ? (
+        <video
+          ref={videoRef}
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 [transform:translateZ(0)] ${
+            isVideoStable ? "opacity-100" : "opacity-0"
+          }`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/case-studies/vienna-ios-app.png"
+          aria-label="Vienna Event Radar iOS app preview"
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
+          onCanPlay={() => {
+            videoRef.current?.play().catch(() => setIsVideoStable(false));
+          }}
+          onPlaying={() => setIsVideoStable(true)}
+          onWaiting={() => setIsVideoStable(false)}
+          onStalled={() => setIsVideoStable(false)}
+        >
+          <source src="/case-studies/vienna-ios-app-loop-small.mp4" type="video/mp4" />
+        </video>
+      ) : null}
+    </>
   );
 }
 
