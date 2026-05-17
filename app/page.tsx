@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight, Mail, X } from "lucide-react";
 
 type Language = "en" | "de";
@@ -52,6 +53,11 @@ type PageCopy = {
     close: string;
     writeEmail: string;
     languageLabel: string;
+    startProject: string;
+    viewCase: string;
+    seeServices: string;
+    evidenceLabel: string;
+    liveProduct: string;
   };
   panels: Panel[];
 };
@@ -76,6 +82,11 @@ const pageCopy: Record<Language, PageCopy> = {
       close: "Close modal",
       writeEmail: "Write an email",
       languageLabel: "Language",
+      startProject: "Start a project",
+      viewCase: "View case study",
+      seeServices: "See services",
+      evidenceLabel: "Product evidence",
+      liveProduct: "Live product",
     },
     panels: [
       {
@@ -320,6 +331,11 @@ const pageCopy: Record<Language, PageCopy> = {
       close: "Modal schließen",
       writeEmail: "E-Mail schreiben",
       languageLabel: "Sprache",
+      startProject: "Projekt starten",
+      viewCase: "Case Study ansehen",
+      seeServices: "Leistungen ansehen",
+      evidenceLabel: "Produktbelege",
+      liveProduct: "Live-Produkt",
     },
     panels: [
       {
@@ -608,7 +624,7 @@ export default function Home() {
             {copy.hero.subcopy}
           </p>
 
-          <div className="mt-6 grid w-[calc(100vw-48px)] max-w-[375px] grid-cols-3 gap-1.5 sm:w-full sm:gap-2">
+          <div className="mt-6 grid w-full max-w-[342px] grid-cols-3 gap-1.5 sm:max-w-[375px] sm:gap-2">
             {copy.hero.proof.map((proof) => (
               <div
                 key={proof}
@@ -620,12 +636,39 @@ export default function Home() {
             ))}
           </div>
 
+          <div className="mt-6 flex w-full max-w-[342px] flex-col gap-2 sm:max-w-[410px] sm:flex-row">
+            <button
+              type="button"
+              onClick={() => setModalPanelId("contact")}
+              className="inline-flex h-11 items-center justify-center rounded-full bg-[#1b1c1a] px-5 text-[13px] font-semibold text-white shadow-[0_18px_44px_rgba(20,24,22,0.14)] transition hover:-translate-y-0.5 hover:bg-black focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+            >
+              {copy.ui.startProject}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setActiveId("work");
+                setModalPanelId("work");
+              }}
+              className="inline-flex h-11 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/64 px-5 text-[13px] font-semibold text-[#1b1c1a] transition hover:-translate-y-0.5 hover:border-[#00b8ad]/35 hover:text-[#007f78] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
+            >
+              {copy.ui.viewCase}
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveId("services")}
+              className="inline-flex h-11 items-center justify-center rounded-full px-3 text-[13px] font-semibold text-[#747872] transition hover:text-[#1b1c1a] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/18"
+            >
+              {copy.ui.seeServices}
+            </button>
+          </div>
+
           <div className="mt-8 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#9a9e98]">
             <span className="h-px w-8 bg-gradient-to-r from-[#00b8ad] to-[#d9ddd8]" />
             {copy.hero.indexLabel}
           </div>
 
-          <nav className="mt-8 flex w-[calc(100vw-48px)] max-w-[410px] flex-col gap-2 sm:w-full" aria-label={copy.ui.navLabel}>
+          <nav className="mt-8 flex w-full max-w-[342px] flex-col gap-2 sm:max-w-[410px]" aria-label={copy.ui.navLabel}>
             {panels.map((item, index) => {
               const isActive = item.id === activePanel.id;
 
@@ -733,17 +776,22 @@ function DeviceDesk({
   onOpenDetails: () => void;
 }) {
   return (
-    <div className="relative mx-auto flex min-h-[520px] max-w-[720px] items-center justify-center lg:min-h-[720px] xl:max-w-[820px] xl:translate-x-8 2xl:translate-x-16">
-      <div className="absolute left-1/2 top-[43%] h-[460px] w-[880px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e1e6e2] blur-3xl" />
-      <div className="absolute bottom-[64px] left-[52%] h-[138px] w-[870px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(155,165,160,0.22),rgba(247,248,246,0)_66%)]" />
-      <div className="absolute bottom-[110px] left-[52%] h-px w-[820px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#d9ddd8] to-transparent" />
+    <div className="relative mx-auto flex min-h-[520px] max-w-[760px] items-center justify-center lg:min-h-[720px] xl:max-w-[860px] xl:translate-x-8 2xl:translate-x-16">
+      <div className="absolute left-1/2 top-[44%] h-[440px] w-[880px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,184,173,0.13),rgba(225,230,226,0.72)_38%,rgba(248,249,247,0)_70%)] blur-3xl" />
+      <div className="absolute bottom-[56px] left-[53%] h-[150px] w-[900px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(91,103,97,0.22),rgba(247,248,246,0)_68%)]" />
+      <div className="absolute bottom-[105px] left-[53%] h-px w-[850px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#d9ddd8] to-transparent" />
 
-      <div className="relative w-full max-w-[720px] xl:max-w-[760px]">
-        <div className="absolute -left-1 bottom-[72px] z-20 w-[128px] rotate-[-2deg] sm:-left-8 sm:w-[148px] lg:-left-12">
+      <div className="absolute right-1 top-16 z-30 hidden rounded-full border border-[#d9ddd8] bg-white/72 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7b817a] shadow-[0_14px_40px_rgba(20,24,22,0.08)] backdrop-blur md:block">
+        <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
+        {labels.evidenceLabel}
+      </div>
+
+      <div className="relative w-full max-w-[740px] xl:max-w-[790px]">
+        <div className="absolute -left-1 bottom-[54px] z-30 w-[132px] rotate-[-2deg] sm:-left-9 sm:w-[154px] lg:-left-16 lg:bottom-[78px]">
           <IPhone panel={panel} onOpenDetails={onOpenDetails} />
         </div>
 
-        <div className="relative z-10 ml-auto w-[89%] max-w-[620px] xl:max-w-[660px]">
+        <div className="relative z-10 ml-auto w-[91%] max-w-[660px] xl:max-w-[700px]">
           <MacBook panel={panel} labels={labels} onOpenDetails={onOpenDetails} />
         </div>
       </div>
@@ -762,26 +810,58 @@ function MacBook({
 }) {
   return (
     <div className="relative">
-      <div className="relative rounded-t-[19px] border-[7px] border-[#111211] bg-[#111211] shadow-[0_32px_96px_rgba(17,18,17,0.24)]">
-        <span className="absolute left-1/2 top-1.5 z-20 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-[radial-gradient(circle_at_82%_18%,rgba(0,184,173,0.34),transparent_30%),radial-gradient(circle_at_90%_82%,rgba(0,184,173,0.18),transparent_26%),linear-gradient(135deg,#fbfbf8_0%,#eef2ee_58%,#dff1ef_100%)] p-[22px]">
-          <div className="screen-sheen pointer-events-none absolute inset-y-0 left-[-45%] w-[42%] rotate-12 bg-gradient-to-r from-transparent via-white/48 to-transparent" />
-          <div className="relative h-full overflow-hidden rounded-[18px] border border-white/72 bg-white/82 p-4 shadow-[0_20px_54px_rgba(17,24,22,0.13)] backdrop-blur">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/54 to-transparent" />
-            <ScreenPanel
-              key={`desktop-${panel.id}`}
-              panel={panel}
-              labels={labels}
-              onOpenDetails={onOpenDetails}
-            />
-          </div>
+      <div className="relative rounded-[26px] border-[9px] border-[#111211] bg-[#111211] shadow-[0_34px_110px_rgba(17,18,17,0.26)]">
+        <span className="absolute left-1/2 top-2 z-30 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#0b1113]">
+          <Image
+            src="/case-studies/vienna-web-desktop-tall.png"
+            alt="Vienna Event Radar web product"
+            width={1440}
+            height={1800}
+            priority
+            className="product-scroll-desktop absolute inset-x-0 top-0 w-full max-w-none"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_20%,rgba(0,184,173,0.16),transparent_28%),linear-gradient(90deg,rgba(8,11,12,0.08),transparent_26%,transparent_74%,rgba(255,255,255,0.06))]" />
+          <div className="screen-sheen pointer-events-none absolute inset-y-0 left-[-45%] w-[42%] rotate-12 bg-gradient-to-r from-transparent via-white/36 to-transparent" />
+          <button
+            type="button"
+            onClick={onOpenDetails}
+            className="absolute bottom-4 right-4 rounded-full border border-white/14 bg-[#071012]/72 px-4 py-2 text-[11px] font-semibold text-white shadow-[0_16px_38px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-[#00b8ad]/60 hover:text-[#79fff4] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+          >
+            {labels.moreDetails}
+          </button>
         </div>
       </div>
-      <div className="relative -mx-8 h-[20px] rounded-b-[30px] bg-gradient-to-b from-[#e2e4df] via-[#cfd3cc] to-[#b8beb5] shadow-[0_22px_48px_rgba(17,18,17,0.14)]">
-        <div className="absolute left-1/2 top-0 h-[6px] w-28 -translate-x-1/2 rounded-b-full bg-[#b8beb5] shadow-[inset_0_-1px_2px_rgba(255,255,255,0.35)]" />
-        <div className="absolute inset-x-8 top-0 h-px bg-white/70" />
+      <div className="mx-auto h-20 w-[17%] bg-gradient-to-b from-[#cfd3cc] via-[#b9bfb7] to-[#a9b0a7] shadow-[0_20px_50px_rgba(17,18,17,0.12)]" />
+      <div className="relative mx-auto -mt-1 h-[24px] w-[46%] rounded-[50%] bg-gradient-to-b from-[#d9ddd8] to-[#b7bdb4] shadow-[0_22px_50px_rgba(17,18,17,0.16)]">
+        <div className="absolute inset-x-8 top-1 h-px bg-white/60" />
       </div>
-      <div className="mx-auto h-[62px] w-[84%] rounded-b-[42px] bg-[radial-gradient(ellipse_at_top,rgba(135,145,139,0.2),transparent_64%)]" />
+
+      <div className="absolute -bottom-2 right-8 hidden w-[230px] rounded-[22px] border border-[#d9ddd8] bg-white/82 p-3 shadow-[0_24px_70px_rgba(20,24,22,0.13)] backdrop-blur lg:block">
+        <div className="mb-3 flex items-center justify-between">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8f948e]">
+            {panel.screen.sideLabel}
+          </span>
+          <span className="rounded-full bg-[#e8fbf8] px-2 py-1 text-[10px] font-semibold text-[#007f78]">
+            {labels.liveProduct}
+          </span>
+        </div>
+        <div className="grid gap-2">
+          {panel.screen.rows.slice(0, 3).map((row) => (
+            <button
+              key={row.label}
+              type="button"
+              onClick={onOpenDetails}
+              className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-[14px] border border-[#edf0ec] bg-white/66 px-3 py-2 text-left transition hover:border-[#00b8ad]/28 hover:bg-white"
+            >
+              <span className="text-[10px] font-semibold uppercase tracking-[0.11em] text-[#8f948e]">
+                {row.label}
+              </span>
+              <span className="text-[11px] font-semibold text-[#1b1c1a]">{row.value}</span>
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
@@ -791,17 +871,22 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
     <button
       type="button"
       onClick={onOpenDetails}
-      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.22)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.24)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
       aria-label={`Open details for ${panel.title}`}
     >
       <span className="absolute -left-[3px] top-[23%] h-10 w-[3px] rounded-l-full bg-[#c4cac2]" />
       <span className="absolute -left-[3px] top-[36%] h-8 w-[3px] rounded-l-full bg-[#151614]" />
       <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
       <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
-        <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_85%_82%,rgba(0,184,173,0.16),transparent_28%),linear-gradient(160deg,#ffffff_0%,#eef1ed_54%,#d7efeb_152%)] px-3 pb-3 pt-4">
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/62 to-transparent" />
-          <div className="absolute left-1/2 top-2.5 z-20 h-[15px] w-[58px] -translate-x-1/2 rounded-full bg-[#10100f] shadow-[inset_10px_0_18px_rgba(255,255,255,0.04)]" />
-          <div className="absolute left-[calc(50%+20px)] top-[15px] z-20 h-1.5 w-1.5 rounded-full bg-[#2c2c2b]" />
+        <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[#071012]">
+          <Image
+            src="/case-studies/vienna-ios-app.png"
+            alt="Vienna Event Radar iOS app"
+            width={1206}
+            height={2622}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
           <PhoneScreen key={`phone-${panel.id}`} panel={panel} />
         </div>
       </div>
@@ -811,113 +896,12 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
 
 function PhoneScreen({ panel }: { panel: Panel }) {
   return (
-    <div className="flex h-full animate-[softReveal_0.34s_cubic-bezier(0.22,1,0.36,1)_both] flex-col justify-between pt-8">
-      <div>
-        <div className="mb-4 flex items-center justify-between">
-          <span className="text-[7px] font-bold tracking-[-0.02em] text-[#1b1c1a]/80">9:41</span>
-          <span className="h-1.5 w-6 rounded-full bg-[#1b1c1a]/18" />
-        </div>
-        <div className="mb-4 flex items-center gap-1.5">
-          <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
-          <span className="text-[8px] font-bold text-[#1b1c1a]">{panel.eyebrow}</span>
-        </div>
-        <h3 className="text-[16px] font-semibold leading-[0.98] tracking-[-0.05em] text-[#1b1c1a]">
-          {panel.title}
-        </h3>
-        <p className="mt-3 text-[9px] leading-4 text-[#6b6f69]">{panel.subtitle}</p>
+    <div className="pointer-events-none absolute inset-x-3 bottom-3 animate-[softReveal_0.34s_cubic-bezier(0.22,1,0.36,1)_both] rounded-[18px] border border-white/12 bg-[#071012]/72 p-2 shadow-[0_16px_34px_rgba(0,0,0,0.24)] backdrop-blur">
+      <div className="flex items-center gap-1.5">
+        <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
+        <span className="truncate text-[8px] font-bold text-white">{panel.title}</span>
       </div>
-
-      <div className="space-y-1.5">
-        {panel.screen.rows.slice(0, 3).map((row, index) => (
-          <div
-            key={row.label}
-            className="rounded-[13px] border border-white/68 bg-white/54 px-2 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.58)]"
-          >
-            <div className="mb-1 flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1b1c1a]/28" />
-              <span className="text-[7px] font-semibold text-[#747872]">0{index + 1}</span>
-            </div>
-            <span className="text-[8px] font-semibold text-[#5f645e]">{row.value}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ScreenPanel({
-  panel,
-  labels,
-  onOpenDetails,
-}: {
-  panel: Panel;
-  labels: PageCopy["ui"];
-  onOpenDetails: () => void;
-}) {
-  return (
-    <div className="relative flex h-full animate-[softReveal_0.34s_cubic-bezier(0.22,1,0.36,1)_both] flex-col">
-      <div className="mb-4 flex items-center justify-between rounded-full border border-white/64 bg-white/34 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.62)]">
-        <div className="flex items-center gap-2">
-          <span className="accent-pulse h-2 w-2 rounded-full bg-[#00b8ad]" />
-          <span className="text-[11px] font-semibold text-[#1b1c1a]">{panel.eyebrow}</span>
-        </div>
-        <div className="hidden items-center gap-1.5 sm:flex">
-          <span className="h-1.5 w-8 rounded-full bg-[#1b1c1a]/10" />
-          <span className="h-1.5 w-5 rounded-full bg-[#1b1c1a]/10" />
-        </div>
-        <button
-          type="button"
-          onClick={onOpenDetails}
-          className="rounded-full border border-[#e1e4df] bg-white/72 px-3 py-1 text-[10px] font-semibold text-[#747872] transition hover:border-[#00b8ad]/35 hover:bg-white hover:text-[#007f78]"
-        >
-          {labels.moreDetails}
-        </button>
-      </div>
-
-      <div className="grid flex-1 grid-cols-[1fr_96px] gap-3">
-        <div className="flex flex-col justify-center rounded-[18px] border border-[#e7ebe5] bg-white/48 px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
-          <p className="max-w-[275px] text-[13px] font-medium text-[#747872]">{panel.subtitle}</p>
-          <h2 className="mt-2 max-w-[350px] text-[31px] font-semibold leading-[0.98] tracking-[-0.055em] text-[#1b1c1a]">
-            {panel.headline}
-          </h2>
-          <p className="mt-5 max-w-[350px] text-[13px] leading-6 text-[#646963]">
-            {panel.description}
-          </p>
-        </div>
-
-        <div className="hidden flex-col gap-3 md:flex">
-          <div className="flex flex-1 flex-col justify-between rounded-[18px] border border-white/58 bg-white/36 p-3">
-            <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-[#8f948e]">
-              {panel.screen.sideLabel}
-            </span>
-            <span className="text-[26px] font-semibold tracking-[-0.06em] text-[#1b1c1a]">
-              {panel.screen.sideValue}
-            </span>
-          </div>
-          <div className="flex flex-1 flex-col justify-between rounded-[18px] border border-white/58 bg-[#1b1c1a]/[0.05] p-3">
-            <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-[#8f948e]">
-              {panel.screen.rows[0]?.label}
-            </span>
-            <span className="accent-pulse h-7 w-7 rounded-full bg-[#00b8ad] shadow-[0_10px_24px_rgba(0,184,173,0.22)]" />
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-3 grid grid-cols-3 gap-2">
-        {panel.screen.rows.slice(0, 3).map((row) => (
-          <button
-            key={row.label}
-            type="button"
-            onClick={onOpenDetails}
-            className="rounded-[14px] border border-[#e7ebe5] bg-[#f6f8f5] px-3 py-3 text-left transition hover:-translate-y-0.5 hover:border-[#00b8ad]/22 hover:bg-white hover:shadow-[0_12px_32px_rgba(20,24,22,0.07)] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
-          >
-            <span className="block text-[9px] font-semibold uppercase tracking-[0.11em] text-[#8f948e]">
-              {row.label}
-            </span>
-            <span className="mt-1 block text-[11px] font-semibold text-[#626762]">{row.value}</span>
-          </button>
-        ))}
-      </div>
+      <p className="mt-1 line-clamp-2 text-[8px] leading-3 text-white/68">{panel.subtitle}</p>
     </div>
   );
 }

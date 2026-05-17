@@ -80,6 +80,14 @@ body {
   animation: screenSheen 8.5s ease-in-out infinite;
 }
 
+.product-scroll-desktop {
+  animation: productScrollDesktop 18s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+
+.product-scroll-mobile {
+  animation: productScrollMobile 16s cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+
 @keyframes accentPulse {
   0%,
   100% {
@@ -102,6 +110,38 @@ body {
   to {
     opacity: 1;
     transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes productScrollDesktop {
+  0%,
+  24% {
+    transform: translateY(0);
+  }
+
+  58%,
+  76% {
+    transform: translateY(-38%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes productScrollMobile {
+  0%,
+  24% {
+    transform: translateY(0);
+  }
+
+  58%,
+  76% {
+    transform: translateY(-42%);
+  }
+
+  100% {
+    transform: translateY(0);
   }
 }
 
