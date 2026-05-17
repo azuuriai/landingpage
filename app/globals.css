@@ -20,7 +20,7 @@ body {
 }
 
 ::selection {
-  background: rgba(52, 124, 118, 0.18);
+  background: rgba(0, 184, 173, 0.22);
   color: #0f1110;
 }
 
@@ -65,6 +65,61 @@ body {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0);
+  }
+}
+
+.accent-pulse {
+  animation: accentPulse 3.8s ease-in-out infinite;
+}
+
+.accent-line {
+  animation: accentLine 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.screen-sheen {
+  animation: screenSheen 8.5s ease-in-out infinite;
+}
+
+@keyframes accentPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 173, 0);
+    opacity: 0.9;
+  }
+
+  45% {
+    box-shadow: 0 0 0 7px rgba(0, 184, 173, 0.1);
+    opacity: 1;
+  }
+}
+
+@keyframes accentLine {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scaleY(0.55);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@keyframes screenSheen {
+  0%,
+  36% {
+    opacity: 0;
+    transform: translateX(0) rotate(12deg);
+  }
+
+  52% {
+    opacity: 0.72;
+  }
+
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(330%) rotate(12deg);
   }
 }
 

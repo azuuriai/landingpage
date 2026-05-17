@@ -14,13 +14,13 @@ const config: Config = {
         bone: "#f7f8f6",
         muted: "#9a9e98",
         line: "rgba(27, 28, 26, 0.12)",
-        accent: "#347c76",
+        accent: "#00b8ad",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 80px rgba(52, 124, 118, 0.07)",
+        glow: "0 0 80px rgba(0, 184, 173, 0.16)",
       },
     },
   },

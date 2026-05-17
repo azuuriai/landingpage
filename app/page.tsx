@@ -125,8 +125,8 @@ export default function Home() {
   }, [modalPanel]);
 
   return (
-    <main className="min-h-svh overflow-hidden bg-[#f7f8f6] text-[#1b1c1a]">
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_70%_42%,rgba(52,124,118,0.065),transparent_31%),linear-gradient(180deg,rgba(255,255,255,0.84),rgba(247,248,246,0.9))]" />
+    <main className="min-h-svh overflow-hidden bg-[#f8f9f7] text-[#1b1c1a]">
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_72%_48%,rgba(28,32,29,0.055),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.88),rgba(248,249,247,0.94))]" />
       <div className="relative mx-auto grid min-h-svh w-full max-w-[1160px] grid-cols-1 px-6 py-8 lg:grid-cols-[410px_1fr] lg:items-center lg:gap-24 lg:px-0 lg:py-0">
         <section className="flex flex-col justify-center pt-10 lg:min-h-[720px] lg:pt-0">
           <p className="text-[21px] font-semibold tracking-[-0.03em] text-[#1b1c1a]">
@@ -140,7 +140,7 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#9a9e98]">
-            <span className="h-px w-8 bg-[#d9ddd8]" />
+            <span className="h-px w-8 bg-gradient-to-r from-[#00b8ad] to-[#d9ddd8]" />
             Studio index
           </div>
 
@@ -153,15 +153,20 @@ export default function Home() {
                   key={item.id}
                   type="button"
                   onClick={() => setActiveId(item.id)}
-                  className={`group grid min-h-[64px] w-full grid-cols-[38px_1fr_28px] items-center gap-3 rounded-[20px] border px-3 py-3 text-left transition duration-300 focus:outline-none focus:ring-2 focus:ring-[#347c76]/18 ${
+                  className={`group relative grid min-h-[64px] w-full grid-cols-[38px_1fr_28px] items-center gap-3 overflow-hidden rounded-[20px] border px-3 py-3 text-left transition duration-300 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30 ${
                     isActive
                       ? "border-[#d9ddd8] bg-white/88 text-[#1b1c1a] shadow-[0_18px_54px_rgba(20,24,22,0.07)]"
                       : "border-transparent text-[#9a9e98] hover:border-[#e1e4df] hover:bg-white/62 hover:text-[#1b1c1a]"
                   }`}
                 >
+                  {isActive ? (
+                    <span className="accent-line absolute inset-y-3 left-0 w-[3px] rounded-r-full bg-[#00b8ad]" />
+                  ) : null}
                   <span
                     className={`flex h-9 w-9 items-center justify-center rounded-full text-[12px] font-semibold transition ${
-                      isActive ? "bg-[#1b1c1a] text-white" : "bg-[#edf0ec] text-[#9a9e98]"
+                      isActive
+                        ? "bg-[#1b1c1a] text-white shadow-[0_0_0_4px_rgba(0,184,173,0.08)]"
+                        : "bg-[#edf0ec] text-[#9a9e98]"
                     }`}
                   >
                     0{index + 1}
@@ -207,7 +212,7 @@ export default function Home() {
         >
           Details
         </button>
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/62 text-[#747872]">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/62 text-[#747872] transition hover:border-[#00b8ad]/40 hover:text-[#00a69b]">
           <Mail size={14} />
         </span>
       </footer>
@@ -242,7 +247,8 @@ function MacBook({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => 
     <div className="relative">
       <div className="relative rounded-t-[19px] border-[7px] border-[#111211] bg-[#111211] shadow-[0_32px_96px_rgba(17,18,17,0.24)]">
         <span className="absolute left-1/2 top-1.5 z-20 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
-        <div className="aspect-[16/10] overflow-hidden rounded-[10px] bg-[radial-gradient(circle_at_82%_18%,rgba(52,124,118,0.18),transparent_34%),linear-gradient(135deg,#fbfbf8_0%,#eef2ee_56%,#dcebe8_100%)] p-[22px]">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-[10px] bg-[radial-gradient(circle_at_82%_18%,rgba(0,184,173,0.34),transparent_30%),radial-gradient(circle_at_90%_82%,rgba(0,184,173,0.18),transparent_26%),linear-gradient(135deg,#fbfbf8_0%,#eef2ee_58%,#dff1ef_100%)] p-[22px]">
+          <div className="screen-sheen pointer-events-none absolute inset-y-0 left-[-45%] w-[42%] rotate-12 bg-gradient-to-r from-transparent via-white/48 to-transparent" />
           <div className="relative h-full overflow-hidden rounded-[18px] border border-white/72 bg-white/82 p-4 shadow-[0_20px_54px_rgba(17,24,22,0.13)] backdrop-blur">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-white/54 to-transparent" />
             <ScreenPanel
@@ -267,14 +273,14 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
     <button
       type="button"
       onClick={onOpenDetails}
-      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.22)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#347c76]/18"
+      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.22)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
       aria-label={`Open details for ${panel.title}`}
     >
       <span className="absolute -left-[3px] top-[23%] h-10 w-[3px] rounded-l-full bg-[#c4cac2]" />
       <span className="absolute -left-[3px] top-[36%] h-8 w-[3px] rounded-l-full bg-[#151614]" />
       <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
       <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
-        <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[linear-gradient(160deg,#ffffff_0%,#eef1ed_50%,#d7efeb_152%)] px-3 pb-3 pt-4">
+        <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[radial-gradient(circle_at_85%_82%,rgba(0,184,173,0.16),transparent_28%),linear-gradient(160deg,#ffffff_0%,#eef1ed_54%,#d7efeb_152%)] px-3 pb-3 pt-4">
           <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white/62 to-transparent" />
           <div className="absolute left-1/2 top-2.5 z-20 h-[15px] w-[58px] -translate-x-1/2 rounded-full bg-[#10100f] shadow-[inset_10px_0_18px_rgba(255,255,255,0.04)]" />
           <div className="absolute left-[calc(50%+20px)] top-[15px] z-20 h-1.5 w-1.5 rounded-full bg-[#2c2c2b]" />
@@ -294,7 +300,7 @@ function PhoneScreen({ panel }: { panel: Panel }) {
           <span className="h-1.5 w-6 rounded-full bg-[#1b1c1a]/18" />
         </div>
         <div className="mb-4 flex items-center gap-1.5">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#347c76]" />
+          <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
           <span className="text-[8px] font-bold text-[#1b1c1a]">{panel.eyebrow}</span>
         </div>
         <h3 className="text-[16px] font-semibold leading-[0.98] tracking-[-0.05em] text-[#1b1c1a]">
@@ -326,7 +332,7 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
     <div className="relative flex h-full animate-[softReveal_0.34s_cubic-bezier(0.22,1,0.36,1)_both] flex-col">
       <div className="mb-4 flex items-center justify-between rounded-full border border-white/64 bg-white/34 px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.62)]">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-[#347c76]" />
+          <span className="accent-pulse h-2 w-2 rounded-full bg-[#00b8ad]" />
           <span className="text-[11px] font-semibold text-[#1b1c1a]">{panel.eyebrow}</span>
         </div>
         <div className="hidden items-center gap-1.5 sm:flex">
@@ -336,7 +342,7 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
         <button
           type="button"
           onClick={onOpenDetails}
-          className="rounded-full border border-[#e1e4df] bg-white/72 px-3 py-1 text-[10px] font-semibold text-[#747872] transition hover:bg-white hover:text-[#1b1c1a]"
+          className="rounded-full border border-[#e1e4df] bg-white/72 px-3 py-1 text-[10px] font-semibold text-[#747872] transition hover:border-[#00b8ad]/35 hover:bg-white hover:text-[#007f78]"
         >
           More details
         </button>
@@ -364,7 +370,7 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
             <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-[#8f948e]">
               Ship
             </span>
-            <span className="h-7 w-7 rounded-full bg-[#347c76]/82 shadow-[0_10px_24px_rgba(52,124,118,0.12)]" />
+            <span className="accent-pulse h-7 w-7 rounded-full bg-[#00b8ad] shadow-[0_10px_24px_rgba(0,184,173,0.22)]" />
           </div>
         </div>
       </div>
@@ -375,7 +381,7 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
             key={label}
             type="button"
             onClick={onOpenDetails}
-            className="rounded-[14px] border border-[#e7ebe5] bg-[#f6f8f5] px-3 py-4 text-left transition hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_12px_32px_rgba(20,24,22,0.07)] focus:outline-none focus:ring-2 focus:ring-[#347c76]/16"
+            className="rounded-[14px] border border-[#e7ebe5] bg-[#f6f8f5] px-3 py-4 text-left transition hover:-translate-y-0.5 hover:border-[#00b8ad]/22 hover:bg-white hover:shadow-[0_12px_32px_rgba(20,24,22,0.07)] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
           >
             <span className="text-[11px] font-semibold text-[#626762]">{label}</span>
           </button>
@@ -409,7 +415,7 @@ function DetailModal({ panel, onClose }: { panel: Panel; onClose: () => void }) 
               type="button"
               aria-label="Close modal"
               onClick={onClose}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/70 text-[#747872] transition hover:bg-[#1b1c1a] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#347c76]/16"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/70 text-[#747872] transition hover:bg-[#1b1c1a] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
             >
               <X size={16} />
             </button>
