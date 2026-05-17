@@ -11,20 +11,20 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Lukas Kaffer | AI-native Product Builder",
   description:
-    "AI-native Product Builder für polierte Websites, Web Apps, interne Tools und KI-gestützte Workflows von Konzept bis Launch.",
+    "AI-native product builder crafting polished websites, web apps, internal tools and AI-powered workflows from concept to launch.",
   metadataBase: new URL("https://lukaskaffer.com"),
   openGraph: {
     title: "Lukas Kaffer | AI-native Product Builder",
     description:
-      "Premium Websites, Full-Stack Produkte, interne Tools und KI-Workflows für Gründer und kleine Unternehmen.",
+      "Premium websites, full-stack products, internal tools and AI workflows for founders and small businesses.",
     type: "website",
-    locale: "de_AT",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Lukas Kaffer | AI-native Product Builder",
     description:
-      "Von groben Ideen zu polierten digitalen Produkten.",
+      "Turning rough ideas into polished digital products from concept to launch.",
   },
   robots: {
     index: true,
@@ -38,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} bg-ink font-sans text-bone antialiased`}>
         {children}
       </body>

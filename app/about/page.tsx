@@ -4,9 +4,9 @@ import { capabilities } from "@/lib/content";
 export default function AboutPage() {
   return (
     <InfoPage
-      eyebrow="Über mich"
-      title="Produktgefühl mit Full-Stack Tiefe."
-      intro="Ich baue wie ein Produktpartner: Angebot schärfen, Interaktion gestalten, Stack umsetzen und das Ding live bringen."
+      eyebrow="About"
+      title="Product taste with full-stack depth."
+      intro="I build like a product partner: shaping the offer, designing the interaction, implementing the stack and pushing the thing live."
     >
       <DetailList items={capabilities.map((capability) => capability.label)} />
     </InfoPage>

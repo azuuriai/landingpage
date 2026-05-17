@@ -8,7 +8,7 @@ export function InfoPage({
   intro,
   children,
   ctaHref = "/contact",
-  ctaLabel = "Projekt starten",
+  ctaLabel = "Start a project",
 }: {
   eyebrow: string;
   title: string;
@@ -26,7 +26,7 @@ export function InfoPage({
             className="inline-flex items-center gap-2 text-[14px] font-medium text-[#8b8b86] transition hover:text-[#1d1d1b]"
           >
             <ArrowLeft size={15} />
-            Zurück
+            Lukas Kaffer
           </Link>
           <Link
             href={ctaHref}
