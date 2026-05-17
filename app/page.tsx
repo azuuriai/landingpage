@@ -56,8 +56,6 @@ type PageCopy = {
     startProject: string;
     viewCase: string;
     seeServices: string;
-    evidenceLabel: string;
-    liveProduct: string;
   };
   panels: Panel[];
 };
@@ -85,8 +83,6 @@ const pageCopy: Record<Language, PageCopy> = {
       startProject: "Start a project",
       viewCase: "View case study",
       seeServices: "See services",
-      evidenceLabel: "Product evidence",
-      liveProduct: "Live product",
     },
     panels: [
       {
@@ -334,8 +330,6 @@ const pageCopy: Record<Language, PageCopy> = {
       startProject: "Projekt starten",
       viewCase: "Case Study ansehen",
       seeServices: "Leistungen ansehen",
-      evidenceLabel: "Produktbelege",
-      liveProduct: "Live-Produkt",
     },
     panels: [
       {
@@ -781,18 +775,13 @@ function DeviceDesk({
       <div className="absolute bottom-[56px] left-[53%] h-[150px] w-[900px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(91,103,97,0.22),rgba(247,248,246,0)_68%)]" />
       <div className="absolute bottom-[105px] left-[53%] h-px w-[850px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#d9ddd8] to-transparent" />
 
-      <div className="absolute right-1 top-16 z-30 hidden rounded-full border border-[#d9ddd8] bg-white/72 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7b817a] shadow-[0_14px_40px_rgba(20,24,22,0.08)] backdrop-blur md:block">
-        <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
-        {labels.evidenceLabel}
-      </div>
-
       <div className="relative w-full max-w-[740px] xl:max-w-[790px]">
         <div className="absolute -left-1 bottom-[54px] z-30 w-[132px] rotate-[-2deg] sm:-left-9 sm:w-[154px] lg:-left-16 lg:bottom-[78px]">
           <IPhone panel={panel} onOpenDetails={onOpenDetails} />
         </div>
 
         <div className="relative z-10 ml-auto w-[91%] max-w-[660px] xl:max-w-[700px]">
-          <MacBook panel={panel} labels={labels} onOpenDetails={onOpenDetails} />
+          <MacBook labels={labels} onOpenDetails={onOpenDetails} />
         </div>
       </div>
     </div>
@@ -800,11 +789,9 @@ function DeviceDesk({
 }
 
 function MacBook({
-  panel,
   labels,
   onOpenDetails,
 }: {
-  panel: Panel;
   labels: PageCopy["ui"];
   onOpenDetails: () => void;
 }) {
@@ -837,31 +824,6 @@ function MacBook({
         <div className="absolute inset-x-8 top-1 h-px bg-white/60" />
       </div>
 
-      <div className="absolute -bottom-2 right-8 hidden w-[230px] rounded-[22px] border border-[#d9ddd8] bg-white/82 p-3 shadow-[0_24px_70px_rgba(20,24,22,0.13)] backdrop-blur lg:block">
-        <div className="mb-3 flex items-center justify-between">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#8f948e]">
-            {panel.screen.sideLabel}
-          </span>
-          <span className="rounded-full bg-[#e8fbf8] px-2 py-1 text-[10px] font-semibold text-[#007f78]">
-            {labels.liveProduct}
-          </span>
-        </div>
-        <div className="grid gap-2">
-          {panel.screen.rows.slice(0, 3).map((row) => (
-            <button
-              key={row.label}
-              type="button"
-              onClick={onOpenDetails}
-              className="grid grid-cols-[1fr_auto] items-center gap-3 rounded-[14px] border border-[#edf0ec] bg-white/66 px-3 py-2 text-left transition hover:border-[#00b8ad]/28 hover:bg-white"
-            >
-              <span className="text-[10px] font-semibold uppercase tracking-[0.11em] text-[#8f948e]">
-                {row.label}
-              </span>
-              <span className="text-[11px] font-semibold text-[#1b1c1a]">{row.value}</span>
-            </button>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
