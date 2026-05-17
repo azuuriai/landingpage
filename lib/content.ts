@@ -13,95 +13,95 @@ import {
 } from "lucide-react";
 
 export const navItems = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Arbeit", href: "#work" },
+  { label: "Leistungen", href: "#services" },
+  { label: "Prozess", href: "#process" },
+  { label: "Kontakt", href: "#contact" },
 ];
 
 export const selectedWork = [
   {
     title: "Vienna Event Radar",
-    eyebrow: "Full-stack product",
+    eyebrow: "Full-Stack Produkt",
     description:
-      "A launched event discovery product with auth, admin flows, AI-assisted research and mobile-first user experience.",
+      "Ein gelaunchtes Event-Discovery-Produkt mit Auth, Admin-Flows, KI-gestützter Recherche und mobile-first User Experience.",
     meta: "Next.js / Supabase / Vercel / iOS",
   },
   {
-    title: "AI workflow systems",
-    eyebrow: "Internal tools",
+    title: "KI-Workflow-Systeme",
+    eyebrow: "Interne Tools",
     description:
-      "Research, enrichment and review pipelines that turn messy operations into calm, repeatable workflows.",
-    meta: "Automation / APIs / AI-assisted ops",
+      "Recherche-, Anreicherungs- und Review-Pipelines, die unklare Abläufe in ruhige, wiederholbare Workflows verwandeln.",
+    meta: "Automation / APIs / KI-gestützte Ops",
   },
   {
-    title: "Premium launch pages",
-    eyebrow: "Conversion surfaces",
+    title: "Premium Launch Pages",
+    eyebrow: "Conversion-Flächen",
     description:
-      "Focused landing pages for founders and small teams that need trust, clarity and a polished first impression.",
+      "Fokussierte Landingpages für Gründer und kleine Teams, die Vertrauen, Klarheit und einen polierten ersten Eindruck brauchen.",
     meta: "UX/UI / Frontend / SEO",
   },
 ];
 
 export const caseStudyFacts = [
-  "Built from zero to launch",
-  "Full-stack web product",
-  "Mobile-first dashboard",
-  "Supabase auth, database and RLS",
-  "AI-assisted research pipeline",
-  "Admin workflows",
-  "SEO and security polish",
-  "iOS app extension",
-  "Vercel deployment",
+  "Von null bis Launch gebaut",
+  "Full-Stack Webprodukt",
+  "Mobile-first Dashboard",
+  "Supabase Auth, Datenbank und RLS",
+  "KI-gestützte Recherche-Pipeline",
+  "Admin-Workflows",
+  "SEO- und Security-Polish",
+  "iOS App Erweiterung",
+  "Vercel Deployment",
 ];
 
 export const services = [
   {
-    title: "Premium websites and landing pages",
+    title: "Premium Websites und Landingpages",
     description:
-      "High-end, mobile-first pages for founders, consultants and small businesses that need to look credible fast.",
+      "Hochwertige, mobile-first Seiten für Gründer, Consultants und kleine Unternehmen, die schnell glaubwürdig wirken müssen.",
     icon: Brush,
   },
   {
-    title: "MVPs and full-stack web apps",
+    title: "MVPs und Full-Stack Web Apps",
     description:
-      "From product shape and UX flows to auth, database, dashboard, deployment and iteration.",
+      "Von Produktform und UX-Flows bis Auth, Datenbank, Dashboard, Deployment und Iteration.",
     icon: Layers3,
   },
   {
-    title: "AI automations and internal tools",
+    title: "KI-Automationen und interne Tools",
     description:
-      "Workflow systems that reduce repetitive work, connect APIs and give teams a clearer operating cockpit.",
+      "Workflow-Systeme, die wiederkehrende Arbeit reduzieren, APIs verbinden und Teams ein klareres Operating Cockpit geben.",
     icon: Workflow,
   },
   {
-    title: "UX/UI and conversion audits",
+    title: "UX/UI und Conversion Audits",
     description:
-      "A practical review of structure, trust, clarity, mobile experience and conversion friction.",
+      "Ein praktischer Review von Struktur, Vertrauen, Klarheit, Mobile Experience und Conversion-Reibung.",
     icon: Gauge,
   },
 ];
 
 export const processSteps = [
   {
-    title: "Shape",
+    title: "Schärfen",
     description:
-      "Clarify the offer, user journey and product scope before touching the interface.",
+      "Angebot, User Journey und Produktscope klären, bevor das Interface entsteht.",
   },
   {
     title: "Design",
     description:
-      "Create a sharp visual system with responsive layouts, interaction details and conversion intent.",
+      "Ein präzises visuelles System mit responsiven Layouts, Interaktionsdetails und Conversion-Absicht gestalten.",
   },
   {
-    title: "Build",
+    title: "Umsetzung",
     description:
-      "Implement the product with clean full-stack architecture, AI-assisted speed and production standards.",
+      "Das Produkt mit sauberer Full-Stack Architektur, KI-unterstützter Geschwindigkeit und Production Standards umsetzen.",
   },
   {
     title: "Launch",
     description:
-      "Ship to Vercel, harden SEO/security basics and iterate from real feedback.",
+      "Auf Vercel ausliefern, SEO-/Security-Basics härten und aus echtem Feedback iterieren.",
   },
 ];
 
@@ -112,8 +112,8 @@ export const capabilities = [
   { label: "Supabase", icon: Database },
   { label: "Vercel", icon: Rocket },
   { label: "Tailwind CSS", icon: Brush },
-  { label: "AI-assisted workflows", icon: Bot },
-  { label: "Automation and APIs", icon: Workflow },
-  { label: "iOS app development", icon: Smartphone },
-  { label: "Auth, RLS and security", icon: ShieldCheck },
+  { label: "KI-gestützte Workflows", icon: Bot },
+  { label: "Automation und APIs", icon: Workflow },
+  { label: "iOS App Entwicklung", icon: Smartphone },
+  { label: "Auth, RLS und Security", icon: ShieldCheck },
 ];

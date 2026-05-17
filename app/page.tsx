@@ -19,86 +19,86 @@ const panels: Panel[] = [
   {
     id: "work",
     title: "Vienna Event Radar",
-    subtitle: "Full-stack product case study",
-    eyebrow: "Featured work",
-    headline: "From idea to shipped product.",
+    subtitle: "Full-Stack Produktcase",
+    eyebrow: "Ausgewählte Arbeit",
+    headline: "Von der Idee zum gelaunchten Produkt.",
     description:
-      "Built from zero to launch with Next.js, Supabase, auth, RLS, admin flows, AI-assisted research and Vercel deployment.",
-    chips: ["Full-stack", "AI pipeline", "iOS extension"],
+      "Von null bis Launch gebaut: mit Next.js, Supabase, Auth, RLS, Admin-Flows, KI-gestützter Recherche und Vercel Deployment.",
+    chips: ["Full-Stack", "KI-Pipeline", "iOS Erweiterung"],
     details: [
-      "Full-stack web product built from zero to launch.",
-      "Supabase auth, database structure and RLS policies.",
-      "AI-assisted event research pipeline with admin review workflows.",
-      "Mobile-first dashboard, SEO/security polish and Vercel deployment.",
-      "Extended toward a companion iOS app experience.",
+      "Full-Stack Webprodukt von null bis Launch umgesetzt.",
+      "Supabase Auth, Datenbankstruktur und RLS Policies aufgebaut.",
+      "KI-gestützte Event-Recherche mit Admin-Review-Workflows.",
+      "Mobile-first Dashboard, SEO-/Security-Polish und Vercel Deployment.",
+      "Erweiterung in Richtung begleitender iOS App Experience.",
     ],
     detailHref: "/work",
   },
   {
     id: "services",
-    title: "Services",
-    subtitle: "Websites, MVPs and AI workflows",
-    eyebrow: "What I build",
-    headline: "Premium digital products without handoff drag.",
+    title: "Leistungen",
+    subtitle: "Websites, MVPs und KI-Workflows",
+    eyebrow: "Was ich baue",
+    headline: "Premium digitale Produkte ohne Übergabe-Reibung.",
     description:
-      "Mobile-first websites, MVPs, internal tools, AI automations and focused UX/UI audits for founders and small teams.",
-    chips: ["Landing pages", "MVPs", "Automations"],
+      "Mobile-first Websites, MVPs, interne Tools, KI-Automationen und fokussierte UX/UI Audits für Gründer und kleine Teams.",
+    chips: ["Landingpages", "MVPs", "Automationen"],
     details: [
-      "Premium mobile-first websites and landing pages with strong first-impression design.",
-      "MVPs and full-stack web apps with auth, data, dashboard and deployment.",
-      "AI automations and internal tools that reduce repetitive work.",
-      "UX/UI and conversion audits for pages that need clearer structure and trust.",
+      "Premium mobile-first Websites und Landingpages mit starkem ersten Eindruck.",
+      "MVPs und Full-Stack Web Apps mit Auth, Daten, Dashboard und Deployment.",
+      "KI-Automationen und interne Tools, die wiederkehrende Arbeit reduzieren.",
+      "UX/UI und Conversion Audits für Seiten, die klarer und vertrauenswürdiger wirken sollen.",
     ],
     detailHref: "/services",
   },
   {
     id: "process",
-    title: "Process",
-    subtitle: "From rough idea to launch",
-    eyebrow: "How it works",
-    headline: "Shape, design, build, launch.",
+    title: "Prozess",
+    subtitle: "Von grober Idee bis Launch",
+    eyebrow: "Wie es läuft",
+    headline: "Schärfen, gestalten, bauen, launchen.",
     description:
-      "A compact workflow that clarifies scope, designs the interaction, ships the stack and iterates from real feedback.",
-    chips: ["Shape", "Design", "Build", "Launch"],
+      "Ein kompakter Ablauf, der Fokus klärt, Interaktion gestaltet, den Stack ausliefert und aus echtem Feedback iteriert.",
+    chips: ["Schärfen", "Design", "Umsetzung", "Launch"],
     details: [
-      "Shape the offer, target user, core workflow and launch scope.",
-      "Design the interface, interaction rhythm and responsive system.",
-      "Build with a clean stack and AI-assisted implementation speed.",
-      "Launch, check SEO/security basics and iterate from real feedback.",
+      "Angebot, Zielgruppe, Kernworkflow und Launch-Fokus schärfen.",
+      "Interface, Interaktionsrhythmus und responsives System gestalten.",
+      "Mit sauberem Stack und KI-unterstützter Umsetzungsgeschwindigkeit bauen.",
+      "Launchen, SEO-/Security-Basics prüfen und anhand echtem Feedback iterieren.",
     ],
     detailHref: "/process",
   },
   {
     id: "about",
-    title: "About",
-    subtitle: "Product taste and full-stack execution",
+    title: "Über mich",
+    subtitle: "Produktgefühl und Full-Stack Umsetzung",
     eyebrow: "Lukas Kaffer",
-    headline: "Product taste with implementation depth.",
+    headline: "Produktgefühl mit Umsetzungstiefe.",
     description:
-      "I combine product thinking, UX/UI, full-stack implementation and AI-native workflows to move ideas into polished reality.",
-    chips: ["Next.js", "Supabase", "Design engineering"],
+      "Ich verbinde Produktdenken, UX/UI, Full-Stack Umsetzung und AI-native Workflows, um Ideen in polierte Realität zu bringen.",
+    chips: ["Next.js", "Supabase", "Design Engineering"],
     details: [
-      "Product thinking before implementation: what should exist, why and for whom.",
-      "Design engineering taste: calm interfaces, crisp layout and motion restraint.",
-      "Full-stack execution with Next.js, React, TypeScript, Supabase and Vercel.",
-      "AI-native workflows for faster building, research and operational systems.",
+      "Produktdenken vor Umsetzung: Was sollte existieren, warum und für wen?",
+      "Design-Engineering-Gefühl: ruhige Interfaces, präzises Layout und zurückhaltende Motion.",
+      "Full-Stack Umsetzung mit Next.js, React, TypeScript, Supabase und Vercel.",
+      "AI-native Workflows für schnelleres Bauen, Recherche und operative Systeme.",
     ],
     detailHref: "/about",
   },
   {
     id: "contact",
-    title: "Contact",
-    subtitle: "Start a focused build",
-    eyebrow: "Start here",
-    headline: "Have a rough product idea?",
+    title: "Kontakt",
+    subtitle: "Ein fokussiertes Projekt starten",
+    eyebrow: "Startpunkt",
+    headline: "Eine grobe Produktidee im Kopf?",
     description:
-      "Send the idea, current bottleneck or page that needs to work harder. I will help shape the next move.",
-    chips: ["Email", "Project brief", "Next step"],
+      "Schick mir die Idee, den aktuellen Engpass oder die Seite, die stärker performen soll. Ich helfe, den nächsten Schritt zu schärfen.",
+    chips: ["E-Mail", "Projektbrief", "Nächster Schritt"],
     details: [
-      "Best starting point: one paragraph about what you want to launch.",
-      "Include who it is for, what exists today and where the friction is.",
-      "For small projects, the first useful step is usually a focused scope and prototype.",
-      "Email: hello@lukaskaffer.com",
+      "Bester Startpunkt: ein Absatz dazu, was du launchen möchtest.",
+      "Dazu: für wen es ist, was heute existiert und wo Reibung entsteht.",
+      "Bei kleinen Projekten ist der erste sinnvolle Schritt meist ein fokussierter Umfang und Prototyp.",
+      "E-Mail: hello@lukaskaffer.com",
     ],
     detailHref: "/contact",
   },
@@ -133,18 +133,18 @@ export default function Home() {
             Lukas Kaffer
           </p>
           <h1 className="mt-3 max-w-[360px] text-[29px] font-medium leading-[1.25] tracking-[-0.045em] text-[#50534f]">
-            AI-native product builder crafting polished digital products.
+            AI-native Product Builder für polierte digitale Produkte.
           </h1>
           <p className="mt-6 max-w-[335px] text-[15px] leading-7 text-[#747872]">
-            Websites, MVPs, internal tools and AI-powered workflows from concept to launch.
+            Websites, MVPs, interne Tools und KI-gestützte Workflows von Konzept bis Launch.
           </p>
 
           <div className="mt-8 flex items-center gap-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#9a9e98]">
             <span className="h-px w-8 bg-gradient-to-r from-[#00b8ad] to-[#d9ddd8]" />
-            Studio index
+            Studio Index
           </div>
 
-          <nav className="mt-10 flex flex-col gap-2" aria-label="Portfolio preview controls">
+          <nav className="mt-10 flex flex-col gap-2" aria-label="Portfolio Vorschau steuern">
             {panels.map((item, index) => {
               const isActive = item.id === activePanel.id;
 
@@ -200,10 +200,10 @@ export default function Home() {
 
       <footer className="fixed bottom-5 right-6 hidden items-center gap-5 text-[13px] font-medium text-[#a2a6a0] lg:flex">
         <a className="transition hover:text-[#1b1c1a]" href="mailto:hello@lukaskaffer.com">
-          Email
+          E-Mail
         </a>
         <a className="transition hover:text-[#1b1c1a]" href="https://viennaeventradar.at">
-          Product
+          Produkt
         </a>
         <button
           type="button"
@@ -274,7 +274,7 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
       type="button"
       onClick={onOpenDetails}
       className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.22)] transition hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
-      aria-label={`Open details for ${panel.title}`}
+          aria-label={`Details zu ${panel.title} öffnen`}
     >
       <span className="absolute -left-[3px] top-[23%] h-10 w-[3px] rounded-l-full bg-[#c4cac2]" />
       <span className="absolute -left-[3px] top-[36%] h-8 w-[3px] rounded-l-full bg-[#151614]" />
@@ -344,7 +344,7 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
           onClick={onOpenDetails}
           className="rounded-full border border-[#e1e4df] bg-white/72 px-3 py-1 text-[10px] font-semibold text-[#747872] transition hover:border-[#00b8ad]/35 hover:bg-white hover:text-[#007f78]"
         >
-          More details
+          Mehr Details
         </button>
       </div>
 
@@ -362,13 +362,13 @@ function ScreenPanel({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: ()
         <div className="hidden flex-col gap-3 md:flex">
           <div className="flex flex-1 flex-col justify-between rounded-[18px] border border-white/58 bg-white/36 p-3">
             <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-[#8f948e]">
-              Scope
+              Fokus
             </span>
             <span className="text-[26px] font-semibold tracking-[-0.06em] text-[#1b1c1a]">01</span>
           </div>
           <div className="flex flex-1 flex-col justify-between rounded-[18px] border border-white/58 bg-[#1b1c1a]/[0.05] p-3">
             <span className="text-[9px] font-semibold uppercase tracking-[0.13em] text-[#8f948e]">
-              Ship
+              Launch
             </span>
             <span className="accent-pulse h-7 w-7 rounded-full bg-[#00b8ad] shadow-[0_10px_24px_rgba(0,184,173,0.22)]" />
           </div>
@@ -413,7 +413,7 @@ function DetailModal({ panel, onClose }: { panel: Panel; onClose: () => void }) 
             </div>
             <button
               type="button"
-              aria-label="Close modal"
+              aria-label="Modal schließen"
               onClick={onClose}
               className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[#d9ddd8] bg-white/70 text-[#747872] transition hover:bg-[#1b1c1a] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
             >
@@ -446,7 +446,7 @@ function DetailModal({ panel, onClose }: { panel: Panel; onClose: () => void }) 
               href="mailto:hello@lukaskaffer.com"
               className="mt-6 inline-flex h-11 items-center justify-center rounded-full bg-[#1b1c1a] px-5 text-[14px] font-semibold text-white transition hover:bg-black"
             >
-              Write an email
+              E-Mail schreiben
             </a>
           ) : null}
         </div>
