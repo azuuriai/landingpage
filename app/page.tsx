@@ -841,49 +841,22 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
       <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
       <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
         <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[#071012]">
-          <Image
-            src="/case-studies/vienna-ios-app.png"
-            alt="Vienna Event Radar iOS app"
-            width={1206}
-            height={2622}
+          <video
             className="absolute inset-0 h-full w-full object-cover"
-          />
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/case-studies/vienna-ios-app.png"
+            aria-label="Vienna Event Radar iOS app preview"
+          >
+            <source src="/case-studies/vienna-ios-app-loop-small.mp4" type="video/mp4" />
+          </video>
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
-          <TopPicksLoop />
         </div>
       </div>
     </button>
-  );
-}
-
-function TopPicksLoop() {
-  return (
-    <div className="pointer-events-none absolute inset-x-3 top-[34%] overflow-hidden" aria-hidden="true">
-      <div className="top-picks-loop flex w-max gap-1.5">
-        {[
-          "Schlosspark",
-          "Festwochen",
-          "Theater im Park",
-          "Eurovision",
-          "Museumsabend",
-          "Schlosspark",
-          "Festwochen",
-          "Theater im Park",
-        ].map((title, index) => (
-          <div
-            key={`${title}-${index}`}
-            className="h-[42px] w-[78px] shrink-0 overflow-hidden rounded-[9px] border border-[#00b8ad]/24 bg-[linear-gradient(135deg,rgba(2,20,22,0.86),rgba(0,184,173,0.17)),url('/case-studies/vienna-ios-app.png')] bg-cover bg-center p-1.5 shadow-[0_8px_20px_rgba(0,0,0,0.22)]"
-          >
-            <span className="mb-1 inline-flex rounded-full bg-[#00b8ad]/86 px-1.5 py-0.5 text-[5px] font-bold uppercase tracking-[0.08em] text-[#061112]">
-              Pick
-            </span>
-            <span className="block text-[7px] font-bold leading-[0.95] tracking-[-0.03em] text-white">
-              {title}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
   );
 }
 
