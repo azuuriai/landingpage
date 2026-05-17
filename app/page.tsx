@@ -813,7 +813,7 @@ function MacBook({
           <button
             type="button"
             onClick={onOpenDetails}
-            className="absolute right-5 top-8 rounded-full border border-white/14 bg-[#071012]/72 px-4 py-2 text-[11px] font-semibold text-white shadow-[0_16px_38px_rgba(0,0,0,0.28)] backdrop-blur transition hover:border-[#00b8ad]/60 hover:text-[#79fff4] focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+            className="absolute right-6 top-7 rounded-full border border-white/10 bg-[#071012]/42 px-3 py-1.5 text-[10px] font-semibold text-white/78 shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur transition hover:border-[#00b8ad]/40 hover:bg-[#071012]/58 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/24"
           >
             {labels.moreDetails}
           </button>
@@ -841,18 +841,13 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
       <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
       <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
         <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[#071012]">
-          <video
+          <Image
+            src="/case-studies/vienna-ios-app.png"
+            alt="Vienna Event Radar iOS app"
+            width={1206}
+            height={2622}
             className="absolute inset-0 h-full w-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster="/case-studies/vienna-ios-app.png"
-            aria-label="Vienna Event Radar iOS app preview"
-          >
-            <source src="/case-studies/vienna-ios-app-loop-small.mp4" type="video/mp4" />
-          </video>
+          />
           <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
         </div>
       </div>
