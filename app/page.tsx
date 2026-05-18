@@ -986,6 +986,7 @@ function WorkWindow({
           width={1440}
           height={1800}
           priority
+          sizes="(min-width: 1280px) 590px, (min-width: 1024px) 52vw, 91vw"
           className="product-scroll-desktop absolute inset-x-0 top-0 w-full max-w-none"
         />
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,11,12,0.16),transparent_24%,transparent_82%,rgba(7,11,12,0.22))]" />
@@ -1132,7 +1133,7 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
 function IPhonePreview() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [isVideoStable, setIsVideoStable] = useState(false);
+  const [hasVideoLoaded, setHasVideoLoaded] = useState(false);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -1161,23 +1162,11 @@ function IPhonePreview() {
 
     video.playbackRate = 0.94;
 
-    if (video.readyState >= 3) {
-      video.play().catch(() => setIsVideoStable(false));
+    if (video.readyState >= 2) {
+      setHasVideoLoaded(true);
     }
 
-    const stabilityTimer = window.setInterval(() => {
-      if (!video.duration) {
-        return;
-      }
-
-      const isNearLoopEnd = video.duration - video.currentTime < 0.5;
-      const hasRestarted = video.currentTime > 0.34;
-      const isReady = video.readyState >= 3 && !video.paused;
-
-      setIsVideoStable(isReady && hasRestarted && !isNearLoopEnd);
-    }, 120);
-
-    return () => window.clearInterval(stabilityTimer);
+    video.play().catch(() => undefined);
   }, [shouldLoadVideo]);
 
   return (
@@ -1187,29 +1176,30 @@ function IPhonePreview() {
         alt="Vienna Event Radar iOS app"
         width={1206}
         height={2622}
+        sizes="132px"
         className="absolute inset-0 h-full w-full object-cover"
       />
       {shouldLoadVideo ? (
         <video
           ref={videoRef}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 [transform:translateZ(0)] ${
-            isVideoStable ? "opacity-100" : "opacity-0"
+            hasVideoLoaded ? "opacity-100" : "opacity-0"
           }`}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          poster="/case-studies/vienna-ios-app.png"
           aria-label="Vienna Event Radar iOS app preview"
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
+          onLoadedData={() => setHasVideoLoaded(true)}
           onCanPlay={() => {
-            videoRef.current?.play().catch(() => setIsVideoStable(false));
+            setHasVideoLoaded(true);
+            videoRef.current?.play().catch(() => undefined);
           }}
-          onPlaying={() => setIsVideoStable(true)}
-          onWaiting={() => setIsVideoStable(false)}
-          onStalled={() => setIsVideoStable(false)}
+          onPlaying={() => setHasVideoLoaded(true)}
+          onError={() => setHasVideoLoaded(false)}
         >
           <source src="/case-studies/vienna-ios-app-loop-small.mp4" type="video/mp4" />
         </video>
