@@ -8,7 +8,7 @@ export function InfoPage({
   intro,
   children,
   ctaHref = "/contact",
-  ctaLabel = "Start a project",
+  ctaLabel = "Projekt starten",
 }: {
   eyebrow: string;
   title: string;
@@ -42,7 +42,7 @@ export function InfoPage({
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#aaa9a3]">
               {eyebrow}
             </p>
-            <h1 className="mt-4 max-w-[360px] text-[42px] font-semibold leading-[0.98] tracking-[-0.055em] text-[#1d1d1b] sm:text-[56px]">
+            <h1 className="mt-4 max-w-[360px] font-display text-[42px] font-semibold leading-[1.02] tracking-[-0.035em] text-[#1d1d1b] sm:text-[52px]">
               {title}
             </h1>
             <p className="mt-6 max-w-[360px] text-[17px] leading-8 text-[#74746f]">

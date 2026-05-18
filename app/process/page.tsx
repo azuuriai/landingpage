@@ -4,9 +4,9 @@ import { processSteps } from "@/lib/content";
 export default function ProcessPage() {
   return (
     <InfoPage
-      eyebrow="Process"
-      title="Shape, design, build, launch."
-      intro="A compact workflow for moving fast without losing taste, structure or production quality."
+      eyebrow="Prozess"
+      title="Schärfen, gestalten, bauen, launchen."
+      intro="Eine einfache Arbeitsweise: schnell vorankommen, ohne Struktur, Interface-Qualität oder Production-Standards zu verlieren."
     >
       <DetailList items={processSteps.map((step) => `${step.title}: ${step.description}`)} />
     </InfoPage>

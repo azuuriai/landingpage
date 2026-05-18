@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 * {
@@ -11,7 +11,7 @@
 }
 
 html {
-  background: #050507;
+  background: #f2f2f0;
 }
 
 body {
@@ -70,6 +70,20 @@ body {
 
 .accent-pulse {
   animation: accentPulse 3.8s ease-in-out infinite;
+}
+
+.rise {
+  animation: softReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 .accent-line {

@@ -4,9 +4,9 @@ import { caseStudyFacts } from "@/lib/content";
 export default function WorkPage() {
   return (
     <InfoPage
-      eyebrow="Featured work"
+      eyebrow="Ausgewählte Arbeit"
       title="Vienna Event Radar"
-      intro="A real product case: built from zero to launch as a full-stack web product, now extended toward iOS."
+      intro="Ein echtes Produkt: von null bis Launch als Full-Stack-Webprodukt mit Backend-Logiken, AI-first Recherchepipeline und nativer iOS 26 App Experience gebaut."
     >
       <DetailList items={caseStudyFacts} />
     </InfoPage>

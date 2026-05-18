@@ -1,18 +1,20 @@
 import { DetailList, InfoPage } from "@/components/info-page";
 
 const items = [
-  "Premium mobile-first websites and landing pages",
-  "MVPs and full-stack web apps",
-  "AI automations and internal tools",
-  "UX/UI and conversion audits",
+  "Premium Websites und Landingpages",
+  "MVPs und Full-Stack-Web-Apps",
+  "Backend-Logiken und API-Flows",
+  "Native iOS 26 Apple Apps",
+  "AI-first Automationen und interne Tools",
+  "UX/UI- und Conversion-Audits",
 ];
 
 export default function ServicesPage() {
   return (
     <InfoPage
-      eyebrow="Services"
-      title="Focused builds for founders and small teams."
-      intro="I combine product thinking, interface design and implementation so the path from idea to launch stays tight."
+      eyebrow="Leistungen"
+      title="Von der Landingpage bis zur nativen iOS App."
+      intro="Produktdenken, Interface Design, Backend-Logiken und AI-first Umsetzung in einer Person, damit der Weg von Idee zu Launch kurz, klar und hochwertig bleibt."
     >
       <DetailList items={items} />
     </InfoPage>

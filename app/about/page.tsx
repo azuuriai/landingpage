@@ -4,9 +4,9 @@ import { capabilities } from "@/lib/content";
 export default function AboutPage() {
   return (
     <InfoPage
-      eyebrow="About"
-      title="Product taste with full-stack depth."
-      intro="I build like a product partner: shaping the offer, designing the interaction, implementing the stack and pushing the thing live."
+      eyebrow="Über mich"
+      title="Ich mache aus groben Ideen nutzbare Produkte."
+      intro="Ich verbinde Produktdenken, Interface-Gefühl, Backend-Logiken und Full-Stack-Umsetzung in einer Person. Mein Arbeitsmodus ist AI-first, mein Output sind hochwertige Webprodukte und native iOS 26 Apple App Experiences."
     >
       <DetailList items={capabilities.map((capability) => capability.label)} />
     </InfoPage>

@@ -4,27 +4,32 @@ import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Lukas Kaffer | AI-native Product Builder",
+  title: "Lukas Kaffer | AI-first Web & Native iOS",
   description:
-    "AI-native product builder crafting polished websites, web apps, internal tools and AI-powered workflows from concept to launch.",
+    "Lukas Kaffer designs and builds polished websites, full-stack products, backend logic, AI-first workflows and native iOS 26 Apple app experiences.",
   metadataBase: new URL("https://lukaskaffer.com"),
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/apple-icon.svg",
+  },
   openGraph: {
-    title: "Lukas Kaffer | AI-native Product Builder",
+    title: "Lukas Kaffer | AI-first Web & Native iOS",
     description:
-      "Premium websites, full-stack products, internal tools and AI workflows for founders and small businesses.",
+      "Personal portfolio for polished web products, native iOS 26 Apple apps, backend logic, internal tools and AI-first workflows.",
     type: "website",
-    locale: "en_US",
+    locale: "de_AT",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lukas Kaffer | AI-native Product Builder",
+    title: "Lukas Kaffer | AI-first Web & Native iOS",
     description:
-      "Turning rough ideas into polished digital products from concept to launch.",
+      "Turning rough ideas into polished digital products, from web to native iOS.",
   },
   robots: {
     index: true,
@@ -38,8 +43,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} bg-ink font-sans text-bone antialiased`}>
+    <html lang="de" className="scroll-smooth">
+      <body
+        className={`${inter.variable} bg-[#f2f2f0] font-sans text-[#181811] antialiased`}
+      >
         {children}
       </body>
     </html>

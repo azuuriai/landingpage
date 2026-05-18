@@ -22,17 +22,24 @@ export const navItems = [
 export const selectedWork = [
   {
     title: "Vienna Event Radar",
-    eyebrow: "Full-stack product",
+    eyebrow: "Full-stack product + native iOS",
     description:
-      "A launched event discovery product with auth, admin flows, AI-assisted research and mobile-first user experience.",
-    meta: "Next.js / Supabase / Vercel / iOS",
+      "A launched event discovery product with auth, backend logic, admin flows, AI-first research, mobile-first UX and a native iOS 26 app direction.",
+    meta: "Next.js / Supabase / Vercel / iOS 26",
   },
   {
     title: "AI workflow systems",
     eyebrow: "Internal tools",
     description:
-      "Research, enrichment and review pipelines that turn messy operations into calm, repeatable workflows.",
-    meta: "Automation / APIs / AI-assisted ops",
+      "Research, enrichment, backend logic and review pipelines that turn messy operations into calm, repeatable workflows.",
+    meta: "Automation / APIs / AI-first ops",
+  },
+  {
+    title: "Native iOS 26 Apple apps",
+    eyebrow: "Apple platforms",
+    description:
+      "Focused iPhone experiences shaped around Apple-native navigation, search, accessory bars and bottom-bar interaction.",
+    meta: "SwiftUI / Apple UX / Native iOS",
   },
   {
     title: "Premium launch pages",
@@ -44,15 +51,17 @@ export const selectedWork = [
 ];
 
 export const caseStudyFacts = [
-  "Built from zero to launch",
-  "Full-stack web product",
-  "Mobile-first dashboard",
-  "Supabase auth, database and RLS",
-  "AI-assisted research pipeline",
-  "Admin workflows",
-  "SEO and security polish",
-  "iOS app extension",
-  "Vercel deployment",
+  "Von null bis Launch gebaut",
+  "Full-Stack-Webprodukt",
+  "Mobile-first Dashboard",
+  "Supabase Auth, Datenbank und RLS",
+  "AI-first Recherchepipeline",
+  "Backend-Logiken und API-Flows",
+  "Admin-Workflows",
+  "SEO- und Security-Polish",
+  "Native iOS 26 App Experience",
+  "Apple-typische Navigation, Suche und Bottom Bars",
+  "Vercel Deployment",
 ];
 
 export const services = [
@@ -63,15 +72,21 @@ export const services = [
     icon: Brush,
   },
   {
+    title: "Native iOS 26 Apple apps",
+    description:
+      "Apple-first app experiences with native navigation, search, bottom bars and interaction details that feel at home on iPhone.",
+    icon: Smartphone,
+  },
+  {
     title: "MVPs and full-stack web apps",
     description:
-      "From product shape and UX flows to auth, database, dashboard, deployment and iteration.",
+      "From product shape and UX flows to auth, database, backend logic, dashboard, deployment and iteration.",
     icon: Layers3,
   },
   {
-    title: "AI automations and internal tools",
+    title: "AI-first automations and internal tools",
     description:
-      "Workflow systems that reduce repetitive work, connect APIs and give teams a clearer operating cockpit.",
+      "Workflow systems that reduce repetitive work, connect APIs, handle backend logic and give teams a clearer operating cockpit.",
     icon: Workflow,
   },
   {
@@ -84,24 +99,24 @@ export const services = [
 
 export const processSteps = [
   {
-    title: "Shape",
+    title: "Schärfen",
     description:
-      "Clarify the offer, user journey and product scope before touching the interface.",
+      "Angebot, User Journey und Produktscope klären, bevor das Interface entsteht.",
   },
   {
-    title: "Design",
+    title: "Gestalten",
     description:
-      "Create a sharp visual system with responsive layouts, interaction details and conversion intent.",
+      "Ein klares visuelles System mit responsive Layouts, Interaktionsdetails und Conversion-Fokus entwerfen.",
   },
   {
-    title: "Build",
+    title: "Bauen",
     description:
-      "Implement the product with clean full-stack architecture, AI-assisted speed and production standards.",
+      "Das Produkt mit sauberer Full-Stack-Architektur, AI-first Geschwindigkeit und Production Standards umsetzen.",
   },
   {
-    title: "Launch",
+    title: "Launchen",
     description:
-      "Ship to Vercel, harden SEO/security basics and iterate from real feedback.",
+      "Auf Vercel shippen, SEO-/Security-Basics härten und aus echtem Feedback iterieren.",
   },
 ];
 
@@ -112,8 +127,9 @@ export const capabilities = [
   { label: "Supabase", icon: Database },
   { label: "Vercel", icon: Rocket },
   { label: "Tailwind CSS", icon: Brush },
-  { label: "AI-assisted workflows", icon: Bot },
-  { label: "Automation and APIs", icon: Workflow },
-  { label: "iOS app development", icon: Smartphone },
-  { label: "Auth, RLS and security", icon: ShieldCheck },
+  { label: "AI-first Workflows", icon: Bot },
+  { label: "Backend-Logiken", icon: Workflow },
+  { label: "Automation und APIs", icon: Workflow },
+  { label: "Native iOS 26 Apps", icon: Smartphone },
+  { label: "Auth, RLS und Security", icon: ShieldCheck },
 ];

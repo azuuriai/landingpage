@@ -17,7 +17,9 @@ const config: Config = {
         accent: "#00b8ad",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "Arial", "sans-serif"],
+        display: ["var(--font-sans)", "Arial", "sans-serif"],
+        mono: ["var(--font-sans)", "Arial", "sans-serif"],
       },
       boxShadow: {
         glow: "0 0 80px rgba(0, 184, 173, 0.16)",
