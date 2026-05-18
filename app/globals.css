@@ -80,6 +80,10 @@ body {
   animation: screenSheen 8.5s ease-in-out infinite;
 }
 
+.screen-panel-in {
+  animation: screenPanelIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 .product-scroll-desktop {
   animation: productScrollDesktop 18s cubic-bezier(0.45, 0, 0.25, 1) infinite;
 }
@@ -160,6 +164,20 @@ body {
   100% {
     opacity: 0;
     transform: translateX(330%) rotate(12deg);
+  }
+}
+
+@keyframes screenPanelIn {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: scale(1.012);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
   }
 }
 

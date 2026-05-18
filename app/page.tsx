@@ -781,7 +781,7 @@ function DeviceDesk({
         </div>
 
         <div className="relative z-10 ml-auto w-[91%] max-w-[660px] xl:max-w-[700px]">
-          <MacBook labels={labels} onOpenDetails={onOpenDetails} />
+          <MacBook panel={panel} labels={labels} onOpenDetails={onOpenDetails} />
         </div>
       </div>
     </div>
@@ -789,9 +789,11 @@ function DeviceDesk({
 }
 
 function MacBook({
+  panel,
   labels,
   onOpenDetails,
 }: {
+  panel: Panel;
   labels: PageCopy["ui"];
   onOpenDetails: () => void;
 }) {
@@ -800,15 +802,7 @@ function MacBook({
       <div className="relative rounded-[26px] border-[9px] border-[#111211] bg-[#111211] shadow-[0_34px_110px_rgba(17,18,17,0.26)]">
         <span className="absolute left-1/2 top-2 z-30 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
         <div className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#0b1113]">
-          <Image
-            src="/case-studies/vienna-web-desktop-tall.png"
-            alt="Vienna Event Radar web product"
-            width={1440}
-            height={1800}
-            priority
-            className="product-scroll-desktop absolute inset-x-0 top-0 w-full max-w-none"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_20%,rgba(0,184,173,0.16),transparent_28%),linear-gradient(90deg,rgba(8,11,12,0.08),transparent_26%,transparent_74%,rgba(255,255,255,0.06))]" />
+          <MacBookScreen panel={panel} />
           <div className="screen-sheen pointer-events-none absolute inset-y-0 left-[-45%] w-[42%] rotate-12 bg-gradient-to-r from-transparent via-white/36 to-transparent" />
           <button
             type="button"
@@ -824,6 +818,117 @@ function MacBook({
         <div className="absolute inset-x-8 top-1 h-px bg-white/60" />
       </div>
 
+    </div>
+  );
+}
+
+function MacBookScreen({ panel }: { panel: Panel }) {
+  if (panel.id === "work") {
+    return (
+      <div key={panel.id} className="screen-panel-in absolute inset-0">
+        <Image
+          src="/case-studies/vienna-web-desktop-tall.png"
+          alt="Vienna Event Radar web product"
+          width={1440}
+          height={1800}
+          priority
+          className="product-scroll-desktop absolute inset-x-0 top-0 w-full max-w-none"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_86%_20%,rgba(0,184,173,0.16),transparent_28%),linear-gradient(90deg,rgba(8,11,12,0.08),transparent_26%,transparent_74%,rgba(255,255,255,0.06))]" />
+      </div>
+    );
+  }
+
+  const detailItems = panel.details.slice(0, 3);
+
+  return (
+    <div
+      key={panel.id}
+      className="screen-panel-in absolute inset-0 overflow-hidden bg-[#071012] px-6 py-5 text-white"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(0,184,173,0.22),transparent_30%),radial-gradient(circle_at_20%_92%,rgba(255,255,255,0.09),transparent_28%),linear-gradient(135deg,#081012,#101311_55%,#071012)]" />
+      <div className="absolute inset-x-6 top-5 h-px bg-gradient-to-r from-[#00b8ad]/60 via-white/22 to-transparent" />
+
+      <div className="relative grid h-full grid-cols-[31%_1fr] gap-4">
+        <aside className="flex min-w-0 flex-col justify-between rounded-[18px] border border-white/10 bg-white/[0.055] p-3.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur">
+          <div>
+            <div className="mb-4 flex items-center gap-2">
+              <span className="h-2 w-2 rounded-full bg-[#00d8ca] shadow-[0_0_18px_rgba(0,216,202,0.65)]" />
+              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/58">
+                {panel.eyebrow}
+              </span>
+            </div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/38">
+              {panel.screen.sideLabel}
+            </p>
+            <p className="mt-1.5 text-[34px] font-semibold leading-none tracking-[-0.06em] text-white">
+              {panel.screen.sideValue}
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            {panel.chips.map((chip) => (
+              <span
+                key={chip}
+                className="block rounded-full border border-white/10 bg-black/18 px-3 py-1.5 text-[9px] font-semibold text-white/70"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+        </aside>
+
+        <section className="grid min-w-0 grid-rows-[auto_1fr] gap-3">
+          <div className="rounded-[20px] border border-white/10 bg-white/[0.075] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#72fff5]/80">
+              {panel.subtitle}
+            </p>
+            <h2 className="mt-2.5 max-w-[340px] text-[22px] font-semibold leading-[1.03] tracking-[-0.055em] text-white">
+              {panel.headline}
+            </h2>
+            <p className="mt-2 max-w-[420px] text-[11px] font-medium leading-4 text-white/58">
+              {panel.description}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-[1fr_1fr] gap-3">
+            <div className="rounded-[18px] border border-white/10 bg-black/16 p-3">
+              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/42">
+                Snapshot
+              </p>
+              <div className="space-y-2">
+                {panel.screen.rows.map((row) => (
+                  <div
+                    key={row.label}
+                    className="rounded-[14px] border border-white/10 bg-white/[0.055] px-3 py-1.5"
+                  >
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-white/38">
+                      {row.label}
+                    </p>
+                    <p className="mt-0.5 truncate text-[11px] font-semibold text-white/86">
+                      {row.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[18px] border border-white/10 bg-white/[0.045] p-3">
+              <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-white/42">
+                Focus
+              </p>
+              <div className="space-y-2">
+                {detailItems.map((detail, index) => (
+                  <div key={detail} className="flex gap-2 text-[9px] font-medium leading-[1.35] text-white/60">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#00b8ad]" />
+                    <span>{index === 0 ? detail : detail.replace(/\.$/, "")}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
