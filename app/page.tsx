@@ -648,11 +648,7 @@ export default function Home() {
               {copy.hero.name}
             </span>
           </div>
-          <div className="flex items-center gap-4 sm:gap-6">
-            <span className="hidden items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#7c7c70] sm:flex">
-              <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
-              {language === "de" ? "Verfügbar für Projekte" : "Available for projects"}
-            </span>
+          <div className="flex items-center gap-6 sm:gap-10">
             <div className="flex items-center gap-1.5 font-mono text-[11px]">
               <span className="sr-only">{copy.ui.languageLabel}</span>
               {(["en", "de"] as const).map((item, index) => (
@@ -691,13 +687,13 @@ export default function Home() {
               {copy.hero.headline}
             </h1>
             <p
-              className="rise mt-4 max-w-[42ch] text-[14px] leading-7 text-[#6c6c61]"
+              className="rise mt-3 max-w-[42ch] text-[14px] leading-6 text-[#6c6c61]"
               style={{ animationDelay: "0.16s" }}
             >
               {copy.hero.subcopy}
             </p>
             <p
-              className="rise mt-5 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90]"
+              className="rise mt-4 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90]"
               style={{ animationDelay: "0.22s" }}
             >
               {copy.hero.proof.join("   ·   ")}
@@ -821,6 +817,10 @@ export default function Home() {
         {/* running foot */}
         <footer className="rise flex items-center justify-between gap-4 border-t border-[#e4e4e1] pt-4 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9d9d90]">
           <span>© 2026 — Vienna, AT</span>
+          <span className="hidden items-center gap-2 text-[#7c7c70] sm:flex">
+            <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
+            {language === "de" ? "Offen für ausgewählte Projekte" : "Open to selected projects"}
+          </span>
           <div className="flex items-center gap-5">
             <a
               href="https://viennaeventradar.at"
@@ -962,7 +962,7 @@ function WindowBar({ name, meta }: { name: string; meta: string }) {
           {name}
         </span>
       </div>
-      <span className="shrink-0 text-[8.5px] uppercase tracking-[0.13em] text-white/35">
+      <span className="shrink-0 text-[8.5px] uppercase tracking-[0.13em] text-white">
         {meta}
       </span>
     </div>
@@ -993,9 +993,13 @@ function WorkWindow({
         <button
           type="button"
           onClick={onOpenDetails}
-          className="absolute right-3 top-3 rounded-full border border-white/70 bg-white/[0.88] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-[#0a1113] shadow-[0_10px_24px_rgba(0,0,0,0.3)] backdrop-blur transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
+          className="group/btn absolute bottom-3 left-3 inline-flex max-w-[34%] items-center gap-1 rounded-full border border-white/30 bg-[#0a1113]/58 px-2.5 py-1 text-[7.5px] font-semibold uppercase tracking-[0.1em] text-white shadow-[0_12px_26px_rgba(0,0,0,0.26)] backdrop-blur-md transition hover:border-[#00b8ad]/55 hover:bg-[#0a1113]/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
         >
           {labels.moreDetails}
+          <ArrowUpRight
+            size={9}
+            className="transition group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+          />
         </button>
       </div>
     </div>
@@ -1114,17 +1118,11 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
     <button
       type="button"
       onClick={onOpenDetails}
-      className="group relative block w-full rounded-[34px] bg-[linear-gradient(135deg,#cdd2cc,#f5f6f3_24%,#272826_29%,#10110f_100%)] p-[2px] text-left shadow-[0_30px_74px_rgba(17,18,17,0.24)] transition focus:outline-none focus:ring-2 focus:ring-[#00b8ad]/30"
+      className="group relative block w-full text-left transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent rounded-[14%]"
       aria-label={`Open details for ${panel.title}`}
     >
-      <span className="absolute -left-[3px] top-[23%] h-10 w-[3px] rounded-l-full bg-[#c4cac2]" />
-      <span className="absolute -left-[3px] top-[36%] h-8 w-[3px] rounded-l-full bg-[#151614]" />
-      <span className="absolute -right-[3px] top-[34%] h-14 w-[3px] rounded-r-full bg-[#151614]" />
-      <div className="rounded-[33px] bg-[#0d0d0c] p-[5px]">
-        <div className="relative aspect-[9/19.7] overflow-hidden rounded-[28px] bg-[#071012]">
-          <IPhonePreview />
-          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,16,18,0.22),transparent_16%,transparent_78%,rgba(7,16,18,0.18))]" />
-        </div>
+      <div className="relative aspect-[1350/2760] w-full drop-shadow-[0_30px_38px_rgba(17,18,17,0.22)]">
+        <IPhonePreview />
       </div>
     </button>
   );
@@ -1132,79 +1130,28 @@ function IPhone({ panel, onOpenDetails }: { panel: Panel; onOpenDetails: () => v
 
 function IPhonePreview() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-  const [hasVideoLoaded, setHasVideoLoaded] = useState(false);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-
-    if (reducedMotion.matches) {
-      return;
-    }
-
-    const timer = window.setTimeout(() => {
-      setShouldLoadVideo(true);
-    }, 700);
-
-    return () => window.clearTimeout(timer);
+    videoRef.current?.play().catch(() => undefined);
   }, []);
 
-  useEffect(() => {
-    if (!shouldLoadVideo) {
-      return;
-    }
-
-    const video = videoRef.current;
-
-    if (!video) {
-      return;
-    }
-
-    video.playbackRate = 0.94;
-
-    if (video.readyState >= 2) {
-      setHasVideoLoaded(true);
-    }
-
-    video.play().catch(() => undefined);
-  }, [shouldLoadVideo]);
-
   return (
-    <>
-      <Image
-        src="/case-studies/vienna-ios-app.png"
-        alt="Vienna Event Radar iOS app"
-        width={1206}
-        height={2622}
-        sizes="132px"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      {shouldLoadVideo ? (
-        <video
-          ref={videoRef}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 [transform:translateZ(0)] ${
-            hasVideoLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-label="Vienna Event Radar iOS app preview"
-          disablePictureInPicture
-          controlsList="nodownload nofullscreen noremoteplayback"
-          onLoadedData={() => setHasVideoLoaded(true)}
-          onCanPlay={() => {
-            setHasVideoLoaded(true);
-            videoRef.current?.play().catch(() => undefined);
-          }}
-          onPlaying={() => setHasVideoLoaded(true)}
-          onError={() => setHasVideoLoaded(false)}
-        >
-          <source src="/case-studies/vienna-ios-app-loop-small.mp4" type="video/mp4" />
-        </video>
-      ) : null}
-    </>
+    <video
+      ref={videoRef}
+      className="absolute inset-0 h-full w-full object-contain [transform:translateZ(0)]"
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-label="Vienna Event Radar Spotlight Picks Loop"
+      disablePictureInPicture
+      controlsList="nodownload nofullscreen noremoteplayback"
+    >
+      {/* Safari prefers HEVC/.mov with alpha; Chrome/Firefox/Edge fall back to VP9 WebM. */}
+      <source src="/case-studies/iphone17-spotlight.mov" type='video/mp4; codecs="hvc1"' />
+      <source src="/case-studies/iphone17-spotlight.webm" type="video/webm" />
+    </video>
   );
 }
 
