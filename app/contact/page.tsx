@@ -5,9 +5,9 @@ export default function ContactPage() {
     <InfoPage
       eyebrow="Kontakt"
       title="Eine grobe Produktidee im Kopf?"
-      intro="Schick mir die Idee, den aktuellen Engpass oder die Seite, die besser funktionieren soll. Ich helfe dabei, daraus den nächsten klaren Schritt zu machen."
+      intro="Schick mir die Idee, den aktuellen Engpass oder die Seite, die besser funktionieren soll. Du bekommst eine ehrliche Einschätzung und einen klaren ersten Schritt, auch wenn wir am Ende nicht zusammenarbeiten."
       ctaHref="mailto:hello@lukaskaffer.com"
-      ctaLabel="E-Mail"
+      ctaLabel="Idee schicken"
     >
       <div className="space-y-5">
         <a
@@ -17,7 +17,7 @@ export default function ContactPage() {
           hello@lukaskaffer.com
         </a>
         <p className="text-[15px] leading-7 text-[#74746f]">
-          Bester Startpunkt: ein Absatz dazu, was du launchen möchtest, für wen es ist und was als Nächstes passieren soll.
+          Bester Startpunkt: ein Absatz dazu, was du launchen willst, für wen es ist und wo es gerade hakt.
         </p>
       </div>
     </InfoPage>

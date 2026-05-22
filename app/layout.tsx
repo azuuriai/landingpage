@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lukas Kaffer | AI-first Web & Native iOS",
+  title: "Lukas Kaffer · Webprodukte und iOS Apps aus einer Hand",
   description:
-    "Lukas Kaffer designs and builds polished websites, full-stack products, backend logic, AI-first workflows and native iOS 26 Apple app experiences.",
+    "Ich konzipiere, designe und baue Webprodukte und native iOS Apps. Solo, von der Idee bis in den App Store. Kurze Wege, direkter Kontakt, ohne Agentur dazwischen.",
   metadataBase: new URL("https://lukaskaffer.com"),
   icons: {
     icon: "/favicon.svg",
@@ -19,17 +19,16 @@ export const metadata: Metadata = {
     apple: "/apple-icon.svg",
   },
   openGraph: {
-    title: "Lukas Kaffer | AI-first Web & Native iOS",
+    title: "Lukas Kaffer · Idee bis App Store",
     description:
-      "Personal portfolio for polished web products, native iOS 26 Apple apps, backend logic, internal tools and AI-first workflows.",
+      "Webprodukte und iOS Apps, gebaut bis in den App Store statt bis zum Mockup. Vienna Event Radar online und in Apples Store.",
     type: "website",
     locale: "de_AT",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lukas Kaffer | AI-first Web & Native iOS",
-    description:
-      "Turning rough ideas into polished digital products, from web to native iOS.",
+    title: "Lukas Kaffer · Idee bis App Store",
+    description: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
   },
   robots: {
     index: true,

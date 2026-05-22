@@ -1,8 +1,6 @@
 import {
-  Bot,
   Braces,
   Brush,
-  Database,
   Gauge,
   Layers3,
   Rocket,
@@ -22,77 +20,74 @@ export const navItems = [
 export const selectedWork = [
   {
     title: "Vienna Event Radar",
-    eyebrow: "Full-stack product + native iOS",
+    eyebrow: "Web online, App im Store",
     description:
-      "A launched event discovery product with auth, backend logic, admin flows, AI-first research, mobile-first UX and a native iOS 26 app direction.",
-    meta: "Next.js / Supabase / Vercel / iOS 26",
+      "Eine Event-Plattform, allein konzipiert, designt und gebaut. Web auf viennaeventradar.at, native iOS App im Apple App Store.",
+    meta: "Next.js / Supabase / SwiftUI / App Store",
   },
   {
-    title: "AI workflow systems",
-    eyebrow: "Internal tools",
+    title: "AI Workflow Systems",
+    eyebrow: "Interne Tools",
     description:
-      "Research, enrichment, backend logic and review pipelines that turn messy operations into calm, repeatable workflows.",
-    meta: "Automation / APIs / AI-first ops",
+      "Recherche-, Anreicherungs- und Review-Pipelines, die unruhige Abläufe in ruhige, wiederholbare Workflows verwandeln.",
+    meta: "Automation / APIs / AI-gestützt",
   },
   {
-    title: "Native iOS 26 Apple apps",
-    eyebrow: "Apple platforms",
+    title: "Native iOS Apps",
+    eyebrow: "Apple Plattformen",
     description:
-      "Focused iPhone experiences shaped around Apple-native navigation, search, accessory bars and bottom-bar interaction.",
-    meta: "SwiftUI / Apple UX / Native iOS",
+      "iPhone-Erlebnisse, die sich nativ anfühlen. App Store Submission und Launch inklusive, nicht als Mockup endend.",
+    meta: "SwiftUI / iOS 26 / App Store",
   },
   {
-    title: "Premium launch pages",
-    eyebrow: "Conversion surfaces",
+    title: "Premium Launch Pages",
+    eyebrow: "Conversion-Flächen",
     description:
-      "Focused landing pages for founders and small teams that need trust, clarity and a polished first impression.",
+      "Fokussierte Landingpages für Gründer und kleine Teams, die Vertrauen, Klarheit und einen hochwertigen ersten Eindruck brauchen.",
     meta: "UX/UI / Frontend / SEO",
   },
 ];
 
 export const caseStudyFacts = [
-  "Von null bis Launch gebaut",
-  "Full-Stack-Webprodukt",
-  "Mobile-first Dashboard",
-  "Supabase Auth, Datenbank und RLS",
-  "AI-first Recherchepipeline",
-  "Backend-Logiken und API-Flows",
-  "Admin-Workflows",
-  "SEO- und Security-Polish",
-  "Native iOS 26 App Experience",
-  "Apple-typische Navigation, Suche und Bottom Bars",
-  "Vercel Deployment",
+  "Konzept, Design und Code aus einer Hand",
+  "Webprodukt mit Auth, Datenbank und Zugriffslogik",
+  "AI-gestützte Recherche und strukturierter Admin-Review",
+  "Mobile-first Public Experience",
+  "Native iOS 26 App im Apple App Store",
+  "Apple-typische Navigation und Interaktionsmuster",
+  "SEO und Security geprüft",
+  "Vercel Deployment, Production-Stand",
 ];
 
 export const services = [
   {
-    title: "Premium websites and landing pages",
+    title: "Premium Websites und Landingpages",
     description:
-      "High-end, mobile-first pages for founders, consultants and small businesses that need to look credible fast.",
+      "High-End, mobile-first Seiten für Gründer, Berater und kleine Unternehmen, die schnell glaubwürdig wirken müssen.",
     icon: Brush,
   },
   {
-    title: "Native iOS 26 Apple apps",
+    title: "Native iOS Apps mit App Store Launch",
     description:
-      "Apple-first app experiences with native navigation, search, bottom bars and interaction details that feel at home on iPhone.",
+      "Apple-first App-Erlebnisse mit nativer Navigation und Polish, der sich zuhause auf dem iPhone anfühlt. Submission und Launch erfahren.",
     icon: Smartphone,
   },
   {
-    title: "MVPs and full-stack web apps",
+    title: "MVPs und Full-Stack-Web-Apps",
     description:
-      "From product shape and UX flows to auth, database, backend logic, dashboard, deployment and iteration.",
+      "Von Produktform und UX-Flows bis Auth, Datenbank, Backend-Logik, Dashboard und Deployment, alles aus einer Hand.",
     icon: Layers3,
   },
   {
-    title: "AI-first automations and internal tools",
+    title: "AI-gestützte Automationen und interne Tools",
     description:
-      "Workflow systems that reduce repetitive work, connect APIs, handle backend logic and give teams a clearer operating cockpit.",
+      "Workflow-Systeme, die Routinearbeit entfernen, APIs verbinden und Teams ein klareres Operating-Cockpit geben.",
     icon: Workflow,
   },
   {
-    title: "UX/UI and conversion audits",
+    title: "UX/UI- und Conversion-Audits",
     description:
-      "A practical review of structure, trust, clarity, mobile experience and conversion friction.",
+      "Ein praktischer Review von Struktur, Vertrauen, Klarheit, Mobile-Experience und Conversion-Reibung.",
     icon: Gauge,
   },
 ];
@@ -101,7 +96,7 @@ export const processSteps = [
   {
     title: "Schärfen",
     description:
-      "Angebot, User Journey und Produktscope klären, bevor das Interface entsteht.",
+      "Angebot, User Journey und Scope klären, bevor das Interface entsteht.",
   },
   {
     title: "Gestalten",
@@ -111,25 +106,23 @@ export const processSteps = [
   {
     title: "Bauen",
     description:
-      "Das Produkt mit sauberer Full-Stack-Architektur, AI-first Geschwindigkeit und Production Standards umsetzen.",
+      "Sauberer Full-Stack mit modernen Werkzeugen und Production Standards.",
   },
   {
     title: "Launchen",
     description:
-      "Auf Vercel shippen, SEO-/Security-Basics härten und aus echtem Feedback iterieren.",
+      "Auf Vercel und im App Store shippen, dann aus echtem Feedback iterieren.",
   },
 ];
 
 export const capabilities = [
-  { label: "Next.js", icon: Rocket },
-  { label: "React", icon: Braces },
-  { label: "TypeScript", icon: Sparkles },
-  { label: "Supabase", icon: Database },
-  { label: "Vercel", icon: Rocket },
-  { label: "Tailwind CSS", icon: Brush },
-  { label: "AI-first Workflows", icon: Bot },
-  { label: "Backend-Logiken", icon: Workflow },
-  { label: "Automation und APIs", icon: Workflow },
-  { label: "Native iOS 26 Apps", icon: Smartphone },
-  { label: "Auth, RLS und Security", icon: ShieldCheck },
+  { label: "Solo, ohne Übergaben zwischen Silos", icon: Rocket },
+  { label: "Produktdenken vor Umsetzung", icon: Sparkles },
+  { label: "Design und Full-Stack in einem Loop", icon: Brush },
+  {
+    label: "Web Stack: Next.js, React, TypeScript, Supabase, Vercel",
+    icon: Braces,
+  },
+  { label: "Native iOS Stack: SwiftUI und iOS 26 Patterns", icon: Smartphone },
+  { label: "App Store Submission und Launch erfahren", icon: ShieldCheck },
 ];

@@ -5,8 +5,8 @@ export default function AboutPage() {
   return (
     <InfoPage
       eyebrow="Über mich"
-      title="Ich mache aus groben Ideen nutzbare Produkte."
-      intro="Ich verbinde Produktdenken, Interface-Gefühl, Backend-Logiken und Full-Stack-Umsetzung in einer Person. Mein Arbeitsmodus ist AI-first, mein Output sind hochwertige Webprodukte und native iOS 26 Apple App Experiences."
+      title="Ich baue Dinge, die wirklich fertig werden."
+      intro="Solo Product Builder aus Wien. Ich verbinde Produktdenken, Interface, Backend und nativen iOS Build in einer Person. Der Output sind hochwertige Webprodukte und iOS Apps, die wirklich im Store landen."
     >
       <DetailList items={capabilities.map((capability) => capability.label)} />
     </InfoPage>

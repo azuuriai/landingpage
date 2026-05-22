@@ -6,7 +6,9 @@ export default function WorkPage() {
     <InfoPage
       eyebrow="Ausgewählte Arbeit"
       title="Vienna Event Radar"
-      intro="Ein echtes Produkt: von null bis Launch als Full-Stack-Webprodukt mit Backend-Logiken, AI-first Recherchepipeline und nativer iOS 26 App Experience gebaut."
+      intro="Ein echtes Produkt: von der Idee bis in den App Store, allein konzipiert, designt und gebaut. Web online, iOS App nativ in Apples Store."
+      ctaHref="mailto:hello@lukaskaffer.com"
+      ctaLabel="Idee schicken"
     >
       <DetailList items={caseStudyFacts} />
     </InfoPage>

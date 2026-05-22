@@ -8,7 +8,7 @@ export function InfoPage({
   intro,
   children,
   ctaHref = "/contact",
-  ctaLabel = "Projekt starten",
+  ctaLabel = "Idee schicken",
 }: {
   eyebrow: string;
   title: string;

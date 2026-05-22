@@ -61,16 +61,16 @@ type PageCopy = {
   panels: Panel[];
 };
 
-const ROLE = "AI-first Web + Native iOS Product Builder";
+const ROLE = "Solo Product Builder, Wien. Web und nativ iOS.";
 
 const pageCopy: Record<Language, PageCopy> = {
   en: {
     hero: {
       name: "Lukas Kaffer",
-      headline: "I build polished web products and native iOS apps.",
+      headline: "Your idea becomes a product that actually goes live.",
       subcopy:
-        "Personal portfolio, real product work: websites, MVPs, backend logic, AI-first workflows and native Apple app experiences.",
-      proof: ["Live product", "AI-first approach", "Native iOS 26"],
+        "Web products and native iOS apps, built all the way to the App Store instead of stopping at the mockup. You work directly with me: short paths, no handoffs, no agency ping-pong.",
+      proof: ["Live on web and App Store", "Directly with me", "One mind for concept, design and code"],
       indexLabel: "Project index",
     },
     ui: {
@@ -81,10 +81,10 @@ const pageCopy: Record<Language, PageCopy> = {
       details: "Details",
       moreDetails: "More details",
       close: "Close modal",
-      writeEmail: "Write an email",
+      writeEmail: "Send idea",
       languageLabel: "Language",
       entries: "entries",
-      startProject: "Start a project",
+      startProject: "Send idea",
       viewCase: "View case study",
       seeServices: "See services",
     },
@@ -92,48 +92,47 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "work",
         title: "Showcase",
-        subtitle: "Vienna Event Radar — web product and native iOS app",
+        subtitle: "Web and native in Apple's App Store",
         eyebrow: "Featured work",
-        headline: "From idea to shipped product.",
+        headline: "From idea into the App Store.",
         description:
-          "A live event-discovery product, built from nothing to launch: Next.js, Supabase, auth and RLS, backend logic, admin workflows, an AI-first research pipeline, Vercel deployment and a native iOS 26 app experience.",
-        chips: ["Full-stack", "AI-first", "Native iOS 26"],
+          "Vienna Event Radar as a live example. Web online, app in the Store. Concept, design and code from one person, without handoffs between disciplines.",
+        chips: ["Web live", "iOS in App Store", "Built solo"],
         details: [
-          "Full-stack web product built from zero to launch.",
-          "Supabase auth, database structure, RLS policies and backend logic.",
-          "AI-first event research pipeline with admin review workflows.",
-          "Mobile-first dashboard, SEO/security polish and Vercel deployment.",
-          "Native iOS 26 app direction with Apple-style navigation, search and bottom-bar patterns.",
+          "Idea. Make events in Vienna discoverable in one place instead of scattered across twenty sources.",
+          "Build. Web product with backend, AI-supported research, admin workflow and auth. Plus a native iOS 26 app with Apple-like interactions. All from one person.",
+          "Live. Web runs on viennaeventradar.at. App available in the Apple App Store. A real product you can tap and install.",
+          "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
         screen: {
           sideLabel: "Live",
           sideValue: "01",
           rows: [
-            { label: "Pipeline", value: "AI-first research" },
+            { label: "Product", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
-            { label: "Surface", value: "Web + native iOS" },
+            { label: "Mode", value: "Solo built" },
           ],
         },
         modalSections: [
           {
             label: "Context",
             title: "A real product, not a concept mockup.",
-            body: "Vienna Event Radar started as a rough idea and moved into a live event discovery product with user-facing flows, admin operations and production deployment.",
+            body: "Vienna Event Radar started as a rough idea and is now a running product: web, native app, real users and its own admin operation. None of it is a demo.",
           },
           {
             label: "System",
             title: "Research, review and publish in one workflow.",
-            body: "The product combines AI-first event research, structured admin review, Supabase auth/database/RLS, backend logic and a mobile-first public experience.",
+            body: "AI-supported event research, structured admin review, a clean database with auth and access logic, plus a mobile-first public experience on the web and native iOS.",
           },
           {
             label: "Stack",
-            title: "Built with a modern full-stack and Apple-native setup.",
-            body: "Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel and a native iOS 26 app direction with Apple interface patterns.",
+            title: "Modern and Apple-native, without compromise.",
+            body: "Next.js, React, TypeScript and Tailwind on the web. Supabase and Vercel in the background. SwiftUI and iOS 26 interface patterns on iPhone.",
           },
           {
             label: "Outcome",
-            title: "Shipped, stable and ready to keep evolving.",
-            body: "The launch included SEO/security polish, deployment discipline and a foundation that now extends into a richer iOS app experience.",
+            title: "In the App Store, in use, in development.",
+            body: "The app is really installable, the web product runs, and the foundation carries the next features.",
           },
         ],
         detailHref: "/work",
@@ -142,46 +141,46 @@ const pageCopy: Record<Language, PageCopy> = {
         id: "services",
         title: "Services",
         subtitle: "Websites, MVPs, backend logic and iOS apps",
-        eyebrow: "What I build",
+        eyebrow: "What you get",
         headline: "From a landing page to a full product.",
         description:
-          "Websites and landing pages, MVPs and web apps, backend logic, native iOS 26 Apple apps, internal tools, AI-first automations and UX/UI audits — scoped to what the project actually needs.",
-        chips: ["Landing pages", "Backend logic", "iOS apps"],
+          "No generic package for everyone. The thing your project needs next, built cleanly and actually launched. Because everything stays solo, the route from idea to live stays short and direct.",
+        chips: ["Become visible", "Test an idea", "Go online"],
         details: [
-          "Websites and landing pages that are fast, work on mobile and make the point in the first few seconds.",
-          "MVPs and full-stack web apps with auth, database, backend logic, dashboard and deployment.",
-          "Native iOS 26 app interfaces with Apple-first interaction patterns.",
-          "AI automations and internal tools that reduce repetitive work.",
+          "Become visible. A website or landing page that makes clear what you do in the first seconds and turns visitors into inquiries.",
+          "Test an idea. An MVP with login, database and everything behind it, so you get real users and real feedback instead of only a concept.",
+          "Go online. A finished product through launch. Web, and a native iOS app when your product really belongs on iPhone.",
+          "When recurring work slows you down, I also build internal tools and automations that remove routine.",
         ],
         screen: {
           sideLabel: "Offer",
           sideValue: "04",
           rows: [
-            { label: "Websites", value: "Premium launch pages" },
-            { label: "Products", value: "MVPs + backend" },
-            { label: "Apple", value: "Native iOS 26 apps" },
+            { label: "Visible", value: "Launch pages" },
+            { label: "Validate", value: "MVPs + backend" },
+            { label: "Launch", value: "Web + iOS" },
           ],
         },
         modalSections: [
           {
             label: "Web",
             title: "Sites that look right and convert.",
-            body: "Clear, fast pages for founders and small teams — credible at first glance, and direct about what you do and what to do next.",
+            body: "Clear, fast pages for founders and small teams. Credible at first glance and unambiguous about what you offer and what should happen next.",
           },
           {
             label: "Product",
             title: "MVPs that actually ship.",
-            body: "Auth, database, backend logic, dashboards, data flows and deployment handled as one connected product build.",
+            body: "Login, database, the logic behind it, dashboard and launch as one connected build instead of loose parts.",
           },
           {
             label: "iOS",
-            title: "Native Apple app experiences.",
-            body: "iOS 26 interfaces shaped around Apple-native navigation, search, bottom bars and the details that make an app feel at home on the device.",
+            title: "Apps that feel native.",
+            body: "When your product belongs on iPhone, I build it natively: with the navigation, details and polish that make an app feel at home on the device.",
           },
           {
-            label: "AI ops",
-            title: "AI-first systems that remove repetitive work.",
-            body: "Internal workflows, API integrations, backend logic and AI-first research/review systems for calmer operations.",
+            label: "Faster work",
+            title: "Tools that remove repetitive work.",
+            body: "Internal workflows, API integrations and automations for calmer operations.",
           },
         ],
         detailHref: "/services",
@@ -190,22 +189,22 @@ const pageCopy: Record<Language, PageCopy> = {
         id: "process",
         title: "Process",
         subtitle: "From rough idea to launch",
-        eyebrow: "How it works",
-        headline: "Shape, design, build, launch.",
+        eyebrow: "How we work",
+        headline: "Sharpen, design, build, launch.",
         description:
-          "A simple way of working: get the scope sharp, design it, build it, ship it, then improve it from real use.",
+          "A simple way of working that keeps your project from stalling in the middle. Because everything stays in one mind, decisions happen quickly and the path to launch stays short.",
         chips: ["Shape", "Design", "Build", "Launch"],
         details: [
-          "Shape the offer, target user, core workflow and launch scope.",
-          "Design the interface, interaction rhythm and responsive system.",
-          "Build with a clean stack and AI-first implementation speed.",
-          "Launch, check SEO/security basics and iterate from real feedback.",
+          "Sharpen. Before a line of code exists, we clarify what should go live, for whom, and how success will be recognized. That saves money and detours.",
+          "Design. The interface is shaped around the actions your users actually take. Clear, polished, and just as good on mobile.",
+          "Build. Clean stack, modern tools, high output. Architecture, design and taste stay in one mind instead of being ground down between disciplines.",
+          "Launch. It really goes online, with SEO and security basics, then gets better from real feedback.",
         ],
         screen: {
           sideLabel: "Flow",
           sideValue: "04",
           rows: [
-            { label: "01 Shape", value: "Offer + user" },
+            { label: "01 Sharpen", value: "Offer + user" },
             { label: "02 Design", value: "Interface rhythm" },
             { label: "03 Ship", value: "Stack + deploy" },
           ],
@@ -214,17 +213,17 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Shape",
             title: "Clarify what should exist.",
-            body: "Before implementation starts, the offer, target user, core workflow and launch scope get tightened.",
+            body: "Offer, audience, core workflow and launch focus are pulled tight before anything is built. This is the step that saves or sinks most projects.",
           },
           {
             label: "Design",
             title: "Make the product feel intentional.",
-            body: "The interface, interaction rhythm and responsive system are designed around the most important user actions.",
+            body: "Interface, rhythm and responsive behavior are oriented around the most important actions your users take.",
           },
           {
             label: "Build",
-            title: "Move quickly without losing structure.",
-            body: "The product is implemented with a clean stack, AI-first speed and production standards.",
+            title: "Highly concentrated, without handoffs.",
+            body: "Clean stack, modern tools, production standards. Because concept, design and code sit in one person, the friction that slows agency projects down falls away.",
           },
           {
             label: "Launch",
@@ -237,43 +236,43 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "About",
-        subtitle: "A personal product practice",
+        subtitle: "Vienna, Austria. Solo. Web and native.",
         eyebrow: "Lukas Kaffer",
-        headline: "I like turning rough ideas into things people can actually use.",
+        headline: "One person who actually finishes things.",
         description:
-          "I am Lukas: one person combining product thinking, interface taste and full-stack implementation. The part I enjoy most is making something feel clear, useful and polished enough to ship.",
-        chips: ["Next.js", "Supabase", "Native iOS"],
+          "I concept, design and build web products and native iOS apps. Solo, from the first sketch to the App Store.\n\nWhat separates me from an agency is banal and decisive: there is nobody I hand off to. Product thinking, interface and code sit in one mind. Decisions happen in ten minutes instead of ten emails, and what is said at the start is also what runs at the end.\n\nVienna Event Radar is my own example. My idea, my design, my code. Web online, app in the Apple Store.",
+        chips: ["Solo, no handoffs", "Web + native iOS", "Vienna, AT"],
         details: [
-          "Product thinking before implementation: what should exist, why and for whom.",
-          "An eye for design: clean interfaces, careful layout, motion used sparingly.",
-          "Full-stack development with Next.js, React, TypeScript, Supabase and Vercel.",
-          "Native Apple app direction with a strong eye for iOS 26 interaction patterns.",
-          "AI-first workflows for faster building, research, backend logic and operational systems.",
+          "Product thinking before implementation.",
+          "Design and build in one loop.",
+          "Web products with Next.js, React, TypeScript, Supabase and Vercel.",
+          "Native iOS builds with SwiftUI and iOS 26 patterns.",
+          "App Store submission and launch experience.",
         ],
         screen: {
           sideLabel: "Mode",
-          sideValue: "AI",
+          sideValue: "Solo",
           rows: [
             { label: "Taste", value: "Product + UI" },
             { label: "Depth", value: "Full-stack + iOS" },
-            { label: "Speed", value: "AI-first" },
+            { label: "Tempo", value: "No handoffs" },
           ],
         },
         modalSections: [
           {
             label: "Point of view",
             title: "Product shape first, implementation second.",
-            body: "The goal is not just to build screens, but to clarify what should exist and make it feel useful, trustworthy and personal.",
+            body: "What should exist, why, for whom. These questions come before every pixel and every line of code. Otherwise you get something that looks good and nobody needs.",
           },
           {
             label: "Execution",
             title: "Design and full-stack in one loop.",
-            body: "UX/UI, frontend, data, auth, deployment and iteration stay connected instead of being handed between silos.",
+            body: "When the same person concepts, designs and builds, there are no translation losses. Decisions happen in ten minutes, not ten emails. That creates both tempo and a consistent result.",
           },
           {
-            label: "Workflow",
-            title: "AI-first, without losing taste.",
-            body: "AI is part of the operating system for the work: research, backend logic, implementation and review move faster while product judgment keeps the result specific.",
+            label: "Tools",
+            title: "Modern, but taste cannot be delegated.",
+            body: "I use AI where it can save routine. What goes live is still deliberately decided, not automatically generated.",
           },
         ],
         detailHref: "/about",
@@ -285,12 +284,12 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Start here",
         headline: "Have a rough product idea?",
         description:
-          "Send the idea, the current bottleneck, or the page that isn't doing its job. I'll help you figure out the next step.",
+          "Send me two or three sentences about what you want to launch, who it is for and where it is currently stuck. You get an honest assessment of whether and how I can help. Free and without obligation.",
         chips: ["Email", "Project brief", "Next step"],
         details: [
-          "Best starting point: one paragraph about what you want to launch.",
-          "Include who it is for, what exists today and where the friction is.",
-          "For small projects, the first useful step is usually a clear scope and a quick prototype.",
+          "Best starting point: a short paragraph about what you want to launch.",
+          "Add who it is for, what already exists and where the friction sits.",
+          "You get honest feedback and a clear first step, even if we do not end up working together.",
           "Email: hello@lukaskaffer.com",
         ],
         screen: {
@@ -306,12 +305,12 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Start",
             title: "Send the rough version.",
-            body: "A short paragraph is enough: what you want to launch, who it is for and what currently blocks momentum.",
+            body: "A short paragraph is enough: what you want to launch, who it is for and what is currently blocking momentum.",
           },
           {
             label: "Next",
             title: "Turn ambiguity into a focused first move.",
-            body: "The first useful step is usually a sharp scope, product direction and a prototype or implementation plan.",
+            body: "You get an honest assessment and, if it fits, a sharp scope plus prototype plan.",
           },
         ],
         detailHref: "/contact",
@@ -321,10 +320,10 @@ const pageCopy: Record<Language, PageCopy> = {
   de: {
     hero: {
       name: "Lukas Kaffer",
-      headline: "Ich baue Webprodukte und native iOS Apps.",
+      headline: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
       subcopy:
-        "Ein persönliches Portfolio, echte Produktarbeit: Websites, MVPs, Backend-Logiken, AI-first Workflows und native Apple App Experiences.",
-      proof: ["Live-Produkt", "AI-first Approach", "Native iOS 26"],
+        "Webprodukte und native iOS Apps, gebaut bis in den App Store, nicht bis zum Mockup. Du arbeitest direkt mit mir. Kurze Wege, keine Übergaben, kein Agentur-Pingpong.",
+      proof: ["Live im Web und App Store", "Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
       indexLabel: "Projektindex",
     },
     ui: {
@@ -335,10 +334,10 @@ const pageCopy: Record<Language, PageCopy> = {
       details: "Details",
       moreDetails: "Mehr Details",
       close: "Modal schließen",
-      writeEmail: "E-Mail schreiben",
+      writeEmail: "Idee schicken",
       languageLabel: "Sprache",
       entries: "Einträge",
-      startProject: "Projekt starten",
+      startProject: "Idee schicken",
       viewCase: "Case Study ansehen",
       seeServices: "Leistungen ansehen",
     },
@@ -346,48 +345,47 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "work",
         title: "Showcase",
-        subtitle: "Vienna Event Radar — Webprodukt und native iOS App",
+        subtitle: "Web und nativ in Apples App Store",
         eyebrow: "Ausgewählte Arbeit",
-        headline: "Von der Idee zum gelaunchten Produkt.",
+        headline: "Von der Idee in den App Store.",
         description:
-          "Ein Live-Produkt zur Event-Entdeckung, von null bis Launch gebaut: Next.js, Supabase, Auth und RLS, Backend-Logiken, Admin-Workflows, eine AI-first Recherchepipeline, Vercel Deployment und eine native iOS 26 App Experience.",
-        chips: ["Full-Stack", "AI-first", "Native iOS 26"],
+          "Vienna Event Radar als laufendes Beispiel. Web online, App im Store. Konzept, Design und Code aus einer Hand, ohne Übergaben zwischen Disziplinen.",
+        chips: ["Web live", "iOS im App Store", "Solo gebaut"],
         details: [
-          "Full-Stack Webprodukt von null bis Launch umgesetzt.",
-          "Supabase Auth, Datenbankstruktur, RLS Policies und Backend-Logiken aufgebaut.",
-          "AI-first Event-Recherche mit Admin-Review-Workflows.",
-          "Mobile-first Dashboard, SEO-/Security-Polish und Vercel Deployment.",
-          "Native iOS 26 Ausrichtung mit Apple-typischer Navigation, Suche und Bottom-Bar-Patterns.",
+          "Idee. Events in Wien an einem Ort entdeckbar machen, statt verteilt über zwanzig Quellen.",
+          "Bau. Webprodukt mit Backend, AI-gestützter Recherche, Admin-Workflow und Auth. Dazu eine native iOS 26 App mit Apple-typischen Interaktionen. Alles aus einer Hand.",
+          "Live. Web läuft auf viennaeventradar.at. App im Apple App Store verfügbar. Ein echtes Produkt, das man antippen und installieren kann.",
+          "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
         screen: {
           sideLabel: "Live",
           sideValue: "01",
           rows: [
-            { label: "Pipeline", value: "AI-first Recherche" },
+            { label: "Produkt", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
-            { label: "Fläche", value: "Web + native iOS" },
+            { label: "Modus", value: "Solo gebaut" },
           ],
         },
         modalSections: [
           {
             label: "Ausgangslage",
             title: "Ein echtes Produkt, kein Konzept-Mockup.",
-            body: "Vienna Event Radar startete als grobe Idee und wurde zu einem Live-Produkt mit User-Flows, Admin-Betrieb und Production Deployment.",
+            body: "Vienna Event Radar begann als grobe Idee und ist heute ein laufendes Produkt. Web, native App, eigene Nutzer, eigener Admin-Betrieb. Nichts davon ist Demo.",
           },
           {
             label: "System",
             title: "Recherche, Review und Publishing in einem Workflow.",
-            body: "Das Produkt verbindet AI-first Event-Recherche, strukturierten Admin-Review, Supabase Auth/Datenbank/RLS, Backend-Logiken und eine mobile-first Public Experience.",
+            body: "AI-gestützte Event-Recherche, strukturierter Admin-Review, sauber gebaute Datenbank mit Auth und Zugriffslogik, dazu eine mobile-first Public Experience im Web und nativ auf iOS.",
           },
           {
             label: "Stack",
-            title: "Mit modernem Full-Stack und Apple-nativem Setup gebaut.",
-            body: "Next.js, React, TypeScript, Tailwind CSS, Supabase, Vercel und eine native iOS 26 App-Ausrichtung mit Apple Interface Patterns.",
+            title: "Modern und Apple-nativ, ohne Kompromiss.",
+            body: "Next.js, React, TypeScript und Tailwind im Web. Supabase und Vercel im Hintergrund. SwiftUI und iOS 26 Interface Patterns auf dem iPhone.",
           },
           {
             label: "Ergebnis",
-            title: "Gelauncht, stabil und bereit zum Weiterentwickeln.",
-            body: "Zum Launch gehörten SEO-/Security-Polish, Deployment-Disziplin und eine Grundlage, die jetzt in eine stärkere iOS App Experience hineinwächst.",
+            title: "Im App Store, im Einsatz, in Weiterentwicklung.",
+            body: "Die App ist real installierbar, das Webprodukt läuft, die Grundlage trägt die nächsten Features.",
           },
         ],
         detailHref: "/work",
@@ -396,46 +394,46 @@ const pageCopy: Record<Language, PageCopy> = {
         id: "services",
         title: "Leistungen",
         subtitle: "Websites, MVPs, Backend-Logiken und iOS Apps",
-        eyebrow: "Was ich baue",
+        eyebrow: "Was du bekommst",
         headline: "Von der Landingpage bis zum fertigen Produkt.",
         description:
-          "Websites und Landingpages, MVPs und Web-Apps, Backend-Logiken, native iOS 26 Apple Apps, interne Tools, AI-first Automationen und UX/UI-Audits — zugeschnitten auf das, was das Projekt wirklich braucht.",
-        chips: ["Landingpages", "Backend-Logiken", "iOS Apps"],
+          "Kein Baukasten für jeden. Das, was dein Projekt gerade nach vorne bringt, sauber gebaut und wirklich gelauncht. Durch das Solo-Setup bleibt der Weg von Idee zu Live kurz und direkt.",
+        chips: ["Sichtbar werden", "Idee testen", "Online gehen"],
         details: [
-          "Websites und Landingpages, die schnell laden, auf dem Handy funktionieren und in den ersten Sekunden auf den Punkt kommen.",
-          "MVPs und Full-Stack-Web-Apps mit Auth, Datenbank, Backend-Logiken, Dashboard und Deployment.",
-          "Native iOS 26 App Interfaces mit Apple-first Interaktionsmustern.",
-          "AI-first Automationen und interne Tools, die wiederkehrende Arbeit reduzieren.",
+          "Sichtbar werden. Eine Website oder Landingpage, die in den ersten Sekunden klar macht, was du tust, und Besucher zu Anfragen macht.",
+          "Idee testen. Ein MVP mit Login, Datenbank und allem dahinter, damit du echte Nutzer und echtes Feedback bekommst statt nur ein Konzept.",
+          "Online gehen. Ein fertiges Produkt bis zum Launch. Web, und eine native iOS App dann, wenn dein Produkt wirklich aufs iPhone gehört.",
+          "Wenn wiederkehrende Arbeit dich ausbremst, baue ich auch interne Tools und Automationen, die Routine entfernen.",
         ],
         screen: {
           sideLabel: "Angebot",
           sideValue: "04",
           rows: [
-            { label: "Websites", value: "Premium Launch Pages" },
-            { label: "Produkte", value: "MVPs + Backend" },
-            { label: "Apple", value: "Native iOS 26 Apps" },
+            { label: "Sichtbar", value: "Launch Pages" },
+            { label: "Testen", value: "MVPs + Backend" },
+            { label: "Launch", value: "Web + iOS" },
           ],
         },
         modalSections: [
           {
             label: "Web",
             title: "Seiten, die wirken und konvertieren.",
-            body: "Klare, schnelle Seiten für Gründer und kleine Teams — auf den ersten Blick glaubwürdig und klar darin, was du tust und was als Nächstes passieren soll.",
+            body: "Klare, schnelle Seiten für Gründer und kleine Teams. Auf den ersten Blick glaubwürdig und eindeutig darin, was du anbietest und was als Nächstes passieren soll.",
           },
           {
             label: "Produkt",
             title: "MVPs, die wirklich shippen.",
-            body: "Auth, Datenbank, Backend-Logiken, Dashboards, Datenflüsse und Deployment als zusammenhängender Produkt-Build.",
+            body: "Login, Datenbank, die Logik dahinter, Dashboard und Launch als ein zusammenhängender Build statt loser Teile.",
           },
           {
             label: "iOS",
-            title: "Native Apple App Experiences.",
-            body: "iOS 26 Interfaces mit Apple-nativer Navigation, Suche, Bottom Bars und den Details, durch die sich eine App wirklich zuhause auf dem Gerät anfühlt.",
+            title: "Apps, die sich nativ anfühlen.",
+            body: "Wenn dein Produkt aufs iPhone gehört, baue ich es nativ. Mit der Navigation, den Details und dem Polish, durch die sich eine App wirklich zuhause auf dem Gerät anfühlt.",
           },
           {
-            label: "KI Ops",
-            title: "AI-first Systeme, die wiederkehrende Arbeit entfernen.",
-            body: "Interne Workflows, API-Integrationen, Backend-Logiken und AI-first Recherche-/Review-Systeme für ruhigere Abläufe.",
+            label: "Schnelleres Arbeiten",
+            title: "Tools, die wiederkehrende Arbeit entfernen.",
+            body: "Interne Workflows, API-Anbindungen und Automationen für ruhigere Abläufe.",
           },
         ],
         detailHref: "/services",
@@ -444,16 +442,16 @@ const pageCopy: Record<Language, PageCopy> = {
         id: "process",
         title: "Prozess",
         subtitle: "Von grober Idee bis Launch",
-        eyebrow: "Wie es läuft",
-        headline: "Schärfen, gestalten, bauen, launchen.",
+        eyebrow: "Wie wir arbeiten",
+        headline: "Scharf ziehen, gestalten, bauen, launchen.",
         description:
-          "Eine einfache Arbeitsweise: den Scope scharf ziehen, gestalten, bauen, launchen — und dann aus echter Nutzung verbessern.",
+          "Eine einfache Arbeitsweise, die verhindert, dass dein Projekt in der Mitte versandet. Weil alles in einem Kopf bleibt, sind Entscheidungen schnell getroffen und der Weg zum Launch kurz.",
         chips: ["Schärfen", "Design", "Umsetzung", "Launch"],
         details: [
-          "Angebot, Zielgruppe, Kernworkflow und Launch-Fokus schärfen.",
-          "Interface, Interaktionsrhythmus und responsives System gestalten.",
-          "Mit sauberem Stack und KI-unterstützter Umsetzungsgeschwindigkeit bauen.",
-          "Launchen, SEO-/Security-Basics prüfen und anhand echtem Feedback iterieren.",
+          "Schärfen. Bevor eine Zeile Code entsteht, klären wir, was genau live gehen soll, für wen, und woran man Erfolg erkennt. Das spart Geld und Umwege.",
+          "Gestalten. Das Interface entsteht rund um die Aktionen, die deine Nutzer wirklich machen. Klar, hochwertig, auf dem Handy genauso gut.",
+          "Bauen. Sauberer Stack, moderne Werkzeuge, hoher Output. Architektur, Design und Geschmack bleiben in einem Kopf, statt zwischen Disziplinen zerrieben zu werden.",
+          "Launchen. Es geht wirklich online, mit SEO- und Security-Basics, und wird danach anhand von echtem Feedback besser.",
         ],
         screen: {
           sideLabel: "Ablauf",
@@ -467,18 +465,18 @@ const pageCopy: Record<Language, PageCopy> = {
         modalSections: [
           {
             label: "Schärfen",
-            title: "Klären, was existieren sollte.",
-            body: "Bevor gebaut wird, werden Angebot, Zielgruppe, Kernworkflow und Launch-Fokus eng gezogen.",
+            title: "Klären, was existieren soll.",
+            body: "Angebot, Zielgruppe, Kernworkflow und Launch-Fokus werden eng gezogen, bevor gebaut wird. Der Schritt, der die meisten Projekte rettet oder versenkt.",
           },
           {
             label: "Design",
             title: "Das Produkt bewusst wirken lassen.",
-            body: "Interface, Interaktionsrhythmus und responsives System orientieren sich an den wichtigsten User-Aktionen.",
+            body: "Interface, Rhythmus und responsives Verhalten orientieren sich an den wichtigsten Aktionen deiner Nutzer.",
           },
           {
             label: "Umsetzung",
-            title: "Schnell bauen, ohne Struktur zu verlieren.",
-            body: "Das Produkt entsteht mit sauberem Stack, KI-unterstützter Geschwindigkeit und Production Standards.",
+            title: "Hoch konzentriert, ohne Übergaben.",
+            body: "Sauberer Stack, moderne Werkzeuge, Production Standards. Weil Konzept, Design und Code in einer Person sind, entfallen die Reibungsverluste, die Projekte bei Agenturen verlangsamen.",
           },
           {
             label: "Launch",
@@ -491,43 +489,43 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "Über mich",
-        subtitle: "Eine persönliche Produktpraxis",
+        subtitle: "Wien, Österreich. Solo. Web und nativ.",
         eyebrow: "Lukas Kaffer",
-        headline: "Ich mache aus groben Ideen Dinge, die man wirklich nutzen kann.",
+        headline: "Eine Person, die Dinge wirklich fertig macht.",
         description:
-          "Ich bin Lukas: eine Person, die Produktdenken, Interface-Gefühl und Full-Stack-Umsetzung verbindet. Am liebsten arbeite ich an Dingen, die klarer, nützlicher und hochwertig genug werden, um sie wirklich zu launchen.",
-        chips: ["Next.js", "Supabase", "Native iOS"],
+          "Ich konzipiere, designe und baue Webprodukte und native iOS Apps. Solo, von der ersten Skizze bis in den App Store.\n\nWas mich von einer Agentur unterscheidet, ist banal und entscheidend zugleich. Es gibt niemanden, an den ich übergebe. Produktdenken, Interface und Code sitzen in einem Kopf. Entscheidungen passieren in zehn Minuten statt zehn E-Mails, und das, was am Anfang gesagt wird, ist auch das, was am Ende läuft.\n\nVienna Event Radar ist mein eigenes Beispiel dafür. Meine Idee, mein Design, mein Code. Web online, App im Apple Store.",
+        chips: ["Solo, ohne Übergaben", "Web + nativ iOS", "Wien, AT"],
         details: [
-          "Produktdenken vor Umsetzung: Was sollte existieren, warum und für wen?",
-          "Ein Auge fürs Design: klare Interfaces, sorgfältiges Layout, Motion sparsam eingesetzt.",
-          "Full-Stack-Entwicklung mit Next.js, React, TypeScript, Supabase und Vercel.",
-          "Native Apple App Ausrichtung mit starkem Blick auf iOS 26 Interaktionsmuster.",
-          "AI-first Workflows für schnelleres Bauen, Recherche, Backend-Logiken und operative Systeme.",
+          "Produktdenken vor Umsetzung.",
+          "Design und Build in einem Loop.",
+          "Webprodukte mit Next.js, React, TypeScript, Supabase und Vercel.",
+          "Native iOS Builds mit SwiftUI und iOS 26 Patterns.",
+          "App Store Submission und Launch erfahren.",
         ],
         screen: {
           sideLabel: "Modus",
-          sideValue: "AI",
+          sideValue: "Solo",
           rows: [
             { label: "Taste", value: "Produkt + UI" },
             { label: "Tiefe", value: "Full-Stack + iOS" },
-            { label: "Tempo", value: "AI-first" },
+            { label: "Tempo", value: "Ohne Übergaben" },
           ],
         },
         modalSections: [
           {
             label: "Haltung",
             title: "Produktform zuerst, Umsetzung danach.",
-            body: "Es geht nicht nur darum, Screens zu bauen, sondern zu klären, was existieren sollte und wie es nützlich, vertrauenswürdig und persönlich wirkt.",
+            body: "Was sollte existieren, wofür, für wen. Diese Fragen kommen vor jedem Pixel und vor jeder Zeile Code. Sonst entsteht etwas, das gut aussieht und niemand braucht.",
           },
           {
             label: "Umsetzung",
             title: "Design und Full-Stack in einem Loop.",
-            body: "UX/UI, Frontend, Daten, Auth, Deployment und Iteration bleiben verbunden statt in Silos zu zerfallen.",
+            body: "Wenn dieselbe Person konzipiert, gestaltet und baut, gibt es keine Übersetzungsverluste. Entscheidungen sind in zehn Minuten getroffen, nicht in zehn E-Mails. Das ergibt sowohl Tempo als auch ein konsistentes Ergebnis.",
           },
           {
-            label: "Workflow",
-            title: "AI-first, ohne Geschmack zu verlieren.",
-            body: "AI ist Teil des Arbeitsmodus: Recherche, Backend-Logiken, Umsetzung und Review werden schneller, während Produkturteil das Ergebnis spezifisch hält.",
+            label: "Werkzeuge",
+            title: "Modern, aber Geschmack ist nicht delegierbar.",
+            body: "AI nutze ich dort, wo sie Routine raussparen kann. Was am Ende live geht, ist trotzdem bewusst entschieden und nicht automatisiert generiert.",
           },
         ],
         detailHref: "/about",
@@ -539,12 +537,12 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Startpunkt",
         headline: "Eine grobe Produktidee im Kopf?",
         description:
-          "Schick mir die Idee, den aktuellen Engpass oder die Seite, die ihren Job nicht macht. Ich helfe dir, den nächsten Schritt zu finden.",
+          "Schick mir in zwei, drei Sätzen, was du launchen willst, für wen, und wo es gerade hakt. Du bekommst eine ehrliche Einschätzung, ob und wie ich helfen kann. Kostenlos und unverbindlich.",
         chips: ["E-Mail", "Projektbrief", "Nächster Schritt"],
         details: [
-          "Bester Startpunkt: ein Absatz dazu, was du launchen möchtest.",
-          "Dazu: für wen es ist, was heute existiert und wo Reibung entsteht.",
-          "Bei kleinen Projekten ist der erste sinnvolle Schritt meist ein klarer Scope und ein schneller Prototyp.",
+          "Bester Startpunkt: ein kurzer Absatz dazu, was du launchen willst.",
+          "Dazu für wen es ist, was heute schon existiert und wo die Reibung sitzt.",
+          "Du bekommst ehrliches Feedback und einen klaren ersten Schritt, auch wenn wir am Ende nicht zusammenarbeiten.",
           "E-Mail: hello@lukaskaffer.com",
         ],
         screen: {
@@ -560,12 +558,12 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Start",
             title: "Schick die grobe Version.",
-            body: "Ein kurzer Absatz reicht: was du launchen möchtest, für wen es ist und was aktuell Momentum blockiert.",
+            body: "Ein kurzer Absatz reicht: was du launchen willst, für wen, und was gerade Momentum blockiert.",
           },
           {
             label: "Nächster Schritt",
             title: "Aus Unklarheit wird ein fokussierter erster Zug.",
-            body: "Der erste sinnvolle Schritt ist meistens ein scharfer Scope, eine Produktrichtung und ein Prototyp oder Umsetzungsplan.",
+            body: "Du bekommst eine ehrliche Einschätzung und, wenn es passt, einen scharfen Scope plus Prototyp-Plan.",
           },
         ],
         detailHref: "/contact",
@@ -1033,7 +1031,7 @@ function AboutWindow({
               {panel.headline}
             </h2>
             <p className="mt-2.5 max-w-[40ch] text-[11.5px] leading-[1.52] text-white/58">
-              {panel.description}
+              {panel.description.split("\n\n")[0]}
             </p>
             <button
               type="button"
@@ -1190,7 +1188,7 @@ function DetailModal({
           <h2 className="mt-4 max-w-[17ch] font-display text-[32px] font-semibold leading-[1.07] tracking-[-0.03em] text-[#181811] sm:text-[38px]">
             {panel.headline}
           </h2>
-          <p className="mt-4 max-w-[58ch] text-[14.5px] leading-7 text-[#6c6c61]">
+          <p className="mt-4 max-w-[58ch] whitespace-pre-line text-[14.5px] leading-7 text-[#6c6c61]">
             {panel.description}
           </p>
         </div>
