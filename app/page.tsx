@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 import Image from "next/image";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 type Language = "en" | "de";
 
@@ -58,6 +59,8 @@ type PageCopy = {
     startProject: string;
     viewCase: string;
     seeServices: string;
+    overview: string;
+    openDetail: string;
   };
   panels: Panel[];
 };
@@ -86,6 +89,8 @@ const pageCopy: Record<Language, PageCopy> = {
       startProject: "Send idea",
       viewCase: "View case study",
       seeServices: "See services",
+      overview: "Overview",
+      openDetail: "Open detail",
     },
     panels: [
       {
@@ -339,6 +344,8 @@ const pageCopy: Record<Language, PageCopy> = {
       startProject: "Idee schicken",
       viewCase: "Case Study ansehen",
       seeServices: "Leistungen ansehen",
+      overview: "Übersicht",
+      openDetail: "Detail öffnen",
     },
     panels: [
       {
@@ -573,6 +580,29 @@ const pageCopy: Record<Language, PageCopy> = {
 
 const PANEL_ORDER = ["services", "work", "process", "about", "contact"];
 
+// Shared name that lets the View Transitions API morph the on-screen monitor into
+// the detail surface (and back), so the screen visibly "becomes" the page.
+const MORPH_NAME = "detail-surface";
+
+// Run a state update inside a view transition when supported, so the browser can
+// morph between the two DOM states. flushSync makes React apply the change inside
+// the transition callback. Falls back to a plain update otherwise.
+function withViewTransition(update: () => void) {
+  if (
+    typeof document !== "undefined" &&
+    "startViewTransition" in document &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    (
+      document as Document & {
+        startViewTransition: (cb: () => void) => void;
+      }
+    ).startViewTransition(() => flushSync(update));
+  } else {
+    update();
+  }
+}
+
 export default function Home() {
   const [language, setLanguage] = useState<Language>("de");
   const copy = pageCopy[language];
@@ -584,15 +614,26 @@ export default function Home() {
     [copy.panels],
   );
   const [activeId, setActiveId] = useState(panels[0].id);
-  const [modalPanelId, setModalPanelId] = useState<string | null>(null);
+  const [detailId, setDetailId] = useState<string | null>(null);
   const activeIndex = Math.max(
     0,
     panels.findIndex((panel) => panel.id === activeId),
   );
   const activePanel = panels[activeIndex] ?? panels[0];
-  const modalPanel = modalPanelId
-    ? panels.find((panel) => panel.id === modalPanelId) ?? null
+  const detailPanel = detailId
+    ? panels.find((panel) => panel.id === detailId) ?? null
     : null;
+
+  const openDetail = (id: string) => {
+    withViewTransition(() => {
+      setActiveId(id);
+      setDetailId(id);
+    });
+  };
+
+  const closeDetail = () => {
+    withViewTransition(() => setDetailId(null));
+  };
 
   useEffect(() => {
     const syncActivePanelFromHash = () => {
@@ -609,27 +650,12 @@ export default function Home() {
     return () => window.removeEventListener("hashchange", syncActivePanelFromHash);
   }, [panels]);
 
-  useEffect(() => {
-    if (!modalPanelId) {
-      return;
-    }
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setModalPanelId(null);
-      }
-    };
-
-    document.addEventListener("keydown", closeOnEscape);
-    return () => document.removeEventListener("keydown", closeOnEscape);
-  }, [modalPanelId]);
-
   return (
     <main className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
       <div className="grain" />
 
-      <div className="relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 py-6 sm:px-8 lg:px-10 lg:py-5">
+      <div className="relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 py-6 sm:px-8 lg:h-svh lg:max-h-svh lg:overflow-hidden lg:px-10 lg:py-5">
         {/* running head */}
         <header className="rise flex items-center justify-between gap-4 border-b border-[#e4e4e1] pb-4">
           <div className="flex items-center gap-3">
@@ -669,8 +695,11 @@ export default function Home() {
         </header>
 
         {/* editorial spread */}
-        <div className="grid min-h-0 flex-1 grid-cols-1 items-center gap-12 py-10 lg:grid-cols-[minmax(0,378px)_1fr] lg:gap-24 lg:py-0">
-          <section className="flex flex-col justify-center">
+        <div className="relative grid min-h-0 flex-1 grid-cols-1 items-center gap-12 py-10 lg:grid-cols-[minmax(0,378px)_1fr] lg:gap-24 lg:py-0">
+          <section
+            className={`flex flex-col justify-center ${detailId ? "invisible" : ""}`}
+            aria-hidden={detailId ? true : undefined}
+          >
             <p
               className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]"
               style={{ animationDelay: "0.04s" }}
@@ -699,47 +728,40 @@ export default function Home() {
             </p>
 
             <nav
-              className="rise mt-7"
+              className="rise mt-8"
               aria-label={copy.ui.navLabel}
               style={{ animationDelay: "0.28s" }}
             >
-              <div className="flex items-end justify-between border-b border-[#181811] pb-2.5">
-                <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#181811]">
-                  {copy.hero.indexLabel}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#a8a89b]">
-                  {String(panels.length).padStart(2, "0")} {copy.ui.entries}
-                </span>
-              </div>
-              <ul className="divide-y divide-[#e4e4e1]">
-                {panels.map((item, index) => {
+              <span className="block font-mono text-[10px] uppercase tracking-[0.24em] text-[#b1b1a4]">
+                {copy.hero.indexLabel}
+              </span>
+              <ul className="mt-1.5 border-t border-[#e7e7e3]">
+                {panels.map((item) => {
                   const isActive = item.id === activePanel.id;
 
                   return (
-                    <li key={item.id}>
+                    <li key={item.id} className="border-b border-[#e7e7e3]">
                       <button
                         type="button"
-                        onClick={() => setActiveId(item.id)}
+                        onClick={() => openDetail(item.id)}
+                        onMouseEnter={() => setActiveId(item.id)}
+                        onFocus={() => setActiveId(item.id)}
                         aria-current={isActive ? "true" : undefined}
-                        className={`group grid w-full grid-cols-[2.15rem_minmax(0,1fr)_1.8rem] items-center gap-2.5 py-3 text-left transition-colors focus:outline-none sm:grid-cols-[2.35rem_minmax(0,1fr)_1.9rem] ${
-                          isActive ? "bg-white/[0.22]" : "hover:bg-white/[0.14]"
-                        }`}
+                        aria-label={`${item.title} — ${copy.ui.openDetail}`}
+                        className="group relative flex w-full items-center gap-3 py-3.5 pl-4 pr-2 text-left transition-colors focus:outline-none"
                       >
                         <span
-                          className={`font-mono text-[10.5px] tabular-nums transition-colors sm:text-[11px] ${
-                            isActive
-                              ? "text-[#06857c]"
-                              : "text-[#b8b7aa] group-hover:text-[#7c7c70] group-focus-visible:text-[#7c7c70]"
+                          aria-hidden="true"
+                          className={`absolute left-0 top-1/2 w-[2px] -translate-y-1/2 rounded-full bg-[#00b8ad] transition-all duration-300 ease-out ${
+                            isActive ? "h-[62%] opacity-100" : "h-0 opacity-0"
                           }`}
-                        >
-                          {String(index + 1).padStart(2, "0")}
-                        </span>
-                        <span className="min-w-0">
+                        />
+                        <span className="min-w-0 flex-1">
                           <span
-                            className={`block font-display leading-tight tracking-[-0.01em] transition-colors ${
+                            className={`block font-display leading-tight tracking-[-0.015em] transition-all duration-300 ${
                               isActive
-                                ? "text-[17px] text-[#181811]"
-                                : "text-[16px] text-[#8d8d82] group-hover:text-[#55554d] group-focus-visible:text-[#55554d]"
+                                ? "text-[21px] text-[#181811]"
+                                : "text-[19px] text-[#9a9a8e] group-hover:text-[#3d3d36]"
                             }`}
                           >
                             {item.title}
@@ -752,20 +774,20 @@ export default function Home() {
                             }`}
                           >
                             <span className="overflow-hidden">
-                              <span className="block truncate text-[11.5px] leading-5 text-[#6c6c61] sm:text-[12px]">
+                              <span className="block truncate text-[12.5px] leading-5 text-[#6c6c61]">
                                 {item.subtitle}
                               </span>
                             </span>
                           </span>
                         </span>
                         <span
-                          className={`ml-auto inline-flex h-7 w-7 items-center justify-center rounded-full transition ${
+                          className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
                             isActive
-                              ? "bg-[#00b8ad]/10 text-[#06857c]"
-                              : "text-[#c8c6b9] opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
+                              ? "translate-x-0 bg-[#00b8ad]/10 text-[#06857c] opacity-100"
+                              : "-translate-x-1 text-[#c2c1b4] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
                           }`}
                         >
-                          <ArrowUpRight size={13} />
+                          <ArrowUpRight size={15} />
                         </span>
                       </button>
                     </li>
@@ -780,7 +802,7 @@ export default function Home() {
             >
               <button
                 type="button"
-                onClick={() => setModalPanelId("contact")}
+                onClick={() => openDetail("contact")}
                 className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
               >
                 {copy.ui.startProject}
@@ -789,31 +811,37 @@ export default function Home() {
                   className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </button>
-              <a
-                href="mailto:hello@lukaskaffer.com"
-                className="font-mono text-[11px] uppercase tracking-[0.13em] text-[#6c6c61] underline decoration-[#cdcbbe] underline-offset-[5px] transition hover:text-[#181811] hover:decoration-[#06857c]"
-              >
-                hello@lukaskaffer.com
-              </a>
             </div>
             {!copy.hero.subcopy ? (
-              <div className="hidden h-24 lg:block" aria-hidden="true" />
+              <div className="hidden h-8 lg:block" aria-hidden="true" />
             ) : null}
           </section>
 
           <section
-            className="relative min-h-[420px] lg:min-h-[560px]"
+            className={`relative min-h-[340px] lg:h-full lg:min-h-0 ${
+              detailId ? "invisible" : ""
+            }`}
             aria-label="Interactive product preview"
+            aria-hidden={detailId ? true : undefined}
           >
             <div className="rise h-full" style={{ animationDelay: "0.18s" }}>
               <DeviceDesk
                 panel={activePanel}
                 index={activeIndex}
                 labels={copy.ui}
-                onOpenDetails={() => setModalPanelId(activePanel.id)}
+                morphName={detailId ? undefined : MORPH_NAME}
+                onOpenDetails={() => openDetail(activePanel.id)}
               />
             </div>
           </section>
+
+          {detailPanel ? (
+            <DetailView
+              panel={detailPanel}
+              labels={copy.ui}
+              onClose={closeDetail}
+            />
+          ) : null}
         </div>
 
         {/* running foot */}
@@ -832,7 +860,7 @@ export default function Home() {
             </a>
             <button
               type="button"
-              onClick={() => setModalPanelId(activePanel.id)}
+              onClick={() => openDetail(activePanel.id)}
               className="uppercase tracking-[0.15em] transition hover:text-[#181811] focus:outline-none focus-visible:text-[#181811]"
             >
               {copy.ui.details}
@@ -841,13 +869,6 @@ export default function Home() {
         </footer>
       </div>
 
-      {modalPanel ? (
-        <DetailModal
-          panel={modalPanel}
-          labels={copy.ui}
-          onClose={() => setModalPanelId(null)}
-        />
-      ) : null}
     </main>
   );
 }
@@ -856,15 +877,17 @@ function DeviceDesk({
   panel,
   index,
   labels,
+  morphName,
   onOpenDetails,
 }: {
   panel: Panel;
   index: number;
   labels: PageCopy["ui"];
+  morphName?: string;
   onOpenDetails: () => void;
 }) {
   return (
-    <div className="relative mx-auto flex min-h-[440px] max-w-[760px] items-center justify-center lg:min-h-[560px] xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
+    <div className="relative mx-auto flex min-h-[340px] max-w-[760px] items-center justify-center lg:h-full lg:min-h-0 xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
       <div className="absolute left-[55%] top-[43%] h-[340px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,184,173,0.11),transparent_68%)] blur-2xl" />
       <div className="absolute bottom-[58px] left-[55%] h-[74px] w-[500px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(22,23,20,0.13),transparent_72%)] blur-lg" />
       <div className="absolute bottom-[102px] left-[55%] h-px w-[600px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#dcdcd8] to-transparent" />
@@ -879,6 +902,7 @@ function DeviceDesk({
             panel={panel}
             index={index}
             labels={labels}
+            morphName={morphName}
             onOpenDetails={onOpenDetails}
           />
         </div>
@@ -891,18 +915,23 @@ function MacBook({
   panel,
   index,
   labels,
+  morphName,
   onOpenDetails,
 }: {
   panel: Panel;
   index: number;
   labels: PageCopy["ui"];
+  morphName?: string;
   onOpenDetails: () => void;
 }) {
   return (
     <div className="relative">
       <div className="relative rounded-[26px] border-[9px] border-[#111211] bg-[#111211] shadow-[0_34px_110px_rgba(17,18,17,0.26)]">
         <span className="absolute left-1/2 top-2 z-30 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
-        <div className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#070b0c]">
+        <div
+          className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#070b0c]"
+          style={{ viewTransitionName: morphName }}
+        >
           <MacBookScreen
             panel={panel}
             index={index}
@@ -1157,7 +1186,7 @@ function IPhonePreview() {
   );
 }
 
-function DetailModal({
+function DetailView({
   panel,
   labels,
   onClose,
@@ -1167,99 +1196,186 @@ function DetailModal({
   onClose: () => void;
 }) {
   const sections = panel.modalSections ?? [];
+  // Only rendered on the client (gated by interaction), so reading `document`
+  // here is safe and avoids a hydration mismatch.
+  const [supportsVT] = useState(
+    () => typeof document !== "undefined" && "startViewTransition" in document,
+  );
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
 
   return (
+    // The main area itself reshapes: the monitor screen morphs into this surface
+    // (View Transitions). No overlay, no card chrome — same page, edge to edge.
     <div
-      className="fixed inset-0 z-50 flex animate-[modalFade_0.22s_ease-out_both] items-center justify-center bg-[#1a1a14]/30 px-5 backdrop-blur-[10px]"
+      className={`absolute inset-0 z-30 flex flex-col bg-[#fafafa] text-[#181811] ${
+        supportsVT ? "" : "detail-fallback-in"
+      }`}
+      style={{ viewTransitionName: MORPH_NAME }}
+      role="region"
+      aria-label={panel.title}
       onClick={onClose}
     >
-      <article
-        className="w-full max-w-[720px] animate-[modalIn_0.34s_cubic-bezier(0.22,1,0.36,1)_both] overflow-hidden rounded-[26px] border border-[#e4e4e1] bg-[#f7f7f5] shadow-[0_44px_120px_-30px_rgba(20,24,22,0.4)]"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <div className="relative border-b border-[#e4e4e1] p-7 sm:p-9">
+      {/* back row — part of the page, not dialog chrome */}
+      <div className="shrink-0 border-b border-[#e7e7e3]">
+        <div
+          className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-4 py-3"
+          onClick={(event) => event.stopPropagation()}
+        >
           <button
             type="button"
-            aria-label={labels.close}
             onClick={onClose}
-            className="absolute right-6 top-6 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#e0e0dc] bg-white/70 text-[#7c7c70] transition hover:bg-[#181811] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/30"
+            className="group inline-flex items-center gap-2 text-[13px] font-medium text-[#7c7c70] transition hover:text-[#181811] focus:outline-none focus-visible:text-[#181811]"
           >
-            <X size={15} />
+            <ArrowLeft
+              size={15}
+              className="transition group-hover:-translate-x-0.5"
+            />
+            {labels.overview}
           </button>
-          <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c]">
-            {panel.eyebrow}
-          </p>
-          <h2 className="mt-4 max-w-[17ch] font-display text-[32px] font-semibold leading-[1.07] tracking-[-0.03em] text-[#181811] sm:text-[38px]">
-            {panel.headline}
-          </h2>
-          <p className="mt-4 max-w-[58ch] whitespace-pre-line text-[14.5px] leading-7 text-[#6c6c61]">
-            {panel.description}
-          </p>
+          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#a8a89b]">
+            {panel.title}
+          </span>
         </div>
+      </div>
 
-        <div className="max-h-[56vh] overflow-y-auto p-7 sm:px-9 sm:py-7">
+      {/* scroll body */}
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        <div
+          className="mx-auto w-full max-w-[760px]"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <header className="pb-8 pt-9 sm:pt-10">
+            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#06857c]">
+              {panel.eyebrow}
+            </p>
+            <h1 className="mt-4 max-w-[20ch] font-display text-[29px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#181811] sm:text-[38px]">
+              {panel.headline}
+            </h1>
+            <p className="mt-4 max-w-[58ch] whitespace-pre-line text-[15px] leading-7 text-[#6c6c61] sm:text-[16px]">
+              {panel.description}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <a
+                href="mailto:hello@lukaskaffer.com"
+                className="group inline-flex h-10 items-center gap-2 rounded-full bg-[#181811] pl-4 pr-3.5 text-[12.5px] font-medium text-[#f2f2f0] transition hover:bg-black"
+              >
+                {labels.writeEmail}
+                <ArrowUpRight
+                  size={14}
+                  className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+              {panel.chips.length > 0 ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  {panel.chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-full border border-[#e0e0dc] bg-white/60 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-[#7c7c70]"
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </header>
+
+          {panel.id === "work" ? (
+            <div className="pb-2">
+              <div className="overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#0a1113] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]">
+                <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
+                  <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
+                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
+                    viennaeventradar.at
+                  </span>
+                </div>
+                <div className="relative max-h-[280px] overflow-hidden">
+                  <Image
+                    src="/case-studies/vienna-web-desktop-tall.png"
+                    alt="Vienna Event Radar web product"
+                    width={1440}
+                    height={1800}
+                    sizes="(min-width: 840px) 800px, 100vw"
+                    className="w-full"
+                  />
+                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a1113] to-transparent" />
+                </div>
+              </div>
+            </div>
+          ) : null}
+
           {sections.length > 0 ? (
-            <div>
+            <div className="pb-4 pt-7">
               {sections.map((section, index) => (
                 <div
                   key={section.label}
-                  className={`grid grid-cols-1 gap-x-6 gap-y-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] ${
-                    index > 0
-                      ? "border-t border-[#eaeae7] pt-5"
-                      : "pt-0"
-                  } pb-5`}
+                  className={`grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-[8.5rem_minmax(0,1fr)] ${
+                    index > 0 ? "border-t border-[#eaeae7] pt-6" : "pt-1"
+                  } pb-6`}
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#9d9d90]">
-                    <span className="text-[#06857c]">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>{" "}
-                    — {section.label}
+                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+                    {section.label}
                   </span>
                   <div>
-                    <h3 className="font-display text-[19px] font-medium leading-[1.25] tracking-[-0.015em] text-[#181811]">
+                    <h3 className="max-w-[28ch] font-display text-[19px] font-medium leading-[1.24] tracking-[-0.015em] text-[#181811] sm:text-[21px]">
                       {section.title}
                     </h3>
-                    <p className="mt-2 text-[14px] leading-6 text-[#6c6c61]">
+                    <p className="mt-2 max-w-[58ch] text-[14px] leading-[1.6] text-[#6c6c61]">
                       {section.body}
                     </p>
                   </div>
                 </div>
               ))}
             </div>
-          ) : (
-            <div>
-              {panel.details.map((detail, index) => (
-                <div
-                  key={detail}
-                  className={`grid grid-cols-[2.5rem_minmax(0,1fr)] gap-3 ${
-                    index > 0 ? "border-t border-[#eaeae7] pt-4" : "pt-0"
-                  } pb-4`}
-                >
-                  <span className="font-mono text-[12px] tabular-nums text-[#06857c]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[14.5px] leading-6 text-[#54544c]">
-                    {detail}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {panel.id === "contact" ? (
-            <a
-              href="mailto:hello@lukaskaffer.com"
-              className="group mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black"
-            >
-              {labels.writeEmail}
-              <ArrowUpRight
-                size={15}
-                className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </a>
           ) : null}
+
+          {panel.details.length > 0 ? (
+            <div className="pb-10">
+              <div className="rounded-[18px] border border-[#e4e4e1] bg-white/55 p-5 sm:p-6">
+                <div className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
+                  {panel.details.map((detail) => (
+                    <div
+                      key={detail}
+                      className="flex gap-3 text-[14px] leading-6 text-[#54544c]"
+                    >
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#00b8ad]" />
+                      <span>{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <div className="mt-2 border-t border-[#e7e7e3]">
+            <div className="flex flex-col items-start gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-[34ch] font-display text-[19px] font-medium leading-[1.22] tracking-[-0.02em] text-[#181811]">
+                {labels.startProject}
+              </p>
+              <a
+                href="mailto:hello@lukaskaffer.com"
+                className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-[#181811] pl-4 pr-3.5 text-[12.5px] font-medium text-[#f2f2f0] transition hover:bg-black"
+              >
+                hello@lukaskaffer.com
+                <ArrowUpRight
+                  size={14}
+                  className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </a>
+            </div>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   );
 }

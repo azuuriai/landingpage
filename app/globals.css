@@ -195,26 +195,33 @@ body {
   }
 }
 
-@keyframes modalFade {
+/* View Transition: the monitor screen morphs into the detail surface (and back),
+   so the screen visibly "becomes" the page instead of a modal appearing. */
+::view-transition-group(detail-surface) {
+  animation-duration: 0.72s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::view-transition-old(detail-surface),
+::view-transition-new(detail-surface) {
+  animation-duration: 0.58s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Graceful fallback for browsers without the View Transitions API. */
+@keyframes detailFallbackIn {
   from {
     opacity: 0;
+    transform: translateY(10px) scale(0.992);
   }
 
   to {
     opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes modalIn {
-  from {
-    opacity: 0;
-    filter: blur(8px);
-    transform: translateY(20px) scale(0.985);
-  }
-
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateY(0) scale(1);
-  }
+.detail-fallback-in {
+  animation: detailFallbackIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
