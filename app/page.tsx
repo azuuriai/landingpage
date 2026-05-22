@@ -38,6 +38,7 @@ type Panel = {
 type PageCopy = {
   hero: {
     name: string;
+    role: string;
     headline: string;
     subcopy: string;
     proof: string[];
@@ -61,16 +62,15 @@ type PageCopy = {
   panels: Panel[];
 };
 
-const ROLE = "Solo Product Builder, Wien. Web und nativ iOS.";
-
 const pageCopy: Record<Language, PageCopy> = {
   en: {
     hero: {
       name: "Lukas Kaffer",
-      headline: "Your idea becomes a product that actually goes live.",
+      role: "Solo Product Builder, Vienna. Web and native iOS.",
+      headline: "I turn rough ideas into products that actually go live.",
       subcopy:
-        "Web products and native iOS apps, built all the way to the App Store instead of stopping at the mockup. You work directly with me: short paths, no handoffs, no agency ping-pong.",
-      proof: ["Live on web and App Store", "Directly with me", "One mind for concept, design and code"],
+        "Web products and native iOS apps, built through to launch instead of stopping at the mockup. You work directly with me: short paths, no handoffs, no agency ping-pong.",
+      proof: ["Live on web and App Store", "Directly with me", "One mind for strategy, design and code"],
       indexLabel: "Project index",
     },
     ui: {
@@ -92,16 +92,16 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "work",
         title: "Showcase",
-        subtitle: "Web and native in Apple's App Store",
+        subtitle: "Web and native iOS, live in Apple's App Store",
         eyebrow: "Featured work",
-        headline: "From idea into the App Store.",
+        headline: "From idea to App Store.",
         description:
-          "Vienna Event Radar as a live example. Web online, app in the Store. Concept, design and code from one person, without handoffs between disciplines.",
+          "Vienna Event Radar is the running example: web live, app in the Store. Concept, design and code by one person, without handoffs between disciplines.",
         chips: ["Web live", "iOS in App Store", "Built solo"],
         details: [
           "Idea. Make events in Vienna discoverable in one place instead of scattered across twenty sources.",
-          "Build. Web product with backend, AI-supported research, admin workflow and auth. Plus a native iOS 26 app with Apple-like interactions. All from one person.",
-          "Live. Web runs on viennaeventradar.at. App available in the Apple App Store. A real product you can tap and install.",
+          "Build. A web product with backend, AI-supported research, admin workflow and auth. Plus a native iOS 26 app with Apple-native interactions. Built end to end.",
+          "Live. The web product runs on viennaeventradar.at. The app is available in the Apple App Store. A real product you can tap and install.",
           "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
         screen: {
@@ -117,12 +117,12 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Context",
             title: "A real product, not a concept mockup.",
-            body: "Vienna Event Radar started as a rough idea and is now a running product: web, native app, real users and its own admin operation. None of it is a demo.",
+            body: "Vienna Event Radar started as a rough idea and is now an active product: web, native app, real users and its own admin operation. None of it is a demo.",
           },
           {
             label: "System",
             title: "Research, review and publish in one workflow.",
-            body: "AI-supported event research, structured admin review, a clean database with auth and access logic, plus a mobile-first public experience on the web and native iOS.",
+            body: "AI-supported event research, structured admin review, a clean database with auth and access logic, plus a mobile-first public experience across web and native iOS.",
           },
           {
             label: "Stack",
@@ -131,8 +131,8 @@ const pageCopy: Record<Language, PageCopy> = {
           },
           {
             label: "Outcome",
-            title: "In the App Store, in use, in development.",
-            body: "The app is really installable, the web product runs, and the foundation carries the next features.",
+            title: "In the App Store, in use, and still evolving.",
+            body: "The app can be installed, the web product is live, and the foundation is ready for the next features.",
           },
         ],
         detailHref: "/work",
@@ -144,12 +144,12 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "What you get",
         headline: "From a landing page to a full product.",
         description:
-          "No generic package for everyone. The thing your project needs next, built cleanly and actually launched. Because everything stays solo, the route from idea to live stays short and direct.",
+          "No one-size-fits-all package. You get the thing your project needs next, built cleanly and launched for real. Because the setup is solo, the path from idea to live stays short and direct.",
         chips: ["Become visible", "Test an idea", "Go online"],
         details: [
-          "Become visible. A website or landing page that makes clear what you do in the first seconds and turns visitors into inquiries.",
-          "Test an idea. An MVP with login, database and everything behind it, so you get real users and real feedback instead of only a concept.",
-          "Go online. A finished product through launch. Web, and a native iOS app when your product really belongs on iPhone.",
+          "Become visible. A website or landing page that makes your offer clear in the first few seconds and turns visitors into inquiries.",
+          "Test an idea. An MVP with login, database and the logic behind it, so you can learn from real users instead of a concept deck.",
+          "Go online. A finished product taken through launch. Web, and a native iOS app when your product truly belongs on iPhone.",
           "When recurring work slows you down, I also build internal tools and automations that remove routine.",
         ],
         screen: {
@@ -165,12 +165,12 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Web",
             title: "Sites that look right and convert.",
-            body: "Clear, fast pages for founders and small teams. Credible at first glance and unambiguous about what you offer and what should happen next.",
+            body: "Clear, fast pages for founders and small teams. Credible at first glance, precise about what you offer and clear about what should happen next.",
           },
           {
             label: "Product",
             title: "MVPs that actually ship.",
-            body: "Login, database, the logic behind it, dashboard and launch as one connected build instead of loose parts.",
+            body: "Login, database, product logic, dashboard and launch as one coherent build instead of a pile of loose parts.",
           },
           {
             label: "iOS",
@@ -192,13 +192,13 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "How we work",
         headline: "Sharpen, design, build, launch.",
         description:
-          "A simple way of working that keeps your project from stalling in the middle. Because everything stays in one mind, decisions happen quickly and the path to launch stays short.",
+          "A simple way of working that keeps your project from stalling halfway through. Because everything stays in one mind, decisions move quickly and the path to launch stays short.",
         chips: ["Shape", "Design", "Build", "Launch"],
         details: [
-          "Sharpen. Before a line of code exists, we clarify what should go live, for whom, and how success will be recognized. That saves money and detours.",
-          "Design. The interface is shaped around the actions your users actually take. Clear, polished, and just as good on mobile.",
-          "Build. Clean stack, modern tools, high output. Architecture, design and taste stay in one mind instead of being ground down between disciplines.",
-          "Launch. It really goes online, with SEO and security basics, then gets better from real feedback.",
+          "Sharpen. Before a line of code exists, we define what should go live, who it is for and how success will be recognized. That saves money and detours.",
+          "Design. The interface is shaped around the actions your users actually take. Clear, polished and just as good on mobile.",
+          "Build. Clean stack, modern tools, high output. Architecture, design and taste stay in one mind instead of being diluted between disciplines.",
+          "Launch. It really goes online, with SEO and security basics, then improves from real feedback.",
         ],
         screen: {
           sideLabel: "Flow",
@@ -218,12 +218,12 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Design",
             title: "Make the product feel intentional.",
-            body: "Interface, rhythm and responsive behavior are oriented around the most important actions your users take.",
+            body: "Interface, rhythm and responsive behavior are built around the most important actions your users take.",
           },
           {
             label: "Build",
             title: "Highly concentrated, without handoffs.",
-            body: "Clean stack, modern tools, production standards. Because concept, design and code sit in one person, the friction that slows agency projects down falls away.",
+            body: "Clean stack, modern tools, production standards. Because concept, design and code sit with one person, the friction that slows agency projects down falls away.",
           },
           {
             label: "Launch",
@@ -238,9 +238,9 @@ const pageCopy: Record<Language, PageCopy> = {
         title: "About",
         subtitle: "Vienna, Austria. Solo. Web and native.",
         eyebrow: "Lukas Kaffer",
-        headline: "One person who actually finishes things.",
+        headline: "One person who gets things finished.",
         description:
-          "I concept, design and build web products and native iOS apps. Solo, from the first sketch to the App Store.\n\nWhat separates me from an agency is banal and decisive: there is nobody I hand off to. Product thinking, interface and code sit in one mind. Decisions happen in ten minutes instead of ten emails, and what is said at the start is also what runs at the end.\n\nVienna Event Radar is my own example. My idea, my design, my code. Web online, app in the Apple Store.",
+          "I shape, design and build web products and native iOS apps. Solo, from the first sketch to the App Store.\n\nWhat separates me from an agency is simple and decisive: there is nobody I hand off to. Product thinking, interface and code sit in one mind. Decisions happen in ten minutes instead of ten emails, and what is agreed at the beginning is what runs at the end.\n\nVienna Event Radar is my own proof point. My idea, my design, my code. Web online, app in the Apple Store.",
         chips: ["Solo, no handoffs", "Web + native iOS", "Vienna, AT"],
         details: [
           "Product thinking before implementation.",
@@ -262,17 +262,17 @@ const pageCopy: Record<Language, PageCopy> = {
           {
             label: "Point of view",
             title: "Product shape first, implementation second.",
-            body: "What should exist, why, for whom. These questions come before every pixel and every line of code. Otherwise you get something that looks good and nobody needs.",
+            body: "What should exist, why and for whom. These questions come before every pixel and every line of code. Otherwise you get something that looks good and nobody needs.",
           },
           {
             label: "Execution",
             title: "Design and full-stack in one loop.",
-            body: "When the same person concepts, designs and builds, there are no translation losses. Decisions happen in ten minutes, not ten emails. That creates both tempo and a consistent result.",
+            body: "When the same person shapes, designs and builds, there are no translation losses. Decisions happen in ten minutes, not ten emails. That creates both speed and a consistent result.",
           },
           {
             label: "Tools",
             title: "Modern, but taste cannot be delegated.",
-            body: "I use AI where it can save routine. What goes live is still deliberately decided, not automatically generated.",
+            body: "I use AI where it can remove routine. What goes live is still deliberately decided, not automatically generated.",
           },
         ],
         detailHref: "/about",
@@ -284,11 +284,11 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Start here",
         headline: "Have a rough product idea?",
         description:
-          "Send me two or three sentences about what you want to launch, who it is for and where it is currently stuck. You get an honest assessment of whether and how I can help. Free and without obligation.",
+          "Send me two or three sentences about what you want to launch, who it is for and where it is stuck. You will get an honest assessment of whether and how I can help. Free and without obligation.",
         chips: ["Email", "Project brief", "Next step"],
         details: [
           "Best starting point: a short paragraph about what you want to launch.",
-          "Add who it is for, what already exists and where the friction sits.",
+          "Add who it is for, what already exists and where the friction is.",
           "You get honest feedback and a clear first step, even if we do not end up working together.",
           "Email: hello@lukaskaffer.com",
         ],
@@ -320,6 +320,7 @@ const pageCopy: Record<Language, PageCopy> = {
   de: {
     hero: {
       name: "Lukas Kaffer",
+      role: "Solo Product Builder, Wien. Web und nativ iOS.",
       headline: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
       subcopy:
         "Webprodukte und native iOS Apps, gebaut bis in den App Store, nicht bis zum Mockup. Du arbeitest direkt mit mir. Kurze Wege, keine Übergaben, kein Agentur-Pingpong.",
@@ -676,7 +677,7 @@ export default function Home() {
               className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]"
               style={{ animationDelay: "0.04s" }}
             >
-              {ROLE}
+              {copy.hero.role}
             </p>
             <h1
               className="rise mt-4 max-w-[12ch] text-balance font-display text-[37px] font-semibold leading-[1.04] tracking-[-0.03em] text-[#181811] sm:max-w-[16ch] sm:text-[42px]"
