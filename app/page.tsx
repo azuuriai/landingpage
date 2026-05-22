@@ -66,11 +66,10 @@ const pageCopy: Record<Language, PageCopy> = {
   en: {
     hero: {
       name: "Lukas Kaffer",
-      role: "Solo Product Builder, Vienna. Web and native iOS.",
+      role: "Web and native iOS, Vienna.",
       headline: "I turn rough ideas into products that actually go live.",
-      subcopy:
-        "Web products and native iOS apps, built through to launch instead of stopping at the mockup. You work directly with me: short paths, no handoffs, no agency ping-pong.",
-      proof: ["Live on web and App Store", "Directly with me", "One mind for strategy, design and code"],
+      subcopy: "",
+      proof: ["Directly with me", "One mind for strategy, design and code"],
       indexLabel: "Project index",
     },
     ui: {
@@ -320,11 +319,10 @@ const pageCopy: Record<Language, PageCopy> = {
   de: {
     hero: {
       name: "Lukas Kaffer",
-      role: "Solo Product Builder, Wien. Web und nativ iOS.",
+      role: "Web und Native iOS, Wien.",
       headline: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
-      subcopy:
-        "Webprodukte und native iOS Apps, gebaut bis in den App Store, nicht bis zum Mockup. Du arbeitest direkt mit mir. Kurze Wege, keine Übergaben, kein Agentur-Pingpong.",
-      proof: ["Live im Web und App Store", "Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
+      subcopy: "",
+      proof: ["Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
       indexLabel: "Projektindex",
     },
     ui: {
@@ -680,19 +678,21 @@ export default function Home() {
               {copy.hero.role}
             </p>
             <h1
-              className="rise mt-4 max-w-[12ch] text-balance font-display text-[37px] font-semibold leading-[1.04] tracking-[-0.03em] text-[#181811] sm:max-w-[16ch] sm:text-[42px]"
+              className="rise mt-8 max-w-[12ch] text-balance font-display text-[37px] font-semibold leading-[1.04] tracking-[-0.03em] text-[#181811] sm:max-w-[16ch] sm:text-[42px] lg:mt-9"
               style={{ animationDelay: "0.1s" }}
             >
               {copy.hero.headline}
             </h1>
+            {copy.hero.subcopy ? (
+              <p
+                className="rise mt-3 max-w-[42ch] text-[14px] leading-6 text-[#6c6c61]"
+                style={{ animationDelay: "0.16s" }}
+              >
+                {copy.hero.subcopy}
+              </p>
+            ) : null}
             <p
-              className="rise mt-3 max-w-[42ch] text-[14px] leading-6 text-[#6c6c61]"
-              style={{ animationDelay: "0.16s" }}
-            >
-              {copy.hero.subcopy}
-            </p>
-            <p
-              className="rise mt-4 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90]"
+              className="rise mt-5 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90]"
               style={{ animationDelay: "0.22s" }}
             >
               {copy.hero.proof.join("   ·   ")}
@@ -796,6 +796,9 @@ export default function Home() {
                 hello@lukaskaffer.com
               </a>
             </div>
+            {!copy.hero.subcopy ? (
+              <div className="hidden h-24 lg:block" aria-hidden="true" />
+            ) : null}
           </section>
 
           <section
