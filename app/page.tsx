@@ -71,7 +71,8 @@ const pageCopy: Record<Language, PageCopy> = {
       name: "Lukas Kaffer",
       role: "Web and native iOS, Vienna.",
       headline: "I turn rough ideas into products that actually go live.",
-      subcopy: "",
+      subcopy:
+        "For founders and small teams: websites, MVPs and native iOS apps — built all the way to a real launch, not just a mockup.",
       proof: ["Directly with me", "One mind for strategy, design and code"],
       indexLabel: "Project index",
     },
@@ -326,7 +327,8 @@ const pageCopy: Record<Language, PageCopy> = {
       name: "Lukas Kaffer",
       role: "Web und Native iOS, Wien.",
       headline: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
-      subcopy: "",
+      subcopy:
+        "Für Gründer und kleine Teams: Websites, MVPs und native iOS Apps — gebaut bis zum echten Launch, nicht bis zum Mockup.",
       proof: ["Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
       indexLabel: "Projektindex",
     },
@@ -655,9 +657,9 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
       <div className="grain" />
 
-      <div className="relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 py-6 sm:px-8 lg:h-svh lg:max-h-svh lg:overflow-hidden lg:px-10 lg:py-5">
+      <div className="relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 pb-28 pt-6 sm:px-8 lg:h-svh lg:max-h-svh lg:overflow-hidden lg:px-10 lg:py-[clamp(0.4rem,calc(4.2vh-18.4px),1.25rem)]">
         {/* running head */}
-        <header className="rise flex items-center justify-between gap-4 border-b border-[#e4e4e1] pb-4">
+        <header className="rise flex items-center justify-between gap-4 border-b border-[#e4e4e1] pb-4 lg:pb-[clamp(0.5rem,calc(4.2vh-22.4px),1rem)]">
           <div className="flex items-center gap-3">
             <Image
               src="/logo-lk.svg"
@@ -694,41 +696,63 @@ export default function Home() {
           </div>
         </header>
 
-        {/* editorial spread */}
-        <div className="relative grid min-h-0 flex-1 grid-cols-1 items-center gap-12 py-10 lg:grid-cols-[minmax(0,378px)_1fr] lg:gap-24 lg:py-0">
+        {/* editorial spread
+            Desktop is a fixed single screen (lg:h-svh, no scroll). To keep it
+            from clipping / the CTA from touching the footer on short laptop
+            viewports, every vertical size + spacing below scales linearly with
+            viewport height: clamp(min, calc(MAX + 4.2vh − 38.4px), MAX). At
+            ≥~915px tall everything sits at its design MAX; below that it shrinks
+            at ~the same rate as the viewport, so the column always fits with a
+            roughly constant gap above the footer. (38.4 = 4.2 × 9.15.) */}
+        <div className="relative flex min-h-0 flex-1 flex-col items-stretch gap-12 py-10 lg:grid lg:grid-cols-[minmax(0,378px)_1fr] lg:items-center lg:gap-24 lg:py-0">
           <section
-            className={`flex flex-col justify-center ${detailId ? "invisible" : ""}`}
+            className={`contents lg:flex lg:flex-col lg:justify-center ${detailId ? "invisible" : ""}`}
             aria-hidden={detailId ? true : undefined}
           >
-            <p
-              className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]"
-              style={{ animationDelay: "0.04s" }}
-            >
-              {copy.hero.role}
-            </p>
-            <h1
-              className="rise mt-8 max-w-[12ch] text-balance font-display text-[37px] font-semibold leading-[1.04] tracking-[-0.03em] text-[#181811] sm:max-w-[16ch] sm:text-[42px] lg:mt-9"
-              style={{ animationDelay: "0.1s" }}
-            >
-              {copy.hero.headline}
-            </h1>
-            {copy.hero.subcopy ? (
+            {/* intro group — on mobile this sits first, on desktop it dissolves
+                into the section's flex column (lg:contents) so spacing is unchanged */}
+            <div className="order-1 flex flex-col lg:contents">
               <p
-                className="rise mt-3 max-w-[42ch] text-[14px] leading-6 text-[#6c6c61]"
-                style={{ animationDelay: "0.16s" }}
+                className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]"
+                style={{ animationDelay: "0.04s" }}
               >
-                {copy.hero.subcopy}
+                {copy.hero.role}
               </p>
-            ) : null}
-            <p
-              className="rise mt-5 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90]"
-              style={{ animationDelay: "0.22s" }}
-            >
-              {copy.hero.proof.join("   ·   ")}
-            </p>
+              <h1
+                className="rise mt-8 max-w-[12ch] text-balance font-display text-[37px] font-semibold leading-[1.04] tracking-[-0.03em] text-[#181811] sm:max-w-[16ch] sm:text-[42px] lg:mt-[clamp(0.6rem,calc(4.2vh-14.4px),1.5rem)] lg:text-[clamp(28px,calc(4.2vh+3.6px),42px)]"
+                style={{ animationDelay: "0.1s" }}
+              >
+                {copy.hero.headline}
+              </h1>
+              {copy.hero.subcopy ? (
+                <p
+                  className="rise mt-3 max-w-[42ch] text-[14px] leading-6 text-[#6c6c61] lg:mt-[clamp(0.3rem,calc(4.2vh-26.4px),0.75rem)] lg:leading-[1.5]"
+                  style={{ animationDelay: "0.16s" }}
+                >
+                  {copy.hero.subcopy}
+                </p>
+              ) : null}
+              <div
+                className="rise mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90] lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
+                style={{ animationDelay: "0.22s" }}
+              >
+                {copy.hero.proof.map((item, index) => (
+                  <span key={item} className="flex items-center gap-x-3">
+                    {index > 0 ? (
+                      <span className="text-[#c8c6b9]" aria-hidden="true">
+                        ·
+                      </span>
+                    ) : null}
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
 
+            {/* nav + CTA group — on mobile this sits after the device (order-3) */}
+            <div className="order-3 flex flex-col lg:contents">
             <nav
-              className="rise mt-8"
+              className="rise mt-8 lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
               aria-label={copy.ui.navLabel}
               style={{ animationDelay: "0.28s" }}
             >
@@ -748,7 +772,7 @@ export default function Home() {
                         onFocus={() => setActiveId(item.id)}
                         aria-current={isActive ? "true" : undefined}
                         aria-label={`${item.title} — ${copy.ui.openDetail}`}
-                        className="group relative flex w-full items-center gap-3 py-3.5 pl-4 pr-2 text-left transition-colors focus:outline-none"
+                        className="group relative flex w-full items-center gap-3 py-3.5 pl-4 pr-2 text-left transition-colors focus:outline-none lg:py-[clamp(4px,calc(4.2vh-26.4px),12px)]"
                       >
                         <span
                           aria-hidden="true"
@@ -758,7 +782,7 @@ export default function Home() {
                         />
                         <span className="min-w-0 flex-1">
                           <span
-                            className={`block font-display leading-tight tracking-[-0.015em] transition-all duration-300 ${
+                            className={`block font-display leading-[28px] tracking-[-0.015em] transition-all duration-300 ${
                               isActive
                                 ? "text-[21px] text-[#181811]"
                                 : "text-[19px] text-[#9a9a8e] group-hover:text-[#3d3d36]"
@@ -766,17 +790,16 @@ export default function Home() {
                           >
                             {item.title}
                           </span>
+                          {/* Height snaps instantly (no transition on h/mt) so swapping
+                              the active item never changes the column's total height —
+                              no re-centering bounce. Only opacity fades. */}
                           <span
-                            className={`grid transition-all duration-300 ease-out ${
-                              isActive
-                                ? "mt-1 grid-rows-[1fr] opacity-100"
-                                : "grid-rows-[0fr] opacity-0"
+                            className={`block overflow-hidden transition-opacity duration-300 ease-out ${
+                              isActive ? "mt-1 h-5 opacity-100" : "h-0 opacity-0"
                             }`}
                           >
-                            <span className="overflow-hidden">
-                              <span className="block truncate text-[12.5px] leading-5 text-[#6c6c61]">
-                                {item.subtitle}
-                              </span>
+                            <span className="block truncate text-[12.5px] leading-5 text-[#6c6c61]">
+                              {item.subtitle}
                             </span>
                           </span>
                         </span>
@@ -797,13 +820,13 @@ export default function Home() {
             </nav>
 
             <div
-              className="rise mt-7 flex flex-wrap items-center gap-x-6 gap-y-3"
+              className="rise mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
               style={{ animationDelay: "0.34s" }}
             >
               <button
                 type="button"
                 onClick={() => openDetail("contact")}
-                className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
+                className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40 lg:h-[clamp(38px,calc(4.2vh+5.6px),44px)]"
               >
                 {copy.ui.startProject}
                 <ArrowUpRight
@@ -815,10 +838,11 @@ export default function Home() {
             {!copy.hero.subcopy ? (
               <div className="hidden h-8 lg:block" aria-hidden="true" />
             ) : null}
+            </div>
           </section>
 
           <section
-            className={`relative min-h-[340px] lg:h-full lg:min-h-0 ${
+            className={`relative order-2 min-h-[340px] lg:order-none lg:h-full lg:min-h-0 ${
               detailId ? "invisible" : ""
             }`}
             aria-label="Interactive product preview"
@@ -845,7 +869,7 @@ export default function Home() {
         </div>
 
         {/* running foot */}
-        <footer className="rise flex items-center justify-between gap-4 border-t border-[#e4e4e1] pt-4 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9d9d90]">
+        <footer className="rise flex items-center justify-between gap-4 border-t border-[#e4e4e1] pt-4 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9d9d90] lg:pt-[clamp(0.5rem,calc(4.2vh-22.4px),1rem)]">
           <span>© 2026 — Vienna, AT</span>
           <span className="hidden items-center gap-2 text-[#7c7c70] sm:flex">
             <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
@@ -869,6 +893,22 @@ export default function Home() {
         </footer>
       </div>
 
+      {/* sticky mobile CTA — keeps the primary action in reach while scrolling */}
+      {!detailId ? (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md lg:hidden">
+          <button
+            type="button"
+            onClick={() => openDetail("contact")}
+            className="group flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#181811] text-[14px] font-medium text-[#f2f2f0] transition active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
+          >
+            {copy.ui.startProject}
+            <ArrowUpRight
+              size={16}
+              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </button>
+        </div>
+      ) : null}
     </main>
   );
 }
