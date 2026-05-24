@@ -995,7 +995,6 @@ export default function Home() {
             <div className="rise h-full" style={{ animationDelay: "0.18s" }}>
               <DeviceDesk
                 panel={activePanel}
-                index={activeIndex}
                 labels={copy.ui}
                 morphName={detailId ? undefined : MORPH_NAME}
                 onOpenDetails={() => openDetail(activePanel.id)}
@@ -1029,6 +1028,31 @@ export default function Home() {
         </footer>
       </div>
 
+      {detailId ? (
+        <>
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-label={copy.ui.overview}
+            onClick={closeDetail}
+            className="fixed inset-y-0 left-0 z-40 hidden cursor-default lg:block"
+            style={{
+              width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
+            }}
+          />
+          <button
+            type="button"
+            tabIndex={-1}
+            aria-label={copy.ui.overview}
+            onClick={closeDetail}
+            className="fixed inset-y-0 right-0 z-40 hidden cursor-default lg:block"
+            style={{
+              width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
+            }}
+          />
+        </>
+      ) : null}
+
       {/* sticky mobile CTA — keeps the primary action in reach while scrolling */}
       {!detailId ? (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md lg:hidden">
@@ -1051,13 +1075,11 @@ export default function Home() {
 
 function DeviceDesk({
   panel,
-  index,
   labels,
   morphName,
   onOpenDetails,
 }: {
   panel: Panel;
-  index: number;
   labels: PageCopy["ui"];
   morphName?: string;
   onOpenDetails: () => void;
@@ -1076,7 +1098,6 @@ function DeviceDesk({
         <div className="relative z-10 ml-auto w-[91%] max-w-[648px] xl:max-w-[688px]">
           <MacBook
             panel={panel}
-            index={index}
             labels={labels}
             morphName={morphName}
             onOpenDetails={onOpenDetails}
@@ -1089,13 +1110,11 @@ function DeviceDesk({
 
 function MacBook({
   panel,
-  index,
   labels,
   morphName,
   onOpenDetails,
 }: {
   panel: Panel;
-  index: number;
   labels: PageCopy["ui"];
   morphName?: string;
   onOpenDetails: () => void;
@@ -1110,7 +1129,6 @@ function MacBook({
         >
           <MacBookScreen
             panel={panel}
-            index={index}
             labels={labels}
             onOpenDetails={onOpenDetails}
           />
@@ -1127,12 +1145,10 @@ function MacBook({
 
 function MacBookScreen({
   panel,
-  index,
   labels,
   onOpenDetails,
 }: {
   panel: Panel;
-  index: number;
   labels: PageCopy["ui"];
   onOpenDetails: () => void;
 }) {
@@ -1150,7 +1166,6 @@ function MacBookScreen({
         ) : (
           <SlideWindow
             panel={panel}
-            index={index}
             labels={labels}
             onOpenDetails={onOpenDetails}
           />
@@ -1227,9 +1242,6 @@ function AboutWindow({
       <WindowBar name="Über Mich" meta="Lukas Kaffer" />
       <div className="relative flex flex-1 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_16%,rgba(0,184,173,0.16),transparent_38%),radial-gradient(circle_at_8%_96%,rgba(255,255,255,0.06),transparent_34%),linear-gradient(152deg,#0c1415,#0a0d0d_62%,#070b0c)]" />
-        <span className="pointer-events-none absolute -bottom-9 -left-2 select-none font-display text-[140px] font-semibold leading-none tracking-[-0.05em] text-white/[0.04]">
-          04
-        </span>
 
         <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_34%] items-center gap-[6%] px-[7%] py-[6%]">
           <div className="min-w-0">
@@ -1279,12 +1291,10 @@ function AboutWindow({
 
 function SlideWindow({
   panel,
-  index,
   labels,
   onOpenDetails,
 }: {
   panel: Panel;
-  index: number;
   labels: PageCopy["ui"];
   onOpenDetails: () => void;
 }) {
@@ -1292,9 +1302,6 @@ function SlideWindow({
     <div className="flex h-full flex-col text-white">
       <WindowBar name={panel.title} meta="Lukas Kaffer" />
       <div className="relative flex flex-1 flex-col justify-center overflow-hidden p-[7%]">
-        <span className="pointer-events-none absolute -bottom-9 -right-2 select-none font-display text-[140px] font-semibold leading-none tracking-[-0.05em] text-white/[0.04]">
-          {String(index + 1).padStart(2, "0")}
-        </span>
         <p className="relative text-[9.5px] font-semibold uppercase tracking-[0.22em] text-[#3fe6da]">
           {panel.eyebrow}
         </p>
@@ -1981,27 +1988,6 @@ function DetailView({
       role="region"
       aria-label={panel.title}
     >
-      <button
-        type="button"
-        tabIndex={-1}
-        aria-label={labels.overview}
-        onClick={onClose}
-        className="fixed inset-y-0 left-0 z-40 hidden cursor-default lg:block"
-        style={{
-          width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
-        }}
-      />
-      <button
-        type="button"
-        tabIndex={-1}
-        aria-label={labels.overview}
-        onClick={onClose}
-        className="fixed inset-y-0 right-0 z-40 hidden cursor-default lg:block"
-        style={{
-          width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
-        }}
-      />
-
       {/* back row — part of the page, not dialog chrome */}
       <div className="shrink-0 border-b border-[#e7e7e3]">
         <div
