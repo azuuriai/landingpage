@@ -54,6 +54,12 @@ body {
   mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
 }
 
+@media (min-width: 1024px) {
+  .desktop-stage-clip {
+    clip-path: inset(0 -220px 0 0);
+  }
+}
+
 @keyframes softReveal {
   from {
     opacity: 0;
@@ -224,4 +230,3 @@ body {
 .detail-fallback-in {
   animation: detailFallbackIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-

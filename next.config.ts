@@ -15,7 +15,9 @@ const contentSecurityPolicy = [
   isDevelopment
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
     : "script-src 'self' 'unsafe-inline'",
-  isDevelopment ? "connect-src 'self' ws: http:" : "connect-src 'self'",
+  isDevelopment
+    ? "connect-src 'self' ws: http: https://api.web3forms.com"
+    : "connect-src 'self' https://api.web3forms.com",
   "upgrade-insecure-requests",
 ].join("; ");
 
