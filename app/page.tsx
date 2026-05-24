@@ -1,9 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type ReactNode,
+} from "react";
 import { flushSync } from "react-dom";
 import Image from "next/image";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Moon, Sun } from "lucide-react";
 
 type Language = "en" | "de";
 
@@ -1340,7 +1347,97 @@ function IPhonePreview() {
 
 // Rich showcase body for the "work" detail: brand → web + capabilities →
 // native iOS app + App Store badge → Aurea Clinic concept (links to /clinic).
+// Autoplaying, muted, looping video. Forces the DOM `muted` property (React's
+// `muted` prop is unreliable and would block autoplay) and actively retries
+// play() on canplay/loadeddata, since the dev server can serve media late.
+function AutoplayVideo({
+  webm,
+  mp4,
+  poster,
+  className,
+}: {
+  webm: string;
+  mp4: string;
+  poster: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    v.muted = true;
+    const tryPlay = () => {
+      v.play().catch(() => {});
+    };
+    tryPlay();
+    v.addEventListener("canplay", tryPlay);
+    v.addEventListener("loadeddata", tryPlay);
+    return () => {
+      v.removeEventListener("canplay", tryPlay);
+      v.removeEventListener("loadeddata", tryPlay);
+    };
+  }, [webm, mp4]);
+  return (
+    <video
+      ref={ref}
+      className={className}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="auto"
+      poster={poster}
+    >
+      <source src={webm} type="video/webm" />
+      <source src={mp4} type="video/mp4" />
+    </video>
+  );
+}
+
+// Horizontal row that also supports click-and-drag (mouse) scrolling, on top of
+// native wheel/trackpad/touch scrolling. Touch is left to the browser.
+function DragScrollRow({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const drag = useRef({ down: false, startX: 0, startLeft: 0 });
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return; // let touch/trackpad scroll natively
+    const el = ref.current;
+    if (!el) return;
+    drag.current = { down: true, startX: e.clientX, startLeft: el.scrollLeft };
+    el.setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    if (!el || !drag.current.down) return;
+    el.scrollLeft = drag.current.startLeft - (e.clientX - drag.current.startX);
+  };
+  const end = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const el = ref.current;
+    drag.current.down = false;
+    if (el?.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId);
+  };
+  return (
+    <div
+      ref={ref}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={end}
+      onPointerCancel={end}
+      className={className}
+    >
+      {children}
+    </div>
+  );
+}
+
 function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
+  const [webDark, setWebDark] = useState(true);
   return (
     <div className="pb-2">
       {/* Brand */}
@@ -1376,24 +1473,65 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
             />
           </a>
         </div>
-        <div className="overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#0a1113] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]">
-          <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
+        <div
+          className={`overflow-hidden rounded-[16px] border shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)] transition-colors ${
+            webDark ? "border-[#0a1113] bg-[#0a1113]" : "border-[#e4e4e1] bg-[#f4f3f0]"
+          }`}
+        >
+          <div
+            className={`flex items-center gap-2 border-b px-3.5 py-2 ${
+              webDark ? "border-white/[0.08]" : "border-black/[0.06]"
+            }`}
+          >
             <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
-            <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
+            <span
+              className={`text-[9.5px] font-semibold uppercase tracking-[0.15em] ${
+                webDark ? "text-white/70" : "text-[#6c6c61]"
+              }`}
+            >
               viennaeventradar.at
             </span>
+            {/* light / dark theme toggle — switches which recording plays */}
+            <div
+              className={`ml-auto inline-flex items-center rounded-full p-0.5 ${
+                webDark ? "bg-white/10" : "bg-black/[0.06]"
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => setWebDark(false)}
+                aria-label="Helles Theme"
+                aria-pressed={!webDark}
+                className={`flex h-[18px] w-[18px] items-center justify-center rounded-full transition ${
+                  !webDark
+                    ? "bg-white text-[#181811] shadow-sm"
+                    : "text-white/45 hover:text-white/80"
+                }`}
+              >
+                <Sun size={11} />
+              </button>
+              <button
+                type="button"
+                onClick={() => setWebDark(true)}
+                aria-label="Dunkles Theme"
+                aria-pressed={webDark}
+                className={`flex h-[18px] w-[18px] items-center justify-center rounded-full transition ${
+                  webDark
+                    ? "bg-white/20 text-white shadow-sm"
+                    : "text-[#9d9d90] hover:text-[#54544c]"
+                }`}
+              >
+                <Moon size={11} />
+              </button>
+            </div>
           </div>
-          <div className="relative max-h-[280px] overflow-hidden">
-            <Image
-              src="/case-studies/vienna-web-desktop-tall.png"
-              alt="Vienna Event Radar web product"
-              width={1440}
-              height={1800}
-              sizes="(min-width: 840px) 760px, 100vw"
-              className="w-full"
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a1113] to-transparent" />
-          </div>
+          <AutoplayVideo
+            key={webDark ? "dark" : "light"}
+            webm={`/case-studies/vienna-web-${webDark ? "dark" : "light"}.webm`}
+            mp4={`/case-studies/vienna-web-${webDark ? "dark" : "light"}.mp4`}
+            poster={`/case-studies/vienna-web-${webDark ? "dark" : "light"}-poster.jpg`}
+            className="block w-full"
+          />
         </div>
 
         {/* Capabilities */}
@@ -1432,7 +1570,7 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
           {content.iosBody}
         </p>
         <div className="relative mt-5">
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <DragScrollRow className="flex cursor-grab snap-x snap-proximity gap-3 overflow-x-auto pb-2 select-none touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] active:cursor-grabbing [&::-webkit-scrollbar]:hidden">
             {IOS_PREVIEWS.map((src) => (
               <Image
                 key={src}
@@ -1442,10 +1580,11 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
                 height={1561}
                 sizes="200px"
                 loading="eager"
+                draggable={false}
                 className="h-[340px] w-auto shrink-0 snap-start rounded-[20px] border border-[#e4e4e1]"
               />
             ))}
-          </div>
+          </DragScrollRow>
           {/* right-edge fade hints that more screens are scrollable */}
           <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#fafafa] to-transparent" />
         </div>
@@ -1503,23 +1642,12 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
               lukaskaffer.com/clinic
             </span>
           </div>
-          <video
-            ref={(el) => {
-              // React's `muted` prop is unreliable; force the DOM property so
-              // the browser allows autoplay.
-              if (el) el.muted = true;
-            }}
-            className="w-full"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
+          <AutoplayVideo
+            webm="/case-studies/aurea-preview.webm"
+            mp4="/case-studies/aurea-preview.mp4"
             poster="/case-studies/aurea-preview-poster.jpg"
-          >
-            <source src="/case-studies/aurea-preview.webm" type="video/webm" />
-            <source src="/case-studies/aurea-preview.mp4" type="video/mp4" />
-          </video>
+            className="block w-full"
+          />
         </a>
         <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.6] text-[#6c6c61]">
           {content.aureaBody}
