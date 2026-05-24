@@ -1951,6 +1951,7 @@ function DetailView({
   const isWork = panel.id === "work";
   const isContact = panel.id === "contact";
   const isFaq = panel.id === "faq";
+  const isAbout = panel.id === "about";
   const sections = isWork ? [] : panel.modalSections ?? [];
   // Only rendered on the client (gated by interaction), so reading `document`
   // here is safe and avoids a hydration mismatch.
@@ -1979,8 +1980,28 @@ function DetailView({
       style={{ viewTransitionName: MORPH_NAME }}
       role="region"
       aria-label={panel.title}
-      onClick={onClose}
     >
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label={labels.overview}
+        onClick={onClose}
+        className="fixed inset-y-0 left-0 z-40 hidden cursor-default lg:block"
+        style={{
+          width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
+        }}
+      />
+      <button
+        type="button"
+        tabIndex={-1}
+        aria-label={labels.overview}
+        onClick={onClose}
+        className="fixed inset-y-0 right-0 z-40 hidden cursor-default lg:block"
+        style={{
+          width: "calc(((100vw - min(100vw, 1240px)) / 2) + 2.5rem)",
+        }}
+      />
+
       {/* back row — part of the page, not dialog chrome */}
       <div className="shrink-0 border-b border-[#e7e7e3]">
         <div
@@ -2005,9 +2026,24 @@ function DetailView({
       </div>
 
       {/* scroll body */}
-      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">
+        {isAbout ? (
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-0 hidden w-[48%] max-w-[490px] overflow-hidden lg:block">
+            <Image
+              src="/profile/lukas-seated.jpg"
+              alt=""
+              width={733}
+              height={1100}
+              aria-hidden
+              className="h-full w-full object-cover object-[50%_18%] opacity-[0.48] grayscale"
+              sizes="(min-width: 1024px) 490px, 0px"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#fafafa_0%,rgba(250,250,250,0.72)_18%,rgba(250,250,250,0.16)_54%,rgba(250,250,250,0.12)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,#fafafa_0%,rgba(250,250,250,0)_18%,rgba(250,250,250,0)_82%,#fafafa_100%)]" />
+          </div>
+        ) : null}
         <div
-          className="mx-auto w-full max-w-[760px]"
+          className="relative z-10 mx-auto w-full max-w-[760px]"
           onClick={(event) => event.stopPropagation()}
         >
           <header className="pb-8 pt-9 sm:pt-10">
