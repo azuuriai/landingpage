@@ -19,11 +19,27 @@ const contentSecurityPolicy = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-const securityHeaders = [
-  {
-    key: "Content-Security-Policy",
-    value: contentSecurityPolicy,
-  },
+// Relaxed CSP for the standalone /clinic concept demo (Aurea Clinic).
+// It relies on the Tailwind Play CDN + Google Fonts, so those origins are
+// allowed here only — the main site keeps the strict policy above.
+const clinicContentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+  "img-src 'self' data: blob:",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "media-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com",
+  "connect-src 'self' https://cdn.tailwindcss.com",
+  "upgrade-insecure-requests",
+].join("; ");
+
+// Security headers shared by every route except the Content-Security-Policy,
+// which differs between the main site (strict) and /clinic (relaxed).
+const baseSecurityHeaders = [
   {
     key: "Strict-Transport-Security",
     value: "max-age=31536000; includeSubDomains",
@@ -50,11 +66,35 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   devIndicators: false,
   poweredByHeader: false,
+  async rewrites() {
+    return [
+      // Serve the static Aurea concept demo at the clean /clinic URL.
+      { source: "/clinic", destination: "/clinic/index.html" },
+    ];
+  },
   async headers() {
     return [
       {
         source: "/(.*)",
-        headers: securityHeaders,
+        headers: baseSecurityHeaders,
+      },
+      {
+        // Strict CSP everywhere except the /clinic concept demo.
+        source: "/((?!clinic).*)",
+        headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
+      },
+      {
+        // Relaxed CSP for the standalone /clinic demo and its assets.
+        source: "/clinic/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
+        ],
+      },
+      {
+        source: "/clinic",
+        headers: [
+          { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
+        ],
       },
     ];
   },

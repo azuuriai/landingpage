@@ -101,7 +101,7 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Featured work",
         headline: "From idea to App Store.",
         description:
-          "Vienna Event Radar is the running example: web live, app in the Store. Concept, design and code by one person, without handoffs between disciplines.",
+          "Vienna Event Radar is the running example: web live, app in the Store. Concept, design and code by one person, no agency in between.",
         chips: ["Web live", "iOS in App Store", "Built solo"],
         details: [
           "Idea. Make events in Vienna discoverable in one place instead of scattered across twenty sources.",
@@ -357,7 +357,7 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Ausgewählte Arbeit",
         headline: "Von der Idee in den App Store.",
         description:
-          "Vienna Event Radar als laufendes Beispiel. Web online, App im Store. Konzept, Design und Code aus einer Hand, ohne Übergaben zwischen Disziplinen.",
+          "Vienna Event Radar als laufendes Beispiel. Web online, App im Store. Konzept, Design und Code aus einer Hand, keine Agentur dazwischen.",
         chips: ["Web live", "iOS im App Store", "Solo gebaut"],
         details: [
           "Idee. Events in Wien an einem Ort entdeckbar machen, statt verteilt über zwanzig Quellen.",
@@ -586,6 +586,126 @@ const PANEL_ORDER = ["services", "work", "process", "about", "contact"];
 // the detail surface (and back), so the screen visibly "becomes" the page.
 const MORPH_NAME = "detail-surface";
 
+// --- Showcase detail content (Vienna Event Radar + Aurea Clinic) ------------
+const APP_STORE_URL =
+  "https://apps.apple.com/app/wien-event-radar/id6771109823";
+const CLINIC_URL = "/clinic";
+
+// App Store marketing previews (designed), shown as a horizontal iOS strip.
+const IOS_PREVIEWS = [
+  "02_entdecken",
+  "03_suche_filter",
+  "04_event_details",
+  "05_persoenliches_radar",
+  "06_merken_teilen_kalender",
+  "07_gruppenplanung",
+].map((name) => `/case-studies/appstore/${name}.png`);
+
+type Capability = { title: string; body: string };
+
+type WorkShowcaseContent = {
+  brandCaption: string;
+  webLabel: string;
+  webMeta: string;
+  capabilitiesLabel: string;
+  capabilities: Capability[];
+  techLine: string;
+  iosLabel: string;
+  iosTitle: string;
+  iosBody: string;
+  badgeSrc: string;
+  badgeAlt: string;
+  aureaLabel: string;
+  aureaTitle: string;
+  aureaBody: string;
+  aureaCta: string;
+};
+
+const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
+  de: {
+    brandCaption: "Konzept, Design und Code — aus einer Hand.",
+    webLabel: "Web-Plattform",
+    webMeta: "viennaeventradar.at",
+    capabilitiesLabel: "Was drinsteckt",
+    capabilities: [
+      {
+        title: "Ein Produkt, zwei native Erlebnisse",
+        body: "Web-Plattform und native iOS-App auf einem gemeinsamen Backend.",
+      },
+      {
+        title: "KI-gestützte Recherche",
+        body: "Findet und filtert automatisch, was in Wien läuft.",
+      },
+      {
+        title: "Echte Infrastruktur",
+        body: "Login, Datenbank, automatische E-Mails, Fehler-Monitoring.",
+      },
+      {
+        title: "Gebaut, um gefunden zu werden",
+        body: "SEO und live im App Store.",
+      },
+      {
+        title: "iOS-nativ",
+        body: "Kalender, Benachrichtigungen, System-Suche, Login mit Apple.",
+      },
+    ],
+    techLine:
+      "Unter der Haube: Next.js · React · Supabase · SwiftUI · Vercel · Cloudflare · Perplexity API · Sentry · Resend",
+    iosLabel: "Native iOS-App",
+    iosTitle: "Dieselbe Idee, nativ auf dem iPhone.",
+    iosBody:
+      "Keine ins App-Kleid gesteckte Website, sondern eine echte iOS-App — flüssige Navigation, native Gesten und ein Tempo, das sich am iPhone richtig anfühlt.",
+    badgeSrc: "/case-studies/appstore-badge-de.svg",
+    badgeAlt: "Laden im App Store",
+    aureaLabel: "Concept",
+    aureaTitle: "Aurea Clinic",
+    aureaBody:
+      "Eine Premium-Website für eine ästhetische Klinik, vollständig gestaltet und gebaut — eigenes Konzept, kein bloßer Entwurf.",
+    aureaCta: "Live ansehen",
+  },
+  en: {
+    brandCaption: "Concept, design and code — end to end.",
+    webLabel: "Web platform",
+    webMeta: "viennaeventradar.at",
+    capabilitiesLabel: "What's inside",
+    capabilities: [
+      {
+        title: "One product, two native experiences",
+        body: "A web platform and a native iOS app on one shared backend.",
+      },
+      {
+        title: "AI-assisted research",
+        body: "Automatically finds and filters what's happening in Vienna.",
+      },
+      {
+        title: "Real infrastructure",
+        body: "Login, database, automated emails, error monitoring.",
+      },
+      {
+        title: "Built to be found",
+        body: "SEO and live in the App Store.",
+      },
+      {
+        title: "Native on iOS",
+        body: "Calendar, notifications, system search, Sign in with Apple.",
+      },
+    ],
+    techLine:
+      "Under the hood: Next.js · React · Supabase · SwiftUI · Vercel · Cloudflare · Perplexity API · Sentry · Resend",
+    iosLabel: "Native iOS app",
+    iosTitle: "The same idea, native on iPhone.",
+    iosBody:
+      "Not a website in an app shell but a real iOS app — fluid navigation, native gestures and a speed that feels right on iPhone.",
+    badgeSrc: "/case-studies/appstore-badge-en.svg",
+    badgeAlt: "Download on the App Store",
+    aureaLabel: "Concept",
+    aureaTitle: "Aurea Clinic",
+    aureaBody:
+      "A premium website for an aesthetic clinic, fully designed and built — my own concept, not just a draft.",
+    aureaCta: "View it live",
+  },
+};
+
 // Run a state update inside a view transition when supported, so the browser can
 // morph between the two DOM states. flushSync makes React apply the change inside
 // the transition callback. Falls back to a plain update otherwise.
@@ -706,14 +826,14 @@ export default function Home() {
             roughly constant gap above the footer. (38.4 = 4.2 × 9.15.) */}
         <div className="relative flex min-h-0 flex-1 flex-col items-stretch gap-12 py-10 lg:grid lg:grid-cols-[minmax(0,378px)_1fr] lg:items-center lg:gap-24 lg:py-0">
           <section
-            className={`contents lg:flex lg:flex-col lg:justify-center ${detailId ? "invisible" : ""}`}
+            className={`contents lg:relative lg:flex lg:flex-col lg:justify-center lg:self-stretch lg:pt-7 ${detailId ? "invisible" : ""}`}
             aria-hidden={detailId ? true : undefined}
           >
             {/* intro group — on mobile this sits first, on desktop it dissolves
                 into the section's flex column (lg:contents) so spacing is unchanged */}
             <div className="order-1 flex flex-col lg:contents">
               <p
-                className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]"
+                className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px] lg:absolute lg:left-0 lg:top-0"
                 style={{ animationDelay: "0.04s" }}
               >
                 {copy.hero.role}
@@ -733,13 +853,13 @@ export default function Home() {
                 </p>
               ) : null}
               <div
-                className="rise mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.13em] text-[#9d9d90] lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
+                className="rise mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.13em] text-[#06857c] lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
                 style={{ animationDelay: "0.22s" }}
               >
                 {copy.hero.proof.map((item, index) => (
                   <span key={item} className="flex items-center gap-x-3">
                     {index > 0 ? (
-                      <span className="text-[#c8c6b9]" aria-hidden="true">
+                      <span className="text-[#06857c]/40" aria-hidden="true">
                         ·
                       </span>
                     ) : null}
@@ -863,6 +983,7 @@ export default function Home() {
             <DetailView
               panel={detailPanel}
               labels={copy.ui}
+              language={language}
               onClose={closeDetail}
             />
           ) : null}
@@ -875,21 +996,12 @@ export default function Home() {
             <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
             {language === "de" ? "Offen für ausgewählte Projekte" : "Open to selected projects"}
           </span>
-          <div className="flex items-center gap-5">
-            <a
-              href="https://viennaeventradar.at"
-              className="transition hover:text-[#181811]"
-            >
-              {copy.ui.product} ↗
-            </a>
-            <button
-              type="button"
-              onClick={() => openDetail(activePanel.id)}
-              className="uppercase tracking-[0.15em] transition hover:text-[#181811] focus:outline-none focus-visible:text-[#181811]"
-            >
-              {copy.ui.details}
-            </button>
-          </div>
+          <a
+            href="mailto:hello@lukaskaffer.com"
+            className="transition hover:text-[#181811]"
+          >
+            hello@lukaskaffer.com
+          </a>
         </footer>
       </div>
 
@@ -1226,16 +1338,210 @@ function IPhonePreview() {
   );
 }
 
+// Rich showcase body for the "work" detail: brand → web + capabilities →
+// native iOS app + App Store badge → Aurea Clinic concept (links to /clinic).
+function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
+  return (
+    <div className="pb-2">
+      {/* Brand */}
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pb-7">
+        <Image
+          src="/case-studies/wer-logo.png"
+          alt="Wien Event Radar"
+          width={2000}
+          height={500}
+          className="h-8 w-auto sm:h-9"
+        />
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+          {content.brandCaption}
+        </span>
+      </div>
+
+      {/* Web platform */}
+      <section className="border-t border-[#eaeae7] pt-7">
+        <div className="flex items-center justify-between gap-3 pb-3">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+            {content.webLabel}
+          </span>
+          <a
+            href="https://viennaeventradar.at"
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#06857c] transition hover:text-[#181811]"
+          >
+            {content.webMeta}
+            <ArrowUpRight
+              size={12}
+              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </div>
+        <div className="overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#0a1113] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]">
+          <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
+            <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
+            <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
+              viennaeventradar.at
+            </span>
+          </div>
+          <div className="relative max-h-[280px] overflow-hidden">
+            <Image
+              src="/case-studies/vienna-web-desktop-tall.png"
+              alt="Vienna Event Radar web product"
+              width={1440}
+              height={1800}
+              sizes="(min-width: 840px) 760px, 100vw"
+              className="w-full"
+            />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a1113] to-transparent" />
+          </div>
+        </div>
+
+        {/* Capabilities */}
+        <p className="pb-4 pt-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+          {content.capabilitiesLabel}
+        </p>
+        <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
+          {content.capabilities.map((cap) => (
+            <div key={cap.title} className="flex gap-3">
+              <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#00b8ad]" />
+              <div>
+                <h3 className="font-display text-[15.5px] font-medium leading-snug tracking-[-0.01em] text-[#181811]">
+                  {cap.title}
+                </h3>
+                <p className="mt-1 text-[13.5px] leading-[1.55] text-[#6c6c61]">
+                  {cap.body}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 font-mono text-[10.5px] leading-relaxed text-[#a8a89b]">
+          {content.techLine}
+        </p>
+      </section>
+
+      {/* Native iOS app */}
+      <section className="mt-9 border-t border-[#eaeae7] pt-7">
+        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+          {content.iosLabel}
+        </span>
+        <h3 className="mt-3 max-w-[28ch] font-display text-[19px] font-medium leading-[1.24] tracking-[-0.015em] text-[#181811] sm:text-[21px]">
+          {content.iosTitle}
+        </h3>
+        <p className="mt-2 max-w-[56ch] text-[14px] leading-[1.6] text-[#6c6c61]">
+          {content.iosBody}
+        </p>
+        <div className="relative mt-5">
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {IOS_PREVIEWS.map((src) => (
+              <Image
+                key={src}
+                src={src}
+                alt=""
+                width={720}
+                height={1561}
+                sizes="200px"
+                loading="eager"
+                className="h-[340px] w-auto shrink-0 snap-start rounded-[20px] border border-[#e4e4e1]"
+              />
+            ))}
+          </div>
+          {/* right-edge fade hints that more screens are scrollable */}
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#fafafa] to-transparent" />
+        </div>
+        <a
+          href={APP_STORE_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-5 inline-flex transition hover:opacity-80"
+          aria-label={content.badgeAlt}
+        >
+          <Image
+            src={content.badgeSrc}
+            alt={content.badgeAlt}
+            width={140}
+            height={47}
+            unoptimized
+            className="h-[46px] w-auto"
+          />
+        </a>
+      </section>
+
+      {/* Aurea Clinic concept */}
+      <section className="mt-9 border-t border-[#eaeae7] pt-7">
+        <div className="flex items-center justify-between gap-3 pb-3">
+          <div className="flex items-center gap-3">
+            <span className="rounded-full border border-[#e0e0dc] bg-white/60 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-[#7c7c70]">
+              {content.aureaLabel}
+            </span>
+            <span className="font-display text-[15px] font-medium tracking-[-0.01em] text-[#181811]">
+              {content.aureaTitle}
+            </span>
+          </div>
+          <a
+            href={CLINIC_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex shrink-0 items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#06857c] transition hover:text-[#181811]"
+          >
+            {content.aureaCta}
+            <ArrowUpRight
+              size={12}
+              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        </div>
+        <a
+          href={CLINIC_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="block overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#1a1a1a] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]"
+        >
+          <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
+            <span className="h-[8px] w-[8px] rounded-full bg-[#c4a882]" />
+            <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
+              lukaskaffer.com/clinic
+            </span>
+          </div>
+          <video
+            ref={(el) => {
+              // React's `muted` prop is unreliable; force the DOM property so
+              // the browser allows autoplay.
+              if (el) el.muted = true;
+            }}
+            className="w-full"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            poster="/case-studies/aurea-preview-poster.jpg"
+          >
+            <source src="/case-studies/aurea-preview.webm" type="video/webm" />
+            <source src="/case-studies/aurea-preview.mp4" type="video/mp4" />
+          </video>
+        </a>
+        <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.6] text-[#6c6c61]">
+          {content.aureaBody}
+        </p>
+      </section>
+    </div>
+  );
+}
+
 function DetailView({
   panel,
   labels,
+  language,
   onClose,
 }: {
   panel: Panel;
   labels: PageCopy["ui"];
+  language: Language;
   onClose: () => void;
 }) {
-  const sections = panel.modalSections ?? [];
+  const isWork = panel.id === "work";
+  const sections = isWork ? [] : panel.modalSections ?? [];
   // Only rendered on the client (gated by interaction), so reading `document`
   // here is safe and avoids a hydration mismatch.
   const [supportsVT] = useState(
@@ -1330,29 +1636,7 @@ function DetailView({
             </div>
           </header>
 
-          {panel.id === "work" ? (
-            <div className="pb-2">
-              <div className="overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#0a1113] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]">
-                <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
-                  <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
-                  <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
-                    viennaeventradar.at
-                  </span>
-                </div>
-                <div className="relative max-h-[280px] overflow-hidden">
-                  <Image
-                    src="/case-studies/vienna-web-desktop-tall.png"
-                    alt="Vienna Event Radar web product"
-                    width={1440}
-                    height={1800}
-                    sizes="(min-width: 840px) 800px, 100vw"
-                    className="w-full"
-                  />
-                  <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0a1113] to-transparent" />
-                </div>
-              </div>
-            </div>
-          ) : null}
+          {isWork ? <WorkShowcase content={WORK_SHOWCASE[language]} /> : null}
 
           {sections.length > 0 ? (
             <div className="pb-4 pt-7">
@@ -1379,7 +1663,7 @@ function DetailView({
             </div>
           ) : null}
 
-          {panel.details.length > 0 ? (
+          {!isWork && panel.details.length > 0 ? (
             <div className="pb-10">
               <div className="rounded-[18px] border border-[#e4e4e1] bg-white/55 p-5 sm:p-6">
                 <div className="grid gap-x-8 gap-y-3.5 sm:grid-cols-2">
@@ -1398,15 +1682,24 @@ function DetailView({
           ) : null}
 
           <div className="mt-2 border-t border-[#e7e7e3]">
-            <div className="flex flex-col items-start gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-[34ch] font-display text-[19px] font-medium leading-[1.22] tracking-[-0.02em] text-[#181811]">
-                {labels.startProject}
-              </p>
+            <div className="flex flex-col items-start gap-5 py-8 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="max-w-[28ch] font-display text-[19px] font-medium leading-[1.22] tracking-[-0.02em] text-[#181811]">
+                  {language === "de"
+                    ? "Eine Idee im Kopf? Erzähl sie mir."
+                    : "Got an idea? Tell me about it."}
+                </p>
+                <p className="mt-1.5 text-[12.5px] leading-5 text-[#8a8a7e]">
+                  {language === "de"
+                    ? "Kostenlos und unverbindlich — direkt an mich, hello@lukaskaffer.com."
+                    : "Free and no obligation — straight to me at hello@lukaskaffer.com."}
+                </p>
+              </div>
               <a
                 href="mailto:hello@lukaskaffer.com"
                 className="group inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-[#181811] pl-4 pr-3.5 text-[12.5px] font-medium text-[#f2f2f0] transition hover:bg-black"
               >
-                hello@lukaskaffer.com
+                {labels.writeEmail}
                 <ArrowUpRight
                   size={14}
                   className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
