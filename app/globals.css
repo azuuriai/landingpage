@@ -82,6 +82,20 @@ body {
   animation: softReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* Scroll-linked reveal as pure progressive enhancement: content is fully
+   visible by default, so a failed/slow hydration or an unsupported browser
+   never leaves a section hidden. Only browsers with scroll-driven animations
+   (and no reduced-motion preference) get the entrance. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-on-scroll {
+      animation: softReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 20%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

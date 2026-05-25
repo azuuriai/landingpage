@@ -41,7 +41,7 @@ export const detailPages: DetailPageData[] = [
     slug: "services",
     path: "/services",
     navLabel: "Leistungen",
-    eyebrow: "Leistungen",
+    eyebrow: "Was ich für dich baue",
     title: "Websites, MVPs und native iOS Apps, die wirklich live gehen.",
     description:
       "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: sichtbar im Web, testbar mit echten Nutzern und bei Bedarf nativ auf dem iPhone.",
@@ -77,7 +77,7 @@ export const detailPages: DetailPageData[] = [
     slug: "work",
     path: "/work",
     navLabel: "Showcase",
-    eyebrow: "Showcase",
+    eyebrow: "Live-Produkt",
     title: "Vienna Event Radar zeigt, wie aus einer Idee ein laufendes Produkt wird.",
     description:
       "Web-Plattform, Admin-Workflow, KI-gestützte Recherche und native iOS App: ein Produkt, das online ist, im App Store liegt und weiterentwickelt wird.",
@@ -193,7 +193,7 @@ export const detailPages: DetailPageData[] = [
     slug: "contact",
     path: "/contact",
     navLabel: "Kontakt",
-    eyebrow: "Kontakt",
+    eyebrow: "Lass uns reden",
     title: "Erzähl mir, was du bauen willst.",
     description:
       "Eine grobe Idee reicht. Schreib mir, was entstehen soll, für wen es ist und wo es gerade steckt. Ich antworte direkt persönlich.",

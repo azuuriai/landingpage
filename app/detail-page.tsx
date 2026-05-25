@@ -101,10 +101,13 @@ function PageHeader({ activeSlug }: { activeSlug: DetailSlug }) {
             className="h-auto w-[178px] sm:w-[194px]"
           />
         </Link>
-        <nav className="w-full max-w-full lg:w-auto" aria-label="Seitennavigation">
-          <ul className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#9d9d90] sm:gap-x-5">
+        <nav
+          className="-mx-6 max-w-full px-6 sm:mx-0 sm:px-0 lg:w-auto"
+          aria-label="Seitennavigation"
+        >
+          <ul className="flex flex-nowrap gap-x-5 overflow-x-auto font-mono text-[10px] uppercase tracking-[0.16em] text-[#9d9d90] [-ms-overflow-style:none] [mask-image:linear-gradient(to_right,#000_88%,transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-x-5 lg:flex-wrap lg:overflow-visible lg:[mask-image:none]">
             {detailPages.map((item) => (
-              <li key={item.slug}>
+              <li key={item.slug} className="shrink-0 whitespace-nowrap">
                 <Link
                   href={item.path}
                   aria-current={item.slug === activeSlug ? "page" : undefined}
@@ -126,7 +129,7 @@ function PageHeader({ activeSlug }: { activeSlug: DetailSlug }) {
 function HeroVisual({ page }: { page: DetailPageData }) {
   if (page.slug === "work") {
     return (
-      <div className="relative mt-10 lg:mt-0">
+      <div className="rise relative mt-10 lg:mt-0" style={{ animationDelay: "0.1s" }}>
         <div className="overflow-hidden rounded-[8px] border border-[#151817] bg-[#0a1113] shadow-[0_34px_90px_-46px_rgba(17,18,17,0.5)]">
           <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
             <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
@@ -150,7 +153,7 @@ function HeroVisual({ page }: { page: DetailPageData }) {
   if (!page.image) return null;
 
   return (
-    <div className="relative mt-10 lg:mt-0">
+    <div className="rise relative mt-10 lg:mt-0" style={{ animationDelay: "0.1s" }}>
       <div className="overflow-hidden rounded-[8px] border border-[#e0e0dc] bg-[#e9e9e4]">
         <Image
           src={page.image.src}
@@ -197,14 +200,19 @@ function DetailSections({ page }: { page: DetailPageData }) {
   return (
     <section className="border-t border-[#deded8]">
       <div className="mx-0 grid w-full max-w-[390px] gap-0 px-6 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:px-10">
-        {page.sections.map((section) => (
+        {page.sections.map((section, index) => (
           <div
             key={section.label}
-            className="grid gap-x-12 gap-y-3 border-b border-[#e1e1dc] py-10 md:grid-cols-[10rem_minmax(0,1fr)] lg:py-12"
+            className="reveal-on-scroll grid gap-x-12 gap-y-3 border-b border-[#e1e1dc] py-10 md:grid-cols-[10rem_minmax(0,1fr)] lg:py-12"
           >
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#06857c]">
-              {section.label}
-            </p>
+            <div className="flex items-baseline gap-3 md:flex-col md:gap-2">
+              <span className="font-mono text-[10px] tracking-[0.16em] text-[#b4b4aa]">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#06857c]">
+                {section.label}
+              </p>
+            </div>
             <div className="min-w-0">
               <h2 className="max-w-[32ch] text-balance font-display text-[25px] font-medium leading-[1.12] tracking-[-0.018em] text-[#181811] sm:text-[32px]">
                 {section.title}
@@ -224,8 +232,8 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
   if (!page.faq) return null;
 
   return (
-    <section className="mx-0 grid w-full max-w-[390px] gap-11 px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:min-h-[calc(100svh-89px)] lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-start lg:gap-20 lg:px-10 lg:py-20 xl:gap-24">
-      <div className="min-w-0">
+    <section className="mx-0 grid w-full max-w-[390px] gap-11 px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-start lg:gap-20 lg:px-10 lg:py-20 xl:gap-24">
+      <div className="rise min-w-0">
         <Link
           href="/"
           className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90] transition hover:text-[#181811]"
@@ -261,7 +269,7 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
         </Link>
       </div>
 
-      <div className="min-w-0 lg:pt-[92px]">
+      <div className="reveal-on-scroll min-w-0 lg:pt-[92px]">
         <div className="mb-3 flex items-center justify-between gap-4 border-b border-[#deded8] pb-4">
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90]">
             Fragen & Antworten
@@ -371,16 +379,41 @@ function ContactFormSection() {
   );
 }
 
-function ContactBand() {
+const CLOSING_COPY: Record<DetailSlug, { eyebrow: string; heading: string }> = {
+  services: {
+    eyebrow: "Nächster Schritt",
+    heading: "Klingt nach deinem Projekt? Dann lass es uns angehen.",
+  },
+  work: {
+    eyebrow: "Nächster Schritt",
+    heading: "Willst du etwas Ähnliches bauen? Erzähl mir davon.",
+  },
+  about: {
+    eyebrow: "Nächster Schritt",
+    heading: "Klingt nach einer Zusammenarbeit? Schreib mir.",
+  },
+  faq: {
+    eyebrow: "Noch offen?",
+    heading: "Frage war nicht dabei? Frag mich direkt.",
+  },
+  contact: {
+    eyebrow: "Nächster Schritt",
+    heading: "Erzähl mir, was du bauen willst.",
+  },
+};
+
+function ContactBand({ slug }: { slug: DetailSlug }) {
+  const copy = CLOSING_COPY[slug];
+
   return (
     <section className="border-t border-[#deded8]">
       <div className="mx-0 flex w-full max-w-[390px] flex-col gap-6 px-6 py-10 sm:mx-auto sm:max-w-[1180px] sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10 lg:py-12">
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90]">
-            Nächster Schritt
+            {copy.eyebrow}
           </p>
           <h2 className="mt-3 max-w-[30ch] font-display text-[25px] font-medium leading-[1.14] tracking-[-0.018em] text-[#181811] sm:text-[32px]">
-            Eine Idee im Kopf? Schreib sie mir.
+            {copy.heading}
           </h2>
         </div>
         <Link
@@ -412,7 +445,7 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
           ) : (
             <>
               <section className="mx-0 grid w-full max-w-[390px] gap-10 px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)] lg:items-center lg:px-10 lg:py-20">
-                <div className="min-w-0">
+                <div className="rise min-w-0">
                   <Link
                     href="/"
                     className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90] transition hover:text-[#181811]"
@@ -447,7 +480,7 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
               {slug === "work" ? <WorkMediaBand /> : null}
             </>
           )}
-          {!isFaq && slug !== "contact" ? <ContactBand /> : null}
+          {slug !== "contact" ? <ContactBand slug={slug} /> : null}
         </div>
       </main>
     </>
