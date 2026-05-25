@@ -918,9 +918,12 @@ export default function Home() {
 
                   return (
                     <li key={item.id} className="border-b border-[#e7e7e3]">
-                      <button
-                        type="button"
-                        onClick={() => openDetail(item.id)}
+                      <a
+                        href={item.detailHref ?? `#${item.id}`}
+                        onClick={(event) => {
+                          event.preventDefault();
+                          openDetail(item.id);
+                        }}
                         onMouseEnter={() => setActiveId(item.id)}
                         onFocus={() => setActiveId(item.id)}
                         aria-current={isActive ? "true" : undefined}
@@ -965,7 +968,7 @@ export default function Home() {
                         >
                           <ArrowUpRight size={15} />
                         </span>
-                      </button>
+                      </a>
                     </li>
                   );
                 })}
@@ -976,9 +979,12 @@ export default function Home() {
               className="rise mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
               style={{ animationDelay: "0.34s" }}
             >
-              <button
-                type="button"
-                onClick={() => openDetail("contact")}
+              <a
+                href="/contact"
+                onClick={(event) => {
+                  event.preventDefault();
+                  openDetail("contact");
+                }}
                 className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40 lg:h-[clamp(38px,calc(4.2vh+5.6px),44px)]"
               >
                 {copy.ui.startProject}
@@ -986,7 +992,7 @@ export default function Home() {
                   size={15}
                   className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </button>
+              </a>
             </div>
             {!copy.hero.subcopy ? (
               <div className="hidden h-8 lg:block" aria-hidden="true" />
@@ -1065,9 +1071,12 @@ export default function Home() {
       {/* sticky mobile CTA — keeps the primary action in reach while scrolling */}
       {!detailId ? (
         <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md lg:hidden">
-          <button
-            type="button"
-            onClick={() => openDetail("contact")}
+          <a
+            href="/contact"
+            onClick={(event) => {
+              event.preventDefault();
+              openDetail("contact");
+            }}
             className="group flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#181811] text-[14px] font-medium text-[#f2f2f0] transition active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
           >
             {copy.ui.startProject}
@@ -1075,7 +1084,7 @@ export default function Home() {
               size={16}
               className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
-          </button>
+          </a>
         </div>
       ) : null}
       </main>

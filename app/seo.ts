@@ -17,29 +17,6 @@ export function absoluteUrl(path = "/") {
   return new URL(path, SITE_URL).toString();
 }
 
-const faqItems = [
-  {
-    question: "Was kostet ein Projekt und wie lange dauert es?",
-    answer:
-      "Beides hängt vom Umfang ab. Nach einem kurzen, kostenlosen Erstgespräch bekommst du einen klaren Festpreis für einen klar definierten Umfang. Weil Strategie, Design und Umsetzung bei einer Person bleiben, bewegt sich das Projekt ohne Agentur-Übergaben deutlich schneller.",
-  },
-  {
-    question: "Baust du native iOS Apps?",
-    answer:
-      "Ja. Native iOS Apps in SwiftUI, von der Idee bis zum echten App-Store-Release. Wenn dein Produkt aufs iPhone gehört, baue ich es nativ und nicht als verpackte Website.",
-  },
-  {
-    question: "Was passiert nach dem Launch?",
-    answer:
-      "Du wirst nach dem Go-live nicht allein gelassen. Launch umfasst die SEO- und Security-Basics; danach bin ich für Fixes und Anpassungen verfügbar. Code und Accounts gehören dir.",
-  },
-  {
-    question: "Entwirfst du auch das Design?",
-    answer:
-      "Ja. Interface, Interaktion und Code entstehen zusammen, damit das Ergebnis konsistent bleibt und nicht zwischen Design- und Entwicklungsübergaben zerfällt.",
-  },
-];
-
 export const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
@@ -113,18 +90,6 @@ export const structuredData = {
           },
         },
       ],
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${SITE_URL}/#faq`,
-      mainEntity: faqItems.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.answer,
-        },
-      })),
     },
   ],
 };
