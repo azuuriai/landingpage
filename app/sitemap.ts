@@ -1,12 +1,11 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://lukaskaffer.com";
+import { HOME_LAST_MODIFIED, SITE_URL } from "./seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: new Date("2026-05-23T00:00:00.000Z"),
+      lastModified: HOME_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 1,
     },

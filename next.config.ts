@@ -65,6 +65,13 @@ const baseSecurityHeaders = [
   },
 ];
 
+const noindexHeaders = [
+  {
+    key: "X-Robots-Tag",
+    value: "noindex, follow",
+  },
+];
+
 const nextConfig: NextConfig = {
   devIndicators: false,
   poweredByHeader: false,
@@ -90,12 +97,14 @@ const nextConfig: NextConfig = {
         source: "/clinic/:path*",
         headers: [
           { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
+          ...noindexHeaders,
         ],
       },
       {
         source: "/clinic",
         headers: [
           { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
+          ...noindexHeaders,
         ],
       },
     ];

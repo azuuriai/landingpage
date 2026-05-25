@@ -12,6 +12,7 @@ import {
 import { flushSync } from "react-dom";
 import Image from "next/image";
 import { ArrowLeft, ArrowUpRight, Moon, Plus, Sun } from "lucide-react";
+import { structuredData } from "./seo";
 
 type Language = "en" | "de";
 
@@ -800,7 +801,15 @@ export default function Home() {
   }, [panels]);
 
   return (
-    <main className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
+    <>
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <main className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
       <div className="grain" />
 
@@ -1069,7 +1078,8 @@ export default function Home() {
           </button>
         </div>
       ) : null}
-    </main>
+      </main>
+    </>
   );
 }
 

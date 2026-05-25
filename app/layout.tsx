@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {
+  googleSiteVerification,
+  OG_DESCRIPTION,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "./seo";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,10 +16,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  applicationName: SITE_NAME,
   title: "Lukas Kaffer · Webprodukte und iOS Apps aus einer Hand",
-  description:
-    "Ich konzipiere, designe und baue Webprodukte und native iOS Apps. Solo, von der Idee bis in den App Store. Kurze Wege, direkter Kontakt, ohne Agentur dazwischen.",
-  metadataBase: new URL("https://lukaskaffer.com"),
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: "/",
+  },
+  category: "technology",
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  keywords: [
+    "Webentwicklung Wien",
+    "iOS App Entwicklung",
+    "SwiftUI Entwickler",
+    "Next.js Entwickler",
+    "MVP Entwicklung",
+    "Landing Page Wien",
+    "Lukas Kaffer",
+  ],
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -26,8 +48,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Lukas Kaffer · Idee bis App Store",
-    description:
-      "Webprodukte und iOS Apps, gebaut bis in den App Store statt bis zum Mockup. Vienna Event Radar online und in Apples Store.",
+    description: OG_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Lukas Kaffer · Webprodukte und native iOS Apps",
+      },
+    ],
     type: "website",
     locale: "de_AT",
   },
@@ -35,11 +66,22 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lukas Kaffer · Idee bis App Store",
     description: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  ...(googleSiteVerification
+    ? { verification: { google: googleSiteVerification } }
+    : {}),
 };
 
 export default function RootLayout({
