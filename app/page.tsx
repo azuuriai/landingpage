@@ -785,6 +785,28 @@ export default function Home() {
     withViewTransition(() => setDetailId(null));
   };
 
+  // Mobile sticky CTA: stay out of the way at the top of the page and only
+  // slide in once the user has scrolled past the hero — then tuck away again
+  // near the footer, where the inline CTA already lives. Avoids the "floating
+  // over everything" feel.
+  const [showStickyCta, setShowStickyCta] = useState(false);
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const vh = window.innerHeight;
+      const nearBottom =
+        y + vh >= document.documentElement.scrollHeight - 220;
+      setShowStickyCta(y > vh * 0.5 && !nearBottom);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
+
   useEffect(() => {
     const syncActivePanelFromHash = () => {
       const hash = window.location.hash.replace("#", "");
@@ -857,7 +879,7 @@ export default function Home() {
             ≥~915px tall everything sits at its design MAX; below that it shrinks
             at ~the same rate as the viewport, so the column always fits with a
             roughly constant gap above the footer. (38.4 = 4.2 × 9.15.) */}
-        <div className="relative flex min-h-0 flex-1 flex-col items-stretch gap-12 py-10 lg:grid lg:grid-cols-[minmax(0,378px)_1fr] lg:items-center lg:gap-24 lg:py-0">
+        <div className="relative flex min-h-0 flex-1 flex-col items-stretch gap-10 pb-10 pt-5 lg:grid lg:grid-cols-[minmax(0,378px)_1fr] lg:items-center lg:gap-24 lg:py-0">
           <section
             className={`contents lg:relative lg:flex lg:flex-col lg:justify-center lg:self-stretch lg:pt-7 ${detailId ? "invisible" : ""}`}
             aria-hidden={detailId ? true : undefined}
@@ -1001,7 +1023,7 @@ export default function Home() {
           </section>
 
           <section
-            className={`relative order-2 min-h-[340px] lg:order-none lg:h-full lg:min-h-0 ${
+            className={`relative order-2 min-h-[248px] lg:order-none lg:h-full lg:min-h-0 ${
               detailId ? "invisible" : ""
             }`}
             aria-label="Interactive product preview"
@@ -1068,9 +1090,14 @@ export default function Home() {
         </>
       ) : null}
 
-      {/* sticky mobile CTA — keeps the primary action in reach while scrolling */}
+      {/* sticky mobile CTA — slides in only after scrolling past the hero, and
+          tucks away near the footer, so it isn't permanently floating */}
       {!detailId ? (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md lg:hidden">
+        <div
+          className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md transition-transform duration-300 ease-out lg:hidden ${
+            showStickyCta ? "translate-y-0" : "translate-y-full"
+          }`}
+        >
           <a
             href="/contact"
             onClick={(event) => {
@@ -1104,13 +1131,13 @@ function DeviceDesk({
   onOpenDetails: () => void;
 }) {
   return (
-    <div className="relative mx-auto flex min-h-[340px] max-w-[760px] items-center justify-center lg:h-full lg:min-h-0 xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
+    <div className="relative mx-auto flex min-h-[248px] max-w-[760px] items-center justify-center lg:h-full lg:min-h-0 xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
       <div className="absolute left-[55%] top-[43%] h-[340px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,184,173,0.11),transparent_68%)] blur-2xl" />
       <div className="absolute bottom-[58px] left-[55%] h-[74px] w-[500px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(22,23,20,0.13),transparent_72%)] blur-lg" />
       <div className="absolute bottom-[102px] left-[55%] h-px w-[600px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#dcdcd8] to-transparent" />
 
-      <div className="relative w-full max-w-[720px] xl:max-w-[770px]">
-        <div className="absolute -left-2 bottom-[44px] z-30 w-[114px] rotate-[-2deg] sm:-left-6 sm:w-[132px] lg:-left-14 lg:bottom-[62px]">
+      <div className="relative mx-auto w-full max-w-[320px] sm:mx-0 sm:max-w-[720px] xl:max-w-[770px]">
+        <div className="absolute -left-1 bottom-[30px] z-30 w-[86px] rotate-[-2deg] sm:-left-6 sm:bottom-[44px] sm:w-[132px] lg:-left-14 lg:bottom-[62px]">
           <IPhone panel={panel} onOpenDetails={onOpenDetails} />
         </div>
 
@@ -1143,7 +1170,7 @@ function MacBook({
       <div className="relative rounded-[26px] border-[9px] border-[#111211] bg-[#111211] shadow-[0_34px_110px_rgba(17,18,17,0.26)]">
         <span className="absolute left-1/2 top-2 z-30 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[#2a2b29] ring-1 ring-white/10" />
         <div
-          className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#070b0c]"
+          className="relative aspect-[16/10] overflow-hidden rounded-[17px] bg-[#070b0c] [container-type:inline-size]"
           style={{ viewTransitionName: morphName }}
         >
           <MacBookScreen
@@ -1199,11 +1226,11 @@ function WindowBar({ name, meta }: { name: string; meta: string }) {
     <div className="flex items-center justify-between gap-2 border-b border-white/[0.08] bg-white/[0.025] px-3 py-2">
       <div className="flex min-w-0 items-center gap-2">
         <span className="h-[9px] w-[9px] shrink-0 rounded-full bg-[#00b8ad]" />
-        <span className="truncate text-[9px] font-semibold uppercase tracking-[0.15em] text-white/70">
+        <span className="truncate text-[clamp(7px,1.43cqw,9px)] font-semibold uppercase tracking-[0.15em] text-white/70">
           {name}
         </span>
       </div>
-      <span className="shrink-0 text-[8.5px] uppercase tracking-[0.13em] text-white">
+      <span className="shrink-0 text-[clamp(6.5px,1.35cqw,8.5px)] uppercase tracking-[0.13em] text-white">
         {meta}
       </span>
     </div>
@@ -1264,19 +1291,19 @@ function AboutWindow({
 
         <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_34%] items-center gap-[6%] px-[7%] py-[6%]">
           <div className="min-w-0">
-            <p className="text-[9.5px] font-semibold uppercase tracking-[0.22em] text-[#00b8ad]">
+            <p className="text-[clamp(7px,1.51cqw,9.5px)] font-semibold uppercase tracking-[0.22em] text-[#00b8ad]">
               {panel.eyebrow}
             </p>
-            <h2 className="mt-2.5 max-w-[18ch] font-display text-[23px] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
+            <h2 className="mt-2.5 max-w-[18ch] font-display text-[clamp(13px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
               {panel.headline}
             </h2>
-            <p className="mt-2.5 max-w-[40ch] text-[11.5px] leading-[1.52] text-white/58">
+            <p className="mt-2.5 max-w-[40ch] text-[clamp(8px,1.83cqw,11.5px)] leading-[1.52] text-white/58">
               {panel.description.split("\n\n")[0]}
             </p>
             <button
               type="button"
               onClick={onOpenDetails}
-              className="group/btn mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] py-1.5 pl-3.5 pr-3 text-[9px] font-semibold uppercase tracking-[0.13em] text-white/75 transition hover:border-[#00b8ad]/55 hover:bg-white/[0.1] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
+              className="group/btn mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] py-1.5 pl-3.5 pr-3 text-[clamp(7px,1.43cqw,9px)] font-semibold uppercase tracking-[0.13em] text-white/75 transition hover:border-[#00b8ad]/55 hover:bg-white/[0.1] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
             >
               {labels.moreDetails}
               <ArrowUpRight
@@ -1321,19 +1348,19 @@ function SlideWindow({
     <div className="flex h-full flex-col text-white">
       <WindowBar name={panel.title} meta="Lukas Kaffer" />
       <div className="relative flex flex-1 flex-col justify-center overflow-hidden p-[7%]">
-        <p className="relative text-[9.5px] font-semibold uppercase tracking-[0.22em] text-[#3fe6da]">
+        <p className="relative text-[clamp(7px,1.51cqw,9.5px)] font-semibold uppercase tracking-[0.22em] text-[#3fe6da]">
           {panel.eyebrow}
         </p>
-        <h2 className="relative mt-2.5 max-w-[18ch] font-display text-[23px] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
+        <h2 className="relative mt-2.5 max-w-[18ch] font-display text-[clamp(13px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
           {panel.headline}
         </h2>
-        <p className="relative mt-2.5 max-w-[44ch] text-[11.5px] leading-[1.5] text-white/55">
+        <p className="relative mt-2.5 max-w-[44ch] text-[clamp(8px,1.83cqw,11.5px)] leading-[1.5] text-white/55">
           {panel.description}
         </p>
         <button
           type="button"
           onClick={onOpenDetails}
-          className="group/btn relative mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] py-1.5 pl-3.5 pr-3 text-[9px] font-semibold uppercase tracking-[0.13em] text-white/75 transition hover:border-[#00b8ad]/55 hover:bg-white/[0.1] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
+          className="group/btn relative mt-4 inline-flex w-fit items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] py-1.5 pl-3.5 pr-3 text-[clamp(7px,1.43cqw,9px)] font-semibold uppercase tracking-[0.13em] text-white/75 transition hover:border-[#00b8ad]/55 hover:bg-white/[0.1] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
         >
           {labels.moreDetails}
           <ArrowUpRight
@@ -1996,11 +2023,21 @@ function DetailView({
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  // Lock the page behind the full-screen overlay so background content doesn't
+  // scroll through on mobile. (Desktop doesn't scroll, so this is a no-op there.)
+  useEffect(() => {
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, []);
+
   return (
     // The main area itself reshapes: the monitor screen morphs into this surface
     // (View Transitions). No overlay, no card chrome — same page, edge to edge.
     <div
-      className={`absolute inset-0 z-30 flex flex-col bg-[#fafafa] text-[#181811] ${
+      className={`fixed inset-0 z-50 flex flex-col bg-[#fafafa] text-[#181811] lg:absolute lg:z-30 ${
         supportsVT ? "" : "detail-fallback-in"
       }`}
       style={{ viewTransitionName: MORPH_NAME }}
@@ -2008,7 +2045,7 @@ function DetailView({
       aria-label={panel.title}
     >
       {/* back row — part of the page, not dialog chrome */}
-      <div className="shrink-0 border-b border-[#e7e7e3]">
+      <div className="shrink-0 border-b border-[#e7e7e3] pt-[env(safe-area-inset-top)] lg:pt-0">
         <div
           className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-4 py-3"
           onClick={(event) => event.stopPropagation()}
@@ -2031,7 +2068,7 @@ function DetailView({
       </div>
 
       {/* scroll body */}
-      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain">
+      <div className="relative min-h-0 flex-1 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)]">
         {isAbout ? (
           <div className="pointer-events-none absolute bottom-0 right-0 top-0 z-0 hidden w-[48%] max-w-[490px] overflow-hidden lg:block">
             <Image
