@@ -960,12 +960,17 @@ export default function Home() {
                           </span>
                         </span>
                         <span
-                          className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                          className={`inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-full transition-all duration-300 ${
                             isActive
-                              ? "translate-x-0 bg-[#00b8ad]/10 text-[#06857c] opacity-100"
-                              : "-translate-x-1 text-[#c2c1b4] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                              ? "translate-x-0 bg-[#00b8ad]/10 px-3 text-[#06857c] opacity-100"
+                              : "w-8 text-[#c2c1b4] opacity-100 lg:-translate-x-1 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-x-0 lg:group-focus-visible:opacity-100"
                           }`}
                         >
+                          {isActive ? (
+                            <span className="whitespace-nowrap font-mono text-[10px] font-medium uppercase tracking-[0.12em]">
+                              {copy.ui.openDetail}
+                            </span>
+                          ) : null}
                           <ArrowUpRight size={15} />
                         </span>
                       </a>
@@ -1243,15 +1248,15 @@ function AboutWindow({
       <div className="relative flex flex-1 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_16%,rgba(0,184,173,0.16),transparent_38%),radial-gradient(circle_at_8%_96%,rgba(255,255,255,0.06),transparent_34%),linear-gradient(152deg,#0c1415,#0a0d0d_62%,#070b0c)]" />
 
-        <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_34%] items-center gap-[6%] px-[7%] py-[6%]">
+        <div className="relative grid flex-1 grid-cols-[minmax(0,1fr)_34%] items-[safe_center] gap-[6%] px-[7%] py-[6%]">
           <div className="min-w-0">
             <p className="text-[clamp(7px,1.51cqw,9.5px)] font-semibold uppercase tracking-[0.22em] text-[#00b8ad]">
               {panel.eyebrow}
             </p>
-            <h2 className="mt-2.5 max-w-[18ch] font-display text-[clamp(13px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
+            <h2 className="mt-2.5 max-w-[18ch] font-display text-[clamp(11px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
               {panel.headline}
             </h2>
-            <p className="mt-2.5 max-w-[40ch] text-[clamp(8px,1.83cqw,11.5px)] leading-[1.52] text-white/58">
+            <p className="mt-2.5 max-w-[40ch] text-[clamp(7px,1.83cqw,11.5px)] leading-[1.52] text-white/58">
               {panel.description.split("\n\n")[0]}
             </p>
             <button
@@ -1301,14 +1306,14 @@ function SlideWindow({
   return (
     <div className="flex h-full flex-col text-white">
       <WindowBar name={panel.title} meta="Lukas Kaffer" />
-      <div className="relative flex flex-1 flex-col justify-center overflow-hidden p-[7%]">
+      <div className="relative flex flex-1 flex-col justify-[safe_center] overflow-hidden p-[7%]">
         <p className="relative text-[clamp(7px,1.51cqw,9.5px)] font-semibold uppercase tracking-[0.22em] text-[#3fe6da]">
           {panel.eyebrow}
         </p>
-        <h2 className="relative mt-2.5 max-w-[18ch] font-display text-[clamp(13px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
+        <h2 className="relative mt-2.5 max-w-[18ch] font-display text-[clamp(11px,3.65cqw,23px)] font-semibold leading-[1.14] tracking-[-0.02em] text-white">
           {panel.headline}
         </h2>
-        <p className="relative mt-2.5 max-w-[44ch] text-[clamp(8px,1.83cqw,11.5px)] leading-[1.5] text-white/55">
+        <p className="relative mt-2.5 max-w-[44ch] text-[clamp(7px,1.83cqw,11.5px)] leading-[1.5] text-white/55">
           {panel.description}
         </p>
         <button
