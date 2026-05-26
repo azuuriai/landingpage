@@ -785,28 +785,6 @@ export default function Home() {
     withViewTransition(() => setDetailId(null));
   };
 
-  // Mobile sticky CTA: stay out of the way at the top of the page and only
-  // slide in once the user has scrolled past the hero — then tuck away again
-  // near the footer, where the inline CTA already lives. Avoids the "floating
-  // over everything" feel.
-  const [showStickyCta, setShowStickyCta] = useState(false);
-  useEffect(() => {
-    const onScroll = () => {
-      const y = window.scrollY;
-      const vh = window.innerHeight;
-      const nearBottom =
-        y + vh >= document.documentElement.scrollHeight - 220;
-      setShowStickyCta(y > vh * 0.5 && !nearBottom);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-
   useEffect(() => {
     const syncActivePanelFromHash = () => {
       const hash = window.location.hash.replace("#", "");
@@ -835,7 +813,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
       <div className="grain" />
 
-      <div className="desktop-stage-clip relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 pb-28 pt-6 sm:px-8 lg:h-svh lg:max-h-svh lg:px-10 lg:py-[clamp(0.4rem,calc(4.2vh-18.4px),1.25rem)]">
+      <div className="desktop-stage-clip relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 pb-14 pt-6 sm:px-8 lg:h-svh lg:max-h-svh lg:px-10 lg:py-[clamp(0.4rem,calc(4.2vh-18.4px),1.25rem)]">
         {/* running head */}
         <header className="rise flex items-center justify-between gap-4 border-b border-[#e4e4e1] pb-2.5 lg:pb-[clamp(0.35rem,calc(2.4vh-12px),0.7rem)]">
           <div className="flex items-center">
@@ -1023,7 +1001,7 @@ export default function Home() {
           </section>
 
           <section
-            className={`relative order-2 min-h-[248px] lg:order-none lg:h-full lg:min-h-0 ${
+            className={`relative order-2 min-h-[212px] lg:order-none lg:h-full lg:min-h-0 ${
               detailId ? "invisible" : ""
             }`}
             aria-label="Interactive product preview"
@@ -1090,30 +1068,6 @@ export default function Home() {
         </>
       ) : null}
 
-      {/* sticky mobile CTA — slides in only after scrolling past the hero, and
-          tucks away near the footer, so it isn't permanently floating */}
-      {!detailId ? (
-        <div
-          className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#e4e4e1] bg-[#f2f2f0]/85 px-6 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 backdrop-blur-md transition-transform duration-300 ease-out lg:hidden ${
-            showStickyCta ? "translate-y-0" : "translate-y-full"
-          }`}
-        >
-          <a
-            href="/contact"
-            onClick={(event) => {
-              event.preventDefault();
-              openDetail("contact");
-            }}
-            className="group flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#181811] text-[14px] font-medium text-[#f2f2f0] transition active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40"
-          >
-            {copy.ui.startProject}
-            <ArrowUpRight
-              size={16}
-              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-        </div>
-      ) : null}
       </main>
     </>
   );
@@ -1131,13 +1085,13 @@ function DeviceDesk({
   onOpenDetails: () => void;
 }) {
   return (
-    <div className="relative mx-auto flex min-h-[248px] max-w-[760px] items-center justify-center lg:h-full lg:min-h-0 xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
+    <div className="relative mx-auto flex min-h-[212px] max-w-[760px] items-center justify-center lg:h-full lg:min-h-0 xl:max-w-[840px] lg:translate-x-2 xl:translate-x-8">
       <div className="absolute left-[55%] top-[43%] h-[340px] w-[540px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(0,184,173,0.11),transparent_68%)] blur-2xl" />
       <div className="absolute bottom-[58px] left-[55%] h-[74px] w-[500px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(22,23,20,0.13),transparent_72%)] blur-lg" />
       <div className="absolute bottom-[102px] left-[55%] h-px w-[600px] -translate-x-1/2 bg-gradient-to-r from-transparent via-[#dcdcd8] to-transparent" />
 
-      <div className="relative mx-auto w-full max-w-[320px] sm:mx-0 sm:max-w-[720px] xl:max-w-[770px]">
-        <div className="absolute -left-1 bottom-[30px] z-30 w-[86px] rotate-[-2deg] sm:-left-6 sm:bottom-[44px] sm:w-[132px] lg:-left-14 lg:bottom-[62px]">
+      <div className="relative mx-auto w-full max-w-[278px] sm:mx-0 sm:max-w-[720px] xl:max-w-[770px]">
+        <div className="absolute -left-1 bottom-[26px] z-30 w-[74px] rotate-[-2deg] sm:-left-6 sm:bottom-[44px] sm:w-[132px] lg:-left-14 lg:bottom-[62px]">
           <IPhone panel={panel} onOpenDetails={onOpenDetails} />
         </div>
 
@@ -2047,7 +2001,7 @@ function DetailView({
       {/* back row — part of the page, not dialog chrome */}
       <div className="shrink-0 border-b border-[#e7e7e3] pt-[env(safe-area-inset-top)] lg:pt-0">
         <div
-          className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-4 py-3"
+          className="mx-auto flex w-full max-w-[760px] items-center justify-between gap-4 px-5 py-3 sm:px-8"
           onClick={(event) => event.stopPropagation()}
         >
           <button
@@ -2085,7 +2039,7 @@ function DetailView({
           </div>
         ) : null}
         <div
-          className="relative z-10 mx-auto w-full max-w-[760px]"
+          className="relative z-10 mx-auto w-full max-w-[760px] px-5 sm:px-8"
           onClick={(event) => event.stopPropagation()}
         >
           <header className="pb-8 pt-9 sm:pt-10">
