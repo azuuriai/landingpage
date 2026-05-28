@@ -616,7 +616,7 @@ const MORPH_NAME = "detail-surface";
 
 // --- Showcase detail content (Vienna Event Radar + Aurea Clinic) ------------
 const APP_STORE_URL =
-  "https://apps.apple.com/app/wien-event-radar/id6771109823";
+  "https://apps.apple.com/at/app/wien-event-radar/id6771109823";
 const CLINIC_URL = "/clinic";
 
 // App Store marketing previews (designed), shown as a horizontal iOS strip.

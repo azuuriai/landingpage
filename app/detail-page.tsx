@@ -324,7 +324,7 @@ function WorkMediaBand() {
               Eventdetails, persönliches Radar und Gruppenplanung.
             </p>
             <a
-              href="https://apps.apple.com/app/wien-event-radar/id6771109823"
+              href="https://apps.apple.com/at/app/wien-event-radar/id6771109823"
               target="_blank"
               rel="noreferrer"
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#181811] px-5 py-3 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black"
