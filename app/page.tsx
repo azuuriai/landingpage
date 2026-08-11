@@ -85,7 +85,7 @@ const pageCopy: Record<Language, PageCopy> = {
       headline: "I turn unclear problems into products people can test.",
       subcopy:
         "Product thinking, clear communication and AI-assisted development across Next.js, Supabase and native SwiftUI.",
-      proof: ["Vienna Event Radar live on web + iOS", "Scope, data flow and launch owned"],
+      proof: ["Directly with me", "One mind for strategy, design and code"],
       indexLabel: "Projects & profile",
     },
     ui: {
@@ -252,11 +252,11 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "About",
-        subtitle: "Community work, education and digital products",
-        eyebrow: "My path",
-        headline: "Tech communities, classrooms and products of my own.",
+        subtitle: "Strategy, design and code in one pair of hands",
+        eyebrow: "How I work",
+        headline: "Work directly with me, from the first idea to launch.",
         description:
-          "From 2017 to 2020, I was active in outreach and support for SmartCash, a community-governed blockchain project. I represented it in Zug and Porto and gave a talk in Zug.\n\nEducation taught me something equally important for product work: listen closely, bring order to complexity and explain things so people can move forward.",
+          "I sharpen the idea, build the product and stay with it through launch — on the web and natively on iOS.\n\nMy path here connects tech communities and education: at SmartCash I worked in outreach and support; in the classroom I learned how to make complex things understandable.",
         chips: ["SmartCash 2017–2020", "Education", "Web + native iOS"],
         details: [
           "2017–2020. Outreach and support for SmartCash, a community-governed blockchain project.",
@@ -344,7 +344,7 @@ const pageCopy: Record<Language, PageCopy> = {
       headline: "Ich mache unklare Probleme zu testbaren Produkten.",
       subcopy:
         "Produktdenken, klare Vermittlung und AI-assisted Development mit Next.js, Supabase und nativem SwiftUI.",
-      proof: ["Vienna Event Radar live im Web + auf iOS", "Scope, Datenfluss und Launch verantwortet"],
+      proof: ["Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
       indexLabel: "Projekte & Profil",
     },
     ui: {
@@ -511,11 +511,11 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "Über mich",
-        subtitle: "Tech-Community, Bildung und eigene digitale Produkte",
-        eyebrow: "Mein Weg",
-        headline: "Tech-Community, Klassenzimmer und eigene Produkte.",
+        subtitle: "Konzept, Design und Code aus einer Hand",
+        eyebrow: "Wie ich arbeite",
+        headline: "Direkt mit mir – von der ersten Idee bis zum Launch.",
         description:
-          "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt. Ich vertrat das Projekt in Zug und Porto und hielt in Zug selbst einen Vortrag.\n\nAus der Bildung bringe ich heute etwas mit, das in der Produktarbeit genauso zählt: zuhören, Komplexität sortieren und Dinge so erklären, dass Menschen damit weiterkommen.",
+          "Ich schärfe die Idee, setze sie um und begleite sie bis zum Launch – im Web und nativ auf iOS.\n\nMein Weg dorthin verbindet Tech-Community und Bildung: Bei SmartCash war ich in Outreach und Support aktiv; im Klassenzimmer habe ich gelernt, Komplexes verständlich zu machen.",
         chips: ["SmartCash 2017–2020", "Bildung", "Web + nativ iOS"],
         details: [
           "2017–2020. Outreach und Support bei SmartCash, einem community-gesteuerten Blockchain-Projekt.",
