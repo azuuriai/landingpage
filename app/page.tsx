@@ -108,7 +108,7 @@ const pageCopy: Record<Language, PageCopy> = {
     panels: [
       {
         id: "work",
-        title: "Vienna Event Radar",
+        title: "Showcase",
         subtitle: "Web and native iOS, live in Apple's App Store",
         eyebrow: "Featured work",
         headline: "From idea to App Store.",
@@ -367,7 +367,7 @@ const pageCopy: Record<Language, PageCopy> = {
     panels: [
       {
         id: "work",
-        title: "Vienna Event Radar",
+        title: "Showcase",
         subtitle: "Web und nativ in Apples App Store",
         eyebrow: "Ausgewählte Arbeit",
         headline: "Von der Idee in den App Store.",
