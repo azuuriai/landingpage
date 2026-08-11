@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" style="overflow-x:hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive">
   <base href="/clinic/">
   <title>Aurea Clinic — Ästhetische Medizin Wien</title>
 
@@ -135,11 +136,15 @@
   </style>
 </head>
 
-<body class="font-sans antialiased text-ink">
+<body class="font-sans antialiased text-ink overflow-x-hidden">
+
+  <aside role="note" style="position:fixed;top:0;left:0;right:0;z-index:100;background:#1a1a1a;color:#fff;padding:9px 16px;text-align:center;font:500 12px/1.4 Inter,system-ui,sans-serif;letter-spacing:.04em;">
+    Nicht veröffentlichte Konzeptstudie · Marke, Personen, Aussagen und Kontaktdaten sind fiktiv.
+  </aside>
 
   <!-- ─── Navigation ─────────────────────────────────────────────────── -->
-  <nav class="absolute top-0 left-0 right-0 z-50" style="background: linear-gradient(to bottom, rgba(249,247,244,0.07), transparent); mask-image: linear-gradient(to bottom, black 60%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);">
-    <div class="max-w-7xl mx-auto px-12 py-6 flex items-center justify-between">
+  <nav class="absolute top-9 left-0 right-0 z-50" style="background: linear-gradient(to bottom, rgba(249,247,244,0.07), transparent); mask-image: linear-gradient(to bottom, black 60%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);">
+    <div class="max-w-7xl mx-auto px-5 md:px-12 py-6 flex items-center justify-between">
 
       <!-- Wordmark -->
       <a href="/" class="flex items-center gap-3">
@@ -148,7 +153,7 @@
         <span class="font-sans text-[0.6rem] tracking-[0.28em] uppercase text-muted font-normal">Clinic Wien</span>
       </a>
 
-      <div class="flex items-center gap-12">
+      <div class="hidden md:flex items-center gap-12">
         <a href="#behandlungen" class="font-sans text-[0.6rem] tracking-[0.2em] uppercase text-muted hover:text-ink transition-colors duration-300">
           <span class="nav-lang"><span class="lang-de">Behandlungen</span><span class="lang-en hidden">Treatments</span></span>
         </a>

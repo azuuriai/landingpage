@@ -17,7 +17,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   applicationName: SITE_NAME,
-  title: "Lukas Kaffer · Webprodukte und iOS Apps aus einer Hand",
+  title: "Lukas Kaffer · AI-native Product Builder",
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   alternates: {
@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     "iOS App Entwicklung",
     "SwiftUI Entwickler",
     "Next.js Entwickler",
+    "AI-native Product Builder",
+    "AI-assisted Development",
     "MVP Entwicklung",
     "Landing Page Wien",
     "Lukas Kaffer",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
     apple: { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
   },
   openGraph: {
-    title: "Lukas Kaffer · Idee bis App Store",
+    title: "Lukas Kaffer · AI-native Product Builder",
     description: OG_DESCRIPTION,
     url: "/",
     siteName: SITE_NAME,
@@ -64,8 +66,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lukas Kaffer · Idee bis App Store",
-    description: "Aus deiner Idee wird ein Produkt, das wirklich live geht.",
+    title: "Lukas Kaffer · AI-native Product Builder",
+    description: OG_DESCRIPTION,
     images: ["/opengraph-image"],
   },
   robots: {
@@ -90,7 +92,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de" className="scroll-smooth">
+    <html lang="de" className="scroll-smooth" data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} bg-[#f2f2f0] font-sans text-[#181811] antialiased`}
       >

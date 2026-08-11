@@ -11,8 +11,10 @@ import {
 } from "react";
 import { flushSync } from "react-dom";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Moon, Plus, Sun } from "lucide-react";
 import { structuredData } from "./seo";
+import { SiteLogo } from "./site-logo";
 
 type Language = "en" | "de";
 
@@ -79,12 +81,12 @@ const pageCopy: Record<Language, PageCopy> = {
   en: {
     hero: {
       name: "Lukas Kaffer",
-      role: "Web and native iOS, Vienna.",
-      headline: "I turn rough ideas into products that go live.",
+      role: "Teacher · AI-native Product Builder, Vienna.",
+      headline: "I turn unclear problems into products people can test.",
       subcopy:
-        "For founders and small teams: websites, MVPs and native iOS apps — built all the way to launch, not just a mockup.",
-      proof: ["Directly with me", "One mind for strategy, design and code"],
-      indexLabel: "Project index",
+        "Product thinking, clear communication and AI-assisted development across Next.js, Supabase and native SwiftUI.",
+      proof: ["Vienna Event Radar live on web + iOS", "Scope, data flow and launch owned"],
+      indexLabel: "Projects & profile",
     },
     ui: {
       navLabel: "Portfolio preview controls",
@@ -111,8 +113,8 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Featured work",
         headline: "From idea to App Store.",
         description:
-          "Vienna Event Radar is the running example: the web product is live, the app is in the App Store. I built all of it myself, start to finish.",
-        chips: ["Web live", "iOS in App Store", "Built solo"],
+          "Vienna Event Radar is my concrete product proof: a live web product, a native App Store release and a shared backend with research and review workflows.",
+        chips: ["Web live", "iOS in App Store", "Product ownership"],
         details: [
           "Idea. Make events in Vienna discoverable in one place instead of scattered across twenty sources.",
           "Build. A web product with backend, AI-supported research, admin workflow and auth. Plus a native iOS 26 app with Apple-native interactions. Built end to end.",
@@ -125,14 +127,14 @@ const pageCopy: Record<Language, PageCopy> = {
           rows: [
             { label: "Product", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
-            { label: "Mode", value: "Solo built" },
+            { label: "Role", value: "Product + delivery" },
           ],
         },
         modalSections: [
           {
             label: "Context",
-            title: "An active product, in daily use.",
-            body: "Vienna Event Radar started as a rough idea and now runs as a product: web, native app, its own users and admin operation.",
+            title: "A public product, not a concept screen.",
+            body: "Vienna Event Radar started as a rough idea and is now available as a live web product and native App Store release.",
           },
           {
             label: "System",
@@ -344,12 +346,12 @@ const pageCopy: Record<Language, PageCopy> = {
   de: {
     hero: {
       name: "Lukas Kaffer",
-      role: "Web und Native iOS, Wien.",
-      headline: "Aus deiner Idee wird ein Produkt, das live geht.",
+      role: "Lehrer · AI-native Product Builder, Wien.",
+      headline: "Ich mache unklare Probleme zu testbaren Produkten.",
       subcopy:
-        "Für Gründer und kleine Teams: Websites, MVPs und native iOS Apps — gebaut bis zum Launch, nicht nur bis zum Mockup.",
-      proof: ["Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
-      indexLabel: "Projektindex",
+        "Produktdenken, klare Vermittlung und AI-assisted Development mit Next.js, Supabase und nativem SwiftUI.",
+      proof: ["Vienna Event Radar live im Web + auf iOS", "Scope, Datenfluss und Launch verantwortet"],
+      indexLabel: "Projekte & Profil",
     },
     ui: {
       navLabel: "Portfolio Vorschau steuern",
@@ -376,11 +378,11 @@ const pageCopy: Record<Language, PageCopy> = {
         eyebrow: "Ausgewählte Arbeit",
         headline: "Von der Idee in den App Store.",
         description:
-          "Vienna Event Radar als laufendes Beispiel: Das Webprodukt ist online, die App im App Store. Alles selbst gebaut, von der ersten Idee bis zur fertigen App.",
-        chips: ["Web live", "iOS im App Store", "Solo gebaut"],
+          "Vienna Event Radar ist mein konkreter Produktbeleg: öffentliches Webprodukt, native App-Store-Veröffentlichung und ein gemeinsames Backend mit Research- und Review-Workflow.",
+        chips: ["Web live", "iOS im App Store", "Produktverantwortung"],
         details: [
           "Idee. Events in Wien an einem Ort entdeckbar machen, statt verteilt über zwanzig Quellen.",
-          "Bau. Webprodukt mit Backend, AI-gestützter Recherche, Admin-Workflow und Auth. Dazu eine native iOS 26 App mit Apple-typischen Interaktionen. Alles aus einer Hand.",
+          "Umsetzung. Webprodukt mit Backend, AI-gestützter Recherche, Admin-Workflow und Auth. Dazu eine native SwiftUI-App mit plattformspezifischen Interaktionen.",
           "Live. Web läuft auf viennaeventradar.at. App im Apple App Store verfügbar. Etwas, das man antippen und installieren kann.",
           "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
@@ -390,14 +392,14 @@ const pageCopy: Record<Language, PageCopy> = {
           rows: [
             { label: "Produkt", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
-            { label: "Modus", value: "Solo gebaut" },
+            { label: "Rolle", value: "Produkt + Delivery" },
           ],
         },
         modalSections: [
           {
             label: "Ausgangslage",
-            title: "Ein Produkt im täglichen Einsatz.",
-            body: "Vienna Event Radar begann als grobe Idee und läuft heute als Produkt: Web, native App, eigene Nutzer, eigener Admin-Betrieb.",
+            title: "Ein öffentliches Produkt statt einer Konzeptfolie.",
+            body: "Vienna Event Radar begann als grobe Idee und ist heute als Webprodukt sowie als native App-Store-Veröffentlichung nutzbar.",
           },
           {
             label: "System",
@@ -515,12 +517,12 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "Über mich",
-        subtitle: "Wien, Österreich. Solo. Von der Idee bis zum Launch.",
-        eyebrow: "Lukas Kaffer",
-        headline: "Vom leeren Bildschirm bis in den App Store.",
+        subtitle: "Bildungshintergrund, Produktdenken und AI-assisted Delivery",
+        eyebrow: "Lehrer · Product Builder",
+        headline: "Verstehen und vermitteln, bevor gebaut wird.",
         description:
-          "Ich bin Lukas. Ich entwerfe und programmiere Web- und iOS-Produkte — Design und Code aus einer Hand, bis es wirklich live ist.\n\nEntscheidungen fallen in Minuten statt in zehn E-Mails, und was am Anfang besprochen wird, ist am Ende auch das, was läuft.",
-        chips: ["Solo, ohne Übergaben", "Web + nativ iOS", "Wien, AT"],
+          "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen und Komplexität verständlich zu strukturieren. Im Produktkontext wird daraus klares Scoping.\n\nClaude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
+        chips: ["Bildung + Produkt", "AI-assisted", "Web + nativ iOS"],
         details: [
           "Produktdenken vor Umsetzung.",
           "Design und Build in einem Loop.",
@@ -529,8 +531,8 @@ const pageCopy: Record<Language, PageCopy> = {
           "App Store Submission und Launch erfahren.",
         ],
         screen: {
-          sideLabel: "Modus",
-          sideValue: "Solo",
+          sideLabel: "Profil",
+          sideValue: "AI",
           rows: [
             { label: "Schärfen", value: "Angebot + User" },
             { label: "Bauen", value: "Full-Stack + iOS" },
@@ -608,16 +610,15 @@ const pageCopy: Record<Language, PageCopy> = {
   },
 };
 
-const PANEL_ORDER = ["services", "work", "about", "faq", "contact"];
+const PANEL_ORDER = ["work", "about", "services", "faq", "contact"];
 
 // Shared name that lets the View Transitions API morph the on-screen monitor into
 // the detail surface (and back), so the screen visibly "becomes" the page.
 const MORPH_NAME = "detail-surface";
 
-// --- Showcase detail content (Vienna Event Radar + Aurea Clinic) ------------
+// --- Showcase detail content (Vienna Event Radar) ---------------------------
 const APP_STORE_URL =
   "https://apps.apple.com/at/app/wien-event-radar/id6771109823";
-const CLINIC_URL = "/clinic";
 
 // App Store marketing previews (designed), shown as a horizontal iOS strip.
 const IOS_PREVIEWS = [
@@ -643,15 +644,11 @@ type WorkShowcaseContent = {
   iosBody: string;
   badgeSrc: string;
   badgeAlt: string;
-  aureaLabel: string;
-  aureaTitle: string;
-  aureaBody: string;
-  aureaCta: string;
 };
 
 const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
   de: {
-    brandCaption: "Gestaltet und gebaut, komplett aus einer Hand.",
+    brandCaption: "Produkt, Datenfluss und Delivery verantwortet.",
     webLabel: "Web-Plattform",
     webMeta: "viennaeventradar.at",
     capabilitiesLabel: "Was drinsteckt",
@@ -662,11 +659,11 @@ const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
       },
       {
         title: "KI-gestützte Recherche",
-        body: "Findet und filtert automatisch, was in Wien läuft.",
+        body: "Strukturierte Kandidaten werden vor dem Publishing geprüft.",
       },
       {
-        title: "Vollwertige Infrastruktur",
-        body: "Login, Datenbank, automatische E-Mails, Fehler-Monitoring.",
+        title: "Nachvollziehbare Infrastruktur",
+        body: "Supabase, Auth, Rollen, Admin-Review, Tests und Fehler-Monitoring.",
       },
       {
         title: "Von Anfang an auffindbar",
@@ -685,14 +682,9 @@ const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
       "Eine native iOS-App mit flüssiger Navigation, System-Gesten und einem Tempo, das sich am iPhone richtig anfühlt.",
     badgeSrc: "/case-studies/appstore-badge-de.svg",
     badgeAlt: "Laden im App Store",
-    aureaLabel: "Concept",
-    aureaTitle: "Aurea Clinic",
-    aureaBody:
-      "Eine Premium-Website für eine ästhetische Klinik, vollständig gestaltet und gebaut — ein eigenes Konzept.",
-    aureaCta: "Live ansehen",
   },
   en: {
-    brandCaption: "Designed and built end to end by one person.",
+    brandCaption: "Product, data flow and delivery owned.",
     webLabel: "Web platform",
     webMeta: "viennaeventradar.at",
     capabilitiesLabel: "What's inside",
@@ -703,11 +695,11 @@ const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
       },
       {
         title: "AI-assisted research",
-        body: "Automatically finds and filters what's happening in Vienna.",
+        body: "Structured candidates are reviewed before publishing.",
       },
       {
-        title: "Production-grade infrastructure",
-        body: "Login, database, automated emails, error monitoring.",
+        title: "Traceable infrastructure",
+        body: "Supabase, auth, roles, admin review, tests and error monitoring.",
       },
       {
         title: "Findable from the start",
@@ -726,11 +718,6 @@ const WORK_SHOWCASE: Record<Language, WorkShowcaseContent> = {
       "An iOS app with fluid navigation, system gestures and a speed that feels right on iPhone.",
     badgeSrc: "/case-studies/appstore-badge-en.svg",
     badgeAlt: "Download on the App Store",
-    aureaLabel: "Concept",
-    aureaTitle: "Aurea Clinic",
-    aureaBody:
-      "A premium website for an aesthetic clinic, fully designed and built as my own concept.",
-    aureaCta: "View it live",
   },
 };
 
@@ -754,7 +741,7 @@ function withViewTransition(update: () => void) {
 }
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>("de");
+  const language: Language = "de";
   const copy = pageCopy[language];
   const panels = useMemo(
     () =>
@@ -809,44 +796,28 @@ export default function Home() {
           __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
         }}
       />
-      <main className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
+      <a
+        href="#home-content"
+        className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-full bg-[#181811] px-4 py-2 text-[13px] text-white transition focus:translate-y-0"
+      >
+        Zum Inhalt springen
+      </a>
+      <main id="home-content" className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
       <div className="grain" />
 
       <div className="desktop-stage-clip relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 pb-14 pt-6 sm:px-8 lg:h-svh lg:max-h-svh lg:px-10 lg:py-[clamp(0.4rem,calc(4.2vh-18.4px),1.25rem)]">
         {/* running head */}
         <header className="rise flex items-center justify-between gap-4 border-b border-[#e4e4e1] pb-2.5 lg:pb-[clamp(0.35rem,calc(2.4vh-12px),0.7rem)]">
-          <div className="flex items-center">
-            <Image
-              src="/logo-lockup-clean.svg"
-              alt="Lukas Kaffer"
-              width={286}
-              height={70}
-              priority
-              className="block h-auto w-[178px] shrink-0 sm:w-[194px]"
-            />
-          </div>
-          <div className="flex items-center gap-6 sm:gap-10">
-            <div className="flex items-center gap-1.5 font-mono text-[11px]">
-              <span className="sr-only">{copy.ui.languageLabel}</span>
-              {(["en", "de"] as const).map((item, index) => (
-                <span key={item} className="flex items-center gap-1.5">
-                  {index > 0 ? <span className="text-[#c8c6b9]">/</span> : null}
-                  <button
-                    type="button"
-                    onClick={() => setLanguage(item)}
-                    className={`uppercase tracking-[0.12em] transition focus:outline-none focus-visible:text-[#06857c] ${
-                      language === item
-                        ? "text-[#181811]"
-                        : "text-[#a8a89b] hover:text-[#181811]"
-                    }`}
-                  >
-                    {item}
-                  </button>
-                </span>
-              ))}
-            </div>
-          </div>
+          <Link href="/" className="flex items-center" aria-label="Lukas Kaffer – Startseite">
+            <SiteLogo priority />
+          </Link>
+          <a
+            href="mailto:hello@lukaskaffer.com"
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-[#5f5f56] transition hover:text-[#181811]"
+          >
+            Kontakt
+          </a>
         </header>
 
         {/* editorial spread
@@ -866,7 +837,7 @@ export default function Home() {
                 into the section's flex column (lg:contents) so spacing is unchanged */}
             <div className="order-1 flex flex-col lg:contents">
               <p
-                className="rise font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px] lg:absolute lg:left-0 lg:top-0"
+                className="rise font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68] lg:absolute lg:left-0 lg:top-0"
                 style={{ animationDelay: "0.04s" }}
               >
                 {copy.hero.role}
@@ -886,13 +857,13 @@ export default function Home() {
                 </p>
               ) : null}
               <div
-                className="rise mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.13em] text-[#06857c] lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
+                className="rise mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.12em] text-[#006f68] lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
                 style={{ animationDelay: "0.22s" }}
               >
                 {copy.hero.proof.map((item, index) => (
                   <span key={item} className="flex items-center gap-x-3">
                     {index > 0 ? (
-                      <span className="text-[#06857c]/40" aria-hidden="true">
+                      <span className="text-[#006f68]/55" aria-hidden="true">
                         ·
                       </span>
                     ) : null}
@@ -909,7 +880,7 @@ export default function Home() {
               aria-label={copy.ui.navLabel}
               style={{ animationDelay: "0.28s" }}
             >
-              <span className="block font-mono text-[10px] uppercase tracking-[0.24em] text-[#b1b1a4]">
+              <span className="block font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56]">
                 {copy.hero.indexLabel}
               </span>
               <ul className="mt-1.5 border-t border-[#e7e7e3]">
@@ -918,15 +889,10 @@ export default function Home() {
 
                   return (
                     <li key={item.id} className="border-b border-[#e7e7e3]">
-                      <a
+                      <Link
                         href={item.detailHref ?? `#${item.id}`}
-                        onClick={(event) => {
-                          event.preventDefault();
-                          openDetail(item.id);
-                        }}
                         onMouseEnter={() => setActiveId(item.id)}
                         onFocus={() => setActiveId(item.id)}
-                        aria-current={isActive ? "true" : undefined}
                         aria-label={`${item.title} — ${copy.ui.openDetail}`}
                         className="group relative flex w-full items-center gap-3 py-3.5 pl-4 pr-2 text-left transition-colors focus:outline-none lg:py-[clamp(4px,calc(4.2vh-26.4px),12px)]"
                       >
@@ -941,7 +907,7 @@ export default function Home() {
                             className={`block font-display leading-[28px] tracking-[-0.015em] transition-all duration-300 ${
                               isActive
                                 ? "text-[21px] text-[#181811]"
-                                : "text-[19px] text-[#9a9a8e] group-hover:text-[#3d3d36]"
+                                : "text-[19px] text-[#5f5f56] group-hover:text-[#3d3d36]"
                             }`}
                           >
                             {item.title}
@@ -962,7 +928,7 @@ export default function Home() {
                         <span
                           className={`inline-flex h-8 shrink-0 items-center justify-center gap-1.5 rounded-full transition-all duration-300 ${
                             isActive
-                              ? "translate-x-0 bg-[#00b8ad]/10 px-3 text-[#06857c] opacity-100"
+                              ? "translate-x-0 bg-[#00b8ad]/10 px-3 text-[#006f68] opacity-100"
                               : "w-8 text-[#c2c1b4] opacity-100 lg:-translate-x-1 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-x-0 lg:group-focus-visible:opacity-100"
                           }`}
                         >
@@ -973,7 +939,7 @@ export default function Home() {
                           ) : null}
                           <ArrowUpRight size={15} />
                         </span>
-                      </a>
+                      </Link>
                     </li>
                   );
                 })}
@@ -984,20 +950,22 @@ export default function Home() {
               className="rise mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 lg:mt-[clamp(0.55rem,calc(4.2vh-18.4px),1.25rem)]"
               style={{ animationDelay: "0.34s" }}
             >
-              <a
-                href="/contact"
-                onClick={(event) => {
-                  event.preventDefault();
-                  openDetail("contact");
-                }}
+              <Link
+                href="/work"
                 className="group inline-flex h-11 items-center gap-2 rounded-full bg-[#181811] pl-5 pr-4 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00b8ad]/40 lg:h-[clamp(38px,calc(4.2vh+5.6px),44px)]"
               >
-                {copy.ui.startProject}
+                {copy.ui.viewCase}
                 <ArrowUpRight
                   size={15}
                   className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
-              </a>
+              </Link>
+              <Link
+                href="/contact"
+                className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#006f68] transition hover:text-[#181811]"
+              >
+                {copy.ui.startProject}
+              </Link>
             </div>
             {!copy.hero.subcopy ? (
               <div className="hidden h-8 lg:block" aria-hidden="true" />
@@ -1033,18 +1001,26 @@ export default function Home() {
         </div>
 
         {/* running foot */}
-        <footer className="rise flex items-center justify-between gap-4 border-t border-[#e4e4e1] pt-4 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9d9d90] lg:pt-[clamp(0.5rem,calc(4.2vh-22.4px),1rem)]">
+        <footer className="rise flex items-center justify-between gap-4 border-t border-[#e4e4e1] pt-4 font-mono text-[11px] uppercase tracking-[0.12em] text-[#5f5f56] lg:pt-[clamp(0.5rem,calc(4.2vh-22.4px),1rem)]">
           <span>© 2026 — Vienna, AT</span>
-          <span className="hidden items-center gap-2 text-[#7c7c70] sm:flex">
+          <span className="hidden items-center gap-2 text-[#5f5f56] sm:flex">
             <span className="accent-pulse h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
             {language === "de" ? "Offen für ausgewählte Projekte" : "Open to selected projects"}
           </span>
-          <a
-            href="mailto:hello@lukaskaffer.com"
-            className="transition hover:text-[#181811]"
-          >
-            hello@lukaskaffer.com
-          </a>
+          <div className="flex flex-wrap items-center justify-end gap-x-3 gap-y-2">
+            <Link href="/impressum" className="transition hover:text-[#181811]">
+              Impressum
+            </Link>
+            <Link href="/datenschutz" className="transition hover:text-[#181811]">
+              Datenschutz
+            </Link>
+            <a
+              href="mailto:hello@lukaskaffer.com"
+              className="transition hover:text-[#181811]"
+            >
+              hello@lukaskaffer.com
+            </a>
+          </div>
         </footer>
       </div>
 
@@ -1375,7 +1351,7 @@ function IPhonePreview() {
 }
 
 // Rich showcase body for the "work" detail: brand → web + capabilities →
-// native iOS app + App Store badge → Aurea Clinic concept (links to /clinic).
+// native iOS app + App Store badge.
 // Autoplaying, muted, looping video. Forces the DOM `muted` property (React's
 // `muted` prop is unreliable and would block autoplay) and actively retries
 // play() on canplay/loadeddata, since the dev server can serve media late.
@@ -1478,7 +1454,7 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
           height={500}
           className="h-8 w-auto sm:h-9"
         />
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]">
           {content.brandCaption}
         </span>
       </div>
@@ -1486,14 +1462,14 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
       {/* Web platform */}
       <section className="border-t border-[#eaeae7] pt-7">
         <div className="flex items-center justify-between gap-3 pb-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]">
             {content.webLabel}
           </span>
           <a
             href="https://viennaeventradar.at"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#06857c] transition hover:text-[#181811]"
+            className="group inline-flex items-center gap-1 font-mono text-[11px] uppercase tracking-[0.13em] text-[#006f68] transition hover:text-[#181811]"
           >
             {content.webMeta}
             <ArrowUpRight
@@ -1547,7 +1523,7 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
                 className={`flex h-[18px] w-[18px] items-center justify-center rounded-full transition ${
                   webDark
                     ? "bg-white/20 text-white shadow-sm"
-                    : "text-[#9d9d90] hover:text-[#54544c]"
+                    : "text-[#6c6c61] hover:text-[#54544c]"
                 }`}
               >
                 <Moon size={11} />
@@ -1564,7 +1540,7 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
         </div>
 
         {/* Capabilities */}
-        <p className="pb-4 pt-7 font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+        <p className="pb-4 pt-7 font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]">
           {content.capabilitiesLabel}
         </p>
         <div className="grid gap-x-8 gap-y-5 sm:grid-cols-2">
@@ -1582,14 +1558,14 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
             </div>
           ))}
         </div>
-        <p className="mt-6 font-mono text-[10.5px] leading-relaxed text-[#a8a89b]">
+        <p className="mt-6 font-mono text-[11px] leading-relaxed text-[#5f5f56]">
           {content.techLine}
         </p>
       </section>
 
       {/* Native iOS app */}
       <section className="mt-9 border-t border-[#eaeae7] pt-7">
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]">
           {content.iosLabel}
         </span>
         <h3 className="mt-3 max-w-[28ch] font-display text-[19px] font-medium leading-[1.24] tracking-[-0.015em] text-[#181811] sm:text-[21px]">
@@ -1635,53 +1611,6 @@ function WorkShowcase({ content }: { content: WorkShowcaseContent }) {
         </a>
       </section>
 
-      {/* Aurea Clinic concept */}
-      <section className="mt-9 border-t border-[#eaeae7] pt-7">
-        <div className="flex items-center justify-between gap-3 pb-3">
-          <div className="flex items-center gap-3">
-            <span className="rounded-full border border-[#e0e0dc] bg-white/60 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-[#7c7c70]">
-              {content.aureaLabel}
-            </span>
-            <span className="font-display text-[15px] font-medium tracking-[-0.01em] text-[#181811]">
-              {content.aureaTitle}
-            </span>
-          </div>
-          <a
-            href={CLINIC_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="group inline-flex shrink-0 items-center gap-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#06857c] transition hover:text-[#181811]"
-          >
-            {content.aureaCta}
-            <ArrowUpRight
-              size={12}
-              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-        </div>
-        <a
-          href={CLINIC_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="block overflow-hidden rounded-[16px] border border-[#e4e4e1] bg-[#1a1a1a] shadow-[0_24px_60px_-28px_rgba(12,14,13,0.4)]"
-        >
-          <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
-            <span className="h-[8px] w-[8px] rounded-full bg-[#c4a882]" />
-            <span className="text-[9.5px] font-semibold uppercase tracking-[0.15em] text-white/70">
-              lukaskaffer.com/clinic
-            </span>
-          </div>
-          <AutoplayVideo
-            webm="/case-studies/aurea-preview.webm"
-            mp4="/case-studies/aurea-preview.mp4"
-            poster="/case-studies/aurea-preview-poster.jpg"
-            className="block w-full"
-          />
-        </a>
-        <p className="mt-4 max-w-[58ch] text-[14px] leading-[1.6] text-[#6c6c61]">
-          {content.aureaBody}
-        </p>
-      </section>
     </div>
   );
 }
@@ -1717,10 +1646,10 @@ const FORM_COPY: Record<
       "In zwei, drei Sätzen: Was willst du launchen, für wen, und wo hakt es gerade?",
     submit: "Idee schicken",
     sending: "Wird gesendet …",
-    note: "Kostenlos und unverbindlich. Deine Angaben gehen direkt an mich.",
+    note: "Das Formular wird technisch über Web3Forms übermittelt.",
     successTitle: "Angekommen — danke!",
     successBody:
-      "Ich melde mich in der Regel innerhalb von 24 Stunden. Schau zur Sicherheit auch im Spam-Ordner nach.",
+      "Ich habe deine Nachricht erhalten und melde mich persönlich zurück.",
     errorBody: "Hat gerade nicht geklappt. Schreib mir gern direkt:",
     fallbackPrefix: "Lieber direkt mailen?",
     fallbackLink: CONTACT_EMAIL,
@@ -1735,10 +1664,10 @@ const FORM_COPY: Record<
       "In two or three sentences: what you want to launch, who it is for and where it is stuck.",
     submit: "Send idea",
     sending: "Sending …",
-    note: "Free and no obligation. Your message comes straight to me.",
+    note: "This form is technically processed through Web3Forms.",
     successTitle: "Got it — thank you!",
     successBody:
-      "I usually reply within 24 hours. Just in case, keep an eye on your spam folder too.",
+      "I received your message and will reply personally.",
     errorBody: "That didn't go through. Feel free to email me directly:",
     fallbackPrefix: "Rather email directly?",
     fallbackLink: CONTACT_EMAIL,
@@ -1756,6 +1685,8 @@ function ContactForm({ language }: { language: Language }) {
     if (status === "sending") return;
 
     const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+
     const fd = new FormData(form);
     const name = String(fd.get("name") ?? "").trim();
     const email = String(fd.get("email") ?? "").trim();
@@ -1809,7 +1740,11 @@ function ContactForm({ language }: { language: Language }) {
   if (status === "sent") {
     return (
       <div className="mt-2 border-t border-[#e7e7e3] pb-12 pt-9">
-        <div className="rounded-[18px] border border-[#cdeae6] bg-[#eef9f7] p-6 sm:p-7">
+        <div
+          role="status"
+          aria-live="polite"
+          className="rounded-[18px] border border-[#cdeae6] bg-[#eef9f7] p-6 sm:p-7"
+        >
           <span className="accent-pulse inline-block h-2 w-2 rounded-full bg-[#00b8ad]" />
           <p className="mt-3 font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181811]">
             {t.successTitle}
@@ -1823,14 +1758,13 @@ function ContactForm({ language }: { language: Language }) {
   }
 
   const labelClass =
-    "font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]";
+    "font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]";
   const fieldClass =
-    "mt-2 w-full rounded-[12px] border border-[#e0e0dc] bg-white/70 px-3.5 py-2.5 text-[14px] leading-6 text-[#181811] outline-none transition placeholder:text-[#abab9f] focus:border-[#00b8ad] focus:bg-white focus:ring-2 focus:ring-[#00b8ad]/25";
+    "mt-2 w-full rounded-[12px] border border-[#d5d5cf] bg-white/70 px-3.5 py-2.5 text-[14px] leading-6 text-[#181811] outline-none transition placeholder:text-[#6c6c61] focus:border-[#006f68] focus:bg-white focus:ring-2 focus:ring-[#006f68]/25";
 
   return (
     <form
       onSubmit={handleSubmit}
-      noValidate
       className="mt-2 border-t border-[#e7e7e3] pb-12 pt-9"
     >
       {/* Honeypot — visually hidden, off-screen, ignored by real users. */}
@@ -1894,11 +1828,16 @@ function ContactForm({ language }: { language: Language }) {
             />
           )}
         </button>
-        <p className="max-w-[40ch] text-[12px] leading-5 text-[#8a8a7e]">{t.note}</p>
+        <p className="max-w-[46ch] text-[12px] leading-5 text-[#5f5f56]">
+          {t.note}{" "}
+          <Link href="/datenschutz" className="underline underline-offset-2 transition hover:text-[#181811]">
+            Datenschutz
+          </Link>
+        </p>
       </div>
 
       {status === "error" ? (
-        <p className="mt-4 text-[13px] leading-6 text-[#9a4a3c]">
+        <p role="alert" className="mt-4 text-[13px] leading-6 text-[#893d31]">
           {t.errorBody}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
@@ -1908,7 +1847,7 @@ function ContactForm({ language }: { language: Language }) {
           </a>
         </p>
       ) : (
-        <p className="mt-4 text-[12.5px] leading-5 text-[#a0a094]">
+        <p className="mt-4 text-[12.5px] leading-5 text-[#5f5f56]">
           {t.fallbackPrefix}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
@@ -1935,7 +1874,7 @@ function FaqList({ items }: { items: { q: string; a: string }[] }) {
               <span className="font-display text-[16px] font-medium leading-[1.32] tracking-[-0.01em] text-[#181811] sm:text-[17px]">
                 {item.q}
               </span>
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#e0e0dc] text-[#7c7c70] transition-transform duration-300 group-open:rotate-45">
+              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#e0e0dc] text-[#5f5f56] transition-transform duration-300 group-open:rotate-45">
                 <Plus size={15} />
               </span>
             </summary>
@@ -2012,7 +1951,7 @@ function DetailView({
           <button
             type="button"
             onClick={onClose}
-            className="group inline-flex items-center gap-2 text-[13px] font-medium text-[#7c7c70] transition hover:text-[#181811] focus:outline-none focus-visible:text-[#181811]"
+            className="group inline-flex items-center gap-2 text-[13px] font-medium text-[#5f5f56] transition hover:text-[#181811] focus:outline-none focus-visible:text-[#181811]"
           >
             <ArrowLeft
               size={15}
@@ -2020,7 +1959,7 @@ function DetailView({
             />
             {labels.overview}
           </button>
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#a8a89b]">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56]">
             {panel.title}
           </span>
         </div>
@@ -2048,7 +1987,7 @@ function DetailView({
           onClick={(event) => event.stopPropagation()}
         >
           <header className="pb-8 pt-9 sm:pt-10">
-            <p className="font-mono text-[10.5px] uppercase tracking-[0.24em] text-[#06857c]">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68]">
               {panel.eyebrow}
             </p>
             <h1 className="mt-4 max-w-[20ch] font-display text-[29px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#181811] sm:text-[38px]">
@@ -2075,7 +2014,7 @@ function DetailView({
                   {panel.chips.map((chip) => (
                     <span
                       key={chip}
-                      className="rounded-full border border-[#e0e0dc] bg-white/60 px-2.5 py-1 font-mono text-[9.5px] uppercase tracking-[0.12em] text-[#7c7c70]"
+                      className="rounded-full border border-[#d5d5cf] bg-white/60 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.11em] text-[#5f5f56]"
                     >
                       {chip}
                     </span>
@@ -2098,7 +2037,7 @@ function DetailView({
                     index > 0 ? "border-t border-[#eaeae7] pt-6" : "pt-1"
                   } pb-6`}
                 >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]">
                     {section.label}
                   </span>
                   <div>
@@ -2167,7 +2106,7 @@ function DetailView({
                       ? "Eine Idee im Kopf? Erzähl sie mir."
                       : "Got an idea? Tell me about it."}
                   </p>
-                  <p className="mt-1.5 text-[12.5px] leading-5 text-[#8a8a7e]">
+                  <p className="mt-1.5 text-[12.5px] leading-5 text-[#5f5f56]">
                     {language === "de"
                       ? "Kostenlos und unverbindlich — direkt an mich, hello@lukaskaffer.com."
                       : "Free and no obligation — straight to me at hello@lukaskaffer.com."}

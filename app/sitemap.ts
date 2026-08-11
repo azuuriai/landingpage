@@ -16,5 +16,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: page.slug === "contact" ? 0.7 : 0.8,
     })),
+    {
+      url: `${SITE_URL}/impressum`,
+      lastModified: new Date("2026-08-11T00:00:00.000Z"),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_URL}/datenschutz`,
+      lastModified: new Date("2026-08-11T00:00:00.000Z"),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    },
   ];
 }

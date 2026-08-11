@@ -5,6 +5,8 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { ContactForm } from "./contact-form";
 import { detailPageMap, detailPages, type DetailPageData, type DetailSlug } from "./detail-pages-data";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "./seo";
+import { SiteLogo } from "./site-logo";
+import { WorkCaseStudy } from "./work-case-study";
 
 export function createDetailMetadata(slug: DetailSlug): Metadata {
   const page = detailPageMap[slug];
@@ -87,32 +89,22 @@ function JsonLd({ page }: { page: DetailPageData }) {
   );
 }
 
-function PageHeader({ activeSlug }: { activeSlug: DetailSlug }) {
+export function PageHeader({ activeSlug }: { activeSlug?: DetailSlug }) {
   return (
     <header className="border-b border-[#e4e4e1]">
-      <div className="mx-0 flex w-full max-w-[390px] min-w-0 flex-col gap-5 px-6 py-5 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <div className="mx-auto flex w-full max-w-[1180px] min-w-0 flex-col gap-5 px-6 py-5 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-10">
         <Link href="/" className="inline-flex w-fit items-center gap-3">
-          <Image
-            src="/logo-lockup-clean.svg"
-            alt="Lukas Kaffer"
-            width={286}
-            height={70}
-            priority
-            className="h-auto w-[178px] sm:w-[194px]"
-          />
+          <SiteLogo priority />
         </Link>
-        <nav
-          className="-mx-6 max-w-full px-6 sm:mx-0 sm:px-0 lg:w-auto"
-          aria-label="Seitennavigation"
-        >
-          <ul className="flex flex-nowrap gap-x-5 overflow-x-auto font-mono text-[10px] uppercase tracking-[0.16em] text-[#9d9d90] [-ms-overflow-style:none] [mask-image:linear-gradient(to_right,#000_88%,transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-x-5 lg:flex-wrap lg:overflow-visible lg:[mask-image:none]">
+        <nav aria-label="Seitennavigation">
+          <ul className="flex flex-wrap gap-x-5 gap-y-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[#5f5f56]">
             {detailPages.map((item) => (
               <li key={item.slug} className="shrink-0 whitespace-nowrap">
                 <Link
                   href={item.path}
                   aria-current={item.slug === activeSlug ? "page" : undefined}
                   className={`transition hover:text-[#181811] ${
-                    item.slug === activeSlug ? "text-[#06857c]" : ""
+                    item.slug === activeSlug ? "text-[#006f68]" : ""
                   }`}
                 >
                   {item.navLabel}
@@ -130,11 +122,20 @@ function HeroVisual({ page }: { page: DetailPageData }) {
   if (page.slug === "work") {
     return (
       <div className="rise relative mt-10 lg:mt-0" style={{ animationDelay: "0.1s" }}>
-        <div className="overflow-hidden rounded-[8px] border border-[#151817] bg-[#0a1113] shadow-[0_34px_90px_-46px_rgba(17,18,17,0.5)]">
+        <a
+          href="https://viennaeventradar.at"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Vienna Event Radar als Live-Webprodukt öffnen"
+          className="group block overflow-hidden rounded-[8px] border border-[#151817] bg-[#0a1113] shadow-[0_34px_90px_-46px_rgba(17,18,17,0.5)] outline-none focus-visible:ring-2 focus-visible:ring-[#006f68]/45"
+        >
           <div className="flex items-center gap-2 border-b border-white/[0.08] px-3.5 py-2">
             <span className="h-[8px] w-[8px] rounded-full bg-[#00b8ad]" />
             <span className="font-mono text-[9.5px] uppercase tracking-[0.15em] text-white/70">
               viennaeventradar.at
+            </span>
+            <span className="ml-auto inline-flex items-center gap-1 font-mono text-[9.5px] uppercase tracking-[0.14em] text-white/80 transition group-hover:text-white">
+              Live öffnen <ArrowUpRight size={11} />
             </span>
           </div>
           <Image
@@ -145,7 +146,7 @@ function HeroVisual({ page }: { page: DetailPageData }) {
             priority
             className="block w-full"
           />
-        </div>
+        </a>
       </div>
     );
   }
@@ -173,7 +174,7 @@ function DetailSections({ page }: { page: DetailPageData }) {
   if (page.faq) {
     return (
       <section className="border-t border-[#deded8]">
-        <div className="mx-0 w-full max-w-[390px] px-6 py-12 sm:mx-auto sm:max-w-[900px] sm:px-8 lg:px-10 lg:py-16">
+        <div className="mx-auto w-full max-w-[900px] px-6 py-12 sm:px-8 lg:px-10 lg:py-16">
           <div className="border-y border-[#e1e1dc]">
             {page.faq.map((item, index) => (
               <details
@@ -184,7 +185,7 @@ function DetailSections({ page }: { page: DetailPageData }) {
                   <h2 className="font-display text-[20px] font-medium leading-[1.22] tracking-[-0.01em] text-[#181811] sm:text-[24px]">
                     {item.question}
                   </h2>
-                  <span className="shrink-0 text-[#06857c]">+</span>
+                  <span className="shrink-0 text-[#006f68]">+</span>
                 </summary>
                 <p className="max-w-[68ch] pb-6 text-[15px] leading-7 text-[#6c6c61]">
                   {item.answer}
@@ -199,17 +200,14 @@ function DetailSections({ page }: { page: DetailPageData }) {
 
   return (
     <section className="border-t border-[#deded8]">
-      <div className="mx-0 grid w-full max-w-[390px] gap-0 px-6 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:px-10">
-        {page.sections.map((section, index) => (
+      <div className="mx-auto grid w-full max-w-[1180px] gap-0 px-6 sm:px-8 lg:px-10">
+        {page.sections.map((section) => (
           <div
             key={section.label}
             className="reveal-on-scroll grid gap-x-12 gap-y-3 border-b border-[#e1e1dc] py-10 md:grid-cols-[10rem_minmax(0,1fr)] lg:py-12"
           >
-            <div className="flex items-baseline gap-3 md:flex-col md:gap-2">
-              <span className="font-mono text-[10px] tracking-[0.16em] text-[#b4b4aa]">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#06857c]">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#006f68]">
                 {section.label}
               </p>
             </div>
@@ -232,16 +230,16 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
   if (!page.faq) return null;
 
   return (
-    <section className="mx-0 grid w-full max-w-[390px] gap-11 px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-start lg:gap-20 lg:px-10 lg:py-20 xl:gap-24">
+    <section className="mx-auto grid w-full max-w-[1180px] gap-11 px-6 py-12 sm:px-8 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1fr)] lg:items-start lg:gap-20 lg:px-10 lg:py-20 xl:gap-24">
       <div className="rise min-w-0">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90] transition hover:text-[#181811]"
+          className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56] transition hover:text-[#181811]"
         >
           <ArrowLeft size={13} />
           Startseite
         </Link>
-        <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]">
+        <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68]">
           {page.eyebrow}
         </p>
         <h1 className="mt-5 max-w-[11ch] text-balance font-display text-[43px] font-semibold leading-[1] tracking-[-0.03em] text-[#181811] sm:text-[58px] lg:text-[64px] xl:text-[68px]">
@@ -254,7 +252,7 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
           {page.chips.map((chip) => (
             <span
               key={chip}
-              className="rounded-full border border-[#e0e0dc] bg-white/55 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-[#7c7c70]"
+              className="rounded-full border border-[#d5d5cf] bg-white/55 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[#5f5f56]"
             >
               {chip}
             </span>
@@ -262,7 +260,7 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
         </div>
         <Link
           href="/contact"
-          className="mt-9 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#06857c] transition hover:text-[#181811]"
+          className="mt-9 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.15em] text-[#006f68] transition hover:text-[#181811]"
         >
           Andere Frage stellen
           <ArrowUpRight size={13} />
@@ -271,10 +269,10 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
 
       <div className="reveal-on-scroll min-w-0 lg:pt-[92px]">
         <div className="mb-3 flex items-center justify-between gap-4 border-b border-[#deded8] pb-4">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56]">
             Fragen & Antworten
           </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#b4b4aa]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#6c6c61]">
             {page.faq.length} Fragen
           </p>
         </div>
@@ -285,13 +283,13 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
             className="group border-b border-[#e1e1dc]"
           >
             <summary className="grid cursor-pointer list-none grid-cols-[2rem_minmax(0,1fr)_1.25rem] items-baseline gap-4 py-[1.15rem] outline-none transition focus-visible:ring-2 focus-visible:ring-[#00b8ad]/25 [&::-webkit-details-marker]:hidden sm:grid-cols-[2.75rem_minmax(0,1fr)_1.25rem]">
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-[#b4b4aa]">
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-[#6c6c61]">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <h2 className="font-display text-[18px] font-medium leading-[1.24] tracking-[-0.01em] text-[#181811] sm:text-[21px]">
                 {item.question}
               </h2>
-              <span className="text-right text-[#06857c] transition-transform group-open:rotate-45">
+              <span className="text-right text-[#006f68] transition-transform group-open:rotate-45">
                 +
               </span>
             </summary>
@@ -306,61 +304,12 @@ function FaqSplitPage({ page }: { page: DetailPageData }) {
   );
 }
 
-function WorkMediaBand() {
-  return (
-    <section className="border-t border-[#deded8] bg-[#fafafa]">
-      <div className="mx-0 w-full max-w-[390px] px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:px-10 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-start">
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#06857c]">
-              Native iOS App
-            </p>
-            <h2 className="mt-4 max-w-[32ch] font-display text-[28px] font-medium leading-[1.1] tracking-[-0.02em] text-[#181811] sm:text-[36px]">
-              App-Store-Screens statt nur Konzeptfolie.
-            </h2>
-            <p className="mt-4 max-w-[64ch] text-[15px] leading-7 text-[#6c6c61] sm:text-[16px]">
-              Das Produkt endet nicht beim Web. Die iOS App wurde als eigener
-              nativer Einstieg gebaut, mit Screens für Entdecken, Suche,
-              Eventdetails, persönliches Radar und Gruppenplanung.
-            </p>
-            <a
-              href="https://apps.apple.com/at/app/wien-event-radar/id6771109823"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#181811] px-5 py-3 text-[13px] font-medium text-[#f2f2f0] transition hover:bg-black"
-            >
-              Im App Store ansehen
-              <ArrowUpRight size={15} />
-            </a>
-          </div>
-          <div className="flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {[
-              "/case-studies/appstore/02_entdecken.png",
-              "/case-studies/appstore/04_event_details.png",
-              "/case-studies/appstore/06_merken_teilen_kalender.png",
-            ].map((src) => (
-              <Image
-                key={src}
-                src={src}
-                alt=""
-                width={720}
-                height={1561}
-                className="h-[360px] w-auto shrink-0 rounded-[8px] border border-[#e0e0dc]"
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function ContactFormSection() {
   return (
     <section className="border-t border-[#deded8]">
-      <div className="mx-0 grid w-full max-w-[390px] gap-8 px-6 py-10 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:grid-cols-[minmax(220px,0.65fr)_minmax(0,1fr)] lg:px-10 lg:py-12">
+      <div className="mx-auto grid w-full max-w-[1180px] gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[minmax(220px,0.65fr)_minmax(0,1fr)] lg:px-10 lg:py-12">
         <div className="min-w-0">
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#06857c]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#006f68]">
             Direkt an mich
           </p>
           <h2 className="mt-4 max-w-[13ch] font-display text-[31px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181811] sm:text-[40px]">
@@ -385,8 +334,8 @@ const CLOSING_COPY: Record<DetailSlug, { eyebrow: string; heading: string }> = {
     heading: "Klingt nach deinem Projekt? Dann lass es uns angehen.",
   },
   work: {
-    eyebrow: "Nächster Schritt",
-    heading: "Willst du etwas Ähnliches bauen? Erzähl mir davon.",
+    eyebrow: "Zum Case",
+    heading: "Fragen zu den Entscheidungen oder zum Build? Schreib mir.",
   },
   about: {
     eyebrow: "Nächster Schritt",
@@ -407,9 +356,9 @@ function ContactBand({ slug }: { slug: DetailSlug }) {
 
   return (
     <section className="border-t border-[#deded8]">
-      <div className="mx-0 flex w-full max-w-[390px] flex-col gap-6 px-6 py-10 sm:mx-auto sm:max-w-[1180px] sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10 lg:py-12">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-6 px-6 py-10 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-10 lg:py-12">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90]">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56]">
             {copy.eyebrow}
           </p>
           <h2 className="mt-3 max-w-[30ch] font-display text-[25px] font-medium leading-[1.14] tracking-[-0.018em] text-[#181811] sm:text-[32px]">
@@ -428,6 +377,27 @@ function ContactBand({ slug }: { slug: DetailSlug }) {
   );
 }
 
+export function SiteFooter() {
+  return (
+    <footer className="border-t border-[#deded8]">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-6 font-mono text-[11px] uppercase tracking-[0.12em] text-[#5f5f56] sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
+        <span>© 2026 · Lukas Kaffer · Wien</span>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <Link href="/impressum" className="transition hover:text-[#181811]">
+            Impressum
+          </Link>
+          <Link href="/datenschutz" className="transition hover:text-[#181811]">
+            Datenschutz
+          </Link>
+          <a href="mailto:hello@lukaskaffer.com" className="transition hover:text-[#181811]">
+            hello@lukaskaffer.com
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export function DetailPage({ slug }: { slug: DetailSlug }) {
   const page = detailPageMap[slug];
   const isFaq = slug === "faq";
@@ -435,7 +405,13 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
   return (
     <>
       <JsonLd page={page} />
-      <main className="min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
+      <a
+        href="#content"
+        className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-full bg-[#181811] px-4 py-2 text-[13px] text-white transition focus:translate-y-0"
+      >
+        Zum Inhalt springen
+      </a>
+      <main id="content" className="min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
         <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_15%_-8%,rgba(255,255,255,0.85),transparent_46%)]" />
         <div className="grain" />
         <div className="relative z-10">
@@ -444,16 +420,16 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
             <FaqSplitPage page={page} />
           ) : (
             <>
-              <section className="mx-0 grid w-full max-w-[390px] gap-10 px-6 py-12 sm:mx-auto sm:max-w-[1180px] sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)] lg:items-center lg:px-10 lg:py-20">
+              <section className="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(320px,430px)] lg:items-center lg:px-10 lg:py-20">
                 <div className="rise min-w-0">
                   <Link
                     href="/"
-                    className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-[#9d9d90] transition hover:text-[#181811]"
+                    className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-[#5f5f56] transition hover:text-[#181811]"
                   >
                     <ArrowLeft size={13} />
                     Startseite
                   </Link>
-                  <p className="mt-10 font-mono text-[10px] uppercase tracking-[0.24em] text-[#06857c] sm:text-[11px]">
+                  <p className="mt-10 font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68]">
                     {page.eyebrow}
                   </p>
                   <h1 className="mt-5 max-w-[13ch] text-balance font-display text-[43px] font-semibold leading-[0.98] tracking-[-0.03em] text-[#181811] sm:max-w-[15ch] sm:text-[60px] lg:text-[72px]">
@@ -466,7 +442,7 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
                     {page.chips.map((chip) => (
                       <span
                         key={chip}
-                        className="rounded-full border border-[#e0e0dc] bg-white/55 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.13em] text-[#7c7c70]"
+                        className="rounded-full border border-[#d5d5cf] bg-white/55 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[#5f5f56]"
                       >
                         {chip}
                       </span>
@@ -475,12 +451,12 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
                 </div>
                 <HeroVisual page={page} />
               </section>
-              <DetailSections page={page} />
+              {slug === "work" ? <WorkCaseStudy /> : <DetailSections page={page} />}
               {slug === "contact" ? <ContactFormSection /> : null}
-              {slug === "work" ? <WorkMediaBand /> : null}
             </>
           )}
           {slug !== "contact" ? <ContactBand slug={slug} /> : null}
+          <SiteFooter />
         </div>
       </main>
     </>

@@ -1,13 +1,13 @@
 export const SITE_URL = "https://lukaskaffer.com";
 export const SITE_NAME = "Lukas Kaffer";
 export const CONTACT_EMAIL = "hello@lukaskaffer.com";
-export const HOME_LAST_MODIFIED = new Date("2026-05-25T00:00:00.000Z");
+export const HOME_LAST_MODIFIED = new Date("2026-08-11T00:00:00.000Z");
 
 export const SITE_DESCRIPTION =
-  "Ich konzipiere, designe und baue Webprodukte und native iOS Apps. Solo, von der Idee bis in den App Store. Kurze Wege, direkter Kontakt, ohne Agentur dazwischen.";
+  "Lukas Kaffer verbindet Bildungshintergrund, Produktdenken und AI-assisted Development. Vienna Event Radar belegt die Umsetzung mit Next.js, Supabase und einer nativen SwiftUI-App.";
 
 export const OG_DESCRIPTION =
-  "Webprodukte und iOS Apps, gebaut bis in den App Store statt bis zum Mockup. Vienna Event Radar online und in Apples Store.";
+  "Produktdenken, klare Vermittlung und AI-assisted Development. Vienna Event Radar läuft im Web und nativ auf iOS.";
 
 export const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ??
@@ -27,7 +27,7 @@ export const structuredData = {
       url: SITE_URL,
       image: absoluteUrl("/profile/lukas-standing.jpg"),
       email: CONTACT_EMAIL,
-      jobTitle: "Web- und iOS-Produktentwickler",
+      jobTitle: "AI-native Product Builder",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Vienna",
@@ -40,7 +40,9 @@ export const structuredData = {
         "Next.js",
         "React",
         "TypeScript",
+        "Supabase",
         "Produktdesign",
+        "AI-assisted Development",
       ],
     },
     {
@@ -48,48 +50,10 @@ export const structuredData = {
       "@id": `${SITE_URL}/#website`,
       name: SITE_NAME,
       url: SITE_URL,
-      inLanguage: ["de-AT", "en"],
+      inLanguage: "de-AT",
       publisher: {
         "@id": `${SITE_URL}/#person`,
       },
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": `${SITE_URL}/#service`,
-      name: SITE_NAME,
-      url: SITE_URL,
-      image: absoluteUrl("/profile/lukas-seated.jpg"),
-      email: CONTACT_EMAIL,
-      description: SITE_DESCRIPTION,
-      areaServed: ["Austria", "Germany", "Switzerland", "Europe"],
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Vienna",
-        addressCountry: "AT",
-      },
-      makesOffer: [
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Websites und Landing Pages",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "MVPs und Webprodukte",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: "Native iOS Apps",
-          },
-        },
-      ],
     },
   ],
 };

@@ -75,10 +75,12 @@ const noindexHeaders = [
 const nextConfig: NextConfig = {
   devIndicators: false,
   poweredByHeader: false,
-  async rewrites() {
+  async redirects() {
     return [
-      // Serve the static Aurea concept demo at the clean /clinic URL.
-      { source: "/clinic", destination: "/clinic/index.html" },
+      // Keep the concept files in the repository without publishing the
+      // fictional clinic as part of the portfolio.
+      { source: "/clinic", destination: "/work", permanent: false },
+      { source: "/clinic/index.html", destination: "/work", permanent: false },
     ];
   },
   async headers() {

@@ -37,10 +37,10 @@ const FORM_COPY: Record<
       "In zwei, drei Sätzen: Was willst du launchen, für wen, und wo hakt es gerade?",
     submit: "Idee schicken",
     sending: "Wird gesendet ...",
-    note: "Kostenlos und unverbindlich. Deine Angaben gehen direkt an mich.",
+    note: "Das Formular wird technisch über Web3Forms übermittelt.",
     successTitle: "Angekommen - danke!",
     successBody:
-      "Ich melde mich in der Regel innerhalb von 24 Stunden. Schau zur Sicherheit auch im Spam-Ordner nach.",
+      "Ich habe deine Nachricht erhalten und melde mich persönlich zurück.",
     errorBody: "Hat gerade nicht geklappt. Schreib mir gern direkt:",
     fallbackPrefix: "Lieber direkt mailen?",
     fallbackLink: CONTACT_EMAIL,
@@ -55,10 +55,10 @@ const FORM_COPY: Record<
       "In two or three sentences: what you want to launch, who it is for and where it is stuck.",
     submit: "Send idea",
     sending: "Sending ...",
-    note: "Free and no obligation. Your message comes straight to me.",
+    note: "This form is technically processed through Web3Forms.",
     successTitle: "Got it - thank you!",
     successBody:
-      "I usually reply within 24 hours. Just in case, keep an eye on your spam folder too.",
+      "I received your message and will reply personally.",
     errorBody: "That didn't go through. Feel free to email me directly:",
     fallbackPrefix: "Rather email directly?",
     fallbackLink: CONTACT_EMAIL,
@@ -74,6 +74,8 @@ export function ContactForm({ language = "de" }: { language?: Language }) {
     if (status === "sending") return;
 
     const form = event.currentTarget;
+    if (!form.reportValidity()) return;
+
     const fd = new FormData(form);
     const name = String(fd.get("name") ?? "").trim();
     const email = String(fd.get("email") ?? "").trim();
@@ -123,7 +125,11 @@ export function ContactForm({ language = "de" }: { language?: Language }) {
 
   if (status === "sent") {
     return (
-      <div className="rounded-[8px] border border-[#cdeae6] bg-[#eef9f7] p-6 sm:p-7">
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-[8px] border border-[#cdeae6] bg-[#eef9f7] p-6 sm:p-7"
+      >
         <span className="accent-pulse inline-block h-2 w-2 rounded-full bg-[#00b8ad]" />
         <p className="mt-3 font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181811]">
           {t.successTitle}
@@ -136,12 +142,12 @@ export function ContactForm({ language = "de" }: { language?: Language }) {
   }
 
   const labelClass =
-    "font-mono text-[10px] uppercase tracking-[0.18em] text-[#9d9d90]";
+    "font-mono text-[11px] uppercase tracking-[0.16em] text-[#5f5f56]";
   const fieldClass =
-    "mt-2 w-full rounded-[8px] border border-[#e0e0dc] bg-white/70 px-3.5 py-2.5 text-[14px] leading-6 text-[#181811] outline-none transition placeholder:text-[#abab9f] focus:border-[#00b8ad] focus:bg-white focus:ring-2 focus:ring-[#00b8ad]/25";
+    "mt-2 w-full rounded-[8px] border border-[#d5d5cf] bg-white/70 px-3.5 py-2.5 text-[14px] leading-6 text-[#181811] outline-none transition placeholder:text-[#6c6c61] focus:border-[#006f68] focus:bg-white focus:ring-2 focus:ring-[#006f68]/25";
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit}>
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
           Company
@@ -202,11 +208,16 @@ export function ContactForm({ language = "de" }: { language?: Language }) {
             />
           )}
         </button>
-        <p className="max-w-[40ch] text-[12px] leading-5 text-[#8a8a7e]">{t.note}</p>
+        <p className="max-w-[46ch] text-[12px] leading-5 text-[#5f5f56]">
+          {t.note}{" "}
+          <a href="/datenschutz" className="underline underline-offset-2 transition hover:text-[#181811]">
+            Datenschutz
+          </a>
+        </p>
       </div>
 
       {status === "error" ? (
-        <p className="mt-4 text-[13px] leading-6 text-[#9a4a3c]">
+        <p role="alert" className="mt-4 text-[13px] leading-6 text-[#893d31]">
           {t.errorBody}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
@@ -216,7 +227,7 @@ export function ContactForm({ language = "de" }: { language?: Language }) {
           </a>
         </p>
       ) : (
-        <p className="mt-4 text-[12.5px] leading-5 text-[#a0a094]">
+        <p className="mt-4 text-[12.5px] leading-5 text-[#5f5f56]">
           {t.fallbackPrefix}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}

@@ -34,7 +34,7 @@ export type DetailPageData = {
   faq?: DetailFaq[];
 };
 
-const lastModified = new Date("2026-05-25T00:00:00.000Z");
+const lastModified = new Date("2026-08-11T00:00:00.000Z");
 
 export const detailPages: DetailPageData[] = [
   {
@@ -76,15 +76,15 @@ export const detailPages: DetailPageData[] = [
   {
     slug: "work",
     path: "/work",
-    navLabel: "Showcase",
-    eyebrow: "Live-Produkt",
-    title: "Vienna Event Radar zeigt, wie aus einer Idee ein laufendes Produkt wird.",
+    navLabel: "Case Study",
+    eyebrow: "Vienna Event Radar · Live Case",
+    title: "Vom Datenfluss bis zur nativen iOS-App – als Live-Case.",
     description:
-      "Web-Plattform, Admin-Workflow, KI-gestützte Recherche und native iOS App: ein Produkt, das online ist, im App Store liegt und weiterentwickelt wird.",
-    metaTitle: "Showcase · Vienna Event Radar und iOS App",
+      "Vienna Event Radar verbindet öffentliche Web-Plattform, strukturierte Recherche und Review, Supabase-Backend und eine native SwiftUI-App. Hier zeige ich Rolle, Entscheidungen und technische Grenzen.",
+    metaTitle: "Case Study · Vienna Event Radar von Web bis App Store",
     metaDescription:
-      "Ein Blick in Vienna Event Radar: Next.js Webprodukt, Supabase Backend, KI-Research und native SwiftUI App im App Store.",
-    chips: ["Live Web", "App Store", "Next.js", "SwiftUI"],
+      "Vienna Event Radar als belegbare Product-Builder-Case-Study: Next.js, Supabase, AI-Research, Admin-Review, Tests und native SwiftUI-App.",
+    chips: ["Web live", "App Store", "Next.js + Supabase", "SwiftUI"],
     lastModified,
     image: {
       src: "/case-studies/vienna-web-desktop.png",
@@ -94,19 +94,19 @@ export const detailPages: DetailPageData[] = [
     },
     sections: [
       {
-        label: "Idee",
-        title: "Events in Wien an einem Ort statt verstreut über zwanzig Quellen.",
-        body: "Vienna Event Radar begann als eigenes Produktproblem: Was läuft in Wien, was lohnt sich, und wie kann man das ohne endloses Suchen sichtbar machen?",
+        label: "Problem",
+        title: "Eine kurze, brauchbare Auswahl statt dutzender Tabs und Eventlisten.",
+        body: "Vienna Event Radar begann mit einer konkreten Produktfrage: Wie werden aktuelle Events in Wien schnell auffindbar, ohne Menschen mit einer weiteren unübersichtlichen Massenliste zu überfordern?",
       },
       {
-        label: "System",
-        title: "Recherche, Review, Datenbank und Veröffentlichung in einem Workflow.",
-        body: "Die Plattform kombiniert KI-gestützte Recherche, strukturierte Admin-Prüfung, Auth, Datenmodell, öffentliche Webansicht und ein gemeinsames Backend für Web und App.",
+        label: "Verantwortung",
+        title: "Scope, UX, Datenverträge und Auslieferung zusammenhalten.",
+        body: "Mein Beitrag reicht von Problemdefinition und Informationsarchitektur über Supabase-Datenmodell, Research- und Review-Workflow bis zu Tests, Monitoring, Web-Deployment und App-Store-Veröffentlichung.",
       },
       {
-        label: "iOS",
-        title: "Dieselbe Produktidee, aber nativ für das iPhone gebaut.",
-        body: "Die App nutzt SwiftUI, Apple-nahe Interaktionsmuster, schnelle Navigation und Funktionen, die auf dem Gerät zu Hause sind: Merken, Teilen, Kalender und persönliche Radar-Ansichten.",
+        label: "Arbeitsweise",
+        title: "AI-assisted entwickeln, Entscheidungen selbst verantworten.",
+        body: "Claude Code und ChatGPT beschleunigen Recherche, Umsetzung und Iteration. Produktlogik, Architekturentscheidungen, Prüfung und Veröffentlichung bleiben in meiner Verantwortung.",
       },
     ],
   },
@@ -114,14 +114,14 @@ export const detailPages: DetailPageData[] = [
     slug: "about",
     path: "/about",
     navLabel: "Über mich",
-    eyebrow: "Lukas Kaffer",
-    title: "Ich verbinde Produktdenken, Interface-Design und Code in einer Hand.",
+    eyebrow: "Lehrer · AI-native Product Builder",
+    title: "Mein Bildungshintergrund prägt, wie ich Produkte baue.",
     description:
-      "Ich arbeite solo aus Wien. Das heißt: kurze Wege, direkte Entscheidungen und keine Übergaben zwischen Strategie, Design und Entwicklung.",
-    metaTitle: "Über Lukas Kaffer · Web- und iOS-Produktentwicklung",
+      "Mein Hintergrund liegt in Bildung und Vermittlung. Heute verbinde ich diese Stärke mit Produktdenken, UX und AI-assisted Development für Web- und iOS-Produkte.",
+    metaTitle: "Über Lukas Kaffer · Lehrer und AI-native Product Builder",
     metaDescription:
-      "Lukas Kaffer baut Websites, Webprodukte und native iOS Apps aus Wien: Strategie, Design und Code aus einer Hand.",
-    chips: ["Vienna, AT", "Solo", "Web + iOS", "Launch-Fokus"],
+      "Lukas Kaffer verbindet Bildungshintergrund, Produktdenken, klare Kommunikation und AI-assisted Development mit Next.js, Supabase und SwiftUI.",
+    chips: ["Wien, AT", "Bildung + Produkt", "Web + iOS", "AI-assisted"],
     lastModified,
     image: {
       src: "/profile/lukas-standing.jpg",
@@ -131,19 +131,24 @@ export const detailPages: DetailPageData[] = [
     },
     sections: [
       {
-        label: "Arbeitsweise",
-        title: "Erst die Produktform, dann die Umsetzung.",
-        body: "Ich schärfe zuerst, was die Seite oder App leisten muss: Zielgruppe, wichtigste Aktion, Kernworkflow und das kleinste sinnvolle Release. Danach wird gebaut.",
+        label: "Ausgangspunkt",
+        title: "Verstehen und vermitteln, bevor gebaut wird.",
+        body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen verständlich zu machen. Im Produktkontext wird daraus klares Scoping.",
       },
       {
-        label: "Warum solo",
-        title: "Weniger Übergaben, mehr Zusammenhang.",
-        body: "Wenn Konzept, Interface und Code in einem Kopf bleiben, gehen weniger Details verloren. Entscheidungen passieren schneller, und das Ergebnis fühlt sich eher wie ein Produkt an als wie zusammengesetzte Einzelteile.",
+        label: "Produktarbeit",
+        title: "Erst Zielgruppe und Kernworkflow, dann der kleinste sinnvolle Release.",
+        body: "Ich reduziere grobe Ideen auf testbare Annahmen, entscheide bewusst über Scope und Datenfluss und baue anschließend eine Version, die sich tatsächlich benutzen und prüfen lässt.",
       },
       {
-        label: "Beweis",
-        title: "Eigene Produkte statt nur schöne Mockups.",
-        body: "Vienna Event Radar ist mein eigener Prüfstein: Idee, Design, Backend, Web, iOS App und Launch. Ein Produkt, das installiert und benutzt werden kann.",
+        label: "AI-assisted",
+        title: "Werkzeuge erhöhen das Tempo. Verantwortung bleibt bei mir.",
+        body: "Claude Code und ChatGPT helfen beim Erkunden, Implementieren und Gegenprüfen. Ich übernehme die Verantwortung für Produktlogik, Architekturentscheidungen, Tests, Datenschutzabwägungen und Deployment.",
+      },
+      {
+        label: "Beleg",
+        title: "Vienna Event Radar läuft im Web und nativ auf dem iPhone.",
+        body: "Der wichtigste Prüfstein ist ein öffentlich nutzbares Produkt mit Next.js-Webplattform, Supabase-Backend, Research- und Admin-Workflow, SwiftUI-App, Tests und laufendem Betrieb.",
       },
     ],
   },
@@ -165,7 +170,7 @@ export const detailPages: DetailPageData[] = [
       {
         question: "Was kostet ein Projekt und wie lange dauert es?",
         answer:
-          "Beides hängt vom Umfang ab. Nach einem kurzen, kostenlosen Erstgespräch bekommst du einen klaren Festpreis für einen klar definierten Umfang. Weil alles in einer Hand bleibt, bewegt sich das Projekt meist schneller als klassische Agenturprozesse.",
+          "Beides hängt vom Umfang ab. Nach einem kurzen Erstgespräch grenze ich Ziel, Kernworkflow und einen realistischen ersten Release ab. Darauf basiert ein klarer Vorschlag mit Umfang, Preis und nächsten Schritten.",
       },
       {
         question: "Baust du native iOS Apps?",
