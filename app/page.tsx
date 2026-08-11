@@ -108,7 +108,7 @@ const pageCopy: Record<Language, PageCopy> = {
     panels: [
       {
         id: "work",
-        title: "Showcase",
+        title: "Vienna Event Radar",
         subtitle: "Web and native iOS, live in Apple's App Store",
         eyebrow: "Featured work",
         headline: "From idea to App Store.",
@@ -122,8 +122,8 @@ const pageCopy: Record<Language, PageCopy> = {
           "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
         screen: {
-          sideLabel: "Live",
-          sideValue: "01",
+          sideLabel: "Status",
+          sideValue: "Live",
           rows: [
             { label: "Product", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
@@ -171,7 +171,7 @@ const pageCopy: Record<Language, PageCopy> = {
         ],
         screen: {
           sideLabel: "Offer",
-          sideValue: "04",
+          sideValue: "→",
           rows: [
             { label: "Visible", value: "Launch pages" },
             { label: "Validate", value: "MVPs + backend" },
@@ -252,53 +252,47 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "About",
-        subtitle: "Vienna, Austria. Solo. From idea to launch.",
-        eyebrow: "Lukas Kaffer",
-        headline: "From a blank screen to the App Store.",
+        subtitle: "Community work, education and digital products",
+        eyebrow: "My path",
+        headline: "Tech communities, classrooms and products of my own.",
         description:
-          "I'm Lukas. I design and build web and iOS products — design and code in one hand, until it's actually live.\n\nDecisions happen in minutes instead of ten emails, and what we agree at the start is what ships at the end.\n\nVienna Event Radar is my own proof point — my idea, my design, my code. Web online, app in the Apple Store.",
-        chips: ["Solo, no handoffs", "Web + native iOS", "Vienna, AT"],
+          "From 2017 to 2020, I was active in outreach and support for SmartCash, a community-governed blockchain project. I represented it in Zug and Porto and gave a talk in Zug.\n\nEducation taught me something equally important for product work: listen closely, bring order to complexity and explain things so people can move forward.",
+        chips: ["SmartCash 2017–2020", "Education", "Web + native iOS"],
         details: [
-          "Product thinking before implementation.",
-          "Design and build in one loop.",
-          "Web products with Next.js, React, TypeScript, Supabase and Vercel.",
-          "Native iOS builds with SwiftUI and iOS 26 patterns.",
-          "App Store submission and launch experience.",
+          "2017–2020. Outreach and support for SmartCash, a community-governed blockchain project.",
+          "In person. Project representation in Zug and Porto; speaker at Crypto World Zug.",
+          "Education. Making complex topics understandable for different levels of prior knowledge.",
+          "Today. Web and native iOS products from the first scope to launch.",
         ],
         screen: {
-          sideLabel: "Mode",
-          sideValue: "Solo",
+          sideLabel: "My path",
+          sideValue: "→",
           rows: [
-            { label: "Shape", value: "Offer + user" },
-            { label: "Build", value: "Full-stack + iOS" },
-            { label: "Launch", value: "Web + App Store" },
+            { label: "2017–2020", value: "SmartCash" },
+            { label: "Background", value: "Education" },
+            { label: "Today", value: "Web + iOS" },
           ],
         },
         modalSections: [
           {
-            label: "Point of view",
-            title: "Product shape first, implementation second.",
-            body: "What should exist, why and for whom. These questions come before every pixel and every line of code. Otherwise you get something that looks good and nobody needs.",
+            label: "SmartCash",
+            title: "My path into digital products did not start with AI.",
+            body: "From 2017 to 2020, I worked under an online pseudonym in outreach and support for SmartCash, a community-governed blockchain project.",
           },
           {
-            label: "Sharpen",
-            title: "Clarify what should exist.",
-            body: "Offer, audience, core workflow and launch focus are pulled tight before anything is built. This is the step that saves or sinks most projects.",
+            label: "In person",
+            title: "Representing technology beyond the screen.",
+            body: "I represented SmartCash at Crypto World Zug and AnarchaPortugal in Porto. In Zug, I also gave a talk about the project.",
           },
           {
-            label: "Design",
-            title: "Design that follows how it's used.",
-            body: "Interface, rhythm and responsive behavior are built around the most important actions your users take. Clear, polished and just as good on mobile.",
+            label: "Education",
+            title: "Listen first, then make things understandable.",
+            body: "My education background taught me to recognise different levels of prior knowledge, structure complexity and explain decisions clearly. Those skills now shape how I scope products.",
           },
           {
-            label: "Build",
-            title: "Clean stack, production standards.",
-            body: "Modern tools and high output, with architecture, design and taste held to one consistent bar instead of diluted between disciplines.",
-          },
-          {
-            label: "Launch",
-            title: "Ship, observe, iterate.",
-            body: "It goes online — deployment, SEO and security basics — and then improves from user feedback.",
+            label: "Today",
+            title: "Turning rough ideas into products people can use.",
+            body: "Today I combine this background with product thinking and AI-assisted development. Vienna Event Radar is the clearest proof: live on the web and available as a native iOS app.",
           },
         ],
         detailHref: "/about",
@@ -373,7 +367,7 @@ const pageCopy: Record<Language, PageCopy> = {
     panels: [
       {
         id: "work",
-        title: "Showcase",
+        title: "Vienna Event Radar",
         subtitle: "Web und nativ in Apples App Store",
         eyebrow: "Ausgewählte Arbeit",
         headline: "Von der Idee in den App Store.",
@@ -387,8 +381,8 @@ const pageCopy: Record<Language, PageCopy> = {
           "Stack: Next.js · Supabase · Vercel · SwiftUI",
         ],
         screen: {
-          sideLabel: "Live",
-          sideValue: "01",
+          sideLabel: "Status",
+          sideValue: "Live",
           rows: [
             { label: "Produkt", value: "Web + App Store" },
             { label: "Stack", value: "Next.js + Supabase" },
@@ -436,7 +430,7 @@ const pageCopy: Record<Language, PageCopy> = {
         ],
         screen: {
           sideLabel: "Angebot",
-          sideValue: "04",
+          sideValue: "→",
           rows: [
             { label: "Sichtbar", value: "Launch Pages" },
             { label: "Testen", value: "MVPs + Backend" },
@@ -517,53 +511,47 @@ const pageCopy: Record<Language, PageCopy> = {
       {
         id: "about",
         title: "Über mich",
-        subtitle: "Bildungshintergrund, Produktdenken und AI-assisted Delivery",
-        eyebrow: "Lehrer · Product Builder",
-        headline: "Verstehen und vermitteln, bevor gebaut wird.",
+        subtitle: "Tech-Community, Bildung und eigene digitale Produkte",
+        eyebrow: "Mein Weg",
+        headline: "Tech-Community, Klassenzimmer und eigene Produkte.",
         description:
-          "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen und Komplexität verständlich zu strukturieren. Im Produktkontext wird daraus klares Scoping.\n\nClaude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
-        chips: ["Bildung + Produkt", "AI-assisted", "Web + nativ iOS"],
+          "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt. Ich vertrat das Projekt in Zug und Porto und hielt in Zug selbst einen Vortrag.\n\nAus der Bildung bringe ich heute etwas mit, das in der Produktarbeit genauso zählt: zuhören, Komplexität sortieren und Dinge so erklären, dass Menschen damit weiterkommen.",
+        chips: ["SmartCash 2017–2020", "Bildung", "Web + nativ iOS"],
         details: [
-          "Produktdenken vor Umsetzung.",
-          "Design und Build in einem Loop.",
-          "Webprodukte mit Next.js, React, TypeScript, Supabase und Vercel.",
-          "Native iOS Builds mit SwiftUI und iOS 26 Patterns.",
-          "App Store Submission und Launch erfahren.",
+          "2017–2020. Outreach und Support bei SmartCash, einem community-gesteuerten Blockchain-Projekt.",
+          "Vor Ort. Projektvertretung in Zug und Porto; eigener Vortrag bei Crypto World Zug.",
+          "Bildung. Komplexe Inhalte für unterschiedliche Vorkenntnisse verständlich machen.",
+          "Heute. Web- und iOS-Produkte vom ersten Scope bis zum Launch.",
         ],
         screen: {
-          sideLabel: "Profil",
-          sideValue: "AI",
+          sideLabel: "Mein Weg",
+          sideValue: "→",
           rows: [
-            { label: "Schärfen", value: "Angebot + User" },
-            { label: "Bauen", value: "Full-Stack + iOS" },
-            { label: "Launch", value: "Web + App Store" },
+            { label: "2017–2020", value: "SmartCash" },
+            { label: "Hintergrund", value: "Bildung" },
+            { label: "Heute", value: "Web + iOS" },
           ],
         },
         modalSections: [
           {
-            label: "Haltung",
-            title: "Produktform zuerst, Umsetzung danach.",
-            body: "Was sollte existieren, wofür, für wen. Diese Fragen kommen vor jedem Pixel und vor jeder Zeile Code. Sonst entsteht etwas, das gut aussieht und niemand braucht.",
+            label: "SmartCash",
+            title: "Mein Weg in digitale Produkte begann nicht mit AI.",
+            body: "Von 2017 bis 2020 war ich unter einem Internet-Pseudonym im Outreach und Support von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt.",
           },
           {
-            label: "Schärfen",
-            title: "Klären, was existieren soll.",
-            body: "Angebot, Zielgruppe, Kernworkflow und Launch-Fokus werden eng gezogen, bevor gebaut wird. Der Schritt, der die meisten Projekte rettet oder versenkt.",
+            label: "Vor Ort",
+            title: "Technologie auch außerhalb des Chats vertreten.",
+            body: "Ich vertrat SmartCash bei Crypto World Zug und bei AnarchaPortugal in Porto. In Zug hielt ich zusätzlich einen Vortrag über das Projekt.",
           },
           {
-            label: "Design",
-            title: "Design, das der Nutzung folgt.",
-            body: "Interface, Rhythmus und responsives Verhalten orientieren sich an den wichtigsten Aktionen deiner Nutzer. Klar, hochwertig, auf dem Handy genauso gut.",
+            label: "Bildung",
+            title: "Erst zuhören, dann verständlich machen.",
+            body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, Komplexität zu strukturieren und Entscheidungen nachvollziehbar zu erklären. Das prägt heute auch mein Produkt-Scoping.",
           },
           {
-            label: "Umsetzung",
-            title: "Sauberer Stack, Production Standards.",
-            body: "Moderne Werkzeuge und hoher Output, mit Architektur, Design und Geschmack auf einem konsistenten Niveau statt zwischen Disziplinen zerrieben.",
-          },
-          {
-            label: "Launch",
-            title: "Shippen, beobachten, iterieren.",
-            body: "Es geht online — Deployment, SEO- und Security-Basics — und wird danach mit Nutzer-Feedback besser.",
+            label: "Heute",
+            title: "Aus groben Ideen werden Produkte, die man wirklich benutzen kann.",
+            body: "Heute verbinde ich diesen Hintergrund mit Produktdenken und AI-assisted Development. Vienna Event Radar ist der klarste Beleg: live im Web und als native iOS-App verfügbar.",
           },
         ],
         detailHref: "/about",
@@ -610,7 +598,7 @@ const pageCopy: Record<Language, PageCopy> = {
   },
 };
 
-const PANEL_ORDER = ["work", "about", "services", "faq", "contact"];
+const PANEL_ORDER = ["about", "work", "services", "faq", "contact"];
 
 // Shared name that lets the View Transitions API morph the on-screen monitor into
 // the detail surface (and back), so the screen visibly "becomes" the page.

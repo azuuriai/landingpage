@@ -3,7 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { ContactForm } from "./contact-form";
-import { detailPageMap, detailPages, type DetailPageData, type DetailSlug } from "./detail-pages-data";
+import {
+  detailPageMap,
+  detailPageNavOrder,
+  type DetailPageData,
+  type DetailSlug,
+} from "./detail-pages-data";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "./seo";
 import { SiteLogo } from "./site-logo";
 import { WorkCaseStudy } from "./work-case-study";
@@ -98,7 +103,7 @@ export function PageHeader({ activeSlug }: { activeSlug?: DetailSlug }) {
         </Link>
         <nav aria-label="Seitennavigation">
           <ul className="flex flex-wrap gap-x-5 gap-y-3 font-mono text-[11px] uppercase tracking-[0.14em] text-[#5f5f56]">
-            {detailPages.map((item) => (
+            {detailPageNavOrder.map((slug) => detailPageMap[slug]).map((item) => (
               <li key={item.slug} className="shrink-0 whitespace-nowrap">
                 <Link
                   href={item.path}

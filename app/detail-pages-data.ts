@@ -34,7 +34,15 @@ export type DetailPageData = {
   faq?: DetailFaq[];
 };
 
-const lastModified = new Date("2026-08-11T00:00:00.000Z");
+const lastModified = new Date("2026-08-12T00:00:00.000Z");
+
+export const detailPageNavOrder: DetailSlug[] = [
+  "about",
+  "work",
+  "services",
+  "faq",
+  "contact",
+];
 
 export const detailPages: DetailPageData[] = [
   {
@@ -114,14 +122,14 @@ export const detailPages: DetailPageData[] = [
     slug: "about",
     path: "/about",
     navLabel: "Über mich",
-    eyebrow: "Lehrer · AI-native Product Builder",
-    title: "Mein Bildungshintergrund prägt, wie ich Produkte baue.",
+    eyebrow: "Mein Weg",
+    title: "Tech-Community, Klassenzimmer und eigene Produkte.",
     description:
-      "Mein Hintergrund liegt in Bildung und Vermittlung. Heute verbinde ich diese Stärke mit Produktdenken, UX und AI-assisted Development für Web- und iOS-Produkte.",
-    metaTitle: "Über Lukas Kaffer · Lehrer und AI-native Product Builder",
+      "SmartCash, Bildung und eigene Produkte: drei Stationen, die prägen, wie ich heute Probleme sortiere, erkläre und umsetze.",
+    metaTitle: "Über Lukas Kaffer · Bildung, Community und digitale Produkte",
     metaDescription:
-      "Lukas Kaffer verbindet Bildungshintergrund, Produktdenken, klare Kommunikation und AI-assisted Development mit Next.js, Supabase und SwiftUI.",
-    chips: ["Wien, AT", "Bildung + Produkt", "Web + iOS", "AI-assisted"],
+      "Von SmartCash Outreach und Support über Bildung bis zu Web- und iOS-Produkten: der Weg von Lukas Kaffer zum Product Builder.",
+    chips: ["Wien, AT", "SmartCash 2017–2020", "Bildung", "Web + iOS"],
     lastModified,
     image: {
       src: "/profile/lukas-standing.jpg",
@@ -131,19 +139,24 @@ export const detailPages: DetailPageData[] = [
     },
     sections: [
       {
-        label: "Ausgangspunkt",
-        title: "Verstehen und vermitteln, bevor gebaut wird.",
-        body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen verständlich zu machen. Im Produktkontext wird daraus klares Scoping.",
+        label: "2017–2020",
+        title: "Outreach und Support in einer dezentralen Tech-Community.",
+        body: "Von 2017 bis 2020 war ich unter einem Internet-Pseudonym im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt. Die Rolle war community-basiert und keine klassische Anstellung.",
       },
       {
-        label: "Produktarbeit",
-        title: "Erst Zielgruppe und Kernworkflow, dann der kleinste sinnvolle Release.",
-        body: "Ich reduziere grobe Ideen auf testbare Annahmen, entscheide bewusst über Scope und Datenfluss und baue anschließend eine Version, die sich tatsächlich benutzen und prüfen lässt.",
+        label: "Vor Ort",
+        title: "Ein Projekt auch außerhalb des Internets vertreten.",
+        body: "Ich vertrat SmartCash bei Crypto World Zug und bei AnarchaPortugal in Porto. In Zug hielt ich zusätzlich selbst einen Vortrag über das Projekt.",
       },
       {
-        label: "AI-assisted",
-        title: "Werkzeuge erhöhen das Tempo. Verantwortung bleibt bei mir.",
-        body: "Claude Code und ChatGPT helfen beim Erkunden, Implementieren und Gegenprüfen. Ich übernehme die Verantwortung für Produktlogik, Architekturentscheidungen, Tests, Datenschutzabwägungen und Deployment.",
+        label: "Bildung",
+        title: "Zuhören, einordnen und verständlich erklären.",
+        body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen nachvollziehbar zu machen. In der Produktarbeit wird daraus klares Scoping.",
+      },
+      {
+        label: "Heute",
+        title: "Aus einer groben Idee wird eine Version, die man wirklich benutzen kann.",
+        body: "Heute verbinde ich diesen Hintergrund mit Produktdenken, UX und AI-assisted Development. Claude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
       },
       {
         label: "Beleg",
