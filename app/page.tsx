@@ -82,7 +82,7 @@ const pageCopy: Record<Language, PageCopy> = {
     hero: {
       name: "Lukas Kaffer",
       role: "Teacher · AI-native Product Builder, Vienna.",
-      headline: "I turn unclear problems into products people can test.",
+      headline: "I take digital products from idea to launch.",
       subcopy:
         "Product thinking, clear communication and AI-assisted development across Next.js, Supabase and native SwiftUI.",
       proof: ["Directly with me", "One mind for strategy, design and code"],
@@ -341,7 +341,7 @@ const pageCopy: Record<Language, PageCopy> = {
     hero: {
       name: "Lukas Kaffer",
       role: "Lehrer · AI-native Product Builder, Wien.",
-      headline: "Ich mache unklare Probleme zu testbaren Produkten.",
+      headline: "Ich bringe digitale Produkte von der Idee bis zum Launch.",
       subcopy:
         "Produktdenken, klare Vermittlung und AI-assisted Development mit Next.js, Supabase und nativem SwiftUI.",
       proof: ["Direkt mit mir", "Ein Kopf für Konzept, Design und Code"],
