@@ -1,0 +1,6 @@
+{"name": "iu-book-prices", "url": "https://indeedunique.com/preise/semesterkurse/?entry=0", "width": 1152, "height": 720, "scale": 2, "settleMs": 6000,
+ "steps": [
+  {"hold": 1000},
+  {"scroll": {"to": 640, "ms": 2200}}, {"hold": 1600},
+  {"scroll": {"to": 1200, "ms": 2600}}, {"hold": 1200}
+ ]}

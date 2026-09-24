@@ -10,6 +10,7 @@ import {
   type DetailSlug,
 } from "./detail-pages-data";
 import { absoluteUrl, pageMetadata, SITE_URL } from "./seo";
+import { ServicesContent } from "./(pages)/services/services-content";
 import { ProjectsOverview } from "./(pages)/work/projects-overview";
 
 export function createDetailMetadata(slug: DetailSlug): Metadata {
@@ -160,6 +161,7 @@ export function DetailPage({ slug }: { slug: DetailSlug }) {
     <>
       <JsonLd data={detailJsonLd(page)} />
       {slug === "work" ? <ProjectsOverview /> : null}
+      {slug === "services" ? <ServicesContent /> : null}
       {page.faq ? <FaqList page={page} /> : <DetailSections page={page} />}
       {slug === "contact" ? <ContactFormSection /> : null}
       {slug !== "contact" ? <ContactBand heading={CLOSING_HEADING[slug]} /> : null}

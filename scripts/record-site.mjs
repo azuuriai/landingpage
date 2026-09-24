@@ -8,8 +8,9 @@
 // the result is smooth, with animations at their real speed.
 //
 // JavaScript animations get the same treatment: the page's
-// requestAnimationFrame and performance.now() are replaced by a recording
-// clock that advances exactly 1/30 s per video frame (in two 60 Hz ticks).
+// requestAnimationFrame, performance.now(), setTimeout and setInterval run on a
+// recording clock that advances exactly 1/30 s per video frame (in two 60 Hz
+// ticks).
 // Per-frame easing (lerps), time-based glides and modal transitions therefore
 // move identically in every frame instead of catching up in uneven jumps.
 //
@@ -126,17 +127,27 @@ const SLOWDOWN = config.slowdown ?? 6;
 await send("Animation.enable");
 await send("Animation.setPlaybackRate", { playbackRate: 1 / SLOWDOWN });
 
-// Recording clock for page scripts (see header). Until recording starts it
-// ticks along in real time so the page can load and settle normally.
+// Recording clock for page scripts (see header). It follows the document
+// timeline, which Animation.setPlaybackRate slows down together with every
+// CSS/Web animation. Pages that line a canvas or rAF animation up with their
+// CSS animations (IU's intro: rig time = rAF time - animation.startTime) then
+// see one clock, exactly as in a normal page load. A private clock that starts
+// from the real load time ran ~160 ms ahead of the CSS, so the dancer finished
+// its jump before the lettering ring closed around it.
 await send("Page.addScriptToEvaluateOnNewDocument", {
   source: `(() => {
     const realNow = performance.now.bind(performance);
+    const timelineNow = () => {
+      const t = document.timeline && document.timeline.currentTime;
+      return typeof t === "number" ? t : null;
+    };
     const callbacks = new Map();
-    let clock = realNow();
+    let clock = timelineNow() ?? 0;
     let nextId = 0;
     let manual = ${config.startAt === "dom"};
     const tick = (ms) => {
       clock += ms;
+      if (manual) fireTimers();
       const due = [...callbacks.values()];
       callbacks.clear();
       for (const cb of due) {
@@ -146,15 +157,65 @@ await send("Page.addScriptToEvaluateOnNewDocument", {
     performance.now = () => clock;
     window.requestAnimationFrame = (cb) => { callbacks.set(++nextId, cb); return nextId; };
     window.cancelAnimationFrame = (id) => callbacks.delete(id);
+
+    // Timers run on the same clock. Otherwise a page that sequences an
+    // animation with setTimeout (an intro that ends after N ms, a gallery
+    // that settles N ms after scrolling) fires SLOWDOWN times too early and
+    // cuts its own slowed-down animation short.
+    const realSetTimeout = window.setTimeout.bind(window);
+    const realClearTimeout = window.clearTimeout.bind(window);
+    const timers = new Map();
+    let nextTimer = 1e6;
+    const addTimer = (fn, ms, args, every) => {
+      const id = ++nextTimer;
+      const delay = Math.max(0, Number(ms) || 0);
+      if (!manual) {
+        const run = () => {
+          if (!timers.has(id)) return;
+          if (typeof fn === "function") fn(...args);
+          if (every) timers.set(id, { real: realSetTimeout(run, delay) });
+          else timers.delete(id);
+        };
+        timers.set(id, { real: realSetTimeout(run, delay) });
+      } else {
+        timers.set(id, { due: clock + delay, fn, args, every: every ? delay : 0 });
+      }
+      return id;
+    };
+    const fireTimers = () => {
+      for (const [id, t] of [...timers].sort((a, b) => (a[1].due ?? 0) - (b[1].due ?? 0))) {
+        if (t.due === undefined || t.due > clock || !timers.has(id)) continue;
+        if (t.every) t.due = clock + Math.max(1, t.every);
+        else timers.delete(id);
+        try { if (typeof t.fn === "function") t.fn(...t.args); } catch (error) { console.error(error); }
+      }
+    };
+    window.setTimeout = (fn, ms, ...args) => addTimer(fn, ms, args, false);
+    window.setInterval = (fn, ms, ...args) => addTimer(fn, ms, args, true);
+    window.clearTimeout = window.clearInterval = (id) => {
+      const t = timers.get(id);
+      if (t?.real !== undefined) realClearTimeout(t.real);
+      timers.delete(id);
+    };
     const realtime = () => {
       if (manual) return;
-      tick(realNow() - clock);
-      setTimeout(realtime, 16);
+      tick(Math.max(0, (timelineNow() ?? realNow()) - clock));
+      realSetTimeout(realtime, 16);
     };
     realtime();
     window.__recordingClock = {
-      start() { manual = true; },
-      advance(ms, ticks) { for (let i = 0; i < ticks; i++) tick(ms / ticks); },
+      start() {
+        manual = true;
+        const t = timelineNow();
+        if (t !== null && t > clock) clock = t;
+      },
+      // One video frame: move to where the (slowed) document timeline is now,
+      // in \`ticks\` even steps; fall back to \`ms\` if it has not moved.
+      advance(ms, ticks) {
+        const t = timelineNow();
+        const span = t !== null && t > clock ? t - clock : ms;
+        for (let i = 0; i < ticks; i++) tick(span / ticks);
+      },
     };
   })();`,
 });
@@ -169,10 +230,12 @@ if (config.startAt !== "dom") await sleep((config.settleMs ?? 1500) * SLOWDOWN);
 const TICK_MS = FRAME_MS * SLOWDOWN;
 await evaluate("window.__recordingClock.start()");
 let nextTick = performance.now();
+// Wait for the grid first, then bring the page clock up to the timeline and
+// capture right away: rAF drawing and CSS animations then show the same moment.
 const advance = async () => {
-  await evaluate(`window.__recordingClock.advance(${FRAME_MS}, 2)`);
   nextTick += TICK_MS;
   await sleep(Math.max(0, nextTick - performance.now()));
+  await evaluate(`window.__recordingClock.advance(${FRAME_MS}, 2)`);
 };
 
 let frame = 0;

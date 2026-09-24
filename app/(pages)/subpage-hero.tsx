@@ -4,6 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { BackLink, Chips } from "@/app/_components/site-chrome";
 import { detailPages } from "@/app/detail-pages-data";
+import { ServiceIndex } from "./services/service-index";
 
 // The opening block of every navigation page (Über mich, Showcase,
 // Leistungen, FAQ, Kontakt). It lives in the shared layout and has one fixed
@@ -30,6 +31,8 @@ export function SubpageHero() {
         </p>
         <Chips items={page.chips} />
       </div>
+
+      {page.slug === "services" ? <ServiceIndex /> : null}
 
       {page.image ? (
         <div className="relative aspect-[4/5] w-full max-w-[300px] overflow-hidden rounded-lg border border-[#e0e0dc] bg-[#e9e9e4] lg:aspect-auto lg:h-full lg:w-[300px]">

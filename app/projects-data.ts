@@ -1,32 +1,42 @@
 import { RECORDINGS, type Recording } from "./media";
 
 export type ProjectSlug = "indeed-unique" | "vienna-event-radar";
+export type CaseStudySlug = ProjectSlug | "wien-event-radar-ios";
 
-export type ProjectLink = { label: string; href: string };
+// `internal` links stay on this site; all others open the live product.
+export type ProjectLink = { label: string; href: string; internal?: boolean };
 
-export type ProjectData = {
-  slug: ProjectSlug;
-  path: `/work/${ProjectSlug}`;
+export type Fact = { label: string; value: string };
+
+// Everything a case study page needs for its opening and metadata.
+export type CaseStudyData = {
+  slug: CaseStudySlug;
+  path: `/work/${CaseStudySlug}`;
   name: string;
   summary: string;
   eyebrow: string;
   title: string;
   description: string;
-  chips: string[];
+  facts: Fact[];
   links: ProjectLink[];
-  desktop: Recording;
-  phone: Recording;
   metaTitle: string;
   metaDescription: string;
   lastModified: Date;
 };
 
+// The two web projects also drive the homepage showcase (desktop + phone).
+export type ProjectData = CaseStudyData & {
+  slug: ProjectSlug;
+  desktop: Recording;
+  phone: Recording;
+};
+
 export const INDEED_UNIQUE_URL = "https://indeedunique.com";
 export const VIENNA_EVENT_RADAR_URL = "https://viennaeventradar.at";
-export const APP_STORE_URL =
-  "https://apps.apple.com/at/app/wien-event-radar/id6771109823";
+export const APP_STORE_URL = "https://apps.apple.com/at/app/wien-event-radar/id6771109823";
 
-export const projectOrder: ProjectSlug[] = ["indeed-unique", "vienna-event-radar"];
+const IOS_APP_PATH = "/work/wien-event-radar-ios";
+const VER_PATH = "/work/vienna-event-radar";
 
 export const projects: Record<ProjectSlug, ProjectData> = {
   "indeed-unique": {
@@ -38,42 +48,82 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     eyebrow: "Website mit CMS und Online-Buchung",
     title: "Eine Website, die das Tanzstudio selbst in der Hand hat.",
     description:
-      "Indeed Unique unterrichtet in Wien und Mödling. Die bisherige Jimdo-Seite habe ich durch eine schnelle, bewegte Website ersetzt: Texte, Bilder, Kurse und Team pflegt das Studio selbst, Stundenplan, Preise und Buchung kommen direkt aus Eversports.",
-    chips: ["Live", "Astro", "Sanity CMS", "Eversports", "Cloudflare"],
+      "Für das Tanzstudio Indeed Unique in Wien und Mödling habe ich die Website von Grund auf neu konzipiert, gestaltet und gebaut. Das Team pflegt alle Inhalte in einem auf das Studio zugeschnittenen CMS selbst. Stundenplan, Preise und Buchung kommen über die Eversports-Anbindung direkt aus dem System, mit dem das Studio ohnehin arbeitet.",
+    facts: [
+      { label: "Umfang", value: "Konzept, Design, Entwicklung, CMS, Umzug und Go-live" },
+      { label: "Technik", value: "Astro, Sanity, Eversports, Cloudflare" },
+      { label: "Laufende Kosten", value: "Nur die Domain" },
+    ],
     links: [{ label: "indeedunique.com öffnen", href: INDEED_UNIQUE_URL }],
     desktop: RECORDINGS.indeedUniqueDesktop,
     phone: RECORDINGS.indeedUniqueMobile,
     metaTitle: "Case Study · Indeed Unique – Website mit CMS und Eversports",
     metaDescription:
-      "Relaunch für ein Tanzstudio in Wien und Mödling: Astro, Sanity CMS zum Selbstpflegen, Eversports-Buchung, Animationen und Hosting ohne laufende Plattformkosten.",
+      "Neue Website für ein Tanzstudio in Wien und Mödling: Astro, ein zugeschnittenes Sanity CMS zum Selbstpflegen, Eversports-Buchung im eigenen Design und Hosting ohne laufende Plattformkosten.",
     lastModified: new Date("2026-09-24T00:00:00.000Z"),
   },
   "vienna-event-radar": {
     slug: "vienna-event-radar",
-    path: "/work/vienna-event-radar",
+    path: VER_PATH,
     name: "Vienna Event Radar",
     summary:
-      "Events in Wien an einem Ort: Webplattform mit Recherche- und Review-Workflow und native iOS-App im App Store.",
-    eyebrow: "Event-Plattform im Web und als iOS-App",
-    title: "Vom Datenfluss bis zur nativen iOS-App.",
+      "Events in Wien an einem Ort: Plattform mit geprüften Empfehlungen, Filtern, Vorschlägen für Freunde und einem Assistenten.",
+    eyebrow: "Event-Plattform im Web",
+    title: "Wiens Events an einem Ort.",
     description:
-      "Vienna Event Radar verbindet öffentliche Web-Plattform, strukturierte Recherche und Review, Supabase-Backend und eine native SwiftUI-App. Hier zeige ich Rolle, Entscheidungen und technische Grenzen.",
-    chips: ["Web live", "App Store", "Next.js + Supabase", "SwiftUI"],
+      "Vienna Event Radar sammelt Events in Wien, prüft sie vor der Veröffentlichung und macht sie in wenigen Klicks findbar: nach Tag, Preis und Stimmung gefiltert, mit Vorschlägen für Freunde und einem Assistenten, der passende Ideen sucht. Produkt, Design, Entwicklung und Betrieb liegen bei mir.",
+    facts: [
+      { label: "Umfang", value: "Produkt, Design, Entwicklung, Redaktion und Betrieb" },
+      { label: "Technik", value: "Next.js, Supabase, Vercel" },
+      { label: "Sprachen", value: "Deutsch und Englisch" },
+    ],
     links: [
-      { label: "Webprodukt öffnen", href: VIENNA_EVENT_RADAR_URL },
-      { label: "Im App Store ansehen", href: APP_STORE_URL },
+      { label: "viennaeventradar.at öffnen", href: VIENNA_EVENT_RADAR_URL },
+      { label: "Zur iOS-App", href: IOS_APP_PATH, internal: true },
     ],
     desktop: RECORDINGS.viennaEventRadarDesktop,
     phone: RECORDINGS.viennaEventRadarApp,
-    metaTitle: "Case Study · Vienna Event Radar von Web bis App Store",
+    metaTitle: "Case Study · Vienna Event Radar – Event-Plattform für Wien",
     metaDescription:
-      "Vienna Event Radar als belegbare Product-Builder-Case-Study: Next.js, Supabase, AI-Research, Admin-Review, Tests und native SwiftUI-App.",
-    lastModified: new Date("2026-08-12T00:00:00.000Z"),
+      "Vienna Event Radar: Next.js-Plattform mit Supabase, geprüfter Event-Recherche, Admin-Freigabe, Gruppenplanung und dem Assistenten „Frag dein Radar“.",
+    lastModified: new Date("2026-09-24T00:00:00.000Z"),
   },
 };
 
+export const iosApp: CaseStudyData = {
+  slug: "wien-event-radar-ios",
+  path: IOS_APP_PATH,
+  name: "Wien Event Radar für iOS",
+  summary:
+    "Native iPhone-App zu Vienna Event Radar: Entdecken, Suchen und gemeinsam planen, mit Widgets, Live-Aktivität und Kalender.",
+  eyebrow: "Native iOS-App",
+  title: "Wiens Events als echte iPhone-App.",
+  description:
+    "Die native App zu Vienna Event Radar: in SwiftUI gebaut, im App Store veröffentlicht und eng mit iOS verzahnt, von Widgets über die Live-Aktivität bis zum Kalender. Konten, Favoriten und Gruppen teilt sie mit der Webplattform.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design, Entwicklung und App-Store-Release" },
+    { label: "Technik", value: "SwiftUI, Supabase, optimiert für iOS 27" },
+    { label: "Verfügbar", value: "Im App Store" },
+  ],
+  links: [
+    { label: "Im App Store ansehen", href: APP_STORE_URL },
+    { label: "Zur Webplattform", href: VER_PATH, internal: true },
+  ],
+  metaTitle: "Case Study · Wien Event Radar – native iOS-App in SwiftUI",
+  metaDescription:
+    "Wien Event Radar für iOS: native SwiftUI-App mit Widgets, Live-Aktivität, Kalender, Karte und Gruppenplanung, im App Store und mit gemeinsamem Backend zur Webplattform.",
+  lastModified: new Date("2026-09-24T00:00:00.000Z"),
+};
+
+// All case study pages, in Showcase order (sitemap).
+export const caseStudies: CaseStudyData[] = [
+  projects["indeed-unique"],
+  projects["vienna-event-radar"],
+  iosApp,
+];
+
 // "indeedunique.com" from the live link, for browser bars and link labels.
-export function projectDomain(project: ProjectData) {
+export function projectDomain(project: CaseStudyData) {
   return new URL(project.links[0].href).host;
 }
 
@@ -83,7 +133,7 @@ export type ShowcaseEntry = {
   id: string;
   name: string;
   summary: string;
-  facts: { label: string; value: string }[];
+  facts: Fact[];
   href: string;
   live: ProjectLink;
   media:
@@ -136,10 +186,10 @@ export const showcaseEntries: ShowcaseEntry[] = [
       "Native iPhone-App zum Entdecken, Suchen und Planen: mit Karte, Kalender und Gruppen für gemeinsame Abende.",
     facts: [
       { label: "Funktionen", value: "Karte, Gruppen, Kalender" },
-      { label: "Technik", value: "SwiftUI, iOS 27" },
+      { label: "Technik", value: "SwiftUI, optimiert für iOS 27" },
       { label: "Verfügbar", value: "Im App Store" },
     ],
-    href: `${projects["vienna-event-radar"].path}#ios`,
+    href: iosApp.path,
     live: { label: "Im App Store", href: APP_STORE_URL },
     media: { kind: "app", phone: RECORDINGS.viennaEventRadarApp },
   },

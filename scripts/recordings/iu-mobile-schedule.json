@@ -1,6 +1,57 @@
-{"name":"iu-mobile-schedule","url":"https://indeedunique.com/stundenplan/","width":402,"height":812,"scale":1.4,"mobile":true,"settleMs":4000,
- "steps":[{"hold":1200},{"scroll":{"to":600,"ms":2800}},{"hold":1000},
-  {"eval":"[...document.querySelectorAll('button')].find(b=>b.textContent.includes('Nächster Tag'))?.click()"},{"hold":1500},
-  {"scroll":{"to":930,"ms":3000}},{"hold":1400},
-  {"scroll":{"to":300,"ms":2100}},
-  {"eval":"[...document.querySelectorAll('main button')].find(b=>b.textContent.trim()==='Mödling')?.click()"},{"hold":1700}]}
+{
+ "name": "iu-mobile-schedule",
+ "url": "https://indeedunique.com/stundenplan/?entry=0",
+ "width": 402,
+ "height": 874,
+ "scale": 1.4,
+ "mobile": true,
+ "steps": [
+  {
+   "hold": 2600
+  },
+  {
+   "eval": "(function(t){const hits=[];(function f(r){for(const b of r.querySelectorAll('button,[role=button],a')) if(b.textContent.trim().includes(t)) hits.push(b); for(const e of r.querySelectorAll('*')) if(e.shadowRoot) f(e.shadowRoot)})(document); const b=hits.find(x=>{const q=x.getBoundingClientRect(); return q.width>0&&q.height>0}); b?.click(); return !!b})('Nächster Tag')"
+  },
+  {
+   "hold": 300
+  },
+  {
+   "scroll": {
+    "to": 600,
+    "ms": 2800
+   }
+  },
+  {
+   "hold": 1400
+  },
+  {
+   "scroll": {
+    "to": 930,
+    "ms": 3000
+   }
+  },
+  {
+   "hold": 1400
+  },
+  {
+   "scroll": {
+    "to": 300,
+    "ms": 2100
+   }
+  },
+  {
+   "eval": "[...document.querySelectorAll('main button')].find(b=>b.textContent.trim()==='Mödling')?.click()"
+  },
+  {
+   "hold": 300
+  },
+  {
+   "eval": "(function(t){const hits=[];(function f(r){for(const b of r.querySelectorAll('button,[role=button],a')) if(b.textContent.trim().includes(t)) hits.push(b); for(const e of r.querySelectorAll('*')) if(e.shadowRoot) f(e.shadowRoot)})(document); const b=hits.find(x=>{const q=x.getBoundingClientRect(); return q.width>0&&q.height>0}); b?.click(); return !!b})('Nächster Tag')"
+  },
+  {
+   "hold": 2200
+  }
+ ],
+ "_note": "Springt zuerst auf den nächsten Tag: Abends aufgenommen wäre der heutige Tag sonst leer.",
+ "startAt": "dom"
+}

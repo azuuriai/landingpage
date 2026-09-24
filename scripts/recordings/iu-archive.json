@@ -1,5 +1,5 @@
 {
- "name": "iu-videos",
+ "name": "iu-archive",
  "url": "https://indeedunique.com/videos/?entry=0",
  "width": 1152,
  "height": 720,
@@ -7,16 +7,16 @@
  "settleMs": 2500,
  "steps": [
   {
-   "hold": 600
+   "hold": 400
   },
   {
    "scroll": {
-    "to": 1093,
-    "ms": 6500
+    "to": 1182,
+    "ms": 12000
    }
   },
   {
-   "hold": 900
+   "hold": 2200
   }
  ]
 }

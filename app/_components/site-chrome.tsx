@@ -81,6 +81,8 @@ export function BackLink({ href, label }: { href: string; label: string }) {
 }
 
 export function Chips({ items }: { items: string[] }) {
+  if (items.length === 0) return null;
+
   return (
     <div className="mt-7 flex flex-wrap gap-1.5">
       {items.map((chip) => (

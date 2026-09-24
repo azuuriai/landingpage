@@ -53,33 +53,13 @@ export const detailPages: DetailPageData[] = [
     title: "Was ich für dich baue.",
     description:
       "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: sichtbar im Web, testbar mit echten Nutzern und bei Bedarf nativ auf dem iPhone.",
-    metaTitle: "Leistungen · Websites, MVPs und iOS Apps",
+    metaTitle: "Leistungen · Websites, Web-Apps und iOS-Apps",
     metaDescription:
-      "Websites, MVPs, Backend-Logik und native iOS Apps aus einer Hand. Von der ersten Idee bis zum Launch.",
-    chips: ["Websites", "MVPs", "Backend", "SwiftUI"],
+      "Websites zum Selbstpflegen, Web-Apps mit echter Produktlogik und native iOS-Apps aus einer Hand. Von der ersten Idee bis zum Launch.",
+    // The three product forms stand in the hero instead (app/services-data.ts).
+    chips: [],
     lastModified,
-    sections: [
-      {
-        label: "Sichtbar",
-        title: "Eine Website, die in wenigen Sekunden klar macht, warum es dich gibt.",
-        body: "Landing Pages und Websites für Angebote, die verständlich, glaubwürdig und schnell erfassbar sein müssen. Struktur, Text, Interface und Umsetzung entstehen zusammen, damit die Seite nicht nur schön aussieht, sondern Anfragen auslöst. Auf Wunsch mit einem CMS, in dem du Texte, Bilder und Inhalte selbst pflegst – wie bei Indeed Unique.",
-      },
-      {
-        label: "Testbar",
-        title: "Ein MVP mit echter Produktlogik statt einer losen Demo.",
-        body: "Login, Datenbank, Rollen, Admin-Bereiche, E-Mails, Zahlungs- oder Integrationslogik: genug Substanz, um mit echten Nutzern zu lernen, ohne sich in einem übergroßen ersten Release zu verlieren.",
-      },
-      {
-        label: "Nativ",
-        title: "Wenn dein Produkt aufs iPhone gehört, baue ich es als iOS App.",
-        body: "SwiftUI, Apple-native Navigation, System-Gesten, App-Store-Vorbereitung und ein Interface, das sich nicht wie eine Website im App-Kostüm anfühlt.",
-      },
-      {
-        label: "Ruhiger",
-        title: "Interne Tools und Automationen, wenn wiederkehrende Arbeit bremst.",
-        body: "Dashboards, kleine Backoffices, API-Verbindungen und Workflows, die wiederkehrende Aufgaben aus dem Alltag nehmen und Teams weniger in Tabellen festhalten.",
-      },
-    ],
+    sections: [],
   },
   {
     slug: "work",
@@ -118,13 +98,13 @@ export const detailPages: DetailPageData[] = [
     sections: [
       {
         label: "2017–2020",
-        title: "Outreach und Support in einer dezentralen Tech-Community.",
-        body: "Von 2017 bis 2020 war ich unter einem Internet-Pseudonym im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt. Die Rolle war community-basiert und keine klassische Anstellung.",
+        title: "Outreach und Tech-Support in einer dezentralen Community.",
+        body: "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt.",
       },
       {
-        label: "Vor Ort",
+        label: "Outreach",
         title: "Ein Projekt auch außerhalb des Internets vertreten.",
-        body: "Ich vertrat SmartCash bei Crypto World Zug und bei AnarchaPortugal in Porto. In Zug hielt ich zusätzlich selbst einen Vortrag über das Projekt.",
+        body: "Ich vertrat SmartCash auf verschiedenen Veranstaltungen, etwa bei Crypto World Zug und AnarchaPortugal in Porto, und hielt dort unter anderem Vorträge über unser Projekt.",
       },
       {
         label: "Bildung",
@@ -135,11 +115,6 @@ export const detailPages: DetailPageData[] = [
         label: "Heute",
         title: "Aus einer groben Idee wird eine Version, die man wirklich benutzen kann.",
         body: "Heute verbinde ich diesen Hintergrund mit Produktdenken, UX und AI-assisted Development. Claude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
-      },
-      {
-        label: "Belege",
-        title: "Zwei Projekte, die man heute öffnen kann.",
-        body: "Für das Tanzstudio Indeed Unique habe ich die Website neu gebaut, die das Team selbst pflegt und über die direkt gebucht wird. Vienna Event Radar verbindet eine Next.js-Webplattform, Supabase-Backend, Research- und Admin-Workflow und eine native SwiftUI-App im App Store.",
       },
     ],
   },

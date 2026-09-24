@@ -3,7 +3,6 @@ import { projectDomain, projects, type ProjectSlug } from "../projects-data";
 
 export const HERO = {
   descriptor: "Websites, Web-Apps und iOS-Apps, Wien",
-  approach: "AI-gestützt entwickelt",
   headline: "Von der Idee zum Produkt. Launch inklusive.",
 };
 

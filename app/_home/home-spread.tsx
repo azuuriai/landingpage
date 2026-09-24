@@ -96,10 +96,6 @@ export function HomeSpread() {
 
           <footer className="flex items-center justify-between gap-4 border-t border-[#181811]/10 py-5 text-[13px] text-[#8a8a80] lg:py-[clamp(0.6rem,calc(4.2vh-18px),1.1rem)]">
             <span>© 2026 Lukas Kaffer, Wien</span>
-            <span className="hidden items-center gap-2 sm:flex">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#00b8ad]" aria-hidden="true" />
-              {HERO.approach}
-            </span>
             <div className="flex gap-5">
               <Link href="/impressum" className="transition hover:text-[#181811]">
                 Impressum

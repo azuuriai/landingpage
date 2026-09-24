@@ -1,0 +1,10 @@
+{"name": "iu-news", "url": "https://indeedunique.com/?entry=0", "width": 1152, "height": 720, "scale": 2, "settleMs": 2500,
+ "steps": [
+  {"eval": "document.documentElement.style.scrollSnapType = 'none'"},
+  {"hold": 1400},
+  {"scroll": {"to": 518, "ms": 1500}}, {"hold": 1500},
+  {"scroll": {"to": 1037, "ms": 1500}}, {"hold": 1500},
+  {"scroll": {"to": 1555, "ms": 1500}}, {"hold": 1500},
+  {"scroll": {"to": 2275, "ms": 2200}}, {"hold": 700},
+  {"scroll": {"to": 4542, "ms": 9000}}, {"hold": 1200}
+ ]}

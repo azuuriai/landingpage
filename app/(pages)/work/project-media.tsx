@@ -18,17 +18,21 @@ export function BrowserFrame({ domain, children }: { domain: string; children: R
 
 // Desktop recording in a browser frame with the phone version leaning in front
 // of it — the same composition as the homepage device desk, at page scale.
+// Without `withPhone` the browser stands alone (the phone clip of Vienna Event
+// Radar is the iOS app, which has its own page).
 export function ProjectMedia({
   project,
   priority = false,
+  withPhone = true,
 }: {
   project: ProjectData;
   priority?: boolean;
+  withPhone?: boolean;
 }) {
   const domain = projectDomain(project);
 
   return (
-    <div className="relative pb-[9%] pr-[7%] sm:pr-[11%]">
+    <div className={withPhone ? "relative pb-[9%] pr-[7%] sm:pr-[11%]" : "relative"}>
       <BrowserFrame domain={domain}>
         <div className="relative aspect-[16/10] overflow-hidden bg-[#fbf9f7]">
           <AutoplayVideo
@@ -39,15 +43,17 @@ export function ProjectMedia({
           />
         </div>
       </BrowserFrame>
-      <div className="absolute bottom-0 right-0 w-[23%] min-w-[92px] max-w-[190px] drop-shadow-[0_26px_32px_rgba(17,18,17,0.26)]">
-        <PhoneFrame>
-          <AutoplayVideo
-            recording={project.phone}
-            label={`${project.name} – Aufnahme auf dem iPhone`}
-            className="h-full w-full object-cover"
-          />
-        </PhoneFrame>
-      </div>
+      {withPhone ? (
+        <div className="absolute bottom-0 right-0 w-[23%] min-w-[92px] max-w-[190px] drop-shadow-[0_26px_32px_rgba(17,18,17,0.26)]">
+          <PhoneFrame>
+            <AutoplayVideo
+              recording={project.phone}
+              label={`${project.name} – Aufnahme auf dem iPhone`}
+              className="h-full w-full object-cover"
+            />
+          </PhoneFrame>
+        </div>
+      ) : null}
     </div>
   );
 }

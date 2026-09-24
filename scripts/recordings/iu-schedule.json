@@ -1,4 +1,34 @@
-{"name":"iu-schedule","url":"https://indeedunique.com/stundenplan/","width":1152,"height":720,"settleMs":4000,
- "steps":[{"hold":1200},{"scroll":{"to":560,"ms":2400}},{"hold":1000},
-  {"eval":"[...document.querySelectorAll('button')].find(b=>b.textContent.includes('Nächste Woche'))?.click()"},
-  {"hold":1900},{"scroll":{"to":1050,"ms":2000}}]}
+{
+ "name": "iu-schedule",
+ "url": "https://indeedunique.com/stundenplan/?entry=0",
+ "width": 1152,
+ "height": 720,
+ "scale": 2,
+ "steps": [
+  {
+   "hold": 2600
+  },
+  {
+   "scroll": {
+    "to": 560,
+    "ms": 2400
+   }
+  },
+  {
+   "hold": 1000
+  },
+  {
+   "eval": "(function f(r,t){for(const b of r.querySelectorAll('button,[role=button],a')) if(b.textContent.trim().includes(t)){b.click();return true} for(const e of r.querySelectorAll('*')) if(e.shadowRoot && f(e.shadowRoot,t)) return true; return false})(document, 'Nächste Woche')"
+  },
+  {
+   "hold": 1900
+  },
+  {
+   "scroll": {
+    "to": 1050,
+    "ms": 2000
+   }
+  }
+ ],
+ "startAt": "dom"
+}
