@@ -10,9 +10,10 @@ yarn-debug.log*
 yarn-error.log*
 .DS_Store
 
-# Local working files (master sources, screenshots, Apple bezel asset, drafts)
+# Local working files (screenshots, drafts)
 Bildschirmfoto*.png
-iphone17pro_spotlight.*
-iPhone 17 Pro - Cosmic Orange - Portrait.png
 website-copy-de-en.md
 tsconfig.tsbuildinfo
+
+# Screen-recording frames (scripts/record-site.mjs)
+scripts/frames-*/

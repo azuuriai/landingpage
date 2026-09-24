@@ -1,0 +1,75 @@
+{
+ "name": "ver-web",
+ "url": "https://viennaeventradar.at/",
+ "width": 1152,
+ "height": 720,
+ "settleMs": 2500,
+ "steps": [
+  {
+   "hold": 2800
+  },
+  {
+   "scroll": {
+    "to": 560,
+    "ms": 3000
+   }
+  },
+  {
+   "hold": 900
+  },
+  {
+   "eval": "[...document.querySelectorAll('main button')].find(b=>(b.getAttribute('aria-label')||'').includes('Kaiser Wiesn'))?.click()"
+  },
+  {
+   "hold": 4500
+  },
+  {
+   "eval": "document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))"
+  },
+  {
+   "hold": 900
+  },
+  {
+   "scroll": {
+    "to": "(()=>{const b=[...document.querySelectorAll('main button')].filter(b=>b.textContent.trim()==='Vorschlagen').find(b=>{let c=b;for(let i=0;i<7&&c;i++){if((c.textContent||'').includes('SLASH Filmfestival')&&(c.textContent||'').length<600)return true;c=c.parentElement}return false});return b?b.getBoundingClientRect().top+scrollY-innerHeight*0.62:scrollY})()",
+    "ms": 3000
+   }
+  },
+  {
+   "hold": 600
+  },
+  {
+   "eval": "[...document.querySelectorAll('main button')].filter(b=>b.textContent.trim()==='Vorschlagen').find(b=>{let c=b;for(let i=0;i<7&&c;i++){if((c.textContent||'').includes('SLASH Filmfestival')&&(c.textContent||'').length<600)return true;c=c.parentElement}return false})?.click()"
+  },
+  {
+   "hold": 3000
+  },
+  {
+   "eval": "document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}))"
+  },
+  {
+   "hold": 800
+  },
+  {
+   "scroll": {
+    "to": 0,
+    "ms": 2800
+   }
+  },
+  {
+   "hold": 400
+  },
+  {
+   "eval": "document.querySelector('[aria-label=\"Frag dein Radar öffnen\"]')?.click()"
+  },
+  {
+   "hold": 3000
+  },
+  {
+   "eval": "document.querySelector('[aria-label=\"Frag dein Radar schließen\"]')?.click()"
+  },
+  {
+   "hold": 700
+  }
+ ]
+}

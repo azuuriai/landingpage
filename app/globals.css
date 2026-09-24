@@ -43,23 +43,6 @@ body {
   text-wrap: pretty;
 }
 
-.work-grid {
-  background-image:
-    linear-gradient(rgba(244, 240, 232, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(244, 240, 232, 0.04) 1px, transparent 1px);
-  background-size: 42px 42px;
-}
-
-.mask-fade {
-  mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
-}
-
-@media (min-width: 1024px) {
-  .desktop-stage-clip {
-    clip-path: inset(0 -220px 0 0);
-  }
-}
-
 @keyframes softReveal {
   from {
     opacity: 0;
@@ -106,24 +89,22 @@ body {
   }
 }
 
-.accent-line {
-  animation: accentLine 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+.showcase-progress {
+  animation: showcaseProgress linear both;
 }
 
-.screen-sheen {
-  animation: screenSheen 8.5s ease-in-out infinite;
+@keyframes showcaseProgress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
 }
 
 .screen-panel-in {
   animation: screenPanelIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.product-scroll-desktop {
-  animation: productScrollDesktop 18s cubic-bezier(0.45, 0, 0.25, 1) infinite;
-}
-
-.product-scroll-mobile {
-  animation: productScrollMobile 16s cubic-bezier(0.45, 0, 0.25, 1) infinite;
 }
 
 @keyframes accentPulse {
@@ -139,68 +120,6 @@ body {
   }
 }
 
-@keyframes accentLine {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scaleY(0.55);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
-  }
-}
-
-@keyframes productScrollDesktop {
-  0%,
-  24% {
-    transform: translateY(0);
-  }
-
-  58%,
-  76% {
-    transform: translateY(-38%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes productScrollMobile {
-  0%,
-  24% {
-    transform: translateY(0);
-  }
-
-  58%,
-  76% {
-    transform: translateY(-42%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes screenSheen {
-  0%,
-  36% {
-    opacity: 0;
-    transform: translateX(0) rotate(12deg);
-  }
-
-  52% {
-    opacity: 0.72;
-  }
-
-  72%,
-  100% {
-    opacity: 0;
-    transform: translateX(330%) rotate(12deg);
-  }
-}
-
 @keyframes screenPanelIn {
   from {
     opacity: 0;
@@ -213,34 +132,4 @@ body {
     filter: blur(0);
     transform: scale(1);
   }
-}
-
-/* View Transition: the monitor screen morphs into the detail surface (and back),
-   so the screen visibly "becomes" the page instead of a modal appearing. */
-::view-transition-group(detail-surface) {
-  animation-duration: 0.72s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-::view-transition-old(detail-surface),
-::view-transition-new(detail-surface) {
-  animation-duration: 0.58s;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Graceful fallback for browsers without the View Transitions API. */
-@keyframes detailFallbackIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.992);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.detail-fallback-in {
-  animation: detailFallbackIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

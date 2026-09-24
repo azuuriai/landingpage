@@ -3,16 +3,20 @@ import { Inter } from "next/font/google";
 import {
   googleSiteVerification,
   OG_DESCRIPTION,
+  OG_IMAGE,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
 } from "./seo";
 import "./globals.css";
 
+// Loaded with its optical-size axis: large headlines automatically use
+// Inter's tighter display drawing, small text keeps the readable text cut.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  axes: ["opsz"],
 });
 
 export const metadata: Metadata = {
@@ -28,6 +32,8 @@ export const metadata: Metadata = {
   publisher: SITE_NAME,
   keywords: [
     "Webentwicklung Wien",
+    "Website mit CMS",
+    "Sanity CMS",
     "iOS App Entwicklung",
     "SwiftUI Entwickler",
     "Next.js Entwickler",
@@ -53,14 +59,7 @@ export const metadata: Metadata = {
     description: OG_DESCRIPTION,
     url: "/",
     siteName: SITE_NAME,
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Lukas Kaffer · Webprodukte und native iOS Apps",
-      },
-    ],
+    images: [OG_IMAGE],
     type: "website",
     locale: "de_AT",
   },
@@ -68,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lukas Kaffer · AI-native Product Builder",
     description: OG_DESCRIPTION,
-    images: ["/opengraph-image"],
+    images: [OG_IMAGE.url],
   },
   robots: {
     index: true,

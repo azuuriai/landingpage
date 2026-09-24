@@ -1,0 +1,5 @@
+{"name":"iu-mobile","url":"https://indeedunique.com/?entry=1","width":402,"height":812,"scale":1.4,"mobile":true,"settleMs":0,
+ "steps":[{"hold":6200},
+  {"eval":"document.querySelector('[data-ns-go=\"1\"]')?.click()"},{"hold":2300},
+  {"eval":"document.querySelector('[data-ns-go=\"2\"]')?.click()"},{"hold":2300},
+  {"eval":"document.querySelector('[data-ns-go=\"3\"]')?.click()"},{"hold":2300}]}

@@ -1,5 +1,13 @@
 # Tutorial: Screen Recording perfekt ins offizielle iPhone-Bezel einbetten
 
+> **Stand September 2026:** Die Website nutzt diesen Weg (Video mit Alphakanal)
+> nicht mehr. Das iPhone ist jetzt `public/devices/iphone-17-pro-frame.png` über
+> einem normalen MP4, zugeschnitten per CSS-Maske
+> (`public/devices/iphone-17-pro-screen-mask.png`, siehe
+> `app/_components/phone-frame.tsx`). Wichtig: Die Maske muss die Displayform im
+> **Alphakanal** tragen – CSS-Masken ignorieren Helligkeit. Das Original-Bezel
+> liegt im iOS-Repo unter `AppStorePreviews/assets/`.
+
 End-to-End Anleitung, um aus einem Apple iPhone Bezel-PNG (Marketing Resource) und einem iOS Simulator Recording ein **freistehendes Video mit transparentem Hintergrund** für die Website zu bauen — pixelgenau, ohne weiße Ecken, ohne rechtliches Risiko durch iPhone-Nachbauten.
 
 Das Tutorial entstand aus realer Arbeit an dieser Codebase. Stand: Mai 2026, getestet mit iPhone 17 Pro Cosmic Orange, ffmpeg 7, macOS 26.

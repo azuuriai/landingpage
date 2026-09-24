@@ -1,13 +1,15 @@
+import type { Metadata } from "next";
+
 export const SITE_URL = "https://lukaskaffer.com";
 export const SITE_NAME = "Lukas Kaffer";
 export const CONTACT_EMAIL = "hello@lukaskaffer.com";
-export const HOME_LAST_MODIFIED = new Date("2026-08-11T00:00:00.000Z");
+export const HOME_LAST_MODIFIED = new Date("2026-09-24T00:00:00.000Z");
 
 export const SITE_DESCRIPTION =
-  "Lukas Kaffer verbindet Bildungshintergrund, Produktdenken und AI-assisted Development. Vienna Event Radar belegt die Umsetzung mit Next.js, Supabase und einer nativen SwiftUI-App.";
+  "Lukas Kaffer baut Websites, Webprodukte und native iOS-Apps von der Idee bis zum Launch. Live-Belege: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports sowie Vienna Event Radar im Web und im App Store.";
 
 export const OG_DESCRIPTION =
-  "Produktdenken, klare Vermittlung und AI-assisted Development. Vienna Event Radar läuft im Web und nativ auf iOS.";
+  "Live-Belege: die Website des Tanzstudios Indeed Unique mit eigenem CMS und Vienna Event Radar im Web und im App Store.";
 
 export const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ??
@@ -57,3 +59,41 @@ export const structuredData = {
     },
   ],
 };
+
+export const OG_IMAGE = {
+  url: "/opengraph-image",
+  width: 1200,
+  height: 630,
+  alt: "Lukas Kaffer · Websites, Webprodukte und native iOS Apps",
+};
+
+export function pageMetadata({
+  path,
+  title,
+  description,
+}: {
+  path: string;
+  title: string;
+  description: string;
+}): Metadata {
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      title,
+      description,
+      url: path,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "de_AT",
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [OG_IMAGE.url],
+    },
+  };
+}

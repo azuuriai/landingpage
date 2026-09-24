@@ -1,0 +1,2 @@
+{"name":"iu-videos","url":"https://indeedunique.com/videos/","width":1152,"height":720,"settleMs":1500,
+ "steps":[{"hold":600},{"scroll":{"to":1100,"ms":6500}},{"hold":500}]}

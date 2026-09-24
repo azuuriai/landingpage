@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import { OG_DESCRIPTION } from "./seo";
+import { OG_DESCRIPTION, OG_IMAGE } from "./seo";
 
-export const alt = "Lukas Kaffer · Webprodukte und native iOS Apps";
+export const alt = OG_IMAGE.alt;
 export const size = {
   width: 1200,
   height: 630,
@@ -39,14 +39,14 @@ export default function Image() {
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div
             style={{
-              maxWidth: 860,
-              fontSize: 76,
+              maxWidth: 980,
+              fontSize: 68,
               lineHeight: 0.96,
               fontWeight: 760,
               letterSpacing: 0,
             }}
           >
-            Webprodukte und native iOS Apps, gebaut bis zum Launch.
+            Websites, Webprodukte und native iOS Apps, gebaut bis zum Launch.
           </div>
           <div
             style={{
@@ -76,7 +76,7 @@ export default function Image() {
               background: "#00b8ad",
             }}
           />
-          Next.js · SwiftUI · Product Design
+          Astro · Next.js · Sanity · SwiftUI
         </div>
       </div>
     ),

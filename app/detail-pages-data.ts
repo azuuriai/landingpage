@@ -34,7 +34,7 @@ export type DetailPageData = {
   faq?: DetailFaq[];
 };
 
-const lastModified = new Date("2026-08-12T00:00:00.000Z");
+const lastModified = new Date("2026-09-24T00:00:00.000Z");
 
 export const detailPageNavOrder: DetailSlug[] = [
   "about",
@@ -49,8 +49,8 @@ export const detailPages: DetailPageData[] = [
     slug: "services",
     path: "/services",
     navLabel: "Leistungen",
-    eyebrow: "Was ich für dich baue",
-    title: "Websites, MVPs und native iOS Apps, die wirklich live gehen.",
+    eyebrow: "Leistungen",
+    title: "Was ich für dich baue.",
     description:
       "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: sichtbar im Web, testbar mit echten Nutzern und bei Bedarf nativ auf dem iPhone.",
     metaTitle: "Leistungen · Websites, MVPs und iOS Apps",
@@ -62,7 +62,7 @@ export const detailPages: DetailPageData[] = [
       {
         label: "Sichtbar",
         title: "Eine Website, die in wenigen Sekunden klar macht, warum es dich gibt.",
-        body: "Landing Pages und Websites für Angebote, die verständlich, glaubwürdig und schnell erfassbar sein müssen. Struktur, Text, Interface und Umsetzung entstehen zusammen, damit die Seite nicht nur schön aussieht, sondern Anfragen auslöst.",
+        body: "Landing Pages und Websites für Angebote, die verständlich, glaubwürdig und schnell erfassbar sein müssen. Struktur, Text, Interface und Umsetzung entstehen zusammen, damit die Seite nicht nur schön aussieht, sondern Anfragen auslöst. Auf Wunsch mit einem CMS, in dem du Texte, Bilder und Inhalte selbst pflegst – wie bei Indeed Unique.",
       },
       {
         label: "Testbar",
@@ -84,46 +84,24 @@ export const detailPages: DetailPageData[] = [
   {
     slug: "work",
     path: "/work",
-    navLabel: "Case Study",
-    eyebrow: "Vienna Event Radar · Live Case",
-    title: "Vom Datenfluss bis zur nativen iOS-App – als Live-Case.",
+    navLabel: "Showcase",
+    eyebrow: "Showcase",
+    title: "Was ich baue – live im Einsatz.",
     description:
-      "Vienna Event Radar verbindet öffentliche Web-Plattform, strukturierte Recherche und Review, Supabase-Backend und eine native SwiftUI-App. Hier zeige ich Rolle, Entscheidungen und technische Grenzen.",
-    metaTitle: "Case Study · Vienna Event Radar von Web bis App Store",
+      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist live und öffentlich nutzbar.",
+    metaTitle: "Showcase · Websites, Web-Apps und iOS-Apps",
     metaDescription:
-      "Vienna Event Radar als belegbare Product-Builder-Case-Study: Next.js, Supabase, AI-Research, Admin-Review, Tests und native SwiftUI-App.",
-    chips: ["Web live", "App Store", "Next.js + Supabase", "SwiftUI"],
-    lastModified,
-    image: {
-      src: "/case-studies/vienna-web-desktop.png",
-      alt: "Vienna Event Radar Webprodukt auf Desktop",
-      width: 2400,
-      height: 1500,
-    },
-    sections: [
-      {
-        label: "Problem",
-        title: "Eine kurze, brauchbare Auswahl statt dutzender Tabs und Eventlisten.",
-        body: "Vienna Event Radar begann mit einer konkreten Produktfrage: Wie werden aktuelle Events in Wien schnell auffindbar, ohne Menschen mit einer weiteren unübersichtlichen Massenliste zu überfordern?",
-      },
-      {
-        label: "Verantwortung",
-        title: "Scope, UX, Datenverträge und Auslieferung zusammenhalten.",
-        body: "Mein Beitrag reicht von Problemdefinition und Informationsarchitektur über Supabase-Datenmodell, Research- und Review-Workflow bis zu Tests, Monitoring, Web-Deployment und App-Store-Veröffentlichung.",
-      },
-      {
-        label: "Arbeitsweise",
-        title: "AI-assisted entwickeln, Entscheidungen selbst verantworten.",
-        body: "Claude Code und ChatGPT beschleunigen Recherche, Umsetzung und Iteration. Produktlogik, Architekturentscheidungen, Prüfung und Veröffentlichung bleiben in meiner Verantwortung.",
-      },
-    ],
+      "Live-Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports sowie Vienna Event Radar im Web und als native iOS-App.",
+    chips: ["Websites", "Web-Apps", "iOS-Apps"],
+    lastModified: new Date("2026-09-24T00:00:00.000Z"),
+    sections: [],
   },
   {
     slug: "about",
     path: "/about",
     navLabel: "Über mich",
     eyebrow: "Mein Weg",
-    title: "Tech-Community, Klassenzimmer und eigene Produkte.",
+    title: "Vom Klassenzimmer zu Produkten.",
     description:
       "SmartCash, Bildung und eigene Produkte: drei Stationen, die prägen, wie ich heute Probleme sortiere, erkläre und umsetze.",
     metaTitle: "Über Lukas Kaffer · Bildung, Community und digitale Produkte",
@@ -159,9 +137,9 @@ export const detailPages: DetailPageData[] = [
         body: "Heute verbinde ich diesen Hintergrund mit Produktdenken, UX und AI-assisted Development. Claude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
       },
       {
-        label: "Beleg",
-        title: "Vienna Event Radar läuft im Web und nativ auf dem iPhone.",
-        body: "Der wichtigste Prüfstein ist ein öffentlich nutzbares Produkt mit Next.js-Webplattform, Supabase-Backend, Research- und Admin-Workflow, SwiftUI-App, Tests und laufendem Betrieb.",
+        label: "Belege",
+        title: "Zwei Projekte, die man heute öffnen kann.",
+        body: "Für das Tanzstudio Indeed Unique habe ich die Website neu gebaut, die das Team selbst pflegt und über die direkt gebucht wird. Vienna Event Radar verbindet eine Next.js-Webplattform, Supabase-Backend, Research- und Admin-Workflow und eine native SwiftUI-App im App Store.",
       },
     ],
   },
@@ -176,7 +154,7 @@ export const detailPages: DetailPageData[] = [
     metaTitle: "FAQ · Kosten, Dauer, iOS Apps und Launch",
     metaDescription:
       "Antworten zu Projektkosten, Dauer, nativer iOS Entwicklung, Design, Launch und Zusammenarbeit mit Lukas Kaffer.",
-    chips: ["Festpreis", "Kein Lock-in", "Direktkontakt"],
+    chips: ["Fester Preis", "Code gehört dir", "Direkt mit mir"],
     lastModified,
     sections: [],
     faq: [
@@ -194,6 +172,11 @@ export const detailPages: DetailPageData[] = [
         question: "Entwirfst du auch das Design?",
         answer:
           "Ja. Interface, Interaktion und Code entstehen zusammen. Du brauchst nicht zwingend ein separates Design-Team, wenn der Scope zu meiner Arbeitsweise passt.",
+      },
+      {
+        question: "Kann ich die Website danach selbst bearbeiten?",
+        answer:
+          "Ja, wenn du das willst. Ich richte dir ein CMS ein, in dem du Texte, Bilder, Beiträge und Listen selbst änderst, während Layout und Design im Code geschützt bleiben. Bei Indeed Unique läuft das mit Sanity im kostenlosen Plan.",
       },
       {
         question: "Was passiert nach dem Launch?",

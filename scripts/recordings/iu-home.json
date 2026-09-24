@@ -1,0 +1,1 @@
+{"name": "iu-home", "url": "https://indeedunique.com/?entry=1", "width": 1152, "height": 720, "steps": [{"hold": 6800}, {"scroll": {"to": 1400, "ms": 5200}}, {"hold": 500}], "startAt": "dom"}

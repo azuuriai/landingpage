@@ -1,0 +1,4 @@
+{"name":"iu-schedule","url":"https://indeedunique.com/stundenplan/","width":1152,"height":720,"settleMs":4000,
+ "steps":[{"hold":1200},{"scroll":{"to":560,"ms":2400}},{"hold":1000},
+  {"eval":"[...document.querySelectorAll('button')].find(b=>b.textContent.includes('Nächste Woche'))?.click()"},
+  {"hold":1900},{"scroll":{"to":1050,"ms":2000}}]}
