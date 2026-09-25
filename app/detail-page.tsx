@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Plus } from "lucide-react";
-import { HOVER_RING } from "./_components/button-styles";
+import { ICON_UP, TEXT_LINK } from "./_components/button-styles";
 import { ContactForm } from "./_components/contact-form";
 import { ContactBand, JsonLd } from "./_components/site-chrome";
 import {
@@ -66,7 +66,7 @@ function DetailSections({ page }: { page: DetailPageData }) {
               {section.label}
             </p>
             <div className="min-w-0">
-              <h2 className="max-w-[32ch] text-balance font-display text-[25px] font-medium leading-[1.12] tracking-[-0.018em] text-[#181811] sm:text-[32px]">
+              <h2 className="text-pretty font-display text-[25px] font-medium leading-[1.12] tracking-[-0.018em] text-[#181811] sm:text-[32px]">
                 {section.title}
               </h2>
               <p className="mt-4 max-w-[72ch] text-[15px] leading-7 text-[#6c6c61] sm:text-[16px]">
@@ -92,7 +92,7 @@ function FaqList({ page }: { page: DetailPageData }) {
           {page.faq.map((item) => (
             <details key={item.question} className="group border-b border-[#e1e1dc] first:border-t">
               <summary
-                className={`-mx-3 my-1 flex cursor-pointer list-none items-center justify-between gap-6 px-3 py-4 [&::-webkit-details-marker]:hidden ${HOVER_RING}`}
+                className="ui-row [--ui-row-bottom:0px] flex cursor-pointer list-none items-center justify-between gap-6 py-4 [&::-webkit-details-marker]:hidden"
               >
                 <h2 className="font-display text-[18px] font-medium leading-[1.3] tracking-[-0.01em] text-[#181811] sm:text-[20px]">
                   {item.question}
@@ -110,10 +110,10 @@ function FaqList({ page }: { page: DetailPageData }) {
           ))}
           <Link
             href="/contact"
-            className="mt-8 inline-flex items-center gap-1.5 text-[15px] font-medium text-[#006f68] transition hover:text-[#181811]"
+            className={`${TEXT_LINK} mt-8 text-[15px] text-[#006f68]`}
           >
             Andere Frage stellen
-            <ArrowUpRight size={15} aria-hidden="true" />
+            <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
           </Link>
         </div>
       </div>
@@ -129,7 +129,7 @@ function ContactFormSection() {
           <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#006f68]">
             Direkt an mich
           </p>
-          <h2 className="mt-4 max-w-[13ch] font-display text-[31px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181811] sm:text-[40px]">
+          <h2 className="mt-4 text-pretty font-display text-[31px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181811] sm:text-[40px]">
             Schick mir die Kurzfassung.
           </h2>
           <p className="mt-5 max-w-[38ch] text-[15px] leading-7 text-[#6c6c61] sm:text-[16px]">

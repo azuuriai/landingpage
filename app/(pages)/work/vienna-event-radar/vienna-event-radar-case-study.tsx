@@ -140,7 +140,7 @@ export function ViennaEventRadarCaseStudy() {
       <CaseSection tone="tinted">
         <div className="grid items-center gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-20">
           <div>
-            <h2 className="max-w-[16ch] text-balance font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[42px]">
+            <h2 className="text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[42px]">
               Auch als native iOS-App.
             </h2>
             <p className="mt-5 max-w-[56ch] text-[15px] leading-7 text-[#5f5f56] sm:text-[16px]">

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { detailPageMap, detailPageNavOrder } from "../detail-pages-data";
-import { HOVER_RING } from "./button-styles";
+import { NAV_LINK } from "./button-styles";
 import { SiteLogo } from "./site-logo";
 
 // Header for every subpage. It lives in the shared layout, so it stays mounted
@@ -31,9 +31,7 @@ export function SiteHeader() {
                   <Link
                     href={item.path}
                     aria-current={isPage ? "page" : inSection ? "true" : undefined}
-                    className={`block px-2 py-1 hover:text-[#181811] ${HOVER_RING} ${
-                      isPage || inSection ? "text-[#006f68]" : ""
-                    }`}
+                    className={`block px-2 py-1 [--ui-nav-inset:0.5rem] ${NAV_LINK}`}
                   >
                     {item.navLabel}
                   </Link>

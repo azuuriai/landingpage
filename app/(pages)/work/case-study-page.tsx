@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { BackLink, ContactBand, JsonLd } from "@/app/_components/site-chrome";
-import { PRIMARY_BUTTON, SECONDARY_BUTTON } from "@/app/_components/button-styles";
+import { ICON_UP, PRIMARY_BUTTON, SECONDARY_BUTTON } from "@/app/_components/button-styles";
 import type { CaseStudyData, ProjectLink } from "@/app/projects-data";
 import { absoluteUrl, pageMetadata, SITE_URL } from "@/app/seo";
 
@@ -64,7 +64,7 @@ export function ProjectButton({
   return (
     <a href={link.href} target="_blank" rel="noreferrer" className={className}>
       {link.label}
-      <ArrowUpRight size={15} aria-hidden="true" />
+      <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
     </a>
   );
 }
@@ -91,7 +91,7 @@ export function CaseStudyPage({
           <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68]">
             {study.eyebrow}
           </p>
-          <h1 className="mt-5 max-w-[16ch] text-balance font-display text-[40px] font-semibold leading-[1] tracking-[-0.03em] text-[#181811] sm:text-[54px] lg:text-[58px]">
+          <h1 className="mt-5 text-pretty font-display text-[40px] font-semibold leading-[1] tracking-[-0.03em] text-[#181811] sm:text-[54px] lg:text-[58px]">
             {study.title}
           </h1>
           <p className="mt-6 max-w-[58ch] text-[16px] leading-7 text-[#5f5f56] sm:text-[17px] sm:leading-8">

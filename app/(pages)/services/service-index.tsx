@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { HOVER_RING } from "@/app/_components/button-styles";
 import { PhoneFrame } from "@/app/_components/phone-frame";
 import { services, type Service } from "@/app/services-data";
 
@@ -13,7 +12,7 @@ export function ServiceIndex() {
           <li key={service.id} className="lg:flex-1">
             <a
               href={`#${service.id}`}
-              className={`flex h-full items-center gap-5 border border-[#181811]/10 bg-white/50 p-3 hover:border-transparent ${HOVER_RING}`}
+              className="ui-row ui-row--card flex h-full items-center gap-5 border border-[#181811]/10 bg-white/50 p-3"
             >
               <Thumbnail service={service} />
               <span className="min-w-0">

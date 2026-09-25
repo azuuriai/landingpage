@@ -52,7 +52,7 @@ export function SectionHeading({
       className={`grid gap-5 ${stacked ? "" : "lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20"}`}
     >
       <h2
-        className={`max-w-[20ch] text-balance font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] sm:text-[42px] ${
+        className={`text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] sm:text-[42px] ${
           dark ? "text-white" : "text-[#181811]"
         }`}
       >

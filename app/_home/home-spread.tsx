@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { HOVER_RING, PRIMARY_BUTTON } from "../_components/button-styles";
+import { ICON_UP, NAV_LINK, PRIMARY_BUTTON, QUIET_LINK } from "../_components/button-styles";
 import { PageBackdrop, SkipLink } from "../_components/site-chrome";
 import { SiteLogo } from "../_components/site-logo";
 import { HERO, HOME_LINKS } from "./home-content";
@@ -34,7 +34,7 @@ export function HomeSpread() {
               </Link>
               <Link
                 href="/contact"
-                className="text-[11px] font-medium uppercase tracking-[0.12em] text-[#5f5f56] transition hover:text-[#181811]"
+                className={`${NAV_LINK} text-[11px] font-medium uppercase tracking-[0.12em] text-[#5f5f56]`}
               >
                 Kontakt
               </Link>
@@ -70,13 +70,13 @@ export function HomeSpread() {
                       <li key={link.href} className="border-b border-[#181811]/10">
                         <Link
                           href={link.href}
-                          className={`group -mx-3 flex items-center justify-between px-3 py-3 text-[18px] font-medium tracking-[-0.01em] text-[#181811] lg:py-[clamp(0.4rem,calc(4.2vh-26px),0.75rem)] ${HOVER_RING}`}
+                          className="ui-row ui-row--shift flex items-center justify-between py-3 text-[18px] font-medium tracking-[-0.01em] text-[#181811] lg:py-[clamp(0.4rem,calc(4.2vh-26px),0.75rem)]"
                         >
                           {link.label}
                           <ArrowUpRight
                             size={17}
                             aria-hidden="true"
-                            className="text-[#181811]/25 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#00b8ad] group-focus-visible:text-[#00b8ad]"
+                            className={`${ICON_UP} text-[#181811]/25`}
                           />
                         </Link>
                       </li>
@@ -97,10 +97,10 @@ export function HomeSpread() {
           <footer className="flex items-center justify-between gap-4 border-t border-[#181811]/10 py-5 text-[13px] text-[#8a8a80] lg:py-[clamp(0.6rem,calc(4.2vh-18px),1.1rem)]">
             <span>© 2026 Lukas Kaffer, Wien</span>
             <div className="flex gap-5">
-              <Link href="/impressum" className="transition hover:text-[#181811]">
+              <Link href="/impressum" className={QUIET_LINK}>
                 Impressum
               </Link>
-              <Link href="/datenschutz" className="transition hover:text-[#181811]">
+              <Link href="/datenschutz" className={QUIET_LINK}>
                 Datenschutz
               </Link>
             </div>

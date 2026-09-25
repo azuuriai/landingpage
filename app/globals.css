@@ -74,7 +74,9 @@ body {
     .reveal-on-scroll {
       animation: softReveal linear both;
       animation-timeline: view();
-      animation-range: entry 4% cover 20%;
+      /* Tied to the element's own entry so the last section of a page also
+         reaches 100 % — with "cover" it stalled at ~90 % and stayed blurred. */
+      animation-range: entry 0% entry 55%;
     }
   }
 }
@@ -131,5 +133,292 @@ body {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
+  }
+}
+
+/* ==========================================================================
+   Interaction system — one line, one tempo.
+   Mechanics borrowed from indeedunique.com (stage.css): a thin accent line
+   that grows in from the left, a colour sweep through button text, an icon
+   nudge. Never a filled surface. The colours are this site's own: a single
+   teal running dark → bright so the line has a direction while it draws.
+   ========================================================================== */
+
+:root {
+  --ink: #181811;
+  --accent: #00b8ad;
+  --flow: linear-gradient(90deg, #006f68 0%, #00b8ad 100%);
+  --line-soft: rgba(24, 24, 17, 0.28);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --sweep: 700ms;
+}
+
+/* Keyboard focus looks the same on every control. */
+:is(.ui-link, .ui-button, .ui-nav, .ui-row):focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* ---------- Icons: nudge in their reading direction ------------------- */
+
+:is(.ui-link, .ui-button, .ui-nav, .ui-row) :is(.ui-icon-up, .ui-icon-right, .ui-icon-left) {
+  transition:
+    transform 420ms var(--ease-out),
+    color var(--sweep) var(--ease-out);
+}
+
+:is(.ui-link, .ui-button, .ui-nav, .ui-row):is(:hover, :focus-visible) .ui-icon-up {
+  transform: translate(3px, -3px);
+}
+
+:is(.ui-link, .ui-button, .ui-nav, .ui-row):is(:hover, :focus-visible) .ui-icon-right {
+  transform: translateX(3px);
+}
+
+:is(.ui-link, .ui-button, .ui-nav, .ui-row):is(:hover, :focus-visible) .ui-icon-left {
+  transform: translateX(-3px);
+}
+
+.ui-row:is(:hover, :focus-visible) :is(.ui-icon-up, .ui-icon-right, .ui-icon-left) {
+  color: var(--accent);
+}
+
+/* ---------- Text link: a grey hairline, the teal line draws over it ----- */
+
+.ui-link,
+.legal-copy a {
+  padding-bottom: 0.12em;
+  background:
+    var(--flow) left bottom / 0% 2px no-repeat,
+    linear-gradient(var(--line-soft), var(--line-soft)) left bottom / 100% 1px no-repeat;
+  text-decoration: none;
+  transition:
+    background-size 520ms var(--ease-out),
+    color 520ms var(--ease-out);
+}
+
+.ui-link:is(:hover, :focus-visible),
+.legal-copy a:is(:hover, :focus-visible) {
+  color: var(--ink);
+  background-size:
+    100% 2px,
+    0% 1px;
+}
+
+/* ---------- Button: hairline frame, colour sweeps through the words ----- */
+
+.ui-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 8px;
+  color: var(--ink);
+  transition: transform 240ms var(--ease-out);
+}
+
+/* The frame is a mask, so it works on any background without a second fill. */
+.ui-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: var(--flow);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+.ui-button--secondary::before {
+  background: var(--line-soft);
+}
+
+.ui-button:active {
+  transform: scale(0.98);
+}
+
+.ui-button svg {
+  transition:
+    transform 420ms var(--ease-out),
+    color var(--sweep) var(--ease-out);
+}
+
+.ui-button:is(:hover, :focus-visible) svg {
+  color: var(--accent);
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  @media (forced-colors: none) {
+    .ui-button {
+      background-image:
+        var(--flow),
+        linear-gradient(var(--ink), var(--ink));
+      background-repeat: no-repeat;
+      background-position: left top;
+      background-size:
+        0% 100%,
+        100% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition:
+        background-size var(--sweep) var(--ease-out),
+        transform 240ms var(--ease-out);
+    }
+
+    .ui-button:is(:hover, :focus-visible) {
+      background-size:
+        100% 100%,
+        100% 100%;
+    }
+  }
+}
+
+/* ---------- Navigation item: the line grows under the word ------------- */
+
+.ui-nav {
+  position: relative;
+  transition: color 240ms var(--ease-out);
+}
+
+.ui-nav::after {
+  content: "";
+  position: absolute;
+  inset: auto var(--ui-nav-inset, 0) 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--flow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 460ms var(--ease-out);
+}
+
+.ui-nav:is(:hover, :focus-visible, [aria-current]) {
+  color: var(--ink);
+}
+
+.ui-nav:is(:hover, :focus-visible, [aria-current])::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Row / card: the line runs along the bottom edge ------------ */
+
+.ui-row {
+  position: relative;
+  transition:
+    padding-left 520ms var(--ease-out),
+    border-color 260ms ease;
+}
+
+.ui-row::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: var(--ui-row-bottom, -1px);
+  left: 0;
+  z-index: 1;
+  height: 2px;
+  background: var(--flow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--sweep) var(--ease-out);
+}
+
+.ui-row:is(:hover, :focus-visible)::after {
+  transform: scaleX(1);
+}
+
+/* List rows step in on hover; only where a real pointer hovers. */
+@media (hover: hover) and (pointer: fine) {
+  .ui-row--shift:is(:hover, :focus-visible) {
+    padding-left: 0.75rem;
+  }
+}
+
+/* Cards clip the line to their rounded frame. */
+.ui-row--card {
+  overflow: hidden;
+  border-radius: 8px;
+  --ui-row-bottom: 0px;
+}
+
+.ui-row--card:is(:hover, :focus-visible) {
+  border-color: var(--line-soft);
+}
+
+/* ---------- Steps: a numbered thread ----------------------------------- */
+/* Borrowed from Indeed Unique's Ablauf: a ring with the number, and the line
+   runs from ring to ring. Horizontal on wide screens, vertical below. */
+
+.steps {
+  counter-reset: step;
+}
+
+.steps > li {
+  position: relative;
+  counter-increment: step;
+  padding: 0 0 2rem 3.25rem;
+}
+
+.steps > li::after {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  background: #f2f2f0;
+}
+
+.steps > li::before {
+  content: "";
+  position: absolute;
+  top: 2.75rem;
+  bottom: 0.5rem;
+  left: calc(1.125rem - 1px);
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #006f68 0%, #00b8ad 100%);
+}
+
+.steps > li:last-child::before {
+  -webkit-mask: linear-gradient(180deg, #000, transparent);
+  mask: linear-gradient(180deg, #000, transparent);
+}
+
+@media (min-width: 1024px) {
+  .steps > li {
+    padding: 3.5rem 1.5rem 0 0;
+  }
+
+  /* The line runs to the next ring with the same gap on both ends: the next
+     ring starts exactly at this item's right edge. */
+  .steps > li::before {
+    top: calc(1.125rem - 1px);
+    right: 0.5rem;
+    bottom: auto;
+    left: 2.75rem;
+    width: auto;
+    height: 2px;
+    background: var(--flow);
+  }
+
+  .steps > li:last-child::before {
+    -webkit-mask: linear-gradient(90deg, #000, transparent);
+    mask: linear-gradient(90deg, #000, transparent);
   }
 }

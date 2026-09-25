@@ -23,7 +23,7 @@ export function SubpageHero() {
         <p className="mt-8 font-mono text-[11px] uppercase tracking-[0.2em] text-[#006f68]">
           {page.eyebrow}
         </p>
-        <h1 className="mt-5 max-w-[18ch] text-balance font-display text-[43px] font-semibold leading-[0.98] tracking-[-0.03em] text-[#181811] sm:text-[60px] lg:text-[72px]">
+        <h1 className="mt-5 text-pretty font-display text-[43px] font-semibold leading-[0.98] tracking-[-0.03em] text-[#181811] sm:text-[60px] lg:text-[72px]">
           {page.title}
         </h1>
         <p className="mt-6 max-w-[62ch] text-[16px] leading-7 text-[#6c6c61] sm:text-[18px] sm:leading-8">

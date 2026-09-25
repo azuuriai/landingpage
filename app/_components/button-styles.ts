@@ -1,12 +1,28 @@
-// Interaction style borrowed from Indeed Unique: controls are never filled
-// with colour. On hover or keyboard focus a teal ring (the logo teal) draws in
-// from outside and settles on the element's edge. Radius 8 px — "neither round
-// nor square", like Indeed Unique's --radius-control.
-export const HOVER_RING =
-  "rounded-lg outline outline-2 outline-offset-[6px] outline-transparent transition-[outline-color,outline-offset,border-color] duration-300 ease-out hover:outline-[#00b8ad] hover:outline-offset-0 focus:outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00b8ad] focus-visible:outline-offset-0";
+// Interaction system shared by every control. The mechanics live in
+// globals.css (.ui-link, .ui-button, .ui-nav, .ui-row): a thin teal line that
+// draws in from the left, a colour sweep through button text, an icon nudge.
+// Controls are never filled with colour. Radius 8 px — "neither round nor
+// square", like Indeed Unique's --radius-control.
 
-const BASE = `inline-flex h-12 w-fit shrink-0 items-center justify-center gap-2 px-6 text-[15px] font-medium text-[#181811] ${HOVER_RING}`;
+const BUTTON_BASE =
+  "ui-button inline-flex h-12 w-fit shrink-0 items-center justify-center gap-2 px-6 text-[15px] font-medium";
 
-export const PRIMARY_BUTTON = `${BASE} border border-[#181811]/20 bg-white/70 hover:border-transparent disabled:cursor-not-allowed disabled:opacity-60`;
+// Teal hairline frame; the sweep marks it as the main action.
+export const PRIMARY_BUTTON = `${BUTTON_BASE} disabled:cursor-not-allowed disabled:opacity-60`;
 
-export const SECONDARY_BUTTON = `${BASE} border border-[#181811]/10 bg-transparent hover:border-transparent`;
+// Same body with a grey hairline frame.
+export const SECONDARY_BUTTON = `${BUTTON_BASE} ui-button--secondary`;
+
+// Inline text link with an arrow or without: grey hairline, teal line on hover.
+export const TEXT_LINK = "ui-link inline-flex items-center gap-1.5 font-medium";
+
+// Quiet links (footer, running head): same line, inherits size and colour.
+export const QUIET_LINK = "ui-link";
+
+// Menu entries: the line grows under the word, the active entry keeps it.
+export const NAV_LINK = "ui-nav";
+
+// Icon direction classes for the nudge on hover.
+export const ICON_UP = "ui-icon-up";
+export const ICON_RIGHT = "ui-icon-right";
+export const ICON_LEFT = "ui-icon-left";

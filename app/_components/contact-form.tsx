@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { CONTACT_EMAIL } from "../seo";
-import { PRIMARY_BUTTON } from "./button-styles";
+import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
@@ -159,21 +159,18 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className={`group ${PRIMARY_BUTTON}`}
+          className={PRIMARY_BUTTON}
         >
           {status === "sending" ? t.sending : t.submit}
           {status === "sending" ? (
             <span className="h-3.5 w-3.5 animate-spin rounded-full border-[1.5px] border-[#0b1f1d]/30 border-t-[#0b1f1d]" />
           ) : (
-            <ArrowUpRight
-              size={15}
-              className="transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
+            <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
           )}
         </button>
         <p className="max-w-[46ch] text-[12px] leading-5 text-[#5f5f56]">
           {t.note}{" "}
-          <Link href="/datenschutz" className="underline underline-offset-2 transition hover:text-[#181811]">
+          <Link href="/datenschutz" className={QUIET_LINK}>
             Datenschutz
           </Link>
         </p>
@@ -184,7 +181,7 @@ export function ContactForm() {
           {t.errorBody}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="font-medium underline decoration-[#d6b3ab] underline-offset-2 hover:text-[#181811]"
+            className={`${QUIET_LINK} font-medium`}
           >
             {CONTACT_EMAIL}
           </a>
@@ -194,7 +191,7 @@ export function ContactForm() {
           {t.fallbackPrefix}{" "}
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            className="underline decoration-[#d8d8d2] underline-offset-2 transition hover:text-[#181811]"
+            className={QUIET_LINK}
           >
             {CONTACT_EMAIL}
           </a>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { AutoplayVideo } from "@/app/_components/autoplay-video";
-import { PRIMARY_BUTTON } from "@/app/_components/button-styles";
+import { ICON_UP, PRIMARY_BUTTON, TEXT_LINK } from "@/app/_components/button-styles";
 import { PhoneFrame } from "@/app/_components/phone-frame";
 import { showcaseEntries, type ShowcaseEntry } from "@/app/projects-data";
 import { BrowserFrame } from "./project-media";
@@ -41,10 +41,10 @@ export function ProjectsOverview() {
                 href={entry.live.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 text-[14px] font-medium text-[#006f68] transition hover:text-[#181811]"
+                className={`${TEXT_LINK} text-[14px] text-[#006f68]`}
               >
                 {entry.live.label}
-                <ArrowUpRight size={14} aria-hidden="true" />
+                <ArrowUpRight size={14} aria-hidden="true" className={ICON_UP} />
               </a>
             </div>
           </article>
