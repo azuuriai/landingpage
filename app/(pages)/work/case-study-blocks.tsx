@@ -35,22 +35,20 @@ export function CaseSection({
   );
 }
 
-// Heading with its intro beside it; `stacked` puts a short intro underneath.
+// Heading with an optional intro directly underneath, in reading width.
+// Never side by side: a sentence next to a heading is not part of this
+// site's design, on any page.
 export function SectionHeading({
   title,
   intro,
   dark = false,
-  stacked = false,
 }: {
   title: string;
   intro?: string;
   dark?: boolean;
-  stacked?: boolean;
 }) {
   return (
-    <div
-      className={`grid gap-5 ${stacked ? "" : "lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] lg:gap-20"}`}
-    >
+    <div className="grid gap-5">
       <h2
         className={`text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] sm:text-[42px] ${
           dark ? "text-white" : "text-[#181811]"
@@ -60,7 +58,7 @@ export function SectionHeading({
       </h2>
       {intro ? (
         <p
-          className={`max-w-[60ch] text-[15px] leading-7 sm:text-[16px] ${stacked ? "" : "lg:pt-2"} ${
+          className={`max-w-[60ch] text-[15px] leading-7 sm:text-[16px] ${
             dark ? "text-[#c9d0cc]" : "text-[#5f5f56]"
           }`}
         >

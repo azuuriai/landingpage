@@ -42,7 +42,7 @@ export const services: Service[] = [
     includes: [
       "CMS, in dem du Texte, Bilder und Beiträge selbst änderst",
       "Buchung und Stundenplan eingebunden, etwa über Eversports",
-      "Wo es passt, laufen CMS und Hosting in kostenlosen Plänen: Dann zahlst du nur die Domain",
+      "Wo es passt, laufen CMS und Hosting in kostenlosen Plänen. Domain und Buchungsanbieter kommen separat dazu",
       "Schnell auf jedem Gerät, mit SEO-Basics",
     ],
     proof: { label: "Indeed Unique ansehen", href: projects["indeed-unique"].path },

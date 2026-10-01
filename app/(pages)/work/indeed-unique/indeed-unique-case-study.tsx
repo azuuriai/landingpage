@@ -72,8 +72,8 @@ const operations = [
     text: "Alle Seiten werden vorab gebaut und über Cloudflare ausgeliefert. Nichts, das jemand warten muss.",
   },
   {
-    title: "Laufende Kosten: nur die Domain",
-    text: "CMS, Hosting und Sicherungen laufen in kostenlosen Plänen.",
+    title: "Website und CMS in kostenlosen Plänen",
+    text: "CMS, Hosting und Sicherungen laufen aktuell in kostenlosen Anbieterplänen. Domain, Buchungssystem und Zahlungsgebühren kommen separat dazu.",
   },
   {
     title: "Geprüft vor jedem Release",
@@ -92,7 +92,6 @@ export function IndeedUniqueCaseStudy() {
         <SectionHeading
           title="Eine Website, die sich nach Tanz anfühlt."
           intro="Bewegung ist das Handwerk des Studios, also auch das der Website."
-          stacked
         />
         {/* Four recordings of the live site side by side, one size each. */}
         <div className="mt-12 grid gap-10 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-5">
@@ -170,7 +169,7 @@ export function IndeedUniqueCaseStudy() {
       <CaseSection>
         <SectionHeading
           title="Läuft, ohne dass jemand daran denken muss."
-          intro="Eine Website für ein Studio muss vor allem zuverlässig sein. Deshalb gibt es keinen Server, keine Datenbank und keine Plattformgebühren, dafür automatische Prüfungen und Sicherungen."
+          intro="Eine Website für ein Studio muss vor allem zuverlässig sein. Deshalb gibt es keinen eigenen Server und keine Datenbank, für Website und CMS aktuell keine bezahlten Anbieterpläne, dafür automatische Prüfungen und Sicherungen."
         />
         <div className="mt-12">
           <CapabilityList items={operations} />

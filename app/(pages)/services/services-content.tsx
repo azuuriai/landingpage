@@ -1,9 +1,11 @@
+import { Fragment } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Check } from "lucide-react";
 import { ICON_UP, TEXT_LINK } from "@/app/_components/button-styles";
 import { PhoneFrame } from "@/app/_components/phone-frame";
 import { launchSteps, services, type Service } from "@/app/services-data";
+import { STUDIOS_PATH } from "@/app/studios-data";
 import { BrowserFrame } from "../work/project-media";
 
 // Body of the Leistungen page. Every product form is built the same way — words
@@ -14,7 +16,10 @@ export function ServicesContent() {
   return (
     <>
       {services.map((service) => (
-        <ServiceSection key={service.id} service={service} />
+        <Fragment key={service.id}>
+          <ServiceSection service={service} />
+          {service.id === "websites" ? <StudioHint /> : null}
+        </Fragment>
       ))}
       <LaunchSteps />
     </>
@@ -55,6 +60,24 @@ function ServiceSection({ service }: { service: Service }) {
         <ServiceMedia service={service} />
       </div>
     </section>
+  );
+}
+
+// One quiet line under Websites for the studio offer on /studios.
+function StudioHint() {
+  return (
+    <aside className="border-t border-[#deded8]">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-6 sm:px-8 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-10">
+        <p className="max-w-[70ch] text-[15px] leading-7 text-[#5f5f56]">
+          <span className="font-semibold text-[#181811]">Du bietest Kurse an, ob Tanz, Yoga oder Fitness?</span>{" "}
+          Dafür gibt es ein eigenes Angebot, einmalig zum Festpreis oder monatlich.
+        </p>
+        <Link href={STUDIOS_PATH} className={`${TEXT_LINK} shrink-0 text-[15px] text-[#006f68]`}>
+          Websites für Studios und Kursanbieter
+          <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
+        </Link>
+      </div>
+    </aside>
   );
 }
 

@@ -109,6 +109,24 @@ const nextConfig: NextConfig = {
           ...noindexHeaders,
         ],
       },
+      {
+        // Personal preview pages for single studios: unlisted, never indexed.
+        source: "/fuer/:slug",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+      {
+        // The studio's draft is framed on its own preview page (same origin
+        // only). Later rules override the same keys set above.
+        source: "/fuer/:slug/entwurf/:path*",
+        headers: [
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Content-Security-Policy",
+            value: contentSecurityPolicy.replace("frame-ancestors 'none'", "frame-ancestors 'self'"),
+          },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
     ];
   },
 };

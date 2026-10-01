@@ -52,7 +52,11 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     facts: [
       { label: "Umfang", value: "Konzept, Design, Entwicklung, CMS, Umzug und Go-live" },
       { label: "Technik", value: "Astro, Sanity, Eversports, Cloudflare" },
-      { label: "Laufende Kosten", value: "Nur die Domain" },
+      {
+        label: "Laufende Kosten",
+        value:
+          "Website und CMS aktuell in kostenlosen Anbieterplänen. Domain, Buchungssystem und Zahlungsgebühren separat.",
+      },
     ],
     links: [{ label: "indeedunique.com öffnen", href: INDEED_UNIQUE_URL }],
     desktop: RECORDINGS.indeedUniqueDesktop,

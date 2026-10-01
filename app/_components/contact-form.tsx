@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { Suspense, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { CONTACT_EMAIL } from "../seo";
 import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
@@ -14,6 +15,7 @@ const COPY = {
   email: "E-Mail",
   emailPlaceholder: "name@beispiel.com",
   message: "Deine Idee",
+  messageHint: undefined as string | undefined,
   messagePlaceholder:
     "In zwei, drei Sätzen: Was willst du launchen, für wen, und wo hakt es gerade?",
   submit: "Idee schicken",
@@ -25,8 +27,41 @@ const COPY = {
   fallbackPrefix: "Lieber direkt mailen?",
 };
 
-export function ContactForm() {
-  const t = COPY;
+// /contact?thema=studio (from /studios): same form, studio questions.
+const STUDIO_COPY = {
+  ...COPY,
+  message: "Dein Studio oder Kursangebot",
+  messageHint:
+    "Hilfreich sind: deine jetzige Website, dein Buchungssystem (vorhanden oder geplant), der Anlass und bis wann die neue Seite stehen soll.",
+  messagePlaceholder:
+    "Wie heißt dein Studio oder Kursangebot, und was soll die neue Website können?",
+  submit: "Anfrage schicken",
+};
+
+export type ContactTopic = "studio";
+
+function topicFrom(value: string | null): ContactTopic | undefined {
+  return value === "studio" ? "studio" : undefined;
+}
+
+// Reads the topic from the URL. useSearchParams needs a Suspense boundary on
+// a static page; the fallback is the plain form, so the prerendered HTML
+// always contains a working form.
+export function ContactFormFromUrl() {
+  return (
+    <Suspense fallback={<ContactForm />}>
+      <ContactFormWithTopic />
+    </Suspense>
+  );
+}
+
+function ContactFormWithTopic() {
+  const topic = topicFrom(useSearchParams().get("thema"));
+  return <ContactForm key={topic ?? "general"} topic={topic} />;
+}
+
+export function ContactForm({ topic }: { topic?: ContactTopic } = {}) {
+  const t = topic === "studio" ? STUDIO_COPY : COPY;
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -51,10 +86,14 @@ export function ContactForm() {
 
     setStatus("sending");
 
-    const subject = `Neue Anfrage über lukaskaffer.com – ${name}`;
+    const subject =
+      topic === "studio"
+        ? `Studio-Anfrage über lukaskaffer.com – ${name}`
+        : `Neue Anfrage über lukaskaffer.com – ${name}`;
     const body = [
       `Name:    ${name}`,
       `E-Mail:  ${email}`,
+      ...(topic === "studio" ? ["Thema:   Studio-Projekt (/studios)"] : []),
       "",
       message,
     ].join("\n");
@@ -92,8 +131,7 @@ export function ContactForm() {
         aria-live="polite"
         className="rounded-[8px] border border-[#cdeae6] bg-[#eef9f7] p-6 sm:p-7"
       >
-        <span className="accent-pulse inline-block h-2 w-2 rounded-full bg-[#00b8ad]" />
-        <p className="mt-3 font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181811]">
+        <p className="font-display text-[20px] font-medium leading-[1.2] tracking-[-0.02em] text-[#181811]">
           {t.successTitle}
         </p>
         <p className="mt-2 max-w-[46ch] text-[14px] leading-[1.6] text-[#5c6b68]">
@@ -145,6 +183,11 @@ export function ContactForm() {
 
       <label className="mt-5 block">
         <span className={labelClass}>{t.message}</span>
+        {t.messageHint ? (
+          <span className="mt-1.5 block text-[13px] leading-5 text-[#5f5f56]">
+            {t.messageHint}
+          </span>
+        ) : null}
         <textarea
           name="message"
           required

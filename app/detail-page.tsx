@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight, Plus } from "lucide-react";
 import { ICON_UP, TEXT_LINK } from "./_components/button-styles";
-import { ContactForm } from "./_components/contact-form";
+import { ContactFormFromUrl } from "./_components/contact-form";
 import { ContactBand, JsonLd } from "./_components/site-chrome";
 import {
   detailPageMap,
@@ -138,7 +138,7 @@ function ContactFormSection() {
           </p>
         </div>
         <div className="min-w-0 border-t border-[#e1e1dc] pt-7 lg:border-t-0 lg:pt-0">
-          <ContactForm />
+          <ContactFormFromUrl />
         </div>
       </div>
     </section>

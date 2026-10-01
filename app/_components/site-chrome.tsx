@@ -88,9 +88,8 @@ export function Chips({ items }: { items: string[] }) {
       {items.map((chip) => (
         <span
           key={chip}
-          className="inline-flex items-center gap-2 rounded-full border border-[#181811]/15 py-1 pl-2.5 pr-3 text-[13px] font-medium text-[#3a3a33]"
+          className="inline-flex items-center rounded-full border border-[#181811]/15 px-3 py-1 text-[13px] font-medium text-[#3a3a33]"
         >
-          <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-[#00b8ad]" />
           {chip}
         </span>
       ))}

@@ -57,10 +57,6 @@ body {
   }
 }
 
-.accent-pulse {
-  animation: accentPulse 3.8s ease-in-out infinite;
-}
-
 .rise {
   animation: softReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -107,19 +103,6 @@ body {
 
 .screen-panel-in {
   animation: screenPanelIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@keyframes accentPulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 184, 173, 0);
-    opacity: 0.9;
-  }
-
-  45% {
-    box-shadow: 0 0 0 7px rgba(0, 184, 173, 0.1);
-    opacity: 1;
-  }
 }
 
 @keyframes screenPanelIn {
