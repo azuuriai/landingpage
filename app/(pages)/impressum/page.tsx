@@ -12,11 +12,13 @@ export default function ImpressumPage() {
     <LegalPage
       eyebrow="Rechtliches"
       title="Impressum"
-      intro="Angaben zur verantwortlichen Person hinter lukaskaffer.com."
+      intro="Angaben nach § 5 ECG, § 63 GewO und § 25 MedienG."
     >
-      <h2>Betreiber und Medieninhaber</h2>
+      <h2>Unternehmen</h2>
       <p>
-        Lukas Kaffer
+        Lukas Alexander Kaffer
+        <br />
+        Einzelunternehmen
         <br />
         Klederinger Straße 15/2/27
         <br />
@@ -32,21 +34,44 @@ export default function ImpressumPage() {
         Kontaktformular: <a href="/contact">lukaskaffer.com/contact</a>
       </p>
 
-      <h2>Rechtsform</h2>
-      <p>Privatperson, nicht im Firmenbuch eingetragen.</p>
-
-      <h2>Offenlegung nach § 25 MedienG</h2>
-      <p>Medieninhaber und Herausgeber: Lukas Kaffer</p>
+      <h2>Unternehmensgegenstand</h2>
       <p>
-        Tätigkeitsbereich: Betrieb der persönlichen Portfolio- und Projektwebsite
-        lukaskaffer.com.
+        Design und Entwicklung von Websites, Apps und Software sowie Betreuung und
+        Hosting; Werbung.
       </p>
 
-      <h2>Grundlegende Richtung</h2>
+      <h2>Gewerbeberechtigungen</h2>
       <p>
-        lukaskaffer.com informiert über das berufliche Profil, die Arbeitsweise und
-        ausgewählte digitale Projekte von Lukas Kaffer. Die Website dient außerdem
-        der Kontaktaufnahme für berufliche und projektbezogene Anfragen.
+        Dienstleistungen in der automatischen Datenverarbeitung und
+        Informationstechnik (GISA-Zahl 40194523)
+        <br />
+        Werbegrafik-Designer (GISA-Zahl 40194530)
+        <br />
+        Werbeagentur (GISA-Zahl 40194547)
+        <br />
+        Ankündigungsunternehmen (GISA-Zahl 40194554)
+      </p>
+      <p>
+        Gewerbebehörde: Bezirkshauptmannschaft Bruck an der Leitha
+        <br />
+        Kammerzugehörigkeit: Wirtschaftskammer Niederösterreich, Fachgruppen
+        Unternehmensberatung, Buchhaltung und Informationstechnologie sowie
+        Werbung und Marktkommunikation
+        <br />
+        Berufsrecht: Gewerbeordnung 1994, abrufbar unter{" "}
+        <a href="https://www.ris.bka.gv.at">www.ris.bka.gv.at</a>
+      </p>
+
+      <h2>Offenlegung nach § 25 MedienG</h2>
+      <p>
+        Medieninhaber und Herausgeber: Lukas Alexander Kaffer, Schwechat
+        <br />
+        Unternehmensgegenstand: siehe oben
+      </p>
+      <p>
+        Grundlegende Richtung: lukaskaffer.com informiert über die Leistungen, die
+        Arbeitsweise und ausgewählte Projekte von Lukas Kaffer und dient der
+        Kontaktaufnahme für berufliche und projektbezogene Anfragen.
       </p>
 
       <h2>Haftung für Inhalte und externe Links</h2>

@@ -13,11 +13,11 @@ export default function DatenschutzPage() {
       eyebrow="Datenschutz"
       title="Datenschutzerklärung"
       intro="Diese Erklärung beschreibt, welche personenbezogenen Daten bei der Nutzung von lukaskaffer.com verarbeitet werden."
-      updated="11. August 2026"
+      updated="1. Oktober 2026"
     >
       <h2>Verantwortlicher</h2>
       <p>
-        Lukas Kaffer
+        Lukas Alexander Kaffer (Einzelunternehmen)
         <br />
         Klederinger Straße 15/2/27
         <br />
@@ -67,6 +67,30 @@ export default function DatenschutzPage() {
         <a href="mailto:hello@lukaskaffer.com">hello@lukaskaffer.com</a> schreiben.
         In diesem Fall werden die Angaben verarbeitet, die du selbst mit deiner
         Nachricht übermittelst.
+      </p>
+
+      <h2>Geschäftliche Kontaktaufnahme</h2>
+      <p>
+        Für die Anbahnung von Aufträgen kann ich Unternehmen gezielt und einzeln
+        ansprechen. Dafür verwende ich ausschließlich geschäftliche Kontaktdaten, die
+        das Unternehmen selbst veröffentlicht hat, etwa auf der eigenen Website:
+        Name des Unternehmens, Ansprechperson, geschäftliche E-Mail-Adresse und
+        öffentlich einsehbare Angaben zum Unternehmen. Rechtsgrundlage ist mein
+        berechtigtes Interesse an der Anbahnung von Geschäftsbeziehungen nach Art. 6
+        Abs. 1 lit. f DSGVO. Du kannst dieser Verarbeitung jederzeit formlos an{" "}
+        <a href="mailto:hello@lukaskaffer.com">hello@lukaskaffer.com</a>{" "}
+        widersprechen; deine Daten werden dann gelöscht und nur zur Sicherstellung,
+        dass keine weitere Kontaktaufnahme erfolgt, in einer Sperrliste vermerkt.
+      </p>
+
+      <h2>Kunden und Aufträge</h2>
+      <p>
+        Für Angebote, Verträge, die Projektabwicklung, Rechnungen und die laufende
+        Betreuung verarbeite ich die dafür erforderlichen Kontakt-, Vertrags- und
+        Zahlungsdaten nach Art. 6 Abs. 1 lit. b DSGVO. Unterlagen, die steuer- und
+        unternehmensrechtlichen Aufbewahrungspflichten unterliegen, werden nach
+        Art. 6 Abs. 1 lit. c DSGVO in Verbindung mit § 132 BAO sieben Jahre
+        aufbewahrt.
       </p>
 
       <h2>Rechtsgrundlagen</h2>

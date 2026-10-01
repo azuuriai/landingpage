@@ -54,7 +54,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-[#deded8]">
       <div className="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-4 px-6 py-6 text-[13px] text-[#8a8a80] sm:px-8 lg:px-10">
-        <span>© 2026 Lukas Kaffer, Wien</span>
+        <span>© 2026 Lukas Kaffer</span>
         <div className="flex gap-5">
           <Link href="/impressum" className={QUIET_LINK}>
             Impressum
