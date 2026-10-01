@@ -84,7 +84,7 @@ export function Chips({ items }: { items: string[] }) {
   if (items.length === 0) return null;
 
   return (
-    <div className="mt-7 flex flex-wrap gap-1.5">
+    <div className="mt-6 flex flex-wrap gap-1.5">
       {items.map((chip) => (
         <span
           key={chip}

@@ -6,7 +6,7 @@ import { services, type Service } from "@/app/services-data";
 // to their sections, each with a still from the project that proves it.
 export function ServiceIndex() {
   return (
-    <nav aria-label="Leistungen" className="w-full lg:h-full lg:w-[440px]">
+    <nav aria-label="Leistungen" className="w-full lg:h-full lg:w-[400px]">
       <ul className="flex flex-col gap-3 lg:h-full">
         {services.map((service) => (
           <li key={service.id} className="lg:flex-1">
@@ -35,13 +35,13 @@ function Thumbnail({ service }: { service: Service }) {
   const { media } = service;
 
   return (
-    <span className="relative flex aspect-[16/10] w-[140px] shrink-0 justify-center overflow-hidden rounded-md border border-[#181811]/10 bg-[#e9e9e4] lg:w-[168px]">
+    <span className="relative flex aspect-[16/10] w-[140px] shrink-0 justify-center overflow-hidden rounded-md border border-[#181811]/10 bg-[#e9e9e4]">
       {media.kind === "web" ? (
         <Image
           src={media.thumb.src}
           alt=""
           fill
-          sizes={media.thumb.zoomFocus ? "304px" : "168px"}
+          sizes={media.thumb.zoomFocus ? "252px" : "140px"}
           className={`object-cover ${media.thumb.zoomFocus ? "scale-[1.8]" : ""}`}
           style={media.thumb.zoomFocus ? { transformOrigin: media.thumb.zoomFocus } : undefined}
         />
