@@ -13,7 +13,7 @@ export default function DatenschutzPage() {
       eyebrow="Datenschutz"
       title="Datenschutzerklärung"
       intro="Diese Erklärung beschreibt, welche personenbezogenen Daten bei der Nutzung von lukaskaffer.com verarbeitet werden."
-      updated="1. Oktober 2026"
+      updated="2. Oktober 2026"
     >
       <h2>Verantwortlicher</h2>
       <p>
@@ -81,6 +81,8 @@ export default function DatenschutzPage() {
         <a href="mailto:hello@lukaskaffer.com">hello@lukaskaffer.com</a>{" "}
         widersprechen; deine Daten werden dann gelöscht und nur zur Sicherstellung,
         dass keine weitere Kontaktaufnahme erfolgt, in einer Sperrliste vermerkt.
+        Kommt kein Auftrag zustande, lösche ich die Kontaktdaten spätestens sechs
+        Monate nach der Kontaktaufnahme.
       </p>
 
       <h2>Kunden und Aufträge</h2>
