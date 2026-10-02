@@ -37,9 +37,9 @@ export type DetailPageData = {
 const lastModified = new Date("2026-09-24T00:00:00.000Z");
 
 export const detailPageNavOrder: DetailSlug[] = [
-  "about",
-  "work",
   "services",
+  "work",
+  "about",
   "faq",
   "contact",
 ];

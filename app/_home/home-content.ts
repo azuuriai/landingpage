@@ -7,8 +7,8 @@ export const HERO = {
 };
 
 export const HOME_LINKS = [
-  { label: "Showcase", href: "/work" },
   { label: "Leistungen", href: "/services" },
+  { label: "Showcase", href: "/work" },
   { label: "Über mich", href: "/about" },
   { label: "FAQ", href: "/faq" },
 ];
