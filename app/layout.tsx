@@ -21,7 +21,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   applicationName: SITE_NAME,
-  title: "Lukas Kaffer · AI-native Product Builder",
+  title: "Lukas Kaffer · Websites, Web-Apps und iOS-Apps",
   description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   alternates: {
@@ -37,7 +37,8 @@ export const metadata: Metadata = {
     "iOS App Entwicklung",
     "SwiftUI Entwickler",
     "Next.js Entwickler",
-    "AI-native Product Builder",
+    "Website für Tanzstudio",
+    "Website für Yogastudio",
     "AI-assisted Development",
     "MVP Entwicklung",
     "Landing Page Wien",
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     apple: { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
   },
   openGraph: {
-    title: "Lukas Kaffer · AI-native Product Builder",
+    title: "Lukas Kaffer · Websites, Web-Apps und iOS-Apps",
     description: OG_DESCRIPTION,
     url: "/",
     siteName: SITE_NAME,
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lukas Kaffer · AI-native Product Builder",
+    title: "Lukas Kaffer · Websites, Web-Apps und iOS-Apps",
     description: OG_DESCRIPTION,
     images: [OG_IMAGE.url],
   },

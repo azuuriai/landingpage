@@ -29,7 +29,7 @@ export const structuredData = {
       url: SITE_URL,
       image: absoluteUrl("/profile/lukas-standing.jpg"),
       email: CONTACT_EMAIL,
-      jobTitle: "AI-native Product Builder",
+      jobTitle: "Webdesigner und Entwickler",
       address: {
         "@type": "PostalAddress",
         addressLocality: "Vienna",
