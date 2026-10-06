@@ -7,8 +7,8 @@ import { launchSteps, services, type Service } from "@/app/services-data";
 import { BrowserFrame } from "../work/project-media";
 
 // Body of the Leistungen page. Every product form is built the same way — words
-// on the left, a real still on the right — and ends with the project that
-// shows it working. Stills instead of recordings keep this page calmer than
+// on the left, a real still on the right — and ends with the projects that
+// show it working. Stills instead of recordings keep this page calmer than
 // the homepage and the Showcase.
 export function ServicesContent() {
   return (
@@ -43,13 +43,18 @@ function ServiceSection({ service }: { service: Service }) {
               </li>
             ))}
           </ul>
-          <Link
-            href={service.proof.href}
-            className={`${TEXT_LINK} mt-7 text-[15px] text-[#006f68]`}
-          >
-            {service.proof.label}
-            <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
-          </Link>
+          <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3">
+            {service.proofs.map((proof) => (
+              <Link
+                key={proof.href}
+                href={proof.href}
+                className={`${TEXT_LINK} text-[15px] text-[#006f68]`}
+              >
+                {proof.label}
+                <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
+              </Link>
+            ))}
+          </div>
         </div>
 
         <ServiceMedia service={service} />

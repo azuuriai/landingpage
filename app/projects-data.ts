@@ -1,7 +1,7 @@
 import { RECORDINGS, type Recording } from "./media";
 
 export type ProjectSlug = "indeed-unique" | "vienna-event-radar";
-export type CaseStudySlug = ProjectSlug | "wien-event-radar-ios";
+export type CaseStudySlug = ProjectSlug | "wien-event-radar-ios" | "operations-app";
 
 // `internal` links stay on this site; all others open the live product.
 export type ProjectLink = { label: string; href: string; internal?: boolean };
@@ -115,11 +115,37 @@ export const iosApp: CaseStudyData = {
   lastModified: new Date("2026-09-24T00:00:00.000Z"),
 };
 
+// A private tool, so there is no live link: the page itself is the proof.
+// Facts come from the radar-admin-ios repository (build 26, README and test
+// suite, October 2026); the screens are its preview mode with sample data.
+export const operationsApp: CaseStudyData = {
+  slug: "operations-app",
+  path: "/work/operations-app",
+  name: "Operations-App mit Social Studio",
+  summary:
+    "Private iPhone-App für den Betrieb einer Content-Plattform: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+  eyebrow: "Internes Werkzeug · native iOS-App",
+  title: "Eine Plattform betreiben, direkt vom iPhone.",
+  description:
+    "Eine private iPhone-App, mit der eine Content-Plattform im Alltag läuft. Sie zeigt, ob alle Hintergrund-Jobs arbeiten, macht aus aktuellen Inhalten fertige Instagram-Grafiken, stellt den wöchentlichen Newsletter zusammen und legt fest, was oben auf der Startseite steht. Konzept, Design, App und die Schnittstellen im Backend stammen von mir.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design, iOS-App und Backend-Schnittstellen" },
+    { label: "Technik", value: "SwiftUI, Next.js-API, Supabase" },
+    { label: "Einsatz", value: "Privat, nicht im App Store" },
+  ],
+  links: [],
+  metaTitle: "Case Study · Operations-App mit Social Studio in SwiftUI",
+  metaDescription:
+    "Interne iPhone-App in SwiftUI: Monitoring von Hintergrund-Jobs und Fehlern, halbautomatisches Social Studio für Instagram-Karussells und Stories, Newsletter-Redaktion und Startseiten-Steuerung, abgesichert mit Google-Login, Face ID und Rollenprüfung im Backend.",
+  lastModified: new Date("2026-10-06T00:00:00.000Z"),
+};
+
 // All case study pages, in Showcase order (sitemap).
 export const caseStudies: CaseStudyData[] = [
   projects["indeed-unique"],
   projects["vienna-event-radar"],
   iosApp,
+  operationsApp,
 ];
 
 // "indeedunique.com" from the live link, for browser bars and link labels.
@@ -129,13 +155,14 @@ export function projectDomain(project: CaseStudyData) {
 
 // Entries on the Showcase page. The iOS app gets its own entry next to the
 // web platform it belongs to; every entry says what it does, not whose it is.
+// Private tools have no `live` link.
 export type ShowcaseEntry = {
   id: string;
   name: string;
   summary: string;
   facts: Fact[];
   href: string;
-  live: ProjectLink;
+  live?: ProjectLink;
   media:
     | { kind: "web"; domain: string; desktop: Recording; phone?: Recording }
     | { kind: "app"; phone: Recording };
@@ -192,5 +219,18 @@ export const showcaseEntries: ShowcaseEntry[] = [
     href: iosApp.path,
     live: { label: "Im App Store", href: APP_STORE_URL },
     media: { kind: "app", phone: RECORDINGS.viennaEventRadarApp },
+  },
+  {
+    id: "operations-app",
+    name: "Operations-App",
+    summary:
+      "Internes Werkzeug fürs iPhone: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+    facts: [
+      { label: "Bereiche", value: "Monitor, Social Studio, Newsletter" },
+      { label: "Export", value: "Instagram-Karussell und Story" },
+      { label: "Technik", value: "SwiftUI + Next.js-API" },
+    ],
+    href: operationsApp.path,
+    media: { kind: "app", phone: RECORDINGS.operationsAppTour },
   },
 ];

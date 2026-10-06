@@ -6,11 +6,12 @@ import { PhoneFrame } from "@/app/_components/phone-frame";
 import { showcaseEntries, type ShowcaseEntry } from "@/app/projects-data";
 import { BrowserFrame } from "./project-media";
 
-// Three equal entries: what each one is and does, never whose it is.
+// Four equal entries in two columns: what each one is and does, never whose
+// it is. Web projects fill the first row, the two iPhone apps the second.
 export function ProjectsOverview() {
   return (
     <section className="border-t border-[#deded8]">
-      <div className="mx-auto grid w-full max-w-[1180px] gap-x-10 gap-y-16 px-6 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-10 lg:py-20">
+      <div className="mx-auto grid w-full max-w-[1180px] gap-x-10 gap-y-16 px-6 py-12 sm:px-8 md:grid-cols-2 lg:gap-x-16 lg:px-10 lg:py-20">
         {showcaseEntries.map((entry) => (
           <article key={entry.id} className="reveal-on-scroll flex min-w-0 flex-col">
             <EntryMedia entry={entry} />
@@ -37,15 +38,17 @@ export function ProjectsOverview() {
               <Link href={entry.href} className={PRIMARY_BUTTON}>
                 Mehr erfahren
               </Link>
-              <a
-                href={entry.live.href}
-                target="_blank"
-                rel="noreferrer"
-                className={`${TEXT_LINK} text-[14px] text-[#006f68]`}
-              >
-                {entry.live.label}
-                <ArrowUpRight size={14} aria-hidden="true" className={ICON_UP} />
-              </a>
+              {entry.live ? (
+                <a
+                  href={entry.live.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`${TEXT_LINK} text-[14px] text-[#006f68]`}
+                >
+                  {entry.live.label}
+                  <ArrowUpRight size={14} aria-hidden="true" className={ICON_UP} />
+                </a>
+              ) : null}
             </div>
           </article>
         ))}
@@ -54,7 +57,7 @@ export function ProjectsOverview() {
   );
 }
 
-// Same stage height for every entry, so the three cards line up.
+// Same stage height for every entry, so the cards line up.
 function EntryMedia({ entry }: { entry: ShowcaseEntry }) {
   const { media } = entry;
 

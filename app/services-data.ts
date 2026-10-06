@@ -1,4 +1,4 @@
-import { projects, showcaseEntries } from "./projects-data";
+import { operationsApp, projects, showcaseEntries } from "./projects-data";
 
 // The Leistungen page: three product forms, each backed by a project that is
 // live today. The hero lists them as jump links, the page body explains them.
@@ -17,7 +17,8 @@ export type Service = {
   title: string;
   body: string;
   includes: string[];
-  proof: { label: string; href: string };
+  // The projects that show this form working, first one leading.
+  proofs: { label: string; href: string }[];
   media:
     // thumb: the hero thumbnail. With `zoomFocus` it is a close-up of that
     // point (CSS position), otherwise the image is shown as it is.
@@ -45,7 +46,7 @@ export const services: Service[] = [
       "Wo es passt, laufen CMS und Hosting in kostenlosen Plänen: Dann zahlst du nur die Domain",
       "Schnell auf jedem Gerät, mit SEO-Basics",
     ],
-    proof: { label: "Indeed Unique ansehen", href: projects["indeed-unique"].path },
+    proofs: [{ label: "Indeed Unique ansehen", href: projects["indeed-unique"].path }],
     media: {
       kind: "web",
       domain: "indeedunique.com",
@@ -72,7 +73,11 @@ export const services: Service[] = [
       "AI-Funktionen wie ein Assistent, wenn sie echten Nutzen bringen",
       "Dashboards, Backoffices und Automationen für interne Abläufe",
     ],
-    proof: { label: `${radarWeb.name} ansehen`, href: projects["vienna-event-radar"].path },
+    proofs: [
+      { label: `${radarWeb.name} ansehen`, href: projects["vienna-event-radar"].path },
+      // The internal-tools line above, shown working.
+      { label: "Operations-App ansehen", href: operationsApp.path },
+    ],
     media: {
       kind: "web",
       domain: "viennaeventradar.at",
@@ -99,7 +104,7 @@ export const services: Service[] = [
       "Karten, Kalender und Teilen über die Systemfunktionen",
       "App-Store-Einreichung mit Screenshots und Vorschauvideo",
     ],
-    proof: { label: `${radarIos.name} ansehen`, href: radarIos.href },
+    proofs: [{ label: `${radarIos.name} ansehen`, href: radarIos.href }],
     media: {
       kind: "app",
       stills: [

@@ -16,6 +16,7 @@ export function caseStudyMetadata(study: CaseStudyData): Metadata {
 }
 
 function caseStudyJsonLd(study: CaseStudyData) {
+  // Private tools have no live link; the case study page stands in for it.
   const liveLink = study.links.find((link) => !link.internal) ?? study.links[0];
   return {
     "@context": "https://schema.org",
@@ -35,7 +36,7 @@ function caseStudyJsonLd(study: CaseStudyData) {
         "@id": `${SITE_URL}${study.path}#project`,
         name: study.name,
         description: study.summary,
-        url: liveLink.href,
+        url: liveLink?.href ?? absoluteUrl(study.path),
         creator: { "@id": `${SITE_URL}/#person` },
       },
     ],
@@ -108,11 +109,13 @@ export function CaseStudyPage({
               </div>
             ))}
           </dl>
-          <div className="mt-8 flex flex-wrap gap-3">
-            {study.links.map((link, index) => (
-              <ProjectButton key={link.href} link={link} secondary={index > 0} />
-            ))}
-          </div>
+          {study.links.length > 0 ? (
+            <div className="mt-8 flex flex-wrap gap-3">
+              {study.links.map((link, index) => (
+                <ProjectButton key={link.href} link={link} secondary={index > 0} />
+              ))}
+            </div>
+          ) : null}
         </div>
         <div className="rise min-w-0" style={{ animationDelay: "0.1s" }}>
           {media}

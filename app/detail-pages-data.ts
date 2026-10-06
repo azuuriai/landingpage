@@ -68,12 +68,12 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Showcase",
     title: "Was ich baue – live im Einsatz.",
     description:
-      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist live und öffentlich nutzbar.",
+      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar.",
     metaTitle: "Showcase · Websites, Web-Apps und iOS-Apps",
     metaDescription:
-      "Live-Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports sowie Vienna Event Radar im Web und als native iOS-App.",
+      "Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports, Vienna Event Radar im Web und als native iOS-App sowie eine interne Operations-App mit Social Studio.",
     chips: ["Websites", "Web-Apps", "iOS-Apps"],
-    lastModified: new Date("2026-09-24T00:00:00.000Z"),
+    lastModified: new Date("2026-10-06T00:00:00.000Z"),
     sections: [],
   },
   {
