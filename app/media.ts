@@ -22,8 +22,9 @@ export const RECORDINGS = {
   indeedUniqueBooking: recording("/case-studies/indeed-unique/booking", 26_200),
   viennaEventRadarDesktop: recording("/case-studies/vienna-event-radar/web-tour", 26_400),
   viennaEventRadarApp: recording("/case-studies/vienna-event-radar/app-tour", 26_400),
-  // Operations app in its preview mode (sample data), recorded in the iOS
-  // Simulator: Monitor, Social Studio with three slide changes, Newsletter and
+  // Operations app in its preview mode (sample data): lossless iOS Simulator
+  // screenshots joined by crossfades, since the simulator's own screen
+  // recording stutters. Monitor, the Social Studio editor across four slides,
   // Top Picks.
-  operationsAppTour: recording("/case-studies/operations-app/tour", 28_400),
+  operationsAppTour: recording("/case-studies/operations-app/tour", 18_800),
 } satisfies Record<string, Recording>;

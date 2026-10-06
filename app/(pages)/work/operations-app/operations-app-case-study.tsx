@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { PhoneFrame } from "@/app/_components/phone-frame";
 import { CapabilityList, CaseSection, FigureRow, PhoneFeature, SectionHeading } from "../case-study-blocks";
 
 // Facts come from the radar-admin-ios repository (build 26, README, Sources and
@@ -15,7 +14,7 @@ const areas = [
   {
     still: screen("monitor", "Monitor: Alles im Blick, mit Nutzung, Reichweite, Zustellung, Nutzern und Feedback-Frage"),
     title: "Monitor",
-    text: "Hintergrund-Jobs, Fehler, Nutzung und Zustellung: Probleme fallen auf, bevor sie jemand meldet.",
+    text: "Hintergrund-Jobs, Fehler, Nutzung und Reichweite auf einer Seite. Probleme fallen auf, bevor sie jemand meldet.",
   },
   {
     still: screen("social-editor", "Social Studio: Editor mit der Titelgrafik „Wien hat was vor.“"),
@@ -23,72 +22,30 @@ const areas = [
     text: "Aus aktuellen Inhalten entstehen Karussells und Stories im Design der Marke.",
   },
   {
-    still: screen("newsletter", "Newsletter: Vorschau der Ausgabe „Deine Woche in Wien“ und die Auswahl der Events"),
-    title: "Newsletter",
-    text: "Bis zu fünf Events wählen, Einleitung schreiben, Vorschau prüfen, Testmail an sich selbst.",
-  },
-  {
     still: screen("top-picks", "Top Picks: die vier Plätze der Startseite, einer fest gesetzt, drei automatisch"),
     title: "Top Picks",
-    text: "Die vier Plätze oben auf der Startseite festlegen, Events ausblenden oder der Automatik zurückgeben.",
+    text: "Festlegen, was oben auf der Startseite steht, oder die Auswahl der Automatik überlassen.",
   },
 ];
 
 const studio = [
   {
     title: "Vorlagen mit echten Inhalten",
-    text: "Für die Woche, das Wochenende, ein einzelnes Event oder ein Feature. Events, Termine und Bilder kommen direkt aus der Plattform.",
-  },
-  {
-    title: "Gestaltung im Detail",
-    text: "Texte überschreiben, eigene Fotos und Bildausschnitte, Reihenfolge der Slides, Größe von Überschrift und iPhone-Ansicht.",
+    text: "Für die Woche, das Wochenende oder ein Event. Termine und Bilder kommen direkt aus der Plattform.",
   },
   {
     title: "Export für Instagram",
-    text: "PNG in 1080 × 1350 für Karussells und 1080 × 1920 für Stories, direkt ins Teilen-Menü oder in die Fotos.",
+    text: "Karussell in 1080 × 1350 und Story in 1080 × 1920, direkt ins Teilen-Menü.",
   },
   {
     title: "Bewusst halbautomatisch",
-    text: "Die App entwirft, der Mensch entscheidet. Veröffentlicht wird von Hand, die App vermerkt nur, was online ist.",
-  },
-];
-
-const monitor = [
-  {
-    title: "Hintergrund-Jobs",
-    text: "Elf geplante Dienste mit letztem Aufruf, letztem Erfolg und nächstem Termin, dazu der Verlauf der letzten Läufe.",
-  },
-  {
-    title: "Fehler und Stabilität",
-    text: "Fehler aus Sentry und aus der Plattform selbst, getrennt nach Versionen.",
-  },
-  {
-    title: "Nutzung und Reichweite",
-    text: "Zähler für 24 Stunden, 7 und 30 Tage im Vergleich zur Vorperiode, Suchklicks aus Google und Downloads aus dem App Store.",
-  },
-  {
-    title: "Ehrlich bei Lücken",
-    text: "Fehlende Daten erscheinen als unbekannt, nie als grün.",
+    text: "Die App entwirft, der Mensch entscheidet und veröffentlicht.",
   },
 ];
 
 const foundation = [
-  {
-    title: "Anmeldung mit Google",
-    text: "Über das Anmeldefenster von iOS mit PKCE. Die Sitzung liegt nur im Schlüsselbund des Geräts.",
-  },
-  {
-    title: "Face ID beim Öffnen",
-    text: "Die App sperrt sich selbst und fragt beim erneuten Öffnen nach Face ID oder dem Gerätecode.",
-  },
-  {
-    title: "Rollen im Backend geprüft",
-    text: "Jede Anfrage prüft Token und Admin-Rolle auf dem Server, nicht nur in der App.",
-  },
-  {
-    title: "Offline-fest",
-    text: "Entwürfe überstehen Funkloch und Neustart. Gleichzeitige Änderungen werden erkannt, nicht überschrieben.",
-  },
+  { title: "Google-Login und Face ID", text: "Sitzung nur im Schlüsselbund, Sperre beim erneuten Öffnen." },
+  { title: "Rollen im Backend geprüft", text: "Jede Anfrage prüft Token und Admin-Rolle auf dem Server." },
 ];
 
 const stories = [
@@ -103,10 +60,10 @@ export function OperationsAppCaseStudy() {
       <CaseSection tone="tinted">
         <SectionHeading
           stacked
-          title="Vier Bereiche, eine App."
-          intro="Jeder Bereich nimmt eine wiederkehrende Aufgabe ab, für die es sonst Laptop, Dashboard und mehrere Logins bräuchte. Die Daten kommen live aus dem Backend der Plattform. Zu sehen ist hier der Vorschaumodus mit Beispieldaten."
+          title="Der Alltag einer Plattform, in einer App."
+          intro="Dazu kommt die Newsletter-Redaktion. Die Daten kommen live aus dem Backend; zu sehen ist der Vorschaumodus mit Beispieldaten."
         />
-        <div className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {areas.map((item) => (
             <PhoneFeature key={item.title} {...item} />
           ))}
@@ -114,16 +71,11 @@ export function OperationsAppCaseStudy() {
       </CaseSection>
 
       <CaseSection>
-        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+        <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
           <div className="min-w-0">
             <h2 className="text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[42px]">
               Aus Inhalten werden fertige Posts.
             </h2>
-            <p className="mt-5 max-w-[56ch] text-[15px] leading-7 text-[#5f5f56] sm:text-[16px]">
-              Das Social Studio beginnt mit einer Vorlage und füllt sie mit dem, was auf der
-              Plattform gerade aktuell ist. Danach bleibt der Mensch am Steuer: anpassen,
-              exportieren, posten.
-            </p>
             <div className="mt-8">
               <CapabilityList items={studio} columns={1} />
             </div>
@@ -132,42 +84,9 @@ export function OperationsAppCaseStudy() {
         </div>
       </CaseSection>
 
-      <CaseSection tone="tinted">
-        <div className="grid items-center gap-12 md:grid-cols-[minmax(220px,300px)_minmax(0,1fr)] lg:gap-20">
-          <div className="order-last mx-auto w-full max-w-[280px] drop-shadow-[0_30px_40px_rgba(17,18,17,0.22)] md:order-first">
-            <PhoneFrame>
-              <Image
-                src="/case-studies/operations-app/monitor-jobs.jpg"
-                alt="Monitor mit den Cron-Jobs: Research und Bilder mit letztem Aufruf und letztem Erfolg"
-                fill
-                sizes="280px"
-                className="object-cover"
-              />
-            </PhoneFrame>
-          </div>
-          <div className="min-w-0">
-            <h2 className="text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[42px]">
-              Ein Blick, ob alles läuft.
-            </h2>
-            <p className="mt-5 max-w-[56ch] text-[15px] leading-7 text-[#5f5f56] sm:text-[16px]">
-              Eine Plattform mit vielen automatischen Abläufen braucht einen Ort, an dem man sieht,
-              was gerade passiert. Der Monitor zeigt es auf einer Seite, mit Uhrzeiten in Wiener Zeit.
-            </p>
-            <div className="mt-8">
-              <CapabilityList items={monitor} columns={1} />
-            </div>
-          </div>
-        </div>
-      </CaseSection>
-
       <CaseSection tone="dark">
-        <SectionHeading
-          dark
-          stacked
-          title="Gebaut wie ein Produkt, nicht wie ein Skript."
-          intro="Ein internes Werkzeug kommt an alles heran. Deshalb gelten dieselben Maßstäbe wie für eine öffentliche App: sichere Anmeldung, Prüfung auf dem Server und Tests."
-        />
-        <div className="mt-12">
+        <SectionHeading dark stacked title="Gebaut wie ein Produkt, nicht wie ein Skript." />
+        <div className="mt-10">
           <FigureRow
             items={[
               { value: "4", label: "Bereiche in einer App" },
@@ -177,7 +96,7 @@ export function OperationsAppCaseStudy() {
             ]}
           />
         </div>
-        <div className="mt-12">
+        <div className="mt-10">
           <CapabilityList dark items={foundation} />
         </div>
         <p className="mt-8 text-[13.5px] leading-6 text-[#aeb8b3]">
@@ -205,7 +124,7 @@ function StoryStrip() {
             alt={story.alt}
             width={720}
             height={1280}
-            sizes="(min-width: 1024px) 200px, 30vw"
+            sizes="(min-width: 1024px) 220px, 30vw"
             className="block h-auto w-full"
           />
         </figure>

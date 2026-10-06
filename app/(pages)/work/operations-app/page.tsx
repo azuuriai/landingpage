@@ -16,7 +16,7 @@ export default function OperationsAppPage() {
           <PhoneFrame>
             <AutoplayVideo
               recording={RECORDINGS.operationsAppTour}
-              label="Operations-App: Monitor, Social Studio mit Slide-Wechsel, Newsletter und Top Picks"
+              label="Operations-App: Monitor, Social Studio mit vier Slides und Top Picks"
               preload="auto"
               className="h-full w-full object-cover"
             />

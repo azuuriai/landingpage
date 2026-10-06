@@ -226,7 +226,7 @@ export const showcaseEntries: ShowcaseEntry[] = [
     summary:
       "Internes Werkzeug fürs iPhone: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
     facts: [
-      { label: "Bereiche", value: "Monitor, Social Studio, Newsletter" },
+      { label: "Bereiche", value: "Monitor, Social Studio, Top Picks" },
       { label: "Export", value: "Instagram-Karussell und Story" },
       { label: "Technik", value: "SwiftUI + Next.js-API" },
     ],

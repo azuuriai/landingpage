@@ -6,12 +6,11 @@ import { PhoneFrame } from "@/app/_components/phone-frame";
 import { showcaseEntries, type ShowcaseEntry } from "@/app/projects-data";
 import { BrowserFrame } from "./project-media";
 
-// Four equal entries in two columns: what each one is and does, never whose
-// it is. Web projects fill the first row, the two iPhone apps the second.
+// Equal entries in three columns: what each one is and does, never whose it is.
 export function ProjectsOverview() {
   return (
     <section className="border-t border-[#deded8]">
-      <div className="mx-auto grid w-full max-w-[1180px] gap-x-10 gap-y-16 px-6 py-12 sm:px-8 md:grid-cols-2 lg:gap-x-16 lg:px-10 lg:py-20">
+      <div className="mx-auto grid w-full max-w-[1180px] gap-x-10 gap-y-16 px-6 py-12 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-10 lg:py-20">
         {showcaseEntries.map((entry) => (
           <article key={entry.id} className="reveal-on-scroll flex min-w-0 flex-col">
             <EntryMedia entry={entry} />
