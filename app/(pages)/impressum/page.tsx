@@ -26,6 +26,7 @@ export default function ImpressumPage() {
         <br />
         Österreich
       </p>
+      <p>UID: ATU83708169</p>
 
       <h2>Kontakt</h2>
       <p>
