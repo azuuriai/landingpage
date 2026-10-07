@@ -95,10 +95,10 @@ App-Store-Vorschauvideos im iOS-Repo (`Marketing/wer-reels/src/AppPreview.tsx`,
 - `/impressum` – Betreiberangaben und Offenlegung
 - `/datenschutz` – Datenverarbeitung, Dienste und Betroffenenrechte
 
-Die Clinic-Konzeptstudie (Aurea Clinic) ist keine eigene Seite: Aufrufe von
-`/clinic` und `/clinic/index.html` werden auf `/work` umgeleitet. Ein Ausschnitt
-daraus (`public/case-studies/aurea/treatments.jpg`) ist das Vorschaubild für
-Websites im Hero der Leistungen-Seite.
+Das Vorschaubild für Websites im Hero der Leistungen-Seite
+(`public/case-studies/aurea/treatments.jpg`) stammt aus einer fiktiven
+Designstudie (Aurea Clinic); die Studie selbst ist nicht Teil der Site, alte
+Links auf `/clinic` landen auf `/work`.
 
 Die Einstiegsanimation von Indeed Unique liegt als eigener Clip vor
 (`public/case-studies/indeed-unique/entry.mp4`, 2304 × 1440, aufgenommen mit
