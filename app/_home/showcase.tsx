@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
+import { Link } from "@/i18n/navigation";
 import { AutoplayVideo } from "../_components/autoplay-video";
 import { PhoneFrame } from "../_components/phone-frame";
-import { SHOWCASE } from "./home-content";
+import type { ShowcaseItem } from "./home-content";
 import { useShowcaseRotation } from "./use-showcase-rotation";
 
 // Opacity crossfade between projects. Monitor and iPhone stay mounted; only
@@ -14,11 +14,9 @@ const LAYER = "absolute inset-0 transition-opacity duration-1000 ease-in-out";
 // The homepage's one bold element: a monitor and an iPhone playing real
 // recordings, quietly taking turns. Deliberately unlabelled — it shows what
 // can be built; names and context live behind the link, in the case studies.
-const DURATIONS = SHOWCASE.map((item) => item.desktop.durationMs);
-
-export function Showcase() {
-  const items = SHOWCASE;
-  const rotation = useShowcaseRotation(DURATIONS);
+export function Showcase({ items, label }: { items: ShowcaseItem[]; label: string }) {
+  const durations = useMemo(() => items.map((item) => item.desktop.durationMs), [items]);
+  const rotation = useShowcaseRotation(durations);
   const active = items[rotation.index];
 
   // The first project loads right away; the others follow a few seconds
@@ -31,10 +29,7 @@ export function Showcase() {
   const preloadFor = (isActive: boolean) => (isActive || warm ? "auto" : "none");
 
   return (
-    <section
-      aria-label="Showcase"
-      className="flex h-full min-h-0 flex-col justify-center"
-    >
+    <section aria-label={label} className="flex h-full min-h-0 flex-col justify-center">
       {/* Width follows the viewport height on desktop so monitor and stand
           always fit the single screen. */}
       <div className="mx-auto w-full max-w-[460px] sm:max-w-[640px] lg:max-w-[min(720px,calc((100svh-270px)*1.6))]">
@@ -46,7 +41,7 @@ export function Showcase() {
 
           <Link
             href={active.href}
-            aria-label={`${active.name} – Case Study ansehen`}
+            aria-label={active.linkLabel}
             className="group relative ml-auto block w-[88%] focus:outline-none"
           >
             <div className="relative rounded-[22px] border-[8px] border-[#141514] bg-[#141514] shadow-[0_34px_90px_-20px_rgba(17,18,17,0.35)] transition group-focus-visible:ring-2 group-focus-visible:ring-[#00b8ad]/50 group-focus-visible:ring-offset-4 group-focus-visible:ring-offset-[#f2f2f0]">
@@ -67,7 +62,7 @@ export function Showcase() {
                       <div className="relative flex-1 overflow-hidden">
                         <AutoplayVideo
                           recording={item.desktop}
-                          label={`${item.name}: Rundgang durch die Website`}
+                          label={item.tourLabel}
                           active={isActive}
                           preload={preloadFor(isActive)}
                           className="absolute inset-0 h-full w-full object-cover object-top"

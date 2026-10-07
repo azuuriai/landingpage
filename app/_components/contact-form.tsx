@@ -1,32 +1,21 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { CONTACT_EMAIL } from "../seo";
+import { Link } from "@/i18n/navigation";
+import type { ContactFormCopy } from "../content/types";
+import { CONTACT_EMAIL } from "../site";
 import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
-const COPY = {
-  name: "Name",
-  namePlaceholder: "Wie heißt du?",
-  email: "E-Mail",
-  emailPlaceholder: "name@beispiel.com",
-  message: "Deine Idee",
-  messagePlaceholder:
-    "In zwei, drei Sätzen: Was willst du launchen, für wen, und wo hakt es gerade?",
-  submit: "Idee schicken",
-  sending: "Wird gesendet …",
-  note: "Das Formular wird technisch über Web3Forms übermittelt.",
-  successTitle: "Angekommen – danke!",
-  successBody: "Ich habe deine Nachricht erhalten und melde mich persönlich zurück.",
-  errorBody: "Hat gerade nicht geklappt. Schreib mir gern direkt:",
-  fallbackPrefix: "Lieber direkt mailen?",
-};
-
-export function ContactForm() {
-  const t = COPY;
+export function ContactForm({
+  copy: t,
+  privacyLabel,
+}: {
+  copy: ContactFormCopy;
+  privacyLabel: string;
+}) {
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -51,10 +40,13 @@ export function ContactForm() {
 
     setStatus("sending");
 
-    const subject = `Neue Anfrage über lukaskaffer.com – ${name}`;
+    const subject = `${t.subject} – ${name}`;
+    // The language line tells which version of the site the message came
+    // from, so the reply can match it.
     const body = [
-      `Name:    ${name}`,
-      `E-Mail:  ${email}`,
+      `Name:     ${name}`,
+      `E-Mail:   ${email}`,
+      `Sprache:  ${t.languageName}`,
       "",
       message,
     ].join("\n");
@@ -171,7 +163,7 @@ export function ContactForm() {
         <p className="max-w-[46ch] text-[12px] leading-5 text-[#5f5f56]">
           {t.note}{" "}
           <Link href="/datenschutz" className={QUIET_LINK}>
-            Datenschutz
+            {privacyLabel}
           </Link>
         </p>
       </div>

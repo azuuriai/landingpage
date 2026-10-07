@@ -1,14 +1,27 @@
 import { ImageResponse } from "next/og";
-import { OG_DESCRIPTION, OG_IMAGE } from "./seo";
+import { hasLocale } from "next-intl";
+import { routing } from "@/i18n/routing";
+import { getContent } from "./content";
+import { OG_IMAGE_SIZE } from "./seo";
 
-export const alt = OG_IMAGE.alt;
-export const size = {
-  width: 1200,
-  height: 630,
-};
+export const size = OG_IMAGE_SIZE;
 export const contentType = "image/png";
 
-export default function Image() {
+// One image per language, served at /opengraph-image/de and
+// /opengraph-image/en (see ogImage() in app/seo.ts).
+export function generateImageMetadata() {
+  return routing.locales.map((locale) => ({
+    id: locale,
+    alt: getContent(locale).site.ogImageAlt,
+    size,
+    contentType,
+  }));
+}
+
+export default function Image({ id }: { id: string }) {
+  const locale = hasLocale(routing.locales, id) ? id : routing.defaultLocale;
+  const { site } = getContent(locale);
+
   return new ImageResponse(
     (
       <div
@@ -34,7 +47,7 @@ export default function Image() {
           }}
         >
           <div style={{ fontWeight: 700 }}>Lukas Kaffer</div>
-          <div style={{ color: "#06857c" }}>Vienna, AT</div>
+          <div style={{ color: "#06857c" }}>{site.og.location}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div
@@ -46,7 +59,7 @@ export default function Image() {
               letterSpacing: 0,
             }}
           >
-            Websites, Webprodukte und native iOS Apps, gebaut bis zum Launch.
+            {site.og.headline}
           </div>
           <div
             style={{
@@ -56,7 +69,7 @@ export default function Image() {
               lineHeight: 1.35,
             }}
           >
-            {OG_DESCRIPTION}
+            {site.ogDescription}
           </div>
         </div>
         <div
@@ -76,7 +89,7 @@ export default function Image() {
               background: "#00b8ad",
             }}
           />
-          Astro · Next.js · Sanity · SwiftUI
+          {site.og.stack}
         </div>
       </div>
     ),

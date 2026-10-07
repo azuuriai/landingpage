@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -70,4 +71,7 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Registers i18n/request.ts, which resolves the locale of every request.
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+export default withNextIntl(nextConfig);
