@@ -1,15 +1,36 @@
 # lukaskaffer.com
 
-Persönliche Portfolio-Website von Lukas Kaffer. Die Seite positioniert ihn als
-AI-native Product Builder mit Bildungshintergrund und belegt die Arbeitsweise an
-zwei Live-Projekten:
+**English summary.** Portfolio site of Lukas Kaffer, a web and iOS developer in
+Vienna who designs, builds and ships end to end. Built with Next.js (App Router),
+React, TypeScript and Tailwind, deployed on Vercel. The site shows four live
+pieces of work, each with its own case study and screen recordings:
 
-- **Indeed Unique**: Website eines Tanzstudios in Wien und
-  Mödling mit Astro, Sanity CMS zum Selbstpflegen, Eversports-Buchung und
-  Hosting auf Cloudflare. Der Footer von indeedunique.com verlinkt hierher.
-- **Vienna Event Radar**: Next.js-Webprodukt,
-  Supabase-Backend, Research- und Review-Workflow sowie native SwiftUI-App im
-  App Store.
+- **Indeed Unique** – dance studio website (Astro, Sanity CMS edited by the
+  studio team, Eversports booking, Cloudflare)
+- **Vienna Event Radar** – event platform for Vienna (Next.js, Supabase,
+  scheduled jobs, admin area, AI assistant)
+- **Wien Event Radar for iOS** – native SwiftUI app on the App Store
+  (widgets, Live Activities, maps)
+- **Operations app** – internal SwiftUI tool that runs the platform from an
+  iPhone, including a semi-automated social media studio
+
+The rest of this README is in German.
+
+## Überblick
+
+Persönliche Portfolio-Website von Lukas Kaffer: Webdesigner und Entwickler in
+Wien, der Websites, Web-Apps und iOS-Apps gestaltet, baut und veröffentlicht.
+Die Seite belegt die Arbeitsweise an vier Live-Projekten:
+
+- **Indeed Unique**: Website eines Tanzstudios in Wien und Mödling mit Astro,
+  Sanity CMS zum Selbstpflegen, Eversports-Buchung und Hosting auf Cloudflare.
+  Der Footer von indeedunique.com verlinkt hierher.
+- **Vienna Event Radar**: Next.js-Webprodukt mit Supabase-Backend, Research- und
+  Review-Workflow, Admin-Bereich und Assistent.
+- **Wien Event Radar für iOS**: native SwiftUI-App im App Store mit Widgets,
+  Live-Aktivität und Karte.
+- **Operations-App**: internes SwiftUI-Werkzeug, mit dem die Plattform vom
+  iPhone aus betrieben wird, inklusive halbautomatischem Social-Media-Studio.
 
 ## Stack
 
