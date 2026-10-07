@@ -17,7 +17,7 @@ export function absoluteUrl(path = "/") {
 }
 
 const OG_LOCALE: Record<Locale, string> = { de: "de_AT", en: "en_US" };
-const LANGUAGE_TAG: Record<Locale, string> = { de: "de-AT", en: "en" };
+const LANGUAGE_TAG: Record<Locale, string> = { de: "de-AT", en: "en-US" };
 
 // BCP 47 tag for schema.org's inLanguage.
 export function languageTag(locale: Locale) {

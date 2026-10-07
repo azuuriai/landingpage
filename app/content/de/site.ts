@@ -104,5 +104,6 @@ export const contactForm: ContactFormCopy = {
   errorBody: "Hat gerade nicht geklappt. Schreib mir gern direkt:",
   fallbackPrefix: "Lieber direkt mailen?",
   subject: "Neue Anfrage über lukaskaffer.com",
+  languageLabel: "Sprache",
   languageName: "Deutsch",
 };

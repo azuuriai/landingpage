@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { AutoplayVideo } from "@/app/_components/autoplay-video";
 import { ICON_UP, PRIMARY_BUTTON, TEXT_LINK } from "@/app/_components/button-styles";
 import { PhoneFrame } from "@/app/_components/phone-frame";
-import { withName } from "@/app/content";
+import { withName } from "@/app/site";
 import type { ShowcaseEntry, UiCopy } from "@/app/content/types";
 import { BrowserFrame } from "./project-media";
 

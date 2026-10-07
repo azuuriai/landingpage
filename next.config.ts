@@ -55,6 +55,9 @@ const nextConfig: NextConfig = {
       // Legacy links to the former concept demo land on the showcase.
       { source: "/clinic", destination: "/work", permanent: false },
       { source: "/clinic/index.html", destination: "/work", permanent: false },
+      // The single image of the German-only site; link previews may still
+      // reference it.
+      { source: "/opengraph-image", destination: "/opengraph-image/de", permanent: true },
     ];
   },
   async headers() {

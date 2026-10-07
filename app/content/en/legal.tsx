@@ -44,27 +44,30 @@ export const imprint: LegalPageCopy = {
 
       <h2>Business purpose</h2>
       <p>
-        Design and development of websites, apps and software, including support and
+        Design and development of websites, apps and software, as well as support and
         hosting; advertising.
       </p>
 
       <h2>Trade licenses</h2>
       <p>
-        Services in automatic data processing and information technology (GISA number
-        40194523)
+        Services in automatic data processing and information technology
+        (Dienstleistungen in der automatischen Datenverarbeitung und
+        Informationstechnik, GISA number 40194523)
         <br />
-        Advertising graphic designer (GISA number 40194530)
+        Advertising graphic designer (Werbegrafik-Designer, GISA number 40194530)
         <br />
-        Advertising agency (GISA number 40194547)
+        Advertising agency (Werbeagentur, GISA number 40194547)
         <br />
-        Announcement services (GISA number 40194554)
+        Announcement services (Ankündigungsunternehmen, GISA number 40194554)
       </p>
       <p>
-        Trade authority: District Administrative Authority of Bruck an der Leitha
+        Trade authority: District Administrative Authority (Bezirkshauptmannschaft)
+        Bruck an der Leitha
         <br />
-        Chamber membership: Austrian Economic Chamber, Lower Austria; professional
-        groups for management consulting, accounting and information technology, and
-        for advertising and market communication
+        Chamber membership: Economic Chamber of Lower Austria (Wirtschaftskammer
+        Niederösterreich), professional groups (Fachgruppen) for management
+        consulting, accounting and information technology, and for advertising and
+        market communication
         <br />
         Professional law: Austrian Trade Act 1994 (Gewerbeordnung), available at{" "}
         <a href="https://www.ris.bka.gv.at">www.ris.bka.gv.at</a>
@@ -166,8 +169,8 @@ export const privacy: LegalPageCopy = {
         relationships under Art. 6(1)(f) GDPR. You can object to this processing at
         any time, informally, at{" "}
         <a href="mailto:hello@lukaskaffer.com">hello@lukaskaffer.com</a>; your data
-        will then be deleted and kept only on a suppression list to make sure you are
-        not contacted again.
+        will then be deleted, and only an entry on a suppression list is kept to make
+        sure you are not contacted again.
       </p>
 
       <h2>Clients and projects</h2>
@@ -218,9 +221,9 @@ export const privacy: LegalPageCopy = {
 
       <h2>External links</h2>
       <p>
-        The website links, among others, to Vienna Event Radar and the Apple App
-        Store. Only once you open such a link do the privacy terms of the respective
-        external provider apply in addition.
+        The website links to external sites, including Vienna Event Radar and the
+        Apple App Store. Only once you open such a link do the privacy terms of the
+        respective external provider apply in addition.
       </p>
 
       <h2>Retention period</h2>

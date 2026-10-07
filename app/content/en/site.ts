@@ -9,9 +9,9 @@ import type {
 export const site: SiteCopy = {
   title: "Lukas Kaffer · Websites, Web Apps and iOS Apps",
   description:
-    "Lukas Kaffer designs and builds websites, web products and native iOS apps from idea to launch. Live proof: the Indeed Unique dance studio website with Sanity CMS and Eversports, and Vienna Event Radar on the web and in the App Store.",
+    "Lukas Kaffer builds websites, web apps and native iOS apps from idea to launch. Live proof: Indeed Unique and Vienna Event Radar on the web and the App Store.",
   ogDescription:
-    "Live proof: the Indeed Unique dance studio website with its own CMS, and Vienna Event Radar on the web and in the App Store.",
+    "Live proof: the Indeed Unique dance studio website with its own CMS, and Vienna Event Radar on the web and on the App Store.",
   ogImageAlt: "Lukas Kaffer · Websites, web products and native iOS apps",
   keywords: [
     "web developer Vienna",
@@ -56,24 +56,24 @@ export const ui: UiCopy = {
   backHome: "Home",
   backShowcase: "Showcase",
   learnMore: "Learn more",
-  askAnotherQuestion: "Ask a different question",
+  askAnotherQuestion: "Ask another question",
   imprint: "Imprint",
   privacy: "Privacy",
   copyright: "© 2026 Lukas Kaffer",
   copyrightHome: "© 2026 Lukas Kaffer, Vienna",
   updatedLabel: "Last updated:",
   showcaseLabel: "Showcase",
-  caseStudyLink: "{name} – view the case study",
+  caseStudyLink: "{name} – see the case study",
   siteTour: "{name}: a tour of the website",
-  appRecording: "{name} – recording of the app",
-  siteRecording: "{name} – recording of the website",
-  phoneRecording: "{name} – recording on the iPhone",
+  appRecording: "{name} – screen recording of the app",
+  siteRecording: "{name} – screen recording of the website",
+  phoneRecording: "{name} – screen recording on the iPhone",
   serviceIndexLabel: "Services",
   languageSwitch: "Language",
   languageNames: { de: "Deutsch", en: "English" },
   notFound: {
-    title: "This page doesn't exist.",
-    text: "The link may be outdated or mistyped. The homepage leads to services, showcase and contact.",
+    title: "This page doesn’t exist.",
+    text: "The link may be outdated or mistyped. The homepage leads to Services, Showcase and Contact.",
   },
 };
 
@@ -85,7 +85,7 @@ export const home: HomeCopy = {
 export const contactSection: ContactSectionCopy = {
   eyebrow: "Straight to my inbox",
   title: "Send me the short version.",
-  body: "You don't need a finished brief. Two or three sentences are enough for me to tell how we should start.",
+  body: "You don’t need a finished brief yet. Two or three sentences are enough for me to tell how we’d best get started.",
 };
 
 export const contactForm: ContactFormCopy = {
@@ -97,12 +97,13 @@ export const contactForm: ContactFormCopy = {
   messagePlaceholder:
     "In two or three sentences: what do you want to launch, who is it for, and where is it stuck right now?",
   submit: "Share your idea",
-  sending: "Sending …",
+  sending: "Sending…",
   note: "The form is delivered through Web3Forms.",
   successTitle: "Received – thank you!",
   successBody: "I have your message and will reply personally.",
-  errorBody: "That didn't go through. Feel free to email me directly:",
+  errorBody: "That didn’t go through. Feel free to email me directly:",
   fallbackPrefix: "Prefer email?",
   subject: "New inquiry via lukaskaffer.com",
+  languageLabel: "Language",
   languageName: "English",
 };

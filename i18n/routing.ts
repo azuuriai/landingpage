@@ -36,5 +36,5 @@ export type AppPathname = keyof typeof routing.pathnames;
 export const APP_PATHNAMES = Object.keys(routing.pathnames) as AppPathname[];
 
 export function isAppPathname(value: string): value is AppPathname {
-  return value in routing.pathnames;
+  return Object.hasOwn(routing.pathnames, value);
 }

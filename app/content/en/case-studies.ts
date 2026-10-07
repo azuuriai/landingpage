@@ -12,17 +12,17 @@ import type {
 const indeedUnique: IndeedUniqueCopy = {
   tour: {
     title: "A website that feels like dance.",
-    intro: "Movement is the studio's craft, so it is the website's too.",
+    intro: "Movement is the studio’s craft, so it is the website’s too.",
     entry: {
-      label: "Indeed Unique's opening animation: a figure dances itself into the logo",
+      label: "Indeed Unique’s opening animation: a figure dances itself into the logo",
       title: "Opening",
       text: "A stick figure dances itself into the logo.",
     },
     news: {
       label:
-        "Indeed Unique homepage: posts turn the page in a tablet, then the shelf with every post travels to the right",
+        "Indeed Unique homepage: posts flip like pages on a tablet, then the shelf with all posts slides to the right",
       title: "News",
-      text: "The latest posts turn the page in a tablet while the whole archive passes behind.",
+      text: "The latest posts flip through on a tablet while the whole archive slides past behind them.",
     },
     archive: {
       label:
@@ -32,30 +32,30 @@ const indeedUnique: IndeedUniqueCopy = {
     },
     booking: {
       label:
-        "Booking at Indeed Unique: schedule, semester passes and gift card purchase from Eversports in the website's design",
+        "Booking at Indeed Unique: schedule, semester passes and gift card purchase from Eversports in the website’s design",
       title: "Booking",
-      text: "Find a class, pick a semester pass, give a gift card, all in the website's own design.",
+      text: "Find a class, pick a semester pass, give a gift card, all in the website’s own design.",
     },
   },
   cms: {
-    title: "The studio maintains its website itself.",
+    title: "The studio runs its own website.",
     figures: [
       { value: "24", label: "fixed pages, all editable in the CMS" },
       { value: "22", label: "building blocks for new pages" },
       { value: "182", label: "posts carried over from the old website" },
-      { value: "279", label: "old addresses permanently redirected" },
+      { value: "279", label: "old URLs permanently redirected" },
     ],
     tools: [
       {
         title: "One menu entry per task",
-        text: "Post news, sort classes and team, enter the dance year and class-free days.",
+        text: "Post news, organize classes and team profiles, enter the dance year and class-free days.",
       },
       {
         title: "New pages from building blocks",
         text: "22 designed sections, freely combinable. Every page is individual and stays on brand.",
       },
       {
-        title: "A start page with open tasks",
+        title: "A dashboard with open tasks",
         text: "The studio sees at a glance what is still missing, and every draft that is not online yet.",
       },
       {
@@ -149,15 +149,15 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         image: "proposal",
-        alt: "“Share a suggestion” dialog for the SLASH film festival with sharing via email and WhatsApp",
+        alt: "“Share a suggestion” dialog for the SLASH Filmfestival with sharing via email and WhatsApp",
         title: "Suggest",
-        text: "Send an event to friends as a link, calendar entry included. They answer with “I'm in” or “Probably not”.",
+        text: "Send an event to friends as a link, calendar entry included. They answer with “I’m in” or “Probably not.”",
       },
       {
         image: "radar-assistant",
         alt: "The “Ask your Radar” assistant suggests outdoor events for tomorrow",
         title: "Ask your Radar",
-        text: "An assistant that understands wishes like “outdoor, tomorrow, with friends”. Which events match is decided by a transparent search, not by the language model.",
+        text: "An assistant that understands requests like “outdoor, tomorrow, with friends.” Which events match is decided by a transparent search, not by the language model.",
       },
     ],
   },
@@ -175,12 +175,12 @@ const viennaEventRadar: ViennaEventRadarCopy = {
         text: "In groups, members suggest events, vote and settle on a date.",
       },
       {
-        title: "Montagsradar",
-        text: "A weekly newsletter with the best tips for the week ahead, with double opt-in.",
+        title: "Monday Radar",
+        text: "The weekly Montagsradar newsletter with the best tips for the week ahead, double opt-in included.",
       },
       {
         title: "Easy to find",
-        text: "Dedicated pages for every event and every category, such as “Today in Vienna” or “Free in Vienna”, in German and English.",
+        text: "Dedicated pages for every event and every category, from today’s events to free events in Vienna, in German and English.",
       },
     ],
   },
@@ -203,7 +203,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         title: "In-house usage analytics",
-        text: "Which events get opened, saved and shared, and what people search for, data-light and without third parties.",
+        text: "Which events get opened, saved and shared, and what people search for, with minimal data and no third parties.",
       },
       {
         title: "Admin app for the iPhone",
@@ -232,7 +232,7 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
   tabs: {
     title: "Four tabs, one radar.",
     intro:
-      "Discover, For you, Favorites and Search: the app follows the patterns people know from iOS, with native navigation, gestures and system features instead of a website in an app costume.",
+      "Discover, For you, Favorites and Search: the app follows the patterns people know from iOS, with native navigation, gestures and system features instead of a website dressed up as an app.",
     items: [
       {
         image: "entdecken",
@@ -256,13 +256,13 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
         image: "details",
         alt: "Event details for Weinwandern Wien with dates, venue and route",
         title: "Event details",
-        text: "Dates, venue, route and source in one view, with a tap into Maps or Google Maps.",
+        text: "Dates, venue, route and source in one view, one tap away in Apple Maps or Google Maps.",
       },
       {
         image: "aktionen",
-        alt: "Actions: pin the countdown, save attendance, open the source",
+        alt: "Actions: set the countdown in advance, save attendance, open the source",
         title: "Save and plan",
-        text: "Save it, add it to the calendar, plan it with the group or share it. The countdown can be pinned.",
+        text: "Save it, add it to the calendar, plan it with the group or share it. The countdown can be set in advance.",
       },
       {
         image: "karte",
@@ -273,8 +273,8 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
     ],
   },
   system: {
-    title: "Closely woven into the iPhone.",
-    text: "The app doesn't just live in its icon. It shows up where people already look: on the lock screen, in the calendar and in the system search.",
+    title: "Deeply integrated with the iPhone.",
+    text: "The app doesn’t just live in its icon. It shows up where people already look: on the lock screen, in the calendar and in the system search.",
     items: [
       {
         title: "“Today in Vienna” widgets",
@@ -286,11 +286,11 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
       },
       {
         title: "Calendar and notifications",
-        text: "Add events to the Apple calendar, plus reminders and push notifications.",
+        text: "Add events to Apple Calendar, plus reminders and push notifications.",
       },
       {
         title: "Shortcuts and Spotlight",
-        text: "Find events through Shortcuts and the iPhone's system search.",
+        text: "Find events through Shortcuts and the iPhone’s system search.",
       },
       {
         title: "Sign in with Apple",
@@ -298,10 +298,10 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
       },
     ],
     liveActivityAlt:
-      "Wien Event Radar's Live Activity on the lock screen: Weinwandern Wien is on now",
+      "Wien Event Radar’s Live Activity on the lock screen: Weinwandern Wien is on now",
   },
   foundation: {
-    title: "An app of its own, a shared core.",
+    title: "A standalone app, a shared core.",
     intro:
       "Web and iPhone share data, accounts and groups. The interface is still built entirely for iOS and is maintained, tested and released like a product of its own.",
     items: [
@@ -318,8 +318,8 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
         text: "Unit and UI tests, plus error monitoring with Sentry.",
       },
       {
-        title: "The App Store presence",
-        text: "Screenshots and preview video designed and produced in-house.",
+        title: "The App Store listing",
+        text: "Screenshots and preview video designed and produced by me.",
       },
     ],
     stack: "SwiftUI, MapKit, EventKit, WidgetKit, ActivityKit, App Intents, Supabase, Sentry",
@@ -332,9 +332,9 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
 // exports from the Social Studio (docs/screenshots, build 23).
 const operationsApp: OperationsAppCopy = {
   areas: {
-    title: "A platform's daily routine, in one app.",
+    title: "A platform’s daily routine, in one app.",
     intro:
-      "Plus the newsletter editing. The data comes live from the backend; shown here is the preview mode with sample data.",
+      "The fourth area is the newsletter editor. Data comes live from the backend; what you see here is the preview mode with sample data.",
     items: [
       {
         image: "monitor",
@@ -346,7 +346,7 @@ const operationsApp: OperationsAppCopy = {
         image: "social-editor",
         alt: "Social Studio: editor with the cover graphic “Wien hat was vor.”",
         title: "Social Studio",
-        text: "Current content becomes carousels and stories in the brand's design.",
+        text: "Current content becomes carousels and stories in the brand’s design.",
       },
       {
         image: "top-picks",
@@ -357,7 +357,7 @@ const operationsApp: OperationsAppCopy = {
     ],
   },
   studio: {
-    title: "Content becomes finished posts.",
+    title: "From content to finished posts.",
     items: [
       {
         title: "Templates with real content",

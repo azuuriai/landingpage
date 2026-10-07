@@ -29,7 +29,7 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     links: [{ label: "Open indeedunique.com", href: INDEED_UNIQUE_URL }],
     metaTitle: "Case Study · Indeed Unique – Website with CMS and Eversports",
     metaDescription:
-      "New website for a dance studio in Vienna and Mödling: Astro, a tailored Sanity CMS the team edits itself, Eversports booking in the site's own design and hosting without platform fees.",
+      "New website for a Vienna dance studio: Astro, a tailored Sanity CMS the team edits itself, Eversports booking in the site’s own design and no platform fees.",
     tourLabel: "Indeed Unique – recording of the website on desktop",
     closing: "Want a website you can maintain yourself? Get in touch.",
   },
@@ -38,9 +38,9 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     ...projectRecordings["vienna-event-radar"],
     name: "Vienna Event Radar",
     summary:
-      "Vienna's events in one place: a platform with reviewed recommendations, filters, suggestions for friends and an assistant.",
+      "Vienna’s events in one place: a platform with reviewed recommendations, filters, suggestions for friends and an assistant.",
     eyebrow: "Event platform on the web",
-    title: "Vienna's events in one place.",
+    title: "Vienna’s events in one place.",
     description:
       "Vienna Event Radar collects events in Vienna, reviews them before they go live and makes them easy to find in a few clicks: filtered by day, price and mood, with suggestions for friends and an assistant that looks for matching ideas. Product, design, development and operations are all mine.",
     facts: [
@@ -66,21 +66,21 @@ export const iosApp: CaseStudyData = {
   summary:
     "The native iPhone app for Vienna Event Radar: discover, search and plan together, with widgets, a Live Activity and calendar.",
   eyebrow: "Native iOS app",
-  title: "Vienna's events as a real iPhone app.",
+  title: "Vienna’s events as a real iPhone app.",
   description:
-    "The native app for Vienna Event Radar: built in SwiftUI, published in the App Store and closely woven into iOS, from widgets and the Live Activity to the calendar. Accounts, favorites and groups are shared with the web platform.",
+    "The native app for Vienna Event Radar: built in SwiftUI, published on the App Store and deeply integrated with iOS, from widgets and the Live Activity to the calendar. Accounts, favorites and groups are shared with the web platform.",
   facts: [
     { label: "Scope", value: "Concept, design, development and App Store release" },
     { label: "Stack", value: "SwiftUI, Supabase, optimized for iOS 27" },
-    { label: "Available", value: "In the App Store" },
+    { label: "Available", value: "On the App Store" },
   ],
   links: [
-    { label: "View in the App Store", href: APP_STORE_URL },
+    { label: "View on the App Store", href: APP_STORE_URL },
     { label: "See the web platform", href: VER_PATH, internal: true },
   ],
   metaTitle: "Case Study · Wien Event Radar – Native iOS App in SwiftUI",
   metaDescription:
-    "Wien Event Radar for iOS: a native SwiftUI app with widgets, Live Activity, calendar, map and group planning, in the App Store and sharing its backend with the web platform.",
+    "Wien Event Radar for iOS: native SwiftUI app with widgets, Live Activity, calendar, map and group planning, sharing its backend with the web platform.",
   tourLabel: "Wien Event Radar for iOS: Discover, event details, saving and map",
   closing: "Does your product belong on the iPhone? Get in touch.",
 };
@@ -98,12 +98,12 @@ export const operationsApp: CaseStudyData = {
   facts: [
     { label: "Scope", value: "Concept, design, iOS app and backend endpoints" },
     { label: "Stack", value: "SwiftUI, Next.js API, Supabase" },
-    { label: "Use", value: "Private, not in the App Store" },
+    { label: "Use", value: "Private, not on the App Store" },
   ],
   links: [],
   metaTitle: "Case Study · Operations App with Social Studio in SwiftUI",
   metaDescription:
-    "Internal iPhone app in SwiftUI: monitoring of background jobs and errors, a semi-automated Social Studio for Instagram carousels and stories, newsletter editing and homepage control, secured with Google sign-in, Face ID and role checks in the backend.",
+    "Internal SwiftUI app for the iPhone: monitors background jobs and errors, drafts Instagram carousels and stories, edits the newsletter, controls the homepage.",
   tourLabel: "Operations app: Monitor, Social Studio with four slides and Top Picks",
   closing: "Does your team need a tool for recurring work? Get in touch.",
 };
@@ -154,10 +154,10 @@ export const showcaseEntries: ShowcaseEntry[] = [
     facts: [
       { label: "Features", value: "Map, groups, calendar" },
       { label: "Stack", value: "SwiftUI, optimized for iOS 27" },
-      { label: "Available", value: "In the App Store" },
+      { label: "Available", value: "On the App Store" },
     ],
     href: iosApp.path,
-    live: { label: "In the App Store", href: APP_STORE_URL },
+    live: { label: "On the App Store", href: APP_STORE_URL },
     media: showcaseMedia["vienna-event-radar-ios"],
   },
   {

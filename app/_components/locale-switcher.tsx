@@ -38,6 +38,7 @@ export function LocaleSwitcher({
           ) : null}
           <Link
             href={getPathname({ href, locale: target })}
+            prefetch={false}
             hrefLang={target}
             lang={target}
             title={names[target]}

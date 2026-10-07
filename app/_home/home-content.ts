@@ -1,5 +1,5 @@
 import type { CaseStudyPath, Content, ProjectSlug } from "../content/types";
-import { withName } from "../content";
+import { withName } from "../site";
 import { projectDomain } from "../projects-data";
 import type { Recording } from "../media";
 

@@ -44,9 +44,9 @@ export function ContactForm({
     // The language line tells which version of the site the message came
     // from, so the reply can match it.
     const body = [
-      `Name:     ${name}`,
-      `E-Mail:   ${email}`,
-      `Sprache:  ${t.languageName}`,
+      `${t.name}: ${name}`,
+      `${t.email}: ${email}`,
+      `${t.languageLabel}: ${t.languageName}`,
       "",
       message,
     ].join("\n");

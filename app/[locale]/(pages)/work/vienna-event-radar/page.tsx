@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { getContent, withName } from "@/app/content";
+import { getContent } from "@/app/content";
+import { withName } from "@/app/site";
 import { localeFromParams, resolveLocale, type LocaleParams } from "@/app/locale";
 import { CaseStudyPage, caseStudyMetadata } from "../case-study-page";
 import { ProjectMedia } from "../project-media";

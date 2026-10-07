@@ -7,7 +7,7 @@ import { BackLink, ContactBand, JsonLd } from "@/app/_components/site-chrome";
 import { ICON_UP, PRIMARY_BUTTON, SECONDARY_BUTTON } from "@/app/_components/button-styles";
 import { getContent } from "@/app/content";
 import type { CaseStudyData, ProjectLink } from "@/app/content/types";
-import { absoluteUrl, languageTag, pageMetadata, SITE_URL } from "@/app/seo";
+import { absoluteUrl, languageTag, localizedPaths, pageMetadata, SITE_URL } from "@/app/seo";
 
 export function caseStudyMetadata(study: CaseStudyData, locale: Locale): Metadata {
   return pageMetadata({
@@ -21,13 +21,16 @@ export function caseStudyMetadata(study: CaseStudyData, locale: Locale): Metadat
 function caseStudyJsonLd(study: CaseStudyData, locale: Locale) {
   // Private tools have no live link; the case study page stands in for it.
   const liveLink = study.links.find((link) => !link.internal) ?? study.links[0];
+  // The page's own URL in this language; the project itself is one entity in
+  // both languages and keeps a shared id.
+  const url = absoluteUrl(localizedPaths(study.path)[locale]);
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": `${SITE_URL}${study.path}#webpage`,
-        url: absoluteUrl(study.path),
+        "@id": `${url}#webpage`,
+        url,
         name: study.metaTitle,
         description: study.metaDescription,
         inLanguage: languageTag(locale),
@@ -39,7 +42,7 @@ function caseStudyJsonLd(study: CaseStudyData, locale: Locale) {
         "@id": `${SITE_URL}${study.path}#project`,
         name: study.name,
         description: study.summary,
-        url: liveLink?.href ?? absoluteUrl(study.path),
+        url: liveLink?.href ?? url,
         creator: { "@id": `${SITE_URL}/#person` },
       },
     ],

@@ -77,6 +77,7 @@ export type ContactFormCopy = {
   // Subject line of the email; the sender's name is appended.
   subject: string;
   // Noted in the email, so a reply can be written in the visitor's language.
+  languageLabel: string;
   languageName: string;
 };
 

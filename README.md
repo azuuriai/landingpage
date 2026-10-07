@@ -63,7 +63,10 @@ Upwork-Profil.
 - `i18n/routing.ts` – Sprachen, Präfix-Regel und die Liste aller internen
   Pfade (`pathnames`). Interne Links nutzen `Link` aus `i18n/navigation.ts`,
   damit Präfix und übersetzte Slugs stimmen; `usePathname()` von dort liefert
-  den internen Pfad ohne Präfix.
+  den internen Pfad ohne Präfix. Einzige Ausnahme ist der Umschalter selbst:
+  Er baut seine Ziele mit `getPathname()` und nutzt `next/link`, weil
+  next-intls `Link` mit `locale`-Prop das Präfix immer erzwingen würde
+  (`/de/about` statt `/about`).
 - `proxy.ts` – bildet die öffentlichen URLs auf das Segment `app/[locale]` ab
   (`/services` → `/de/services`, `/de/services` leitet auf `/services` um).
 - `app/content/de/` und `app/content/en/` – jeder Text der Site, je Sprache ein
@@ -76,6 +79,12 @@ Upwork-Profil.
 - Server-Komponenten holen sich `getContent(locale)`; Client-Komponenten
   bekommen nur die Strings, die sie brauchen, als Props. So landet die jeweils
   andere Sprache nicht im Browser-Bundle.
+- Unbekannte Pfade fängt `app/[locale]/(pages)/[...rest]` und zeigt die
+  übersetzte 404-Seite im Seitenrahmen. Next liefert solche dynamischen 404s
+  als leere Fehler-Hülle aus und rendert die Seite erst im Browser; Status
+  404 und Texte stimmen, das erste HTML hat aber kein `lang`. Ein
+  serverseitig gerendertes 404 bräuchte Nexts experimentelles
+  `global-not-found`.
 - Jede Seite trägt `canonical`, `hreflang` für `de`, `en` und `x-default`
   (zeigt auf Englisch), das OG-Bild je Sprache (`/opengraph-image/de|en`) und
   steht zweimal in der Sitemap. JSON-LD und `<html lang>` folgen der Sprache.

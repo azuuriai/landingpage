@@ -8,7 +8,7 @@ import { ContactBand, JsonLd } from "@/app/_components/site-chrome";
 import { detailPage, getContent, type Content } from "@/app/content";
 import type { DetailPageData, DetailSlug } from "@/app/content/types";
 import { localeFromParams, type LocaleParams } from "@/app/locale";
-import { absoluteUrl, languageTag, pageMetadata, SITE_URL } from "@/app/seo";
+import { absoluteUrl, languageTag, localizedPaths, pageMetadata, SITE_URL } from "@/app/seo";
 import { ServicesContent } from "./services/services-content";
 import { ProjectsOverview } from "./work/projects-overview";
 
@@ -24,11 +24,13 @@ export async function detailMetadata(slug: DetailSlug, props: LocaleParams): Pro
 }
 
 function detailJsonLd(page: DetailPageData, locale: Locale) {
+  // The page's own URL in this language; the person and website ids are shared.
+  const url = absoluteUrl(localizedPaths(page.path)[locale]);
   const graph: object[] = [
     {
       "@type": "WebPage",
-      "@id": `${SITE_URL}${page.path}#webpage`,
-      url: absoluteUrl(page.path),
+      "@id": `${url}#webpage`,
+      url,
       name: page.metaTitle,
       description: page.metaDescription,
       inLanguage: languageTag(locale),
@@ -40,7 +42,7 @@ function detailJsonLd(page: DetailPageData, locale: Locale) {
   if (page.faq) {
     graph.push({
       "@type": "FAQPage",
-      "@id": `${SITE_URL}${page.path}#faq`,
+      "@id": `${url}#faq`,
       mainEntity: page.faq.map((item) => ({
         "@type": "Question",
         name: item.question,
