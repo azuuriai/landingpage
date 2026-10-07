@@ -18,8 +18,10 @@ export function generateImageMetadata() {
   }));
 }
 
-export default function Image({ id }: { id: string }) {
-  const locale = hasLocale(routing.locales, id) ? id : routing.defaultLocale;
+// Next hands the id over as a promise, like route params.
+export default async function Image({ id }: { id: Promise<string> }) {
+  const requested = await id;
+  const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale;
   const { site } = getContent(locale);
 
   return new ImageResponse(
