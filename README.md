@@ -35,6 +35,7 @@ Die Seite belegt die Arbeitsweise an vier Live-Projekten:
 ## Stack
 
 - Next.js App Router, React und TypeScript
+- next-intl für das Routing der zwei Sprachen
 - Tailwind CSS
 - Web3Forms für das Kontaktformular
 - Vercel als Zielumgebung
@@ -48,6 +49,41 @@ npm run dev
 
 Vor einem Release prüft `npm run check` nacheinander ESLint, TypeScript und den
 Production-Build.
+
+## Sprachen
+
+Die Site gibt es auf Deutsch und Englisch. Deutsch bleibt an der Wurzel
+(`/services`), Englisch liegt unter `/en` (`/en/services`); nur die Rechtsseiten
+haben übersetzte Slugs (`/impressum` ↔ `/en/imprint`, `/datenschutz` ↔
+`/en/privacy`). Niemand wird nach Browsersprache umgeleitet: Besucher wählen
+über den Umschalter `DE / EN` in der Kopfzeile, der immer auf dieselbe Seite in
+der anderen Sprache führt. `/en`-Links lassen sich direkt teilen, etwa im
+Upwork-Profil.
+
+- `i18n/routing.ts` – Sprachen, Präfix-Regel und die Liste aller internen
+  Pfade (`pathnames`). Interne Links nutzen `Link` aus `i18n/navigation.ts`,
+  damit Präfix und übersetzte Slugs stimmen; `usePathname()` von dort liefert
+  den internen Pfad ohne Präfix.
+- `proxy.ts` – bildet die öffentlichen URLs auf das Segment `app/[locale]` ab
+  (`/services` → `/de/services`, `/de/services` leitet auf `/services` um).
+- `app/content/de/` und `app/content/en/` – jeder Text der Site, je Sprache ein
+  Satz Module (`site`, `pages`, `projects`, `services`, `case-studies`,
+  `legal`). `app/content/types.ts` gibt die Form vor, deshalb fehlt in keiner
+  Sprache ein Text. Was in beiden Sprachen gleich ist (Pfade, Daten,
+  Aufnahmen, Bilddateien), liegt in `app/projects-data.ts`,
+  `app/services-data.ts` und `app/detail-pages-data.ts` und wird in die
+  Sprachmodule hineingespreizt.
+- Server-Komponenten holen sich `getContent(locale)`; Client-Komponenten
+  bekommen nur die Strings, die sie brauchen, als Props. So landet die jeweils
+  andere Sprache nicht im Browser-Bundle.
+- Jede Seite trägt `canonical`, `hreflang` für `de`, `en` und `x-default`
+  (zeigt auf Englisch), das OG-Bild je Sprache (`/opengraph-image/de|en`) und
+  steht zweimal in der Sitemap. JSON-LD und `<html lang>` folgen der Sprache.
+- Die englische Fassung ist eine Lokalisierung, keine Übersetzung: US-Englisch,
+  Wien als Ort in Österreich, Remote-Arbeit und Zeitzonen auf FAQ und Kontakt.
+  Produktnamen bleiben; Funktionsnamen folgen der englischen Oberfläche der
+  Produkte. Bei den Rechtsseiten ist die deutsche Fassung maßgeblich, beide
+  englischen Seiten sagen das oben.
 
 ## Inhaltsprinzipien
 
@@ -71,20 +107,25 @@ Production-Build.
   Indeed Unique: keine Füllfarbe, ein Teal-Rahmen zieht sich von außen zusammen.
 - `app/_components/` – gemeinsame Bausteine (Seitenrahmen, Formular,
   Autoplay-Video, iPhone-Rahmen)
-- `app/projects-data.ts` – eine Quelle für Projekte (Startseite, Case Studies,
-  Sitemap), die iOS-App (`iosApp`) und die drei Einträge der Showcase-Seite
-  (`showcaseEntries`)
+- `app/projects-data.ts` – Struktur der Projekte (Pfade, Daten, Live-URLs,
+  Aufnahmen); die Texte dazu stehen in `app/content/<sprache>/projects.ts`
+  (Case Studies, `iosApp`, `operationsApp`, `showcaseEntries`)
 - `app/media.ts` – Bildschirmaufnahmen (H.264-MP4 plus Poster)
-- `app/services-data.ts` – Leistungen-Seite: drei Produktformen (Websites,
-  Web-Apps, iOS-Apps), jede mit Standbild aus einem Live-Projekt, und die fünf
-  Schritte von „Launch inklusive“. Die Formen stehen als Sprunglinks im Hero.
-- `app/(pages)/` – alle Unterseiten in einer Route-Gruppe. Ihr `layout.tsx` hält
+- `app/services-data.ts` – Standbilder der Leistungen-Seite; die drei
+  Produktformen (Websites, Web-Apps, iOS-Apps) und die fünf Schritte von
+  „Launch inklusive“ stehen in `app/content/<sprache>/services.ts`. Die Formen
+  stehen als Sprunglinks im Hero.
+- `app/[locale]/` – Root-Layout (`<html lang>`, Metadaten je Sprache) und die
+  Startseite; `[...rest]` fängt unbekannte Pfade für die übersetzte 404-Seite.
+- `app/[locale]/(pages)/` – alle Unterseiten in einer Route-Gruppe. Ihr `layout.tsx` hält
   Kopfzeile, Hero (`subpage-hero.tsx`, feste Höhe) und Fußzeile beim
   Seitenwechsel stehen; nur Texte, Bild und Inhalt darunter wechseln.
   `work/` enthält Showcase-Übersicht und Case Studies. Case Studies teilen sich
   Rahmen (`case-study-page.tsx`: Titel, Eckdaten, Links, Medien) und Bausteine
   (`case-study-blocks.tsx`); Abschnitte zeigen zuerst das Produkt und kommen
-  ohne Eyebrow-Labels aus. Zahlen nur mit Quelle in der Projektdoku.
+  ohne Eyebrow-Labels aus. Zahlen nur mit Quelle in der Projektdoku. Die
+  Case-Study-Komponenten entscheiden nur, welche Aufnahme wo steht; ihre Worte
+  kommen aus `app/content/<sprache>/case-studies.ts`.
 
 Das iPhone ist Apples offizieller iPhone-17-Pro-Rahmen
 (`public/devices/iphone-17-pro-frame.png`). Die Aufnahme liegt darunter und wird
@@ -105,10 +146,14 @@ App-Store-Vorschauvideos im iOS-Repo (`Marketing/wer-reels/src/AppPreview.tsx`,
 
 ## Routen
 
+Jede Route gibt es auch unter `/en` (`/en/work`, `/en/about` …); die Rechtsseiten
+heißen dort `/en/imprint` und `/en/privacy`.
+
 - `/work` – Showcase: Website Indeed Unique, Plattform Vienna Event Radar, iOS-App
 - `/work/indeed-unique` – Case Study Indeed Unique
 - `/work/vienna-event-radar` – Case Study Vienna Event Radar (Webplattform)
 - `/work/wien-event-radar-ios` – Case Study Wien Event Radar für iOS
+- `/work/operations-app` – Case Study Operations-App mit Social Studio
 - `/about` – Profil und Arbeitsweise
 - `/services` – Leistungen: Websites, Web-Apps, iOS-Apps und der Weg bis zum Launch
 - `/faq` – Fragen zur Zusammenarbeit
