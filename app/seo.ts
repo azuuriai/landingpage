@@ -8,6 +8,9 @@ export { CONTACT_EMAIL, SITE_NAME, SITE_URL };
 
 export const HOME_LAST_MODIFIED = new Date("2026-09-24T00:00:00.000Z");
 
+// Profiles elsewhere that belong to the same person (schema.org sameAs).
+const PROFILE_URLS = ["https://www.upwork.com/freelancers/lukaskaffer"];
+
 export const googleSiteVerification =
   process.env.GOOGLE_SITE_VERIFICATION ??
   process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -159,6 +162,7 @@ export function structuredData(locale: Locale) {
           addressCountry: "AT",
         },
         knowsAbout: site.knowsAbout,
+        sameAs: PROFILE_URLS,
       },
       {
         "@type": "WebSite",
