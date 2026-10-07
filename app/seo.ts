@@ -145,6 +145,27 @@ export function siteMetadata(locale: Locale): Metadata {
   };
 }
 
+// Breadcrumb trail of a page below the homepage, e.g. Lukas Kaffer › Showcase
+// › Indeed Unique; Google shows it in place of the bare URL.
+export function breadcrumbList(
+  locale: Locale,
+  url: string,
+  trail: { name: string; path: AppPathname }[],
+) {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: [{ name: SITE_NAME, path: "/" as AppPathname }, ...trail].map(
+      (step, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: step.name,
+        item: absoluteUrl(localizedPaths(step.path)[locale]),
+      }),
+    ),
+  };
+}
+
 export function structuredData(locale: Locale) {
   const { site } = getContent(locale);
 
@@ -165,6 +186,27 @@ export function structuredData(locale: Locale) {
           addressCountry: "AT",
         },
         knowsAbout: site.knowsAbout,
+        knowsLanguage: ["de", "en"],
+        sameAs: PROFILE_URLS,
+      },
+      // The business behind the person: what it offers and where. Remote work
+      // reaches further, but these are the markets the site speaks to.
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE_URL}/#business`,
+        name: SITE_NAME,
+        url: SITE_URL,
+        image: absoluteUrl("/profile/lukas-standing.jpg"),
+        email: CONTACT_EMAIL,
+        description: site.description,
+        founder: { "@id": `${SITE_URL}/#person` },
+        areaServed: [
+          { "@type": "City", name: "Wien" },
+          { "@type": "Country", name: "Österreich" },
+          { "@type": "Country", name: "Deutschland" },
+          { "@type": "Country", name: "Schweiz" },
+        ],
+        availableLanguage: ["de", "en"],
         sameAs: PROFILE_URLS,
       },
       {

@@ -8,7 +8,14 @@ import { ContactBand, JsonLd } from "@/app/_components/site-chrome";
 import { detailPage, getContent, type Content } from "@/app/content";
 import type { DetailPageData, DetailSlug } from "@/app/content/types";
 import { localeFromParams, type LocaleParams } from "@/app/locale";
-import { absoluteUrl, languageTag, localizedPaths, pageMetadata, SITE_URL } from "@/app/seo";
+import {
+  absoluteUrl,
+  breadcrumbList,
+  languageTag,
+  localizedPaths,
+  pageMetadata,
+  SITE_URL,
+} from "@/app/seo";
 import { ServicesContent } from "./services/services-content";
 import { ProjectsOverview } from "./work/projects-overview";
 
@@ -36,7 +43,9 @@ function detailJsonLd(page: DetailPageData, locale: Locale) {
       inLanguage: languageTag(locale),
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: { "@id": `${SITE_URL}/#person` },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
     },
+    breadcrumbList(locale, url, [{ name: page.navLabel, path: page.path }]),
   ];
 
   if (page.faq) {

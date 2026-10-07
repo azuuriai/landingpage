@@ -5,8 +5,9 @@ export type Recording = { src: string; poster: string; durationMs: number };
 // that claims VP9 support but fails to decode it never falls back to the next
 // <source>. A project's desktop and phone clips share one length, which is
 // also how long the project stays on screen in the homepage showcase.
+// Posters are WebP (cwebp -q 82), about half the size of the JPEGs.
 function recording(basePath: string, durationMs: number): Recording {
-  return { src: `${basePath}.mp4`, poster: `${basePath}-poster.jpg`, durationMs };
+  return { src: `${basePath}.mp4`, poster: `${basePath}-poster.webp`, durationMs };
 }
 
 export const RECORDINGS = {

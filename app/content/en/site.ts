@@ -7,14 +7,15 @@ import type {
 } from "../types";
 
 export const site: SiteCopy = {
-  title: "Lukas Kaffer · Websites, Web Apps and iOS Apps",
+  title: "Lukas Kaffer · Web and iOS Developer in Vienna",
   description:
-    "Lukas Kaffer builds websites, web apps and native iOS apps from idea to launch. Live proof: Indeed Unique and Vienna Event Radar on the web and the App Store.",
+    "Lukas Kaffer is a web and iOS developer in Vienna, building websites, web apps and native iOS apps through launch. Live on the web and on the App Store.",
   ogDescription:
     "Live proof: the Indeed Unique dance studio website with its own CMS, and Vienna Event Radar on the web and on the App Store.",
-  ogImageAlt: "Lukas Kaffer · Websites, web products and native iOS apps",
+  ogImageAlt: "Lukas Kaffer · Web and iOS developer in Vienna",
   keywords: [
     "web developer Vienna",
+    "iOS developer Vienna",
     "freelance web developer Austria",
     "iOS app developer",
     "SwiftUI developer",
@@ -27,7 +28,7 @@ export const site: SiteCopy = {
     "landing page design",
     "Lukas Kaffer",
   ],
-  jobTitle: "Web designer and developer",
+  jobTitle: "Web and iOS developer",
   knowsAbout: [
     "Web development",
     "Native iOS apps",
@@ -78,7 +79,7 @@ export const ui: UiCopy = {
 };
 
 export const home: HomeCopy = {
-  descriptor: "Websites, web apps and iOS apps · Vienna, Austria",
+  descriptor: "Web and iOS developer · Vienna, Austria",
   headline: "From idea to product. Launch included.",
 };
 

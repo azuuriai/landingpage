@@ -10,7 +10,7 @@ export const detailPages: DetailPageData[] = [
     title: "Was ich für dich baue.",
     description:
       "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: sichtbar im Web, testbar mit echten Nutzern und bei Bedarf nativ auf dem iPhone.",
-    metaTitle: "Leistungen · Websites, Web-Apps und iOS-Apps",
+    metaTitle: "Leistungen · Web- und iOS-Entwicklung in Wien",
     metaDescription:
       "Websites zum Selbstpflegen, Web-Apps mit echter Produktlogik und native iOS-Apps aus einer Hand. Von der ersten Idee bis zum Launch.",
     // The three product forms stand in the hero instead (services.ts).
@@ -25,9 +25,9 @@ export const detailPages: DetailPageData[] = [
     title: "Was ich baue – live im Einsatz.",
     description:
       "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar.",
-    metaTitle: "Showcase · Websites, Web-Apps und iOS-Apps",
+    metaTitle: "Showcase · Web- und iOS-Projekte aus Wien",
     metaDescription:
-      "Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports, Vienna Event Radar im Web und als native iOS-App sowie eine interne Operations-App mit Social Studio.",
+      "Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique, Vienna Event Radar im Web und als native iOS-App sowie eine interne Operations-App.",
     chips: ["Websites", "Web-Apps", "iOS-Apps"],
     sections: [],
     closing: "Du willst etwas Ähnliches bauen? Schreib mir.",

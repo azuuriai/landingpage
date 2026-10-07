@@ -10,7 +10,7 @@ export const detailPages: DetailPageData[] = [
     title: "What I build for you.",
     description:
       "I help founders and small teams turn an idea into a product people can actually use: visible on the web, testable with real users and, where it belongs, native on the iPhone.",
-    metaTitle: "Services · Websites, Web Apps and iOS Apps",
+    metaTitle: "Services · Web and iOS Development in Vienna",
     metaDescription:
       "Websites your team edits itself, web apps with real product logic and native iOS apps, all from one person. From the first idea to launch.",
     // The three product forms stand in the hero instead (services.ts).
@@ -25,7 +25,7 @@ export const detailPages: DetailPageData[] = [
     title: "What I build – live and in use.",
     description:
       "Websites, web apps and native iOS apps – thought through, designed and shipped. Every project here is in use, three of them open to the public.",
-    metaTitle: "Showcase · Websites, Web Apps and iOS Apps",
+    metaTitle: "Showcase · Web and iOS Projects from Vienna",
     metaDescription:
       "Projects by Lukas Kaffer: the Indeed Unique dance studio website, Vienna Event Radar on the web and as a native iOS app, and an internal operations app.",
     chips: ["Websites", "Web apps", "iOS apps"],

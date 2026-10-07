@@ -18,8 +18,8 @@ The rest of this README is in German.
 
 ## Überblick
 
-Persönliche Portfolio-Website von Lukas Kaffer: Webdesigner und Entwickler in
-Wien, der Websites, Web-Apps und iOS-Apps gestaltet, baut und veröffentlicht.
+Persönliche Portfolio-Website von Lukas Kaffer, Web- und iOS-Entwickler in
+Wien: Er gestaltet, baut und veröffentlicht Websites, Web-Apps und iOS-Apps.
 Die Seite belegt die Arbeitsweise an vier Live-Projekten:
 
 - **Indeed Unique**: Website eines Tanzstudios in Wien und Mödling mit Astro,
@@ -137,7 +137,9 @@ Upwork-Profil.
   kommen aus `app/content/<sprache>/case-studies.ts`.
 
 Das iPhone ist Apples offizieller iPhone-17-Pro-Rahmen
-(`public/devices/iphone-17-pro-frame.png`). Die Aufnahme liegt darunter und wird
+(`public/devices/iphone-17-pro-frame.png` als Vorlage, ausgeliefert als
+`iphone-17-pro-frame.webp`, erzeugt mit `cwebp -q 90 -alpha_q 100`; das WebP
+behält den Alpha-Kanal, ist aber nur ein Fünftel so groß). Die Aufnahme liegt darunter und wird
 per Maske aus dem Alpha-Kanal des Rahmens auf die Displayform zugeschnitten.
 Desktop- und Handy-Aufnahme eines Projekts sind gleich lang (Vienna Event
 Radar 26,4 s = das komplette App-Video, Indeed Unique 28,6 s mit Einstiegsanimation,

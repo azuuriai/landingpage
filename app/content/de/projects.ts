@@ -29,7 +29,7 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     links: [{ label: "indeedunique.com öffnen", href: INDEED_UNIQUE_URL }],
     metaTitle: "Case Study · Indeed Unique – Website mit CMS und Eversports",
     metaDescription:
-      "Neue Website für ein Tanzstudio in Wien und Mödling: Astro, ein zugeschnittenes Sanity CMS zum Selbstpflegen, Eversports-Buchung im eigenen Design und Hosting ohne laufende Plattformkosten.",
+      "Neue Website für ein Tanzstudio in Wien und Mödling: Astro, ein Sanity CMS zum Selbstpflegen, Eversports-Buchung im eigenen Design, keine Plattformkosten.",
     tourLabel: "Indeed Unique – Aufnahme der Website am Desktop",
     closing: "Du willst eine Website, die du selbst pflegen kannst? Schreib mir.",
   },
@@ -80,7 +80,7 @@ export const iosApp: CaseStudyData = {
   ],
   metaTitle: "Case Study · Wien Event Radar – native iOS-App in SwiftUI",
   metaDescription:
-    "Wien Event Radar für iOS: native SwiftUI-App mit Widgets, Live-Aktivität, Kalender, Karte und Gruppenplanung, im App Store und mit gemeinsamem Backend zur Webplattform.",
+    "Wien Event Radar für iOS: native SwiftUI-App mit Widgets, Live-Aktivität, Kalender, Karte und Gruppenplanung, im App Store und mit der Webplattform verbunden.",
   tourLabel: "Wien Event Radar für iOS: Entdecken, Eventdetails, Merken und Karte",
   closing: "Dein Produkt gehört aufs iPhone? Schreib mir.",
 };
@@ -103,7 +103,7 @@ export const operationsApp: CaseStudyData = {
   links: [],
   metaTitle: "Case Study · Operations-App mit Social Studio in SwiftUI",
   metaDescription:
-    "Interne iPhone-App in SwiftUI: Monitoring von Hintergrund-Jobs und Fehlern, halbautomatisches Social Studio für Instagram-Karussells und Stories, Newsletter-Redaktion und Startseiten-Steuerung, abgesichert mit Google-Login, Face ID und Rollenprüfung im Backend.",
+    "Interne iPhone-App in SwiftUI: überwacht Hintergrund-Jobs und Fehler, entwirft Instagram-Karussells und Stories, betreut Newsletter und Startseite.",
   tourLabel: "Operations-App: Monitor, Social Studio mit vier Slides und Top Picks",
   closing: "Dein Team braucht ein Werkzeug für wiederkehrende Abläufe? Schreib mir.",
 };

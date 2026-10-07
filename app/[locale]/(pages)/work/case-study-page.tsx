@@ -5,9 +5,16 @@ import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { BackLink, ContactBand, JsonLd } from "@/app/_components/site-chrome";
 import { ICON_UP, PRIMARY_BUTTON, SECONDARY_BUTTON } from "@/app/_components/button-styles";
-import { getContent } from "@/app/content";
+import { detailPage, getContent } from "@/app/content";
 import type { CaseStudyData, ProjectLink } from "@/app/content/types";
-import { absoluteUrl, languageTag, localizedPaths, pageMetadata, SITE_URL } from "@/app/seo";
+import {
+  absoluteUrl,
+  breadcrumbList,
+  languageTag,
+  localizedPaths,
+  pageMetadata,
+  SITE_URL,
+} from "@/app/seo";
 
 export function caseStudyMetadata(study: CaseStudyData, locale: Locale): Metadata {
   return pageMetadata({
@@ -24,6 +31,7 @@ function caseStudyJsonLd(study: CaseStudyData, locale: Locale) {
   // The page's own URL in this language; the project itself is one entity in
   // both languages and keeps a shared id.
   const url = absoluteUrl(localizedPaths(study.path)[locale]);
+  const work = detailPage(getContent(locale), "work");
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -36,7 +44,12 @@ function caseStudyJsonLd(study: CaseStudyData, locale: Locale) {
         inLanguage: languageTag(locale),
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${SITE_URL}${study.path}#project` },
+        breadcrumb: { "@id": `${url}#breadcrumb` },
       },
+      breadcrumbList(locale, url, [
+        { name: work.navLabel, path: work.path },
+        { name: study.name, path: study.path },
+      ]),
       {
         "@type": "CreativeWork",
         "@id": `${SITE_URL}${study.path}#project`,

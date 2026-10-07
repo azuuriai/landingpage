@@ -7,13 +7,15 @@ import type {
 } from "../types";
 
 export const site: SiteCopy = {
-  title: "Lukas Kaffer · Websites, Web-Apps und iOS-Apps",
+  title: "Lukas Kaffer · Web- und iOS-Entwickler in Wien",
   description:
-    "Lukas Kaffer baut Websites, Webprodukte und native iOS-Apps von der Idee bis zum Launch. Live-Belege: die Website des Tanzstudios Indeed Unique mit Sanity CMS und Eversports sowie Vienna Event Radar im Web und im App Store.",
+    "Lukas Kaffer ist Web- und iOS-Entwickler in Wien und baut Websites, Web-Apps und native iOS-Apps bis zum Launch. Live im Web und im App Store.",
   ogDescription:
     "Live-Belege: die Website des Tanzstudios Indeed Unique mit eigenem CMS und Vienna Event Radar im Web und im App Store.",
-  ogImageAlt: "Lukas Kaffer · Websites, Webprodukte und native iOS Apps",
+  ogImageAlt: "Lukas Kaffer · Web- und iOS-Entwickler in Wien",
   keywords: [
+    "Webentwickler Wien",
+    "iOS-Entwickler Wien",
     "Webentwicklung Wien",
     "Website mit CMS",
     "Sanity CMS",
@@ -27,7 +29,7 @@ export const site: SiteCopy = {
     "Landing Page Wien",
     "Lukas Kaffer",
   ],
-  jobTitle: "Webdesigner und Entwickler",
+  jobTitle: "Web- und iOS-Entwickler",
   knowsAbout: [
     "Webentwicklung",
     "Native iOS Apps",
@@ -78,7 +80,7 @@ export const ui: UiCopy = {
 };
 
 export const home: HomeCopy = {
-  descriptor: "Websites, Web-Apps und iOS-Apps, Wien",
+  descriptor: "Web- und iOS-Entwickler in Wien",
   headline: "Von der Idee zum Produkt. Launch inklusive.",
 };
 

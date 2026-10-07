@@ -54,14 +54,19 @@ export function Showcase({ items, label }: { items: ShowcaseItem[]; label: strin
   const resumeFor = (index: number, screen: "desktop" | "phone") =>
     resume?.index === index ? { time: resume.time, frame: resume.frames[screen] } : undefined;
 
-  // The first project loads right away; the others follow a few seconds
-  // later, well before their turn, so they never compete with first paint.
+  // The first project loads right away; the others follow about ten seconds
+  // before their turn, so they never compete with first paint or the running
+  // recording, and phones skip them entirely if the visitor leaves earlier.
   // After a language switch they are cached already.
   const [warm, setWarm] = useState(Boolean(resume));
   useEffect(() => {
-    const timer = window.setTimeout(() => setWarm(true), 4000);
+    if (warm) return;
+    const timer = window.setTimeout(
+      () => setWarm(true),
+      Math.max(4000, durations[rotation.index] - 10_000),
+    );
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [warm, durations, rotation.index]);
   const preloadFor = (isActive: boolean) => (isActive || warm ? "auto" : "none");
 
   return (
@@ -124,7 +129,7 @@ export function Showcase({ items, label }: { items: ShowcaseItem[]; label: strin
             aria-hidden="true"
             className="absolute bottom-[8%] left-0 z-10 block w-[22%] rotate-[-2deg] drop-shadow-[0_26px_32px_rgba(17,18,17,0.24)]"
           >
-            <PhoneFrame>
+            <PhoneFrame priority>
               {/* display: contents keeps the layers positioned by the frame. */}
               <div ref={phoneRef} className="contents">
                 {items.map((item, index) => {
