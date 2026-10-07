@@ -157,7 +157,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
         image: "radar-assistant",
         alt: "The “Ask your Radar” assistant suggests outdoor events for tomorrow",
         title: "Ask your Radar",
-        text: "An assistant that understands requests like “outdoor, tomorrow, with friends.” Which events match is decided by a transparent search, not by the language model.",
+        text: "An assistant, called “Frag dein Radar” in the app, that understands requests like “outdoor, tomorrow, with friends.” Which events match is decided by a transparent search, not by the language model.",
       },
     ],
   },
@@ -176,7 +176,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         title: "Monday Radar",
-        text: "The weekly Montagsradar newsletter with the best tips for the week ahead, double opt-in included.",
+        text: "The weekly Monday Radar newsletter with the best tips for the week ahead, double opt-in included.",
       },
       {
         title: "Easy to find",

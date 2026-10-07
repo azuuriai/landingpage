@@ -109,7 +109,7 @@ export const detailPages: DetailPageData[] = [
       {
         question: "Do you work with clients outside Austria?",
         answer:
-          "Yes. I take on remote projects from anywhere, mostly Europe and North America, in English or German. Calls fit European business hours and US mornings; everything else happens in writing, in your tools or mine. If you prefer, we can run the project through Upwork.",
+          "Yes. I work remotely with clients anywhere, in English or German. Calls fit European afternoons and US mornings; everything else happens in writing, in your tools or mine. If you prefer, we can run the project through Upwork.",
       },
       {
         question: "What if all I have is a rough idea?",
@@ -144,7 +144,7 @@ export const detailPages: DetailPageData[] = [
       {
         label: "Remote",
         title: "Based in Vienna, working across time zones.",
-        body: "I take on remote projects from anywhere, mostly Europe and North America, in English or German. Calls fit European afternoons and US mornings; everything else happens in writing, in your tools or mine.",
+        body: "I work remotely with clients anywhere, in English or German. Calls fit European afternoons and US mornings; everything else happens in writing, in your tools or mine.",
       },
     ],
   },
