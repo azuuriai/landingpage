@@ -105,8 +105,10 @@ Upwork-Profil.
 
 ## Struktur
 
-- `app/_home/` – Startseite: Kopfzeile mit Kurzbeschreibung, Headline, vier
-  Links, ein Button und der Showcase (`showcase.tsx`). Monitor und iPhone
+- `app/_home/` – Startseite: Kopfzeile mit Kurzbeschreibung, Headline, die
+  Byline (Porträt aus `public/mail/lukas-kaffer.png`, dasselbe Bild wie in
+  E-Mail-Signatur und Google-Profil, Name und ein Satz, verlinkt auf Über
+  mich), vier Links, ein Button und der Showcase (`showcase.tsx`). Monitor und iPhone
   wechseln ohne Beschriftung selbständig zwischen den Projekten; jedes bleibt so
   lange, wie seine Aufnahmen dauern (`durationMs` in `app/media.ts`), mit
   weicher Überblendung. Die Projekte wechseln strikt abwechselnd und pausieren
@@ -135,6 +137,13 @@ Upwork-Profil.
   ohne Eyebrow-Labels aus. Zahlen nur mit Quelle in der Projektdoku. Die
   Case-Study-Komponenten entscheiden nur, welche Aufnahme wo steht; ihre Worte
   kommen aus `app/content/<sprache>/case-studies.ts`.
+
+Der Monitor (`app/_components/monitor-frame.tsx`) ist gezeichnet, kein Bild:
+Korpus in CSS (Alu-Hairline, matte schwarze Front mit schmaler Blende und
+Kamerapunkt, Panel mit kaum gerundeten Ecken), Standarm und Fußplatte als
+Inline-SVG mit Licht von oben links, Kontakt- und Umgebungsschatten. Alle Maße
+sind Container-Query-Einheiten der Monitorbreite (`cqw` bzw. viewBox), damit
+die Proportionen bei jeder Größe und Pixeldichte gleich bleiben.
 
 Das iPhone ist Apples offizieller iPhone-17-Pro-Rahmen
 (`public/devices/iphone-17-pro-frame.png` als Vorlage, ausgeliefert als

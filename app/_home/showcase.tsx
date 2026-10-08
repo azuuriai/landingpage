@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AutoplayVideo } from "../_components/autoplay-video";
 import { pendingLocaleSwitch, registerShowcase } from "../_components/locale-switch";
+import { MonitorFrame } from "../_components/monitor-frame";
 import { PhoneFrame } from "../_components/phone-frame";
 import type { ShowcaseItem } from "./home-content";
 import { useShowcaseRotation } from "./use-showcase-rotation";
@@ -83,13 +84,10 @@ export function Showcase({ items, label }: { items: ShowcaseItem[]; label: strin
           <Link
             href={active.href}
             aria-label={active.linkLabel}
-            className="group relative ml-auto block w-[88%] focus:outline-none"
+            className="group relative ml-auto block w-[90%] focus:outline-none"
           >
-            <div className="relative rounded-[22px] border-[8px] border-[#141514] bg-[#141514] shadow-[0_34px_90px_-20px_rgba(17,18,17,0.35)] transition group-focus-visible:ring-2 group-focus-visible:ring-[#00b8ad]/50 group-focus-visible:ring-offset-4 group-focus-visible:ring-offset-[#f2f2f0]">
-              <div
-                ref={screenRef}
-                className="relative aspect-[16/10] overflow-hidden rounded-[14px] bg-[#fbf9f7] [container-type:inline-size]"
-              >
+            <MonitorFrame className="transition group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#181811]">
+              <div ref={screenRef} className="absolute inset-0">
                 {items.map((item, index) => {
                   const isActive = index === rotation.index;
 
@@ -117,9 +115,7 @@ export function Showcase({ items, label }: { items: ShowcaseItem[]; label: strin
                   );
                 })}
               </div>
-            </div>
-            <div className="mx-auto h-[clamp(2.5rem,7vh,4.5rem)] w-[16%] bg-gradient-to-b from-[#cfd3cc] to-[#aab1a8]" />
-            <div className="mx-auto -mt-px h-[18px] w-[40%] rounded-[50%] bg-gradient-to-b from-[#d9ddd8] to-[#b7bdb4] shadow-[0_18px_40px_rgba(17,18,17,0.14)]" />
+            </MonitorFrame>
           </Link>
 
           {/* Same destination as the monitor, so it stays out of the tab order. */}

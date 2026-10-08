@@ -9,14 +9,14 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Leistungen",
     title: "Was ich für dich baue.",
     description:
-      "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: sichtbar im Web, testbar mit echten Nutzern und bei Bedarf nativ auf dem iPhone.",
+      "Ich helfe Gründern und kleinen Teams, aus einer Idee ein benutzbares Produkt zu machen: im Web, als echte Web-App und als native iOS-App, wenn das Produkt aufs iPhone gehört. Oft beides, auf einem Backend.",
     metaTitle: "Leistungen · Web- und iOS-Entwicklung in Wien",
     metaDescription:
       "Websites zum Selbstpflegen, Web-Apps mit echter Produktlogik und native iOS-Apps aus einer Hand. Von der ersten Idee bis zum Launch.",
     // The three product forms stand in the hero instead (services.ts).
     chips: [],
     sections: [],
-    closing: "Klingt nach deinem Projekt? Dann lass es uns angehen.",
+    closing: "Klingt nach deinem Projekt?",
   },
   {
     ...detailPageBase.work,
@@ -24,13 +24,13 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Showcase",
     title: "Was ich baue – live im Einsatz.",
     description:
-      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar.",
+      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar. Eines ist für einen Kunden entstanden, die anderen sind Produkte, die ich selbst baue und betreibe. Daher die Tiefe bei Betrieb und iOS.",
     metaTitle: "Showcase · Web- und iOS-Projekte aus Wien",
     metaDescription:
       "Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique, Vienna Event Radar im Web und als native iOS-App sowie eine interne Operations-App.",
     chips: ["Websites", "Web-Apps", "iOS-Apps"],
     sections: [],
-    closing: "Du willst etwas Ähnliches bauen? Schreib mir.",
+    closing: "Du willst etwas Ähnliches bauen?",
   },
   {
     ...detailPageBase.about,
@@ -38,22 +38,17 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Mein Weg",
     title: "Vom Klassenzimmer zu Produkten.",
     description:
-      "SmartCash, Bildung und eigene Produkte: drei Stationen, die prägen, wie ich heute Probleme sortiere, erkläre und umsetze.",
-    metaTitle: "Über Lukas Kaffer · Bildung, Community und digitale Produkte",
+      "Eigene Produkte, Bildung und Community-Arbeit: drei Stationen, die prägen, wie ich heute Probleme sortiere, erkläre und umsetze.",
+    metaTitle: "Über Lukas Kaffer · Produkte, Bildung und Community",
     metaDescription:
-      "Von SmartCash Outreach und Support über Bildung bis zu Web- und iOS-Produkten: der Weg von Lukas Kaffer zum Product Builder.",
-    chips: ["Wien, AT", "SmartCash 2017–2020", "Bildung", "Web + iOS"],
+      "Eigene Produkte, Bildung und Community-Arbeit: der Weg von Lukas Kaffer zum Web- und iOS-Product-Builder in Wien.",
+    chips: ["Wien, AT", "Web + iOS", "Produktdesign", "Bildung"],
     image: { ...PORTRAITS.standing, alt: "Lukas Kaffer" },
     sections: [
       {
-        label: "2017–2020",
-        title: "Outreach und Tech-Support in einer dezentralen Community.",
-        body: "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt.",
-      },
-      {
-        label: "Outreach",
-        title: "Ein Projekt auch außerhalb des Internets vertreten.",
-        body: "Ich vertrat SmartCash auf verschiedenen Veranstaltungen, etwa bei Crypto World Zug und AnarchaPortugal in Porto, und hielt dort unter anderem Vorträge über unser Projekt.",
+        label: "Heute",
+        title: "Aus einer groben Idee wird eine Version, die man wirklich benutzen kann.",
+        body: "Heute verbinde ich Produktdenken, UX und AI-assisted Development mit meinem Hintergrund aus Bildung und Community-Arbeit. Claude Code und ChatGPT machen mich schneller, dadurch reicht ein kleineres Budget weiter; Produktlogik, Datenfluss, Prüfung und Auslieferung bleiben meine Verantwortung, und nichts geht raus, das ich nicht gelesen und getestet habe.",
       },
       {
         label: "Bildung",
@@ -61,12 +56,12 @@ export const detailPages: DetailPageData[] = [
         body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen nachvollziehbar zu machen. In der Produktarbeit wird daraus klares Scoping.",
       },
       {
-        label: "Heute",
-        title: "Aus einer groben Idee wird eine Version, die man wirklich benutzen kann.",
-        body: "Heute verbinde ich diesen Hintergrund mit Produktdenken, UX und AI-assisted Development. Claude Code und ChatGPT erhöhen mein Tempo; Verantwortung für Produktlogik, Datenfluss, Prüfung und Auslieferung bleibt bei mir.",
+        label: "2017–2020",
+        title: "Outreach und Tech-Support in einer dezentralen Community.",
+        body: "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt, und habe es persönlich auf Konferenzen in Zug und Porto vertreten, auch mit Vorträgen.",
       },
     ],
-    closing: "Klingt nach einer Zusammenarbeit? Schreib mir.",
+    closing: "Klingt nach einer Zusammenarbeit?",
   },
   {
     ...detailPageBase.faq,
@@ -74,17 +69,17 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Gut zu wissen",
     title: "Fragen vor dem Projektstart.",
     description:
-      "Kurz beantwortet: Kosten, Dauer, iOS, Design, Launch und was passiert, wenn du nur mit einer groben Idee kommst.",
+      "Kurz beantwortet: Kosten, Dauer, iOS und Android, Design, Launch, AI-Tools und was passiert, wenn du nur mit einer groben Idee kommst.",
     metaTitle: "FAQ · Kosten, Dauer, iOS Apps und Launch",
     metaDescription:
-      "Antworten zu Projektkosten, Dauer, nativer iOS Entwicklung, Design, Launch und Zusammenarbeit mit Lukas Kaffer.",
+      "Antworten zu Projektkosten, Dauer, nativer iOS Entwicklung, Android, Design, Launch, AI-Tools und Zusammenarbeit mit Lukas Kaffer.",
     chips: ["Fester Preis", "Code gehört dir", "Direkt mit mir"],
     sections: [],
     faq: [
       {
         question: "Was kostet ein Projekt und wie lange dauert es?",
         answer:
-          "Beides hängt vom Umfang ab. Nach einem kurzen Erstgespräch grenze ich Ziel, Kernworkflow und einen realistischen ersten Release ab. Darauf basiert ein klarer Vorschlag mit Umfang, Preis und nächsten Schritten.",
+          "Beides hängt vom Umfang ab. Nach einem kurzen Erstgespräch grenze ich Ziel, Kernworkflow und einen realistischen ersten Release ab, und du bekommst einen klaren Vorschlag mit Umfang, Preis und nächsten Schritten. Projekte biete ich zum Festpreis für einen definierten Umfang an; was darüber hinausgeht, wird separat angeboten, über Upwork sind auch Stundenverträge möglich. Die Schritte sind immer dieselben: Idee schärfen, Umfang und Preis, Design und Bau, Launch, Betreuung danach. Vertrag und Rechnung kommen von einem österreichischen Einzelunternehmen, in Euro; für Geschäftskunden außerhalb Österreichs ohne österreichische Umsatzsteuer. NDA auf Wunsch.",
       },
       {
         question: "Baust du native iOS Apps?",
@@ -92,9 +87,14 @@ export const detailPages: DetailPageData[] = [
           "Ja. Native iOS Apps in SwiftUI, von der Idee bis zum echten App-Store-Release. Wenn dein Produkt aufs iPhone gehört, baue ich es nativ und nicht als verpackte Website.",
       },
       {
+        question: "Baust du auch Android-Apps?",
+        answer:
+          "Nicht nativ. Ich baue für iOS in SwiftUI; Android-Nutzer erreichst du über die Web-App, die in jedem Browser läuft. Wenn Android von Anfang an Pflicht ist, bin ich nicht der Richtige, und das sage ich dir im ersten Gespräch.",
+      },
+      {
         question: "Entwirfst du auch das Design?",
         answer:
-          "Ja. Interface, Interaktion und Code entstehen zusammen. Du brauchst nicht zwingend ein separates Design-Team, wenn der Scope zu meiner Arbeitsweise passt.",
+          "Ja. Interface, Interaktion und Code entstehen zusammen. Bei Projekten dieser Größe brauchst du meistens keinen separaten Designer.",
       },
       {
         question: "Kann ich die Website danach selbst bearbeiten?",
@@ -107,12 +107,17 @@ export const detailPages: DetailPageData[] = [
           "Du wirst nach dem Go-live nicht allein gelassen. Launch umfasst die SEO- und Security-Basics; danach bin ich für Fixes, Anpassungen und Weiterentwicklung verfügbar. Code und Accounts gehören dir.",
       },
       {
+        question: "Arbeitest du mit AI-Tools?",
+        answer:
+          "Ja, ganz offen. Claude Code und ChatGPT machen mich schneller, dadurch reicht ein kleineres Budget weiter. Produktlogik, Datenfluss, Prüfung und Auslieferung bleiben meine Verantwortung, und nichts geht raus, das ich nicht gelesen und getestet habe.",
+      },
+      {
         question: "Was, wenn ich nur eine grobe Idee habe?",
         answer:
           "Das ist oft der beste Startpunkt. Der erste Schritt ist dann nicht direkt Entwicklung, sondern Schärfung: Ziel, Zielgruppe, Kernfunktion und ein sinnvoller erster Umfang.",
       },
     ],
-    closing: "Frage war nicht dabei? Frag mich direkt.",
+    closing: "Frage war nicht dabei?",
   },
   {
     ...detailPageBase.contact,

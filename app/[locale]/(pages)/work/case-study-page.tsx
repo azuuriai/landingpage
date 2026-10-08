@@ -27,7 +27,7 @@ export function caseStudyMetadata(study: CaseStudyData, locale: Locale): Metadat
 
 function caseStudyJsonLd(study: CaseStudyData, locale: Locale) {
   // Private tools have no live link; the case study page stands in for it.
-  const liveLink = study.links.find((link) => !link.internal) ?? study.links[0];
+  const liveLink = study.links.find((link) => !link.internal);
   // The page's own URL in this language; the project itself is one entity in
   // both languages and keeps a shared id.
   const url = absoluteUrl(localizedPaths(study.path)[locale]);

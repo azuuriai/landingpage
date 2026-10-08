@@ -207,7 +207,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         title: "Admin-App fürs iPhone",
-        text: "Betrieb, Nutzung, Reichweite, Newsletter und Social Studio auch unterwegs, geschützt mit Face ID.",
+        text: "Betrieb, Nutzung, Reichweite, Newsletter und Social Studio auch unterwegs, geschützt mit Face ID. Sie hat eine eigene Case Study, oben verlinkt.",
       },
       {
         title: "Überwachter Betrieb",

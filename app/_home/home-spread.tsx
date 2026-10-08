@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { ICON_UP, NAV_LINK, PRIMARY_BUTTON, QUIET_LINK } from "../_components/button-styles";
@@ -62,6 +63,32 @@ export function HomeSpread({ locale }: { locale: Locale }) {
                 {home.headline}
               </h1>
 
+              {/* The person behind the page, where a visitor looks first: the
+                  same portrait as in the email signature and on Google. On
+                  mobile it sits between headline and showcase; on desktop it
+                  tops the free row between headline and links. */}
+              <Link
+                href="/about"
+                className="rise ui-byline -mt-4 flex w-fit items-center gap-3.5 lg:col-start-1 lg:row-start-2 lg:mt-0 lg:self-start lg:pt-[1.125rem]"
+                style={{ animationDelay: "0.13s" }}
+              >
+                <Image
+                  src="/mail/lukas-kaffer.png"
+                  alt=""
+                  width={240}
+                  height={240}
+                  sizes="48px"
+                  priority
+                  className="h-11 w-11 shrink-0 rounded-full shadow-[0_0_0_1px_rgba(24,24,17,0.08)]"
+                />
+                <span className="flex flex-col gap-0.5 text-[14px] leading-5">
+                  <span className="ui-link w-fit font-medium text-[#181811]">
+                    {home.byline.name}
+                  </span>
+                  <span className="max-w-[34ch] text-[#6c6c61]">{home.byline.text}</span>
+                </span>
+              </Link>
+
               <div
                 className="rise lg:col-start-2 lg:row-span-3 lg:row-start-1"
                 style={{ animationDelay: "0.18s" }}
@@ -79,7 +106,7 @@ export function HomeSpread({ locale }: { locale: Locale }) {
                       <li key={link.href} className="border-b border-[#181811]/10">
                         <Link
                           href={link.href}
-                          className="ui-row ui-row--shift flex items-center justify-between py-3 text-[18px] font-medium tracking-[-0.01em] text-[#181811] lg:py-[clamp(0.4rem,calc(4.2vh-26px),0.75rem)]"
+                          className="ui-row ui-row--shift flex items-center justify-between py-3 text-[18px] font-medium tracking-[-0.01em] text-[#181811] lg:py-[clamp(0.4rem,calc(4.2vh-28px),0.65rem)]"
                         >
                           {link.label}
                           <ArrowUpRight
@@ -95,7 +122,7 @@ export function HomeSpread({ locale }: { locale: Locale }) {
 
                 <Link
                   href="/contact"
-                  className={`${PRIMARY_BUTTON} mt-8 lg:mt-[clamp(1rem,calc(4.2vh-14px),1.75rem)]`}
+                  className={`${PRIMARY_BUTTON} mt-8 lg:mt-[clamp(0.9rem,calc(4.2vh-18px),1.4rem)]`}
                 >
                   {ui.sendIdea}
                 </Link>

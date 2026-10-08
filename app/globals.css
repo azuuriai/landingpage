@@ -422,3 +422,103 @@ body {
     mask: linear-gradient(90deg, #000, transparent);
   }
 }
+
+/* ==========================================================================
+   Monitor — the desktop display of the homepage showcase.
+   A thin-bezel aluminium display on a tilt stand, drawn in CSS: a hairline of
+   metal around a matte black front, the panel with barely rounded corners,
+   an arm that disappears behind the display and a flat foot with a contact
+   shadow. Lengths are container-query units of the display's width.
+   ========================================================================== */
+
+.monitor {
+  container-type: inline-size;
+  position: relative;
+}
+
+/* The chassis: a hairline of aluminium around the front, lit from above, and
+   the display's own shadow in three layers (edge, near, far). */
+.monitor-rim {
+  position: relative;
+  z-index: 1;
+  padding: 0.3cqw 0.3cqw 0.42cqw;
+  border-radius: 1.3cqw;
+  background: linear-gradient(180deg, #eef0ec 0%, #d4d7d1 50%, #a9ada6 100%);
+  box-shadow:
+    0 0.15cqw 0.3cqw rgba(17, 18, 17, 0.22),
+    0 2cqw 3cqw -1.2cqw rgba(17, 18, 17, 0.28),
+    0 7cqw 10cqw -3.5cqw rgba(17, 18, 17, 0.42);
+}
+
+/* Matte black front with the bezel; a faint light catches its top edge. */
+.monitor-front {
+  position: relative;
+  padding: 1.7cqw;
+  border-radius: 1cqw;
+  background:
+    linear-gradient(100deg, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0) 38%),
+    linear-gradient(180deg, #1a1b1a 0%, #0d0e0d 100%);
+  box-shadow: inset 0 0.08cqw 0 rgba(255, 255, 255, 0.07);
+}
+
+/* The camera in the top bezel. */
+.monitor-front::before {
+  content: "";
+  position: absolute;
+  top: 0.58cqw;
+  left: 50%;
+  width: 0.54cqw;
+  height: 0.54cqw;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #454847, #040504 70%);
+  box-shadow: 0 0 0 0.09cqw rgba(255, 255, 255, 0.1);
+}
+
+.monitor-screen {
+  container-type: inline-size;
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 0.4cqw;
+  background: #fbf9f7;
+}
+
+/* The panel darkens a touch towards its edges, like a real LCD. */
+.monitor-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0.9cqw rgba(0, 0, 0, 0.14);
+}
+
+/* The stand (an inline SVG, see monitor-frame.tsx) sits behind the chassis,
+   its top tucked under the display's bottom edge. */
+.monitor-stand {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: -0.8cqw;
+  overflow: visible;
+}
+
+/* ---------- Byline: portrait and name, one link --------------------------- */
+/* Hovering anywhere on the byline draws the line under the name. */
+
+.ui-byline:is(:hover, :focus-visible) .ui-link {
+  color: var(--ink);
+  background-size:
+    100% 2px,
+    0% 1px;
+}
+
+.ui-byline:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+  border-radius: 4px;
+}

@@ -47,12 +47,12 @@ const indeedUnique: IndeedUniqueCopy = {
     ],
     tools: [
       {
-        title: "One menu entry per task",
-        text: "Post news, organize classes and team profiles, enter the dance year and class-free days.",
+        title: "One menu item per task",
+        text: "Post news, manage classes and team profiles, set the dance season and days off.",
       },
       {
         title: "New pages from building blocks",
-        text: "22 designed sections, freely combinable. Every page is individual and stays on brand.",
+        text: "22 designed sections, freely combinable. Every page is unique and stays on brand.",
       },
       {
         title: "A dashboard with open tasks",
@@ -97,13 +97,13 @@ const indeedUnique: IndeedUniqueCopy = {
   },
   mobile: {
     title: "Just as complete on the phone.",
-    text: "The mobile version was planned as an equal from the start, not added later: the same content, its own navigation, an opening and showcase built for the small screen, and short paths to schedule and sign-up.",
+    text: "The mobile version was designed as a first-class version from day one, not bolted on later: the same content, its own navigation, an opening and showcase built for the small screen, and short paths to schedule and sign-up.",
     label: "Indeed Unique on the iPhone: opening, showcase and schedule",
   },
   operations: {
     title: "Runs without anyone having to think about it.",
     intro:
-      "A studio website has to be reliable above all. So there is no server, no database and no platform fees, but automated checks and backups instead.",
+      "A studio website has to be reliable above all. So there is no server, no database and no platform fees; instead, there are automated checks and backups.",
     items: [
       {
         title: "No server of its own",
@@ -115,7 +115,7 @@ const indeedUnique: IndeedUniqueCopy = {
       },
       {
         title: "Checked before every release",
-        text: "Automated tests for types, SEO, content rules, the Eversports integration and backups, plus a full trial build.",
+        text: "Automated tests for types, SEO, content rules, the Eversports integration and backups, plus a full test build.",
       },
       {
         title: "Daily backup and refresh",
@@ -133,7 +133,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
   features: {
     title: "From browsing to making plans.",
     intro:
-      "The platform answers a simple question: what are we doing today, this weekend or with friends? Every step on the way is built, from the first filter to the suggestion others reply to.",
+      "The platform answers a simple question: what are we doing today, this weekend or with friends? Every step of the way is covered, from the first filter to the suggestion your friends reply to.",
     items: [
       {
         image: "dashboard",
@@ -155,9 +155,9 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         image: "radar-assistant",
-        alt: "The “Ask your Radar” assistant suggests outdoor events for tomorrow",
-        title: "Ask your Radar",
-        text: "An assistant, called “Frag dein Radar” in the app, that understands requests like “outdoor, tomorrow, with friends.” Which events match is decided by a transparent search, not by the language model.",
+        alt: "The “Frag dein Radar” assistant suggests outdoor events for tomorrow",
+        title: "Frag dein Radar",
+        text: "“Ask your radar”: an assistant that understands requests like “outdoor, tomorrow, with friends.” Which events match is decided by a transparent search, not by the language model.",
       },
     ],
   },
@@ -167,7 +167,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       "Behind it is a complete product with accounts, groups, a newsletter and pages that search engines find.",
     items: [
       {
-        title: "Accounts any way you like",
+        title: "Sign in any way you like",
         text: "Sign in with Google, Apple, a password or a magic link. Favorites and your own events are the same everywhere.",
       },
       {
@@ -190,8 +190,8 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       "AI speeds up the research but publishes nothing on its own. Every event goes through a review before it goes live, and operations can be run from the desk and from the iPhone.",
     items: [
       {
-        title: "Research with duplicate check",
-        text: "New events come from AI-assisted research. Before a find enters the system, it is checked against what is already there.",
+        title: "Research with duplicate detection",
+        text: "New events come from AI-assisted research. Before a new entry enters the system, it’s checked against what’s already there.",
       },
       {
         title: "Approval instead of autopilot",
@@ -207,7 +207,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
       },
       {
         title: "Admin app for the iPhone",
-        text: "Operations, usage, reach, newsletter and Social Studio on the go, protected with Face ID.",
+        text: "Operations, usage, reach, newsletter and Social Studio on the go, protected with Face ID. It has its own case study, linked above.",
       },
       {
         title: "Monitored operations",
@@ -250,7 +250,7 @@ const wienEventRadarIos: WienEventRadarIosCopy = {
         image: "suche",
         alt: "Search with quick filters and categories",
         title: "Search",
-        text: "Categories, quick filters and free search. From iOS 26 on, it understands requests in natural language, right on the device.",
+        text: "Categories, quick filters and free search. On iOS 26 and later, it understands natural-language requests, right on the device.",
       },
       {
         image: "details",
@@ -334,7 +334,7 @@ const operationsApp: OperationsAppCopy = {
   areas: {
     title: "A platform’s daily routine, in one app.",
     intro:
-      "The fourth area is the newsletter editor. Data comes live from the backend; what you see here is the preview mode with sample data.",
+      "Three of the four areas are shown here; the fourth is the newsletter editor. Data comes live from the backend; what you see here is the preview mode with sample data.",
     items: [
       {
         image: "monitor",
@@ -388,7 +388,7 @@ const operationsApp: OperationsAppCopy = {
     ],
     items: [
       { title: "Google sign-in and Face ID", text: "The session lives in the keychain only, and the app locks when reopened." },
-      { title: "Roles checked in the backend", text: "Every request verifies the token and the admin role on the server." },
+      { title: "Roles verified server-side", text: "Every request verifies the token and the admin role on the server." },
     ],
     stack:
       "SwiftUI, AuthenticationServices, LocalAuthentication, Keychain, Next.js, Supabase, PostgreSQL, Sentry",

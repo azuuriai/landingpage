@@ -7,12 +7,12 @@ import type {
 } from "../types";
 
 export const site: SiteCopy = {
-  title: "Lukas Kaffer · Web and iOS Developer in Vienna",
+  title: "Lukas Kaffer · Web and iOS Developer · Vienna, Austria",
   description:
-    "Lukas Kaffer is a web and iOS developer in Vienna, building websites, web apps and native iOS apps through launch. Live on the web and on the App Store.",
+    "Lukas Kaffer is a web and iOS developer in Vienna, building websites, web apps and native iOS apps all the way to launch. Live on the web and on the App Store.",
   ogDescription:
     "Live proof: the Indeed Unique dance studio website with its own CMS, and Vienna Event Radar on the web and on the App Store.",
-  ogImageAlt: "Lukas Kaffer · Web and iOS developer in Vienna",
+  ogImageAlt: "Lukas Kaffer · Web and iOS developer · Vienna, Austria",
   keywords: [
     "web developer Vienna",
     "iOS developer Vienna",
@@ -41,7 +41,7 @@ export const site: SiteCopy = {
     "AI-assisted development",
   ],
   og: {
-    headline: "Websites, web products and native iOS apps, built all the way to launch.",
+    headline: "Websites, web apps and native iOS apps, built all the way to launch.",
     location: "Vienna, Austria",
     stack: "Astro · Next.js · Sanity · SwiftUI",
   },
@@ -53,12 +53,12 @@ export const ui: UiCopy = {
   headerNav: "Site navigation",
   homeNav: "Pages",
   contact: "Contact",
-  sendIdea: "Share your idea",
+  sendIdea: "Tell me about your project",
   backHome: "Home",
   backShowcase: "Showcase",
-  learnMore: "Learn more",
-  askAnotherQuestion: "Ask another question",
-  imprint: "Imprint",
+  learnMore: "Case study",
+  askAnotherQuestion: "Ask me directly",
+  imprint: "Legal notice",
   privacy: "Privacy",
   copyright: "© 2026 Lukas Kaffer",
   copyrightHome: "© 2026 Lukas Kaffer, Vienna",
@@ -79,8 +79,12 @@ export const ui: UiCopy = {
 };
 
 export const home: HomeCopy = {
-  descriptor: "Web and iOS developer · Vienna, Austria",
+  descriptor: "Web and iOS developer · Vienna, Austria · Remote",
   headline: "From idea to product. Launch included.",
+  byline: {
+    name: "Lukas Kaffer",
+    text: "You work with me directly, no agency in between.",
+  },
 };
 
 export const contactSection: ContactSectionCopy = {
@@ -97,10 +101,10 @@ export const contactForm: ContactFormCopy = {
   message: "Your idea",
   messagePlaceholder:
     "In two or three sentences: what do you want to launch, who is it for, and where is it stuck right now?",
-  submit: "Share your idea",
+  submit: "Send",
   sending: "Sending…",
-  note: "The form is delivered through Web3Forms.",
-  successTitle: "Received – thank you!",
+  note: "This form is sent via Web3Forms.",
+  successTitle: "Got it, thank you!",
   successBody: "I have your message and will reply personally.",
   errorBody: "That didn’t go through. Feel free to email me directly:",
   fallbackPrefix: "Prefer email?",

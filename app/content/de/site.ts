@@ -82,6 +82,10 @@ export const ui: UiCopy = {
 export const home: HomeCopy = {
   descriptor: "Web- und iOS-Entwickler in Wien",
   headline: "Von der Idee zum Produkt. Launch inklusive.",
+  byline: {
+    name: "Lukas Kaffer",
+    text: "Du arbeitest direkt mit mir, ohne Agentur dazwischen.",
+  },
 };
 
 export const contactSection: ContactSectionCopy = {

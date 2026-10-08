@@ -115,9 +115,20 @@ function FaqList({ page, askLabel }: { page: DetailPageData; askLabel: string })
                   className="shrink-0 text-[#006f68] transition-transform duration-300 group-open:rotate-45"
                 />
               </summary>
-              <p className="max-w-[64ch] pb-6 pr-10 text-[15px] leading-7 text-[#6c6c61]">
-                {item.answer}
-              </p>
+              <div className="max-w-[64ch] pb-6 pr-10">
+                <p className="text-[15px] leading-7 text-[#6c6c61]">{item.answer}</p>
+                {item.link ? (
+                  <a
+                    href={item.link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${TEXT_LINK} mt-3 text-[14px] text-[#006f68]`}
+                  >
+                    {item.link.label}
+                    <ArrowUpRight size={14} aria-hidden="true" className={ICON_UP} />
+                  </a>
+                ) : null}
+              </div>
             </details>
           ))}
           <Link

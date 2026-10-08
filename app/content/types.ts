@@ -56,7 +56,13 @@ export type UiCopy = {
   notFound: { title: string; text: string };
 };
 
-export type HomeCopy = { descriptor: string; headline: string };
+export type HomeCopy = {
+  descriptor: string;
+  headline: string;
+  // Under the headline: the portrait, the name and one line on who the
+  // visitor will be working with. Links to the About page.
+  byline: { name: string; text: string };
+};
 
 export type ContactSectionCopy = { eyebrow: string; title: string; body: string };
 
@@ -86,7 +92,12 @@ export type ContactFormCopy = {
 export type DetailSlug = "services" | "work" | "about" | "faq" | "contact";
 export type DetailPath = `/${DetailSlug}`;
 export type DetailSection = { label: string; title: string; body: string };
-export type DetailFaq = { question: string; answer: string };
+// `link`: an optional outbound link under the answer, e.g. the Upwork profile.
+export type DetailFaq = {
+  question: string;
+  answer: string;
+  link?: { label: string; href: string };
+};
 
 export type DetailPageData = {
   slug: DetailSlug;

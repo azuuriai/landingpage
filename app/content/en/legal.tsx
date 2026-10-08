@@ -12,10 +12,10 @@ const bindingNote = (
 );
 
 export const imprint: LegalPageCopy = {
-  metaTitle: "Imprint · Lukas Kaffer",
-  metaDescription: "Imprint and disclosure for lukaskaffer.com.",
+  metaTitle: "Legal notice · Lukas Kaffer",
+  metaDescription: "Legal notice and disclosure for lukaskaffer.com.",
   eyebrow: "Legal",
-  title: "Imprint",
+  title: "Legal notice",
   intro:
     "Information required by § 5 of the Austrian E-Commerce Act (ECG), § 63 of the Austrian Trade Act (GewO) and § 25 of the Austrian Media Act (MedienG).",
   body: (

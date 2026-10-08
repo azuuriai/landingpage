@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getPathname } from "@/i18n/navigation";
 import { routing, type AppPathname, type Locale } from "@/i18n/routing";
 import { getContent } from "./content";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL, WKO_PROFILE_URL } from "./site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL, UPWORK_PROFILE_URL, WKO_PROFILE_URL } from "./site";
 
 export { CONTACT_EMAIL, SITE_NAME, SITE_URL };
 
@@ -11,7 +11,7 @@ export const HOME_LAST_MODIFIED = new Date("2026-09-24T00:00:00.000Z");
 // Profiles elsewhere that belong to the same person and business (schema.org
 // sameAs): marketplaces, the chamber's directory and the Google Business Profile.
 const PROFILE_URLS = [
-  "https://www.upwork.com/freelancers/lukaskaffer",
+  UPWORK_PROFILE_URL,
   "https://www.freelancermap.de/profil/lukas-kaffer",
   WKO_PROFILE_URL,
   "https://maps.google.com/?cid=3022797824933993693",

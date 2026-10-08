@@ -6,7 +6,7 @@ export const services: Service[] = [
   {
     id: "websites",
     name: "Websites",
-    teaser: "Frontend, Backend, CMS und Buchung",
+    teaser: "Design, CMS, Buchung und Launch",
     title: "Websites, die du selbst in der Hand hast.",
     body: "Für Angebote, die in wenigen Sekunden verständlich und glaubwürdig sein müssen. Struktur, Text, Design und Code entstehen zusammen, damit die Seite Anfragen und Buchungen auslöst.",
     includes: [
@@ -27,14 +27,18 @@ export const services: Service[] = [
     includes: [
       "Login, Rollen und Datenbank",
       "Admin-Bereich und Review-Abläufe für Inhalte",
-      "E-Mails, Zahlungen und Schnittstellen zu anderen Diensten",
+      "E-Mails, Newsletter und Schnittstellen zu anderen Diensten",
       "AI-Funktionen wie ein Assistent, wenn sie echten Nutzen bringen",
       "Dashboards, Backoffices und Automationen für interne Abläufe",
     ],
     proofs: [
       { label: "Vienna Event Radar ansehen", href: caseStudyBase["vienna-event-radar"].path },
-      // The internal-tools line above, shown working.
-      { label: "Operations-App ansehen", href: caseStudyBase["operations-app"].path },
+      // The internal-tools line above, shown working: a native iOS tool on a
+      // Next.js backend, so it is listed under iOS apps as well.
+      {
+        label: "Operations-App ansehen, ein iOS-Tool mit Next.js-Backend",
+        href: caseStudyBase["operations-app"].path,
+      },
     ],
     media: webAppsMedia(
       "Vienna Event Radar: Der Assistent „Frag dein Radar“ schlägt passende Events vor",
@@ -49,10 +53,15 @@ export const services: Service[] = [
     includes: [
       "SwiftUI mit Apple-nativer Navigation und Gesten",
       "Karten, Kalender und Teilen über die Systemfunktionen",
+      "Widgets, Live-Aktivitäten, Kurzbefehle und Spotlight",
+      "Mit Apple anmelden und Push-Benachrichtigungen",
+      "Ein Backend, geteilt mit deiner Web-App: Konten und Daten bleiben überall gleich",
+      "Unit- und UI-Tests plus Fehlerüberwachung",
       "App-Store-Einreichung mit Screenshots und Vorschauvideo",
     ],
     proofs: [
       { label: "Wien Event Radar für iOS ansehen", href: caseStudyBase["wien-event-radar-ios"].path },
+      { label: "Operations-App ansehen, ein internes iOS-Werkzeug", href: caseStudyBase["operations-app"].path },
     ],
     media: iosAppsMedia(
       "Wien Event Radar für iOS: Entdecken-Ansicht mit Empfehlungen",

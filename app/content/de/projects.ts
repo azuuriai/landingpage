@@ -31,7 +31,7 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     metaDescription:
       "Neue Website für ein Tanzstudio in Wien und Mödling: Astro, ein Sanity CMS zum Selbstpflegen, Eversports-Buchung im eigenen Design, keine Plattformkosten.",
     tourLabel: "Indeed Unique – Aufnahme der Website am Desktop",
-    closing: "Du willst eine Website, die du selbst pflegen kannst? Schreib mir.",
+    closing: "Du willst eine Website, die du selbst pflegen kannst?",
   },
   "vienna-event-radar": {
     ...caseStudyBase["vienna-event-radar"],
@@ -51,12 +51,13 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     links: [
       { label: "viennaeventradar.at öffnen", href: VIENNA_EVENT_RADAR_URL },
       { label: "Zur iOS-App", href: IOS_APP_PATH, internal: true },
+      { label: "Zur Operations-App", href: caseStudyBase["operations-app"].path, internal: true },
     ],
     metaTitle: "Case Study · Vienna Event Radar – Event-Plattform für Wien",
     metaDescription:
       "Vienna Event Radar: Next.js-Plattform mit Supabase, geprüfter Event-Recherche, Admin-Freigabe, Gruppenplanung und dem Assistenten „Frag dein Radar“.",
     tourLabel: "Vienna Event Radar – Aufnahme der Website am Desktop",
-    closing: "Du planst eine Plattform mit echter Produktlogik? Schreib mir.",
+    closing: "Du planst eine Plattform mit echter Produktlogik?",
   },
 };
 
@@ -82,30 +83,31 @@ export const iosApp: CaseStudyData = {
   metaDescription:
     "Wien Event Radar für iOS: native SwiftUI-App mit Widgets, Live-Aktivität, Kalender, Karte und Gruppenplanung, im App Store und mit der Webplattform verbunden.",
   tourLabel: "Wien Event Radar für iOS: Entdecken, Eventdetails, Merken und Karte",
-  closing: "Dein Produkt gehört aufs iPhone? Schreib mir.",
+  closing: "Dein Produkt gehört aufs iPhone?",
 };
 
-// A private tool, so there is no live link: the page itself is the proof.
+// A private tool, so there is no live link: the page itself is the proof. It
+// links to the platform it runs, and that case study links back.
 export const operationsApp: CaseStudyData = {
   ...caseStudyBase["operations-app"],
   name: "Operations-App mit Social Studio",
   summary:
-    "Private iPhone-App für den Betrieb einer Content-Plattform: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+    "Die private iPhone-App, mit der ich Vienna Event Radar im Alltag betreibe: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
   eyebrow: "Internes Werkzeug · native iOS-App",
   title: "Eine Plattform betreiben, direkt vom iPhone.",
   description:
-    "Eine private iPhone-App, mit der eine Content-Plattform im Alltag läuft. Sie zeigt, ob alle Hintergrund-Jobs arbeiten, macht aus aktuellen Inhalten fertige Instagram-Grafiken, stellt den wöchentlichen Newsletter zusammen und legt fest, was oben auf der Startseite steht. Konzept, Design, App und die Schnittstellen im Backend stammen von mir.",
+    "Eine private iPhone-App, mit der Vienna Event Radar im Alltag läuft. Sie zeigt, ob alle Hintergrund-Jobs arbeiten, macht aus aktuellen Inhalten fertige Instagram-Grafiken, stellt den wöchentlichen Newsletter zusammen und legt fest, was oben auf der Startseite steht. Konzept, Design, App und die Schnittstellen im Backend stammen von mir.",
   facts: [
     { label: "Umfang", value: "Konzept, Design, iOS-App und Backend-Schnittstellen" },
     { label: "Technik", value: "SwiftUI, Next.js-API, Supabase" },
     { label: "Einsatz", value: "Privat, nicht im App Store" },
   ],
-  links: [],
+  links: [{ label: "Zu Vienna Event Radar", href: VER_PATH, internal: true }],
   metaTitle: "Case Study · Operations-App mit Social Studio in SwiftUI",
   metaDescription:
     "Interne iPhone-App in SwiftUI: überwacht Hintergrund-Jobs und Fehler, entwirft Instagram-Karussells und Stories, betreut Newsletter und Startseite.",
   tourLabel: "Operations-App: Monitor, Social Studio mit vier Slides und Top Picks",
-  closing: "Dein Team braucht ein Werkzeug für wiederkehrende Abläufe? Schreib mir.",
+  closing: "Dein Team braucht ein Werkzeug für wiederkehrende Abläufe?",
 };
 
 // All case study pages, in Showcase order (sitemap).
@@ -116,7 +118,8 @@ export const caseStudies: CaseStudyData[] = [
   operationsApp,
 ];
 
-// Entries on the Showcase page: every entry says what it does, not whose it is.
+// Entries on the Showcase page. The page intro says which one was client work;
+// the entries themselves say what each product does.
 export const showcaseEntries: ShowcaseEntry[] = [
   {
     id: "indeed-unique",
@@ -150,7 +153,7 @@ export const showcaseEntries: ShowcaseEntry[] = [
     id: "vienna-event-radar-ios",
     name: "Wien Event Radar für iOS",
     summary:
-      "Native iPhone-App zum Entdecken, Suchen und Planen: mit Karte, Kalender und Gruppen für gemeinsame Abende.",
+      "Die native iPhone-App von Vienna Event Radar (im App Store: Wien Event Radar): Entdecken, Suchen und Planen, mit Karte, Kalender und Gruppen für gemeinsame Abende.",
     facts: [
       { label: "Funktionen", value: "Karte, Gruppen, Kalender" },
       { label: "Technik", value: "SwiftUI, optimiert für iOS 27" },
@@ -164,7 +167,7 @@ export const showcaseEntries: ShowcaseEntry[] = [
     id: "operations-app",
     name: "Operations-App",
     summary:
-      "Internes Werkzeug fürs iPhone: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+      "Die private iPhone-App, mit der Vienna Event Radar läuft: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
     facts: [
       { label: "Bereiche", value: "Monitor, Social Studio, Top Picks" },
       { label: "Export", value: "Instagram-Karussell und Story" },
