@@ -89,7 +89,7 @@ export const detailPages: DetailPageData[] = [
       {
         question: "Baust du auch Android-Apps?",
         answer:
-          "Nicht nativ. Ich baue für iOS in SwiftUI; Android-Nutzer erreichst du über die Web-App, die in jedem Browser läuft. Wenn Android von Anfang an Pflicht ist, bin ich nicht der Richtige, und das sage ich dir im ersten Gespräch.",
+          "Nicht als erste Plattform. Ich baue nativ für iOS in SwiftUI; Android-Nutzer bekommen die Web-App, die in jedem Browser läuft. Weil Web und App ein Backend teilen, kann eine Android-App später dazukommen, ohne dass das Produkt neu gebaut werden muss. Wenn Android von Anfang an im Vordergrund steht, bin ich wahrscheinlich nicht der Richtige, und das sage ich dir im ersten Gespräch.",
       },
       {
         question: "Entwirfst du auch das Design?",
