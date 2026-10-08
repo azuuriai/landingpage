@@ -79,7 +79,7 @@ export const detailPages: DetailPageData[] = [
       {
         question: "Was kostet ein Projekt und wie lange dauert es?",
         answer:
-          "Beides hängt vom Umfang ab. Nach einem kurzen Erstgespräch grenze ich Ziel, Kernworkflow und einen realistischen ersten Release ab, und du bekommst einen klaren Vorschlag mit Umfang, Preis und nächsten Schritten. Projekte biete ich zum Festpreis für einen definierten Umfang an; was darüber hinausgeht, wird separat angeboten, über Upwork sind auch Stundenverträge möglich. Die Schritte sind immer dieselben: Idee schärfen, Umfang und Preis, Design und Bau, Launch, Betreuung danach. Vertrag und Rechnung kommen von einem österreichischen Einzelunternehmen, in Euro; für Geschäftskunden außerhalb Österreichs ohne österreichische Umsatzsteuer. NDA auf Wunsch.",
+          "Beides hängt vom Umfang ab. Nach einem kurzen Erstgespräch grenze ich Ziel, Kernworkflow und einen realistischen ersten Release ab, und du bekommst einen klaren Vorschlag mit Umfang, Preis und nächsten Schritten. Die meisten Projekte biete ich zum Festpreis für einen definierten Umfang an, was darüber hinausgeht, wird separat angeboten; Abrechnung nach Stunden ist ebenfalls möglich, direkt oder über Upwork. Die Schritte sind immer dieselben: Idee schärfen, Umfang und Preis, Design und Bau, Launch, Betreuung danach. Vertrag und Rechnung kommen von einem österreichischen Einzelunternehmen, in Euro. NDA auf Wunsch.",
       },
       {
         question: "Baust du native iOS Apps?",

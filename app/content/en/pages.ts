@@ -79,7 +79,7 @@ export const detailPages: DetailPageData[] = [
       {
         question: "What does a project cost and how long does it take?",
         answer:
-          "Both depend on scope. After a short intro call I narrow down the goal, the core workflow and a realistic first release, and you get a clear proposal with scope, price and next steps. Projects are quoted at a fixed price for a defined scope; anything beyond it is quoted separately, and through Upwork hourly contracts are possible too. The steps are the same every time: sharpen the idea, scope and price, design and build, launch, and support after launch. Contract and invoice come from an Austrian sole proprietorship, in EUR; for business clients outside Austria, no Austrian VAT is added. NDA on request.",
+          "Both depend on scope. After a short intro call I narrow down the goal, the core workflow and a realistic first release, and you get a clear proposal with scope, price and next steps. Most projects are quoted at a fixed price for a defined scope, with anything beyond it quoted separately; hourly work is possible too, directly or through Upwork. The steps are the same every time: sharpen the idea, scope and price, design and build, launch, and support after launch. Contract and invoice come from an Austrian sole proprietorship, in EUR. NDA on request.",
       },
       {
         question: "Do you build native iOS apps?",
