@@ -16,7 +16,7 @@ export const VIENNA_EVENT_RADAR_URL = "https://viennaeventradar.at";
 export const APP_STORE_URL = "https://apps.apple.com/at/app/wien-event-radar/id6771109823";
 
 export const IOS_APP_PATH = "/work/wien-event-radar-ios" satisfies CaseStudyPath;
-export const STUDIO_PATH = "/work/indeed-unique-redaktion" satisfies CaseStudyPath;
+export const STUDIO_PATH = "/work/betreiber-cms" satisfies CaseStudyPath;
 export const VER_PATH = "/work/vienna-event-radar" satisfies CaseStudyPath;
 
 // Path and last change of every case study page.
@@ -47,8 +47,8 @@ export const caseStudyBase = {
   // The Sanity studio behind indeedunique.com. Facts come from the project's
   // docs/SANITY_STATUS.md (September 2026) and apps/studio/src; the screens
   // are the production studio in the light theme, October 2026.
-  "indeed-unique-redaktion": {
-    slug: "indeed-unique-redaktion",
+  "betreiber-cms": {
+    slug: "betreiber-cms",
     path: STUDIO_PATH,
     lastModified: new Date("2026-10-08T00:00:00.000Z"),
   },
@@ -82,10 +82,10 @@ export const showcaseMedia: Record<ShowcaseId, ShowcaseMedia> = {
   },
   "vienna-event-radar-ios": { kind: "app", phone: RECORDINGS.viennaEventRadarApp },
   "operations-app": { kind: "app", phone: RECORDINGS.operationsAppTour },
-  "indeed-unique-studio": {
+  "betreiber-cms": {
     kind: "web",
     domain: "indeed-unique.sanity.studio",
-    desktop: RECORDINGS.indeedUniqueStudio,
+    desktop: RECORDINGS.ownerCms,
   },
 };
 

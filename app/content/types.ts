@@ -124,7 +124,7 @@ export type CaseStudySlug =
   | ProjectSlug
   | "wien-event-radar-ios"
   | "operations-app"
-  | "indeed-unique-redaktion";
+  | "betreiber-cms";
 export type CaseStudyPath = `/work/${CaseStudySlug}`;
 
 // `internal` links stay on this site; all others open the live product.
@@ -163,7 +163,7 @@ export type ShowcaseId =
   | "vienna-event-radar-web"
   | "vienna-event-radar-ios"
   | "operations-app"
-  | "indeed-unique-studio";
+  | "betreiber-cms";
 
 export type ShowcaseMedia =
   | { kind: "web"; domain: string; desktop: Recording; phone?: Recording }
@@ -252,24 +252,24 @@ export type OperationsAppCopy = {
   foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
 };
 
-// The Sanity studio behind Indeed Unique: six screens, the guardrails, the
-// machinery between studio and website.
-export type IndeedUniqueStudioImage =
+// The owner-facing CMS on Sanity (in use at Indeed Unique): six screens, the
+// guardrails, the machinery between CMS and website.
+export type OwnerCmsImage =
   | "start"
   | "bausteine"
   | "seiten-picker"
   | "zuschnitt"
   | "kursfreie-tage"
   | "hilfe";
-export type IndeedUniqueStudioCopy = {
-  screens: { title: string; intro: string; items: ScreenCopy<IndeedUniqueStudioImage>[] };
+export type OwnerCmsCopy = {
+  screens: { title: string; intro: string; items: ScreenCopy<OwnerCmsImage>[] };
   guards: { title: string; items: TitledItem[] };
   foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
 };
 
 export type CaseStudyCopy = {
   indeedUnique: IndeedUniqueCopy;
-  indeedUniqueStudio: IndeedUniqueStudioCopy;
+  ownerCms: OwnerCmsCopy;
   viennaEventRadar: ViennaEventRadarCopy;
   wienEventRadarIos: WienEventRadarIosCopy;
   operationsApp: OperationsAppCopy;
@@ -299,7 +299,7 @@ export type Content = {
   projects: Record<ProjectSlug, ProjectData>;
   iosApp: CaseStudyData;
   operationsApp: CaseStudyData;
-  indeedUniqueStudio: CaseStudyData;
+  ownerCms: CaseStudyData;
   caseStudies: CaseStudyData[];
   showcaseEntries: ShowcaseEntry[];
   services: Service[];

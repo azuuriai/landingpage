@@ -31,5 +31,5 @@ export const RECORDINGS = {
   // The Sanity studio behind Indeed Unique, served locally in the light
   // theme and captured frame by frame: Start, a picture with its crop
   // preview, the building-block menu, the page picker, days off.
-  indeedUniqueStudio: recording("/case-studies/indeed-unique-redaktion/tour", 25_933),
+  ownerCms: recording("/case-studies/betreiber-cms/tour", 25_933),
 } satisfies Record<string, Recording>;

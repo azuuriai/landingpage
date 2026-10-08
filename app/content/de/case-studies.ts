@@ -1,7 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
-  IndeedUniqueStudioCopy,
+  OwnerCmsCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
   WienEventRadarIosCopy,
@@ -393,11 +393,11 @@ const operationsApp: OperationsAppCopy = {
 // apps/studio/src of the Indeed Unique repository (September/October 2026).
 // Nine custom tools: Start, SiteStatus, DraftsPane, HelpPane, CropPreview,
 // LinkTargetInput, PreviewButton, ViewOnSite, CoursePlanCheck.
-const indeedUniqueStudio: IndeedUniqueStudioCopy = {
+const ownerCms: OwnerCmsCopy = {
   screens: {
     title: "Gebaut für die Person, die damit arbeitet.",
     intro:
-      "Jede Ansicht beantwortet eine Frage der Redaktion, nicht des Entwicklers. Zu sehen ist das echte Studio im Alltag des Tanzstudios.",
+      "Jede Ansicht beantwortet eine Frage des Betreibers, nicht des Entwicklers. Zu sehen ist das CMS im Alltag des Tanzstudios Indeed Unique; Menü, Bausteine und Regeln entstehen für jedes Unternehmen neu.",
     items: [
       {
         image: "start",
@@ -467,9 +467,9 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
     ],
   },
   foundation: {
-    title: "Zwischen Studio und Website.",
+    title: "Zwischen CMS und Website.",
     figures: [
-      { value: "9", label: "eigene Werkzeuge im Studio" },
+      { value: "9", label: "eigene Werkzeuge im CMS" },
       { value: "22", label: "Bausteine mit Vorschaubild" },
       { value: "24", label: "feste Seiten aus einem Seitenverzeichnis" },
       { value: "2–3 Min.", label: "bis eine Veröffentlichung online ist" },
@@ -493,13 +493,13 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
       },
     ],
     stack:
-      "Sanity Studio mit eigenen React-Werkzeugen, deutsche Oberfläche, Astro-Website auf Cloudflare, Webhooks und GitHub Actions. Sanity stellt Editor, Datenhaltung und Bildpipeline; die Redaktionslogik darauf ist eigene Arbeit.",
+      "Sanity Studio mit eigenen React-Werkzeugen, deutsche Oberfläche, Astro-Website auf Cloudflare, Webhooks und GitHub Actions. Sanity stellt Editor, Datenhaltung und Bildpipeline; die Bedienlogik darauf ist eigene Arbeit und wird für jedes Unternehmen neu angepasst.",
   },
 };
 
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
-  indeedUniqueStudio,
+  ownerCms,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

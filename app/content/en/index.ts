@@ -4,7 +4,7 @@ import { imprint, privacy } from "./legal";
 import { detailPages } from "./pages";
 import {
   caseStudies,
-  indeedUniqueStudio,
+  ownerCms,
   iosApp,
   operationsApp,
   projects,
@@ -23,7 +23,7 @@ export const en: Content = {
   projects,
   iosApp,
   operationsApp,
-  indeedUniqueStudio,
+  ownerCms,
   caseStudies,
   showcaseEntries,
   services,

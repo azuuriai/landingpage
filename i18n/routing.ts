@@ -20,7 +20,7 @@ export const routing = defineRouting({
     "/work/vienna-event-radar": "/work/vienna-event-radar",
     "/work/wien-event-radar-ios": "/work/wien-event-radar-ios",
     "/work/operations-app": "/work/operations-app",
-    "/work/indeed-unique-redaktion": "/work/indeed-unique-redaktion",
+    "/work/betreiber-cms": "/work/betreiber-cms",
     "/about": "/about",
     "/faq": "/faq",
     "/contact": "/contact",

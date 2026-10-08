@@ -1,7 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
-  IndeedUniqueStudioCopy,
+  OwnerCmsCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
   WienEventRadarIosCopy,
@@ -393,11 +393,11 @@ const operationsApp: OperationsAppCopy = {
 // apps/studio/src of the Indeed Unique repository (September/October 2026).
 // Nine custom tools: Start, SiteStatus, DraftsPane, HelpPane, CropPreview,
 // LinkTargetInput, PreviewButton, ViewOnSite, CoursePlanCheck.
-const indeedUniqueStudio: IndeedUniqueStudioCopy = {
+const ownerCms: OwnerCmsCopy = {
   screens: {
     title: "Built for the person who works with it.",
     intro:
-      "Every screen answers a question the editor has, not the developer. What you see is the real studio in the dance studio’s daily routine.",
+      "Every screen answers a question the owner has, not the developer. What you see is the CMS in daily use at the Indeed Unique dance studio; menu, blocks and rules are defined anew for every business.",
     items: [
       {
         image: "start",
@@ -467,9 +467,9 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
     ],
   },
   foundation: {
-    title: "Between studio and website.",
+    title: "Between CMS and website.",
     figures: [
-      { value: "9", label: "custom tools inside the studio" },
+      { value: "9", label: "custom tools inside the CMS" },
       { value: "22", label: "building blocks with previews" },
       { value: "24", label: "fixed pages from one page registry" },
       { value: "2–3 min", label: "until a publish is live" },
@@ -493,13 +493,13 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
       },
     ],
     stack:
-      "Sanity Studio with custom React tools and a German interface, an Astro website on Cloudflare, webhooks and GitHub Actions. Sanity provides the editor, content store and image pipeline; the editorial logic on top is my own work.",
+      "Sanity Studio with custom React tools and a German interface, an Astro website on Cloudflare, webhooks and GitHub Actions. Sanity provides the editor, content store and image pipeline; the logic on top is my own work and is adapted for every business.",
   },
 };
 
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
-  indeedUniqueStudio,
+  ownerCms,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

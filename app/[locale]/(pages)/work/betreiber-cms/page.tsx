@@ -6,30 +6,30 @@ import { RECORDINGS } from "@/app/media";
 import { showcaseMedia } from "@/app/projects-data";
 import { CaseStudyPage, caseStudyMetadata } from "../case-study-page";
 import { BrowserFrame } from "../project-media";
-import { IndeedUniqueStudioCaseStudy } from "./indeed-unique-redaktion-case-study";
+import { OwnerCmsCaseStudy } from "./betreiber-cms-case-study";
 
 export async function generateMetadata(props: LocaleParams): Promise<Metadata> {
   const locale = await localeFromParams(props);
-  return caseStudyMetadata(getContent(locale).indeedUniqueStudio, locale);
+  return caseStudyMetadata(getContent(locale).ownerCms, locale);
 }
 
 // The studio is a desktop tool behind a login, so the opening shows it in a
 // browser frame on its own: no phone, no live link.
-export default async function IndeedUniqueStudioPage(props: LocaleParams) {
+export default async function OwnerCmsPage(props: LocaleParams) {
   const locale = await resolveLocale(props);
-  const { indeedUniqueStudio, caseStudyCopy } = getContent(locale);
-  const media = showcaseMedia["indeed-unique-studio"];
+  const { ownerCms, caseStudyCopy } = getContent(locale);
+  const media = showcaseMedia["betreiber-cms"];
 
   return (
     <CaseStudyPage
-      study={indeedUniqueStudio}
+      study={ownerCms}
       locale={locale}
       media={
         <BrowserFrame domain={media.kind === "web" ? media.domain : ""}>
           <div className="relative aspect-[16/10] overflow-hidden bg-[#fbf9f7]">
             <AutoplayVideo
-              recording={RECORDINGS.indeedUniqueStudio}
-              label={indeedUniqueStudio.tourLabel}
+              recording={RECORDINGS.ownerCms}
+              label={ownerCms.tourLabel}
               preload="auto"
               className="absolute inset-0 h-full w-full object-cover object-top"
             />
@@ -37,7 +37,7 @@ export default async function IndeedUniqueStudioPage(props: LocaleParams) {
         </BrowserFrame>
       }
     >
-      <IndeedUniqueStudioCaseStudy copy={caseStudyCopy.indeedUniqueStudio} />
+      <OwnerCmsCaseStudy copy={caseStudyCopy.ownerCms} />
     </CaseStudyPage>
   );
 }

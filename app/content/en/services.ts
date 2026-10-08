@@ -17,7 +17,7 @@ export const services: Service[] = [
     ],
     proofs: [
       { label: "See Indeed Unique", href: caseStudyBase["indeed-unique"].path },
-      { label: "See the editorial studio behind it", href: caseStudyBase["indeed-unique-redaktion"].path },
+      { label: "See the CMS behind it", href: caseStudyBase["betreiber-cms"].path },
     ],
     media: websitesMedia("Indeed Unique homepage with the showcase for the new dance season"),
   },

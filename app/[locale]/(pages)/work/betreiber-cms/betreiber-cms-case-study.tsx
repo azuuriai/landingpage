@@ -1,14 +1,14 @@
-import type { IndeedUniqueStudioCopy } from "@/app/content/types";
+import type { OwnerCmsCopy } from "@/app/content/types";
 import { CapabilityList, CaseSection, Feature, FigureRow, SectionHeading } from "../case-study-blocks";
 
 // Stills of the production studio (light theme, 1152×720 at 2x, saved at
 // 1600×1000). The words live in app/content/<locale>/case-studies.ts; this
 // file only decides which screen goes where.
 function screen(name: string, alt: string) {
-  return { src: `/case-studies/indeed-unique-redaktion/${name}.jpg`, alt, width: 1600, height: 1000 };
+  return { src: `/case-studies/betreiber-cms/${name}.jpg`, alt, width: 1600, height: 1000 };
 }
 
-export function IndeedUniqueStudioCaseStudy({ copy }: { copy: IndeedUniqueStudioCopy }) {
+export function OwnerCmsCaseStudy({ copy }: { copy: OwnerCmsCopy }) {
   return (
     <>
       <CaseSection tone="tinted">

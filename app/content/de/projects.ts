@@ -29,7 +29,7 @@ export const projects: Record<ProjectSlug, ProjectData> = {
     ],
     links: [
       { label: "indeedunique.com öffnen", href: INDEED_UNIQUE_URL },
-      { label: "Zur Redaktion dahinter", href: STUDIO_PATH, internal: true },
+      { label: "Zum CMS dahinter", href: STUDIO_PATH, internal: true },
     ],
     metaTitle: "Case Study · Indeed Unique – Website mit CMS und Eversports",
     metaDescription:
@@ -114,30 +114,30 @@ export const operationsApp: CaseStudyData = {
   closing: "Dein Team braucht ein Werkzeug für wiederkehrende Abläufe?",
 };
 
-// The editorial studio behind indeedunique.com. Login only, so there is no
-// live link: the page shows the real studio, and the website's case study
-// links here.
-export const indeedUniqueStudio: CaseStudyData = {
-  ...caseStudyBase["indeed-unique-redaktion"],
-  name: "Redaktion für Indeed Unique",
+// The CMS behind indeedunique.com, shown as what it is: an owner-facing
+// CMS on Sanity that can be adapted to any business. Login only, so there
+// is no live link; the website's case study links here.
+export const ownerCms: CaseStudyData = {
+  ...caseStudyBase["betreiber-cms"],
+  name: "CMS für Betreiber",
   summary:
-    "Das maßgeschneiderte Sanity Studio hinter indeedunique.com: ein Menü nach Aufgaben, Bausteine mit Vorschaubild, Schutzregeln und eine Statuszeile, damit das Tanzstudio seine Website ohne Entwickler pflegt.",
-  eyebrow: "Internes Werkzeug · Redaktion auf Sanity",
-  title: "Eine Redaktion, die zum Studio passt.",
+    "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: ein Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker, Statuszeile und Schutzregeln, damit Betreiber ihre Website ohne Entwickler pflegen. Im Einsatz beim Tanzstudio Indeed Unique.",
+  eyebrow: "Eigenes CMS auf Sanity · für jedes Unternehmen anpassbar",
+  title: "Ein CMS für Betreiber, nicht für Entwickler.",
   description:
-    "Hinter der Website von Indeed Unique steht ein Sanity Studio, das ich auf die Arbeit einer Ein-Personen-Redaktion zugeschnitten habe. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus 22 gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Redaktionslogik darauf stammt von mir.",
+    "Ein eigenes CMS, gebaut auf Sanity und auf das jeweilige Unternehmen programmierbar. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Menü, Bausteine und Regeln werden je Unternehmen festgelegt; hier im Einsatz beim Tanzstudio Indeed Unique. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Bedienlogik darauf stammt von mir.",
   facts: [
-    { label: "Umfang", value: "Redaktionskonzept, eigene Werkzeuge im Studio, Bausteine, Betrieb" },
+    { label: "Umfang", value: "Konzept, eigene Werkzeuge im CMS, Bausteine, Betrieb" },
     { label: "Technik", value: "Sanity Studio, React, Astro, Cloudflare, GitHub Actions" },
-    { label: "Einsatz", value: "Täglich beim Tanzstudio, Zugang nur für das Team" },
+    { label: "Einsatz", value: "Täglich bei Indeed Unique, Zugang nur für die Betreiber" },
   ],
-  links: [{ label: "Zur Website-Fallstudie", href: projects["indeed-unique"].path, internal: true }],
-  metaTitle: "Case Study · Redaktion für Indeed Unique – maßgeschneidertes Sanity Studio",
+  links: [{ label: "Zur Website, die damit läuft", href: projects["indeed-unique"].path, internal: true }],
+  metaTitle: "Case Study · CMS für Betreiber – eigenes CMS auf Sanity",
   metaDescription:
-    "Sanity Studio, auf ein Tanzstudio zugeschnitten: Start nach Aufgaben, Statuszeile, 22 Bausteine mit Vorschaubild, Seiten-Picker, Zuschnitt-Vorschau und Schutzregeln gegen versehentliches Löschen.",
+    "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: Start nach Aufgaben, Statuszeile, Bausteine mit Vorschaubild, Seiten-Picker, Zuschnitt-Vorschau und Schutzregeln. Im Einsatz beim Tanzstudio Indeed Unique.",
   tourLabel:
-    "Redaktion für Indeed Unique: Start, Bild mit Zuschnitt-Vorschau, Bausteine, Seiten-Picker und kursfreie Tage",
-  closing: "Dein Team soll Inhalte selbst pflegen, ohne Risiko?",
+    "CMS für Betreiber: Start, Bild mit Zuschnitt-Vorschau, Bausteine, Seiten-Picker und kursfreie Tage",
+  closing: "Dein Team soll die Website selbst pflegen, ohne Risiko?",
 };
 
 // All case study pages, in Showcase order (sitemap).
@@ -146,7 +146,7 @@ export const caseStudies: CaseStudyData[] = [
   projects["vienna-event-radar"],
   iosApp,
   operationsApp,
-  indeedUniqueStudio,
+  ownerCms,
 ];
 
 // Entries on the Showcase page. The page intro says which one was client work;
@@ -208,16 +208,16 @@ export const showcaseEntries: ShowcaseEntry[] = [
     media: showcaseMedia["operations-app"],
   },
   {
-    id: "indeed-unique-studio",
-    name: "Redaktion für Indeed Unique",
+    id: "betreiber-cms",
+    name: "CMS für Betreiber",
     summary:
-      "Das Sanity Studio hinter der Tanzstudio-Website, zugeschnitten auf eine Ein-Personen-Redaktion: Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker und Schutzregeln.",
+      "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker und Schutzregeln. Im Einsatz beim Tanzstudio Indeed Unique.",
     facts: [
       { label: "Werkzeuge", value: "Start, Statuszeile, Entwürfe, Vorschau" },
       { label: "Bausteine", value: "22, mit Vorschaubild" },
       { label: "Technik", value: "Sanity Studio + React" },
     ],
-    href: indeedUniqueStudio.path,
-    media: showcaseMedia["indeed-unique-studio"],
+    href: ownerCms.path,
+    media: showcaseMedia["betreiber-cms"],
   },
 ];

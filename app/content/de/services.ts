@@ -18,7 +18,7 @@ export const services: Service[] = [
     proofs: [
       { label: "Indeed Unique ansehen", href: caseStudyBase["indeed-unique"].path },
       // The CMS line above, shown working: the studio's tailored Sanity editor.
-      { label: "Die Redaktion dahinter ansehen", href: caseStudyBase["indeed-unique-redaktion"].path },
+      { label: "Das CMS dahinter ansehen", href: caseStudyBase["betreiber-cms"].path },
     ],
     media: websitesMedia("Startseite von Indeed Unique mit dem Schaukasten zur neuen Tanzsaison"),
   },
