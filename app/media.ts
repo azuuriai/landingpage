@@ -28,4 +28,8 @@ export const RECORDINGS = {
   // recording stutters. Monitor, the Social Studio editor across four slides,
   // Top Picks.
   operationsAppTour: recording("/case-studies/operations-app/tour", 18_800),
+  // The Sanity studio behind Indeed Unique, served locally in the light
+  // theme and captured frame by frame: Start, a picture with its crop
+  // preview, the building-block menu, the page picker, days off.
+  indeedUniqueStudio: recording("/case-studies/indeed-unique-redaktion/tour", 25_933),
 } satisfies Record<string, Recording>;

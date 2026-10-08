@@ -15,7 +15,10 @@ export const services: Service[] = [
       "Where the scope allows, CMS and hosting run on free tiers, so the domain is your only running cost",
       "Fast on every device, with the SEO basics covered",
     ],
-    proofs: [{ label: "See Indeed Unique", href: caseStudyBase["indeed-unique"].path }],
+    proofs: [
+      { label: "See Indeed Unique", href: caseStudyBase["indeed-unique"].path },
+      { label: "See the editorial studio behind it", href: caseStudyBase["indeed-unique-redaktion"].path },
+    ],
     media: websitesMedia("Indeed Unique homepage with the showcase for the new dance season"),
   },
   {

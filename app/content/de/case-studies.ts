@@ -1,6 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
+  IndeedUniqueStudioCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
   WienEventRadarIosCopy,
@@ -55,16 +56,8 @@ const indeedUnique: IndeedUniqueCopy = {
         text: "22 gestaltete Abschnitte, frei kombinierbar. Jede Seite wird individuell und bleibt im Look der Marke.",
       },
       {
-        title: "Startseite mit offenen Aufgaben",
-        text: "Das Studio sieht auf einen Blick, was noch fehlt, und alle Entwürfe, die noch nicht online sind.",
-      },
-      {
         title: "Vorschau vor dem Veröffentlichen",
         text: "Ein Klick baut eine Vorschau der ganzen Website, die man zum Gegenlesen weiterschicken kann.",
-      },
-      {
-        title: "Hilfen, die Fehler verhindern",
-        text: "Zeichenlimits, Pflicht-Bildbeschreibungen, eine Vorschau des Bildzuschnitts und eine Seitenauswahl für Links.",
       },
       {
         title: "Status immer sichtbar",
@@ -395,8 +388,120 @@ const operationsApp: OperationsAppCopy = {
   },
 };
 
+
+// The Sanity studio behind the website. Facts: docs/SANITY_STATUS.md and
+// apps/studio/src of the Indeed Unique repository (September/October 2026).
+// Nine custom tools: Start, SiteStatus, DraftsPane, HelpPane, CropPreview,
+// LinkTargetInput, PreviewButton, ViewOnSite, CoursePlanCheck.
+const indeedUniqueStudio: IndeedUniqueStudioCopy = {
+  screens: {
+    title: "Gebaut für die Person, die damit arbeitet.",
+    intro:
+      "Jede Ansicht beantwortet eine Frage der Redaktion, nicht des Entwicklers. Zu sehen ist das echte Studio im Alltag des Tanzstudios.",
+    items: [
+      {
+        image: "start",
+        alt: "Startseite des Studios: neun Aufgaben-Knöpfe, darunter „Zu erledigen“ mit einem Hinweis zur Schnupperwoche",
+        title: "Start nach Aufgaben",
+        text: "Neun Knöpfe für die häufigsten Aufgaben. Darunter „Zu erledigen“: offene Entwürfe, Erinnerungen zum Tanzjahr, Kurse, die in der Übersicht fehlen.",
+      },
+      {
+        image: "bausteine",
+        alt: "Menü „Element hinzufügen“ mit Vorschaubildern der Bausteine Karten, Zahlen, Termine, Fragen, Schritte, Zeitleiste und PDF",
+        title: "22 Bausteine mit Vorschaubild",
+        text: "Neue Seiten entstehen aus gestalteten Abschnitten, nach Aufgabe gruppiert. Jeder Baustein hat genau eine Gestaltung; Farben und Abstände bleiben im Code.",
+      },
+      {
+        image: "seiten-picker",
+        alt: "Feld „Ziel“ mit der Eingabe „Preis“ und zwei gefundenen Seiten: Preise Semesterkurse und Preise Offene Klassen",
+        title: "Seiten-Picker für Links",
+        text: "Seiten werden beim Namen gesucht statt als Adresse getippt. Veraltete Adressen erkennt das Studio und stellt sie mit einem Klick richtig.",
+      },
+      {
+        image: "zuschnitt",
+        alt: "Bilddialog mit Bildbeschreibung und der Vorschau „So erscheint das Bild auf der Website“",
+        title: "So erscheint das Bild auf der Website",
+        text: "Unter jedem Bildfeld mit festem Format steht die echte Ausgabe: Ausschnitt und Fokuspunkt genau wie im Code der Website berechnet.",
+      },
+      {
+        image: "kursfreie-tage",
+        alt: "Maske „Kursfreie Tage“ mit Herbstpause, einem kursfreien Tag und Winterpause",
+        title: "Kursfreie Tage und Tanzjahr",
+        text: "Pausen und Ferien als einfache Liste; Vergangenes verschwindet von selbst. Ist die Schnupperwoche vorbei, erinnert das Studio daran.",
+      },
+      {
+        image: "hilfe",
+        alt: "Hilfeseite im Studio mit kurzen Anleitungen, etwa „Wann sehe ich meine Änderung auf der Website?“",
+        title: "Hilfe direkt im Werkzeug",
+        text: "Kurze Anleitungen zu jeder Aufgabe, dort, wo sie gebraucht werden. Kein Handbuch, das niemand findet.",
+      },
+    ],
+  },
+  guards: {
+    title: "Was die Redaktion nicht kaputt machen kann.",
+    intro:
+      "Die Betreiberin pflegt Texte, Bilder, Listen, Menüpunkte und PDFs. Layout, Navigation und Buchung bleiben geschützt.",
+    items: [
+      {
+        title: "Feste Seiten bleiben bestehen",
+        text: "Einstellungen, Seiten, Team, Kursübersicht und Studios lassen sich weder löschen noch duplizieren noch zurückziehen.",
+      },
+      {
+        title: "Ausblenden statt löschen",
+        text: "Kurse, Personen und freie Seiten verschwinden von der Website, bleiben aber im Studio erhalten.",
+      },
+      {
+        title: "Adressen sind gesperrt",
+        text: "Nach der ersten Veröffentlichung ändert sich keine Adresse mehr; reservierte Adressen sind für neue Seiten tabu.",
+      },
+      {
+        title: "Verständliche Regeln an jedem Feld",
+        text: "Zeichenlimits, Pflicht-Bildbeschreibung, Mindestauflösung und Fokuspunkt, jeweils mit einer Meldung, die sagt, was zu tun ist.",
+      },
+      {
+        title: "Design und Buchung im Code",
+        text: "Farben, Schriften, Animationen, Weiterleitungen und die Eversports-Widgets sind im Studio nicht erreichbar.",
+      },
+      {
+        title: "Nur Formate, die die Website zeigt",
+        text: "Der Beitragstext bietet genau die Absätze, Überschriften und Auszeichnungen, die auch dargestellt werden.",
+      },
+    ],
+  },
+  foundation: {
+    title: "Zwischen Studio und Website.",
+    figures: [
+      { value: "9", label: "eigene Werkzeuge im Studio" },
+      { value: "22", label: "Bausteine mit Vorschaubild" },
+      { value: "24", label: "feste Seiten aus einem Seitenverzeichnis" },
+      { value: "2–3 Min.", label: "bis eine Veröffentlichung online ist" },
+    ],
+    items: [
+      {
+        title: "Statuszeile",
+        text: "Vergleicht den Stand der Website mit Sanity: grün, gelb oder rot, dazu die Zahl der offenen Entwürfe.",
+      },
+      {
+        title: "Vorschau auf Knopfdruck",
+        text: "Ein Klick baut die ganze Website mit allen Entwürfen auf einen geschützten Vorschau-Server, zum Gegenlesen vor dem Veröffentlichen.",
+      },
+      {
+        title: "Ein Seitenverzeichnis für alles",
+        text: "Felder, Ausgangswerte und Limits stehen einmal im Code. Daraus entstehen die Masken im Studio, die Werte der Website und der Import.",
+      },
+      {
+        title: "Sicherung und Überwachung",
+        text: "Nächtliche Sicherung aller Inhalte, täglicher Neuaufbau zeitabhängiger Seiten und eine Warnung, bevor das Limit des Gratis-Tarifs erreicht ist.",
+      },
+    ],
+    stack:
+      "Sanity Studio mit eigenen React-Werkzeugen, deutsche Oberfläche, Astro-Website auf Cloudflare, Webhooks und GitHub Actions. Sanity stellt Editor, Datenhaltung und Bildpipeline; die Redaktionslogik darauf ist eigene Arbeit.",
+  },
+};
+
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
+  indeedUniqueStudio,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

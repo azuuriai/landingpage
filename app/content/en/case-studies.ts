@@ -1,6 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
+  IndeedUniqueStudioCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
   WienEventRadarIosCopy,
@@ -55,16 +56,8 @@ const indeedUnique: IndeedUniqueCopy = {
         text: "22 designed sections, freely combinable. Every page is unique and stays on brand.",
       },
       {
-        title: "A dashboard with open tasks",
-        text: "The studio sees at a glance what is still missing, and every draft that is not online yet.",
-      },
-      {
         title: "Preview before publishing",
         text: "One click builds a preview of the whole website that can be passed on for proofreading.",
-      },
-      {
-        title: "Guardrails that prevent mistakes",
-        text: "Character limits, required image descriptions, a preview of the image crop and a page picker for links.",
       },
       {
         title: "Status always visible",
@@ -395,8 +388,120 @@ const operationsApp: OperationsAppCopy = {
   },
 };
 
+
+// The Sanity studio behind the website. Facts: docs/SANITY_STATUS.md and
+// apps/studio/src of the Indeed Unique repository (September/October 2026).
+// Nine custom tools: Start, SiteStatus, DraftsPane, HelpPane, CropPreview,
+// LinkTargetInput, PreviewButton, ViewOnSite, CoursePlanCheck.
+const indeedUniqueStudio: IndeedUniqueStudioCopy = {
+  screens: {
+    title: "Built for the person who works with it.",
+    intro:
+      "Every screen answers a question the editor has, not the developer. What you see is the real studio in the dance studio’s daily routine.",
+    items: [
+      {
+        image: "start",
+        alt: "Start screen of the studio: nine task buttons and a “To do” box with a note about the try-out week",
+        title: "Start, organised by task",
+        text: "Nine buttons for the most common tasks. Below them “To do”: open drafts, reminders about the dance season, classes missing from the overview.",
+      },
+      {
+        image: "bausteine",
+        alt: "“Add element” menu with preview images of the blocks cards, figures, dates, questions, steps, timeline and PDF",
+        title: "22 building blocks with previews",
+        text: "New pages are built from designed sections, grouped by task. Each block has exactly one design; colours and spacing stay in the code.",
+      },
+      {
+        image: "seiten-picker",
+        alt: "“Target” field with the input “Preis” and two matching pages: prices for semester classes and for open classes",
+        title: "A page picker for links",
+        text: "Pages are found by name instead of typed as addresses. Outdated addresses are recognised and fixed with one click.",
+      },
+      {
+        image: "zuschnitt",
+        alt: "Image dialog with the description field and the preview “This is how the image appears on the website”",
+        title: "How the image appears on the website",
+        text: "Under every image field with a fixed format sits the real output: crop and focal point calculated exactly like the website’s code does.",
+      },
+      {
+        image: "kursfreie-tage",
+        alt: "“Days off” form with the autumn break, a single day off and the winter break",
+        title: "Days off and the dance season",
+        text: "Breaks and holidays as a simple list; past entries disappear on their own. Once the try-out week is over, the studio reminds the team.",
+      },
+      {
+        image: "hilfe",
+        alt: "Help page inside the studio with short guides such as “When will I see my change on the website?”",
+        title: "Help inside the tool",
+        text: "Short guides for every task, right where they are needed. No manual nobody can find.",
+      },
+    ],
+  },
+  guards: {
+    title: "What the editor cannot break.",
+    intro:
+      "The owner maintains text, images, lists, menu items and PDFs. Layout, navigation and booking stay protected.",
+    items: [
+      {
+        title: "Fixed pages stay in place",
+        text: "Settings, pages, team, class overview and studios can be neither deleted nor duplicated nor unpublished.",
+      },
+      {
+        title: "Hide instead of delete",
+        text: "Classes, people and free pages disappear from the website but remain in the studio.",
+      },
+      {
+        title: "Addresses are locked",
+        text: "After the first publish no address changes; reserved addresses are off limits for new pages.",
+      },
+      {
+        title: "Clear rules on every field",
+        text: "Character limits, required image descriptions, minimum resolution and focal point, each with a message that says what to do.",
+      },
+      {
+        title: "Design and booking in the code",
+        text: "Colours, fonts, animations, redirects and the Eversports widgets are out of reach in the studio.",
+      },
+      {
+        title: "Only formats the website renders",
+        text: "Post text offers exactly the paragraphs, headings and marks that are displayed, nothing that would get lost.",
+      },
+    ],
+  },
+  foundation: {
+    title: "Between studio and website.",
+    figures: [
+      { value: "9", label: "custom tools inside the studio" },
+      { value: "22", label: "building blocks with previews" },
+      { value: "24", label: "fixed pages from one page registry" },
+      { value: "2–3 min", label: "until a publish is live" },
+    ],
+    items: [
+      {
+        title: "Status bar",
+        text: "Compares the state of the website with Sanity: green, yellow or red, plus the number of open drafts.",
+      },
+      {
+        title: "Preview at the press of a button",
+        text: "One click builds the whole website with every draft on a protected preview server, for proofreading before publishing.",
+      },
+      {
+        title: "One page registry for everything",
+        text: "Fields, defaults and limits are defined once in code. From that come the studio forms, the website’s values and the import.",
+      },
+      {
+        title: "Backup and monitoring",
+        text: "Nightly backup of all content, a daily rebuild of time-dependent pages and a warning before the free tier’s limit is reached.",
+      },
+    ],
+    stack:
+      "Sanity Studio with custom React tools and a German interface, an Astro website on Cloudflare, webhooks and GitHub Actions. Sanity provides the editor, content store and image pipeline; the editorial logic on top is my own work.",
+  },
+};
+
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
+  indeedUniqueStudio,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

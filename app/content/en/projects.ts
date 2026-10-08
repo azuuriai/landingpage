@@ -5,6 +5,7 @@ import {
   IOS_APP_PATH,
   projectRecordings,
   showcaseMedia,
+  STUDIO_PATH,
   VER_PATH,
   VIENNA_EVENT_RADAR_URL,
 } from "@/app/projects-data";
@@ -26,7 +27,10 @@ export const projects: Record<ProjectSlug, ProjectData> = {
       { label: "Stack", value: "Astro, Sanity, Eversports, Cloudflare" },
       { label: "Running costs", value: "The domain only" },
     ],
-    links: [{ label: "Open indeedunique.com", href: INDEED_UNIQUE_URL }],
+    links: [
+      { label: "Open indeedunique.com", href: INDEED_UNIQUE_URL },
+      { label: "See the editorial studio behind it", href: STUDIO_PATH, internal: true },
+    ],
     metaTitle: "Case Study · Indeed Unique – Website with CMS and Eversports",
     metaDescription:
       "New website for a Vienna dance studio: Astro, a tailored Sanity CMS the team edits itself, Eversports booking in the site’s own design and no platform fees.",
@@ -110,12 +114,39 @@ export const operationsApp: CaseStudyData = {
   closing: "Does your team need a tool for recurring work?",
 };
 
+// The editorial studio behind indeedunique.com. Login only, so there is no
+// live link: the page shows the real studio, and the website's case study
+// links here.
+export const indeedUniqueStudio: CaseStudyData = {
+  ...caseStudyBase["indeed-unique-redaktion"],
+  name: "Editorial studio for Indeed Unique",
+  summary:
+    "The tailored Sanity Studio behind indeedunique.com: a menu organised by task, building blocks with previews, guardrails and a status bar, so the dance studio runs its website without a developer.",
+  eyebrow: "Internal tool · editorial studio on Sanity",
+  title: "Maintain the website without breaking anything.",
+  description:
+    "Behind the Indeed Unique website sits a Sanity Studio I tailored to the work of a one-person editorial team. It opens with the most common tasks, shows whether the website is up to date, builds new pages from 22 designed blocks and prevents pages from being deleted or layouts from being broken by accident. Sanity provides the editor, the content store and the image pipeline; the editorial logic on top is mine.",
+  facts: [
+    { label: "Scope", value: "Editorial concept, custom studio tools, building blocks, operations" },
+    { label: "Stack", value: "Sanity Studio, React, Astro, Cloudflare, GitHub Actions" },
+    { label: "Use", value: "Daily at the dance studio, team access only" },
+  ],
+  links: [{ label: "See the website case study", href: projects["indeed-unique"].path, internal: true }],
+  metaTitle: "Case Study · Editorial Studio for Indeed Unique – a Tailored Sanity Studio",
+  metaDescription:
+    "A Sanity Studio tailored to a dance school: a start screen organised by task, status bar, 22 building blocks with previews, page picker, crop preview and guardrails against accidental deletion.",
+  tourLabel:
+    "Editorial studio for Indeed Unique: Start, a picture with its crop preview, building blocks, page picker and days off",
+  closing: "Should your team maintain content itself, without the risk?",
+};
+
 // All case study pages, in Showcase order (sitemap).
 export const caseStudies: CaseStudyData[] = [
   projects["indeed-unique"],
   projects["vienna-event-radar"],
   iosApp,
   operationsApp,
+  indeedUniqueStudio,
 ];
 
 // Entries on the Showcase page. The page intro says which one was client work;
@@ -175,5 +206,18 @@ export const showcaseEntries: ShowcaseEntry[] = [
     ],
     href: operationsApp.path,
     media: showcaseMedia["operations-app"],
+  },
+  {
+    id: "indeed-unique-studio",
+    name: "Editorial studio for Indeed Unique",
+    summary:
+      "The Sanity Studio behind the dance studio’s website, tailored to a one-person editorial team: a start screen by task, building blocks with previews, a page picker and guardrails.",
+    facts: [
+      { label: "Tools", value: "Start, status bar, drafts, preview" },
+      { label: "Blocks", value: "22, each with a preview" },
+      { label: "Stack", value: "Sanity Studio + React" },
+    ],
+    href: indeedUniqueStudio.path,
+    media: showcaseMedia["indeed-unique-studio"],
   },
 ];

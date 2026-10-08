@@ -15,7 +15,11 @@ export const services: Service[] = [
       "Wo es passt, laufen CMS und Hosting in kostenlosen Plänen: Dann zahlst du nur die Domain",
       "Schnell auf jedem Gerät, mit SEO-Basics",
     ],
-    proofs: [{ label: "Indeed Unique ansehen", href: caseStudyBase["indeed-unique"].path }],
+    proofs: [
+      { label: "Indeed Unique ansehen", href: caseStudyBase["indeed-unique"].path },
+      // The CMS line above, shown working: the studio's tailored Sanity editor.
+      { label: "Die Redaktion dahinter ansehen", href: caseStudyBase["indeed-unique-redaktion"].path },
+    ],
     media: websitesMedia("Startseite von Indeed Unique mit dem Schaukasten zur neuen Tanzsaison"),
   },
   {

@@ -120,7 +120,11 @@ export type DetailPageData = {
 // ---------- Projects and case studies ----------
 
 export type ProjectSlug = "indeed-unique" | "vienna-event-radar";
-export type CaseStudySlug = ProjectSlug | "wien-event-radar-ios" | "operations-app";
+export type CaseStudySlug =
+  | ProjectSlug
+  | "wien-event-radar-ios"
+  | "operations-app"
+  | "indeed-unique-redaktion";
 export type CaseStudyPath = `/work/${CaseStudySlug}`;
 
 // `internal` links stay on this site; all others open the live product.
@@ -158,7 +162,8 @@ export type ShowcaseId =
   | "indeed-unique"
   | "vienna-event-radar-web"
   | "vienna-event-radar-ios"
-  | "operations-app";
+  | "operations-app"
+  | "indeed-unique-studio";
 
 export type ShowcaseMedia =
   | { kind: "web"; domain: string; desktop: Recording; phone?: Recording }
@@ -247,8 +252,24 @@ export type OperationsAppCopy = {
   foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
 };
 
+// The Sanity studio behind Indeed Unique: six screens, the guardrails, the
+// machinery between studio and website.
+export type IndeedUniqueStudioImage =
+  | "start"
+  | "bausteine"
+  | "seiten-picker"
+  | "zuschnitt"
+  | "kursfreie-tage"
+  | "hilfe";
+export type IndeedUniqueStudioCopy = {
+  screens: { title: string; intro: string; items: ScreenCopy<IndeedUniqueStudioImage>[] };
+  guards: { title: string; intro: string; items: TitledItem[] };
+  foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
+};
+
 export type CaseStudyCopy = {
   indeedUnique: IndeedUniqueCopy;
+  indeedUniqueStudio: IndeedUniqueStudioCopy;
   viennaEventRadar: ViennaEventRadarCopy;
   wienEventRadarIos: WienEventRadarIosCopy;
   operationsApp: OperationsAppCopy;
@@ -278,6 +299,7 @@ export type Content = {
   projects: Record<ProjectSlug, ProjectData>;
   iosApp: CaseStudyData;
   operationsApp: CaseStudyData;
+  indeedUniqueStudio: CaseStudyData;
   caseStudies: CaseStudyData[];
   showcaseEntries: ShowcaseEntry[];
   services: Service[];

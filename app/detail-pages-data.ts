@@ -9,7 +9,7 @@ const updated = new Date("2026-09-24T00:00:00.000Z");
 
 export const detailPageBase = {
   services: { slug: "services", path: "/services", lastModified: updated },
-  work: { slug: "work", path: "/work", lastModified: new Date("2026-10-06T00:00:00.000Z") },
+  work: { slug: "work", path: "/work", lastModified: new Date("2026-10-08T00:00:00.000Z") },
   about: { slug: "about", path: "/about", lastModified: updated },
   faq: { slug: "faq", path: "/faq", lastModified: updated },
   contact: { slug: "contact", path: "/contact", lastModified: updated },
