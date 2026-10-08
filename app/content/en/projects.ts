@@ -121,11 +121,11 @@ export const ownerCms: CaseStudyData = {
   ...caseStudyBase["betreiber-cms"],
   name: "CMS for business owners",
   summary:
-    "A custom CMS on Sanity, adaptable to any business: a start screen by task, building blocks with previews, a page picker, a status bar and guardrails, so owners maintain their website without a developer. In daily use at the Indeed Unique dance studio.",
+    "A custom content management system (CMS) on Sanity, adaptable to any business: a start screen by task, building blocks with previews, a page picker, a status bar and guardrails, so owners maintain their website without a developer. In daily use at the Indeed Unique dance studio.",
   eyebrow: "Custom CMS on Sanity · adaptable to any business",
   title: "A CMS for the people who run the business, not for developers.",
   description:
-    "A custom CMS built on Sanity and programmed for the business that uses it. It opens with the most common tasks, shows whether the website is up to date, builds new pages from designed blocks and prevents pages from being deleted or layouts from being broken by accident. Menu, blocks and rules are defined per business; here it is in daily use at the Indeed Unique dance studio. Sanity provides the editor, the content store and the image pipeline; the logic on top is mine.",
+    "A custom content management system (CMS), the tool owners use to maintain their own website: built on Sanity and programmed for the business that uses it. It opens with the most common tasks, shows whether the website is up to date, builds new pages from designed blocks and prevents pages from being deleted or layouts from being broken by accident. Menu, blocks and rules are defined per business; here it is in daily use at the Indeed Unique dance studio. Sanity provides the editor, the content store and the image pipeline; the logic on top is mine.",
   facts: [
     { label: "Scope", value: "Concept, custom tools inside the CMS, building blocks, operations" },
     { label: "Stack", value: "Sanity Studio, React, Astro, Cloudflare, GitHub Actions" },

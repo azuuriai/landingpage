@@ -121,11 +121,11 @@ export const ownerCms: CaseStudyData = {
   ...caseStudyBase["betreiber-cms"],
   name: "CMS für Betreiber",
   summary:
-    "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: ein Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker, Statuszeile und Schutzregeln, damit Betreiber ihre Website ohne Entwickler pflegen. Im Einsatz beim Tanzstudio Indeed Unique.",
+    "Eigenes Content-Management-System (CMS) auf Sanity, für jedes Unternehmen anpassbar: ein Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker, Statuszeile und Schutzregeln, damit Betreiber ihre Website ohne Entwickler pflegen. Im Einsatz beim Tanzstudio Indeed Unique.",
   eyebrow: "Eigenes CMS auf Sanity · für jedes Unternehmen anpassbar",
   title: "Ein CMS für Betreiber, nicht für Entwickler.",
   description:
-    "Ein eigenes CMS, gebaut auf Sanity und auf das jeweilige Unternehmen programmierbar. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Menü, Bausteine und Regeln werden je Unternehmen festgelegt; hier im Einsatz beim Tanzstudio Indeed Unique. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Bedienlogik darauf stammt von mir.",
+    "Ein eigenes Content-Management-System (CMS), also das Programm, mit dem Betreiber die Inhalte ihrer Website selbst pflegen: gebaut auf Sanity und auf das jeweilige Unternehmen programmierbar. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Menü, Bausteine und Regeln werden je Unternehmen festgelegt; hier im Einsatz beim Tanzstudio Indeed Unique. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Bedienlogik darauf stammt von mir.",
   facts: [
     { label: "Umfang", value: "Konzept, eigene Werkzeuge im CMS, Bausteine, Betrieb" },
     { label: "Technik", value: "Sanity Studio, React, Astro, Cloudflare, GitHub Actions" },
