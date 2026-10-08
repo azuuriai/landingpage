@@ -438,9 +438,7 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
     ],
   },
   guards: {
-    title: "What the editor cannot break.",
-    intro:
-      "The owner maintains text, images, lists, menu items and PDFs. Layout, navigation and booking stay protected.",
+    title: "Protected where it matters.",
     items: [
       {
         title: "Fixed pages stay in place",

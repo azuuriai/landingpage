@@ -123,7 +123,7 @@ export const indeedUniqueStudio: CaseStudyData = {
   summary:
     "The tailored Sanity Studio behind indeedunique.com: a menu organised by task, building blocks with previews, guardrails and a status bar, so the dance studio runs its website without a developer.",
   eyebrow: "Internal tool · editorial studio on Sanity",
-  title: "Maintain the website without breaking anything.",
+  title: "An editorial studio shaped around the dance school.",
   description:
     "Behind the Indeed Unique website sits a Sanity Studio I tailored to the work of a one-person editorial team. It opens with the most common tasks, shows whether the website is up to date, builds new pages from 22 designed blocks and prevents pages from being deleted or layouts from being broken by accident. Sanity provides the editor, the content store and the image pipeline; the editorial logic on top is mine.",
   facts: [

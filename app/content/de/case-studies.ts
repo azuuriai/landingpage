@@ -438,9 +438,7 @@ const indeedUniqueStudio: IndeedUniqueStudioCopy = {
     ],
   },
   guards: {
-    title: "Was die Redaktion nicht kaputt machen kann.",
-    intro:
-      "Die Betreiberin pflegt Texte, Bilder, Listen, Menüpunkte und PDFs. Layout, Navigation und Buchung bleiben geschützt.",
+    title: "Geschützt bleibt, was geschützt bleiben soll.",
     items: [
       {
         title: "Feste Seiten bleiben bestehen",

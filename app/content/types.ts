@@ -263,7 +263,7 @@ export type IndeedUniqueStudioImage =
   | "hilfe";
 export type IndeedUniqueStudioCopy = {
   screens: { title: string; intro: string; items: ScreenCopy<IndeedUniqueStudioImage>[] };
-  guards: { title: string; intro: string; items: TitledItem[] };
+  guards: { title: string; items: TitledItem[] };
   foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
 };
 

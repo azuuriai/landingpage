@@ -27,7 +27,7 @@ export function IndeedUniqueStudioCaseStudy({ copy }: { copy: IndeedUniqueStudio
       </CaseSection>
 
       <CaseSection>
-        <SectionHeading title={copy.guards.title} intro={copy.guards.intro} />
+        <SectionHeading stacked title={copy.guards.title} />
         <div className="mt-12">
           <CapabilityList items={copy.guards.items} />
         </div>

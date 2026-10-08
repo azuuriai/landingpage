@@ -123,7 +123,7 @@ export const indeedUniqueStudio: CaseStudyData = {
   summary:
     "Das maßgeschneiderte Sanity Studio hinter indeedunique.com: ein Menü nach Aufgaben, Bausteine mit Vorschaubild, Schutzregeln und eine Statuszeile, damit das Tanzstudio seine Website ohne Entwickler pflegt.",
   eyebrow: "Internes Werkzeug · Redaktion auf Sanity",
-  title: "Die Website pflegen, ohne etwas kaputt zu machen.",
+  title: "Eine Redaktion, die zum Studio passt.",
   description:
     "Hinter der Website von Indeed Unique steht ein Sanity Studio, das ich auf die Arbeit einer Ein-Personen-Redaktion zugeschnitten habe. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus 22 gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Redaktionslogik darauf stammt von mir.",
   facts: [
