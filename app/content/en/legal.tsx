@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { WKO_PROFILE_URL } from "@/app/site";
 import type { LegalPageCopy } from "../types";
 
 // Translations of the German legal pages. The German versions are the
@@ -68,6 +69,9 @@ export const imprint: LegalPageCopy = {
         Niederösterreich), professional groups (Fachgruppen) for management
         consulting, accounting and information technology, and for advertising and
         market communication
+        <br />
+        Entry in the chamber’s company directory (WKO Firmen A–Z):{" "}
+        <a href={WKO_PROFILE_URL}>firmen.wko.at/lukas-kaffer</a>
         <br />
         Professional law: Austrian Trade Act 1994 (Gewerbeordnung), available at{" "}
         <a href="https://www.ris.bka.gv.at">www.ris.bka.gv.at</a>

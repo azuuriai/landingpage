@@ -3,6 +3,8 @@
 export const SITE_URL = "https://lukaskaffer.com";
 export const SITE_NAME = "Lukas Kaffer";
 export const CONTACT_EMAIL = "hello@lukaskaffer.com";
+// The business's entry in the Economic Chamber's directory (WKO Firmen A–Z).
+export const WKO_PROFILE_URL = "https://firmen.wko.at/lukas-kaffer/nieder%C3%B6sterreich/";
 
 // Fills the "{name}" placeholder of a UI string with a project name.
 export function withName(template: string, name: string) {

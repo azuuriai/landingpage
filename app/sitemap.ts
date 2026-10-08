@@ -5,10 +5,10 @@ import { detailPageBase } from "./detail-pages-data";
 import { caseStudyBase } from "./projects-data";
 import { HOME_LAST_MODIFIED, SITE_URL } from "./seo";
 
-// Last changes of the legal pages (imprint: VAT ID added; privacy policy:
+// Last changes of the legal pages (imprint: link to the WKO entry; privacy policy:
 // the date it names) and the day the English version went live. An English
 // entry is never older than that day.
-const IMPRINT_LAST_MODIFIED = new Date("2026-10-07T00:00:00.000Z");
+const IMPRINT_LAST_MODIFIED = new Date("2026-10-08T00:00:00.000Z");
 const PRIVACY_LAST_MODIFIED = new Date("2026-10-01T00:00:00.000Z");
 const ENGLISH_LAUNCHED = new Date("2026-10-07T00:00:00.000Z");
 

@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { WKO_PROFILE_URL } from "@/app/site";
 import type { LegalPageCopy } from "../types";
 
 export const impressum: LegalPageCopy = {
@@ -53,6 +54,9 @@ export const impressum: LegalPageCopy = {
         Kammerzugehörigkeit: Wirtschaftskammer Niederösterreich, Fachgruppen
         Unternehmensberatung, Buchhaltung und Informationstechnologie sowie
         Werbung und Marktkommunikation
+        <br />
+        Eintrag im WKO Firmen A–Z:{" "}
+        <a href={WKO_PROFILE_URL}>firmen.wko.at/lukas-kaffer</a>
         <br />
         Berufsrecht: Gewerbeordnung 1994, abrufbar unter{" "}
         <a href="https://www.ris.bka.gv.at">www.ris.bka.gv.at</a>
