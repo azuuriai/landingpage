@@ -21,6 +21,7 @@ export const routing = defineRouting({
     "/work/wien-event-radar-ios": "/work/wien-event-radar-ios",
     "/work/operations-app": "/work/operations-app",
     "/work/betreiber-cms": "/work/betreiber-cms",
+    "/work/mission-control": "/work/mission-control",
     "/about": "/about",
     "/faq": "/faq",
     "/contact": "/contact",

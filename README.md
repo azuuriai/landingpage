@@ -174,6 +174,9 @@ heißen dort `/en/imprint` und `/en/privacy`.
 - `/work/vienna-event-radar` – Case Study Vienna Event Radar (Webplattform)
 - `/work/wien-event-radar-ios` – Case Study Wien Event Radar für iOS
 - `/work/operations-app` – Case Study Operations-App mit Social Studio
+- `/work/betreiber-cms` – Case Study CMS für Betreiber (Sanity Studio von Indeed Unique)
+- `/work/mission-control` – Case Study Mission Control, persönliches Organisationstool
+  (Showreel mit Ton, Bilder nur aus dem Demo-Modus mit erfundenen Daten)
 - `/about` – Profil und Arbeitsweise
 - `/services` – Leistungen: Websites, Web-Apps, iOS-Apps und der Weg bis zum Launch
 - `/faq` – Fragen zur Zusammenarbeit

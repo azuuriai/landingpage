@@ -52,6 +52,14 @@ export const caseStudyBase = {
     path: STUDIO_PATH,
     lastModified: new Date("2026-10-08T00:00:00.000Z"),
   },
+  // Lukas' own organising tool. Facts come from the CLAUDE.md of the Mission
+  // Control repository (October 2026); every picture is its demo mode with
+  // invented projects, appointments and mails, never the real data.
+  "mission-control": {
+    slug: "mission-control",
+    path: "/work/mission-control",
+    lastModified: new Date("2026-10-09T00:00:00.000Z"),
+  },
 } satisfies Record<CaseStudySlug, { slug: CaseStudySlug; path: CaseStudyPath; lastModified: Date }>;
 
 // The two web projects' recordings, used on the homepage and in the openings.
@@ -87,6 +95,7 @@ export const showcaseMedia: Record<ShowcaseId, ShowcaseMedia> = {
     domain: "indeed-unique.sanity.studio",
     desktop: RECORDINGS.ownerCms,
   },
+  "mission-control": { kind: "screen", desktop: RECORDINGS.missionControlLoop },
 };
 
 // "indeedunique.com" from the live link, for browser bars and link labels.

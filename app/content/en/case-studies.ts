@@ -1,6 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
+  MissionControlCopy,
   OwnerCmsCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
@@ -497,9 +498,132 @@ const ownerCms: OwnerCmsCopy = {
   },
 };
 
+// Mission Control: facts from the CLAUDE.md of the Mission Control repository
+// (October 2026), measurements as documented there. Pictures and showreel
+// come from the demo mode with invented data. No usage figures, no time saved.
+const missionControl: MissionControlCopy = {
+  playLabel: "Watch the showreel · 1:08",
+  screens: {
+    title: "A working day, asked and answered.",
+    intro:
+      "Every picture comes from the demo mode: invented projects, appointments, emails and reports, so no real data is shown. The interface and the flows are the same as in the real Mission Control.",
+    items: [
+      {
+        image: "frage",
+        alt: "Mission Control with the Shop-Relaunch project card open and the answer to “What’s on today?” as a caption above the “Frag Mission Control” button",
+        title: "Questions by voice",
+        text: "One click, one question. Speech recognition (Whisper) transcribes it locally on the Mac, Claude answers sentence by sentence, an ElevenLabs voice reads it out, and the camera flies to the project in question.",
+      },
+      {
+        image: "bericht",
+        alt: "Claude’s report on the task “Add alt text to product images” with summary, findings, suggestion and next step",
+        title: "Reports from agents",
+        text: "Claude Code or Codex review a task in the background and file their report on the project’s card: the summary on top, then findings, suggestion and next step.",
+      },
+      {
+        image: "termine",
+        alt: "Overview with the brain at the center, the projects around it and the calendar for the coming days opened",
+        title: "Calendar and important emails",
+        text: "Top right: the next few days from the Mac’s calendar and the emails that need something from me. The assistant knows both, and today’s plan works around the appointments.",
+      },
+      {
+        image: "gewebe",
+        alt: "Deep zoom into the neural tissue: glass cell bodies and glowing fibers in the projects’ colors",
+        title: "An endless zoom",
+        text: "Scrolling leads through the glass shell into the neural tissue and into a cell whose nucleus holds the brain again. The jump back to the start stays invisible.",
+      },
+    ],
+  },
+  mobile: {
+    title: "On the go, right in Telegram.",
+    alt: "Telegram chat with the Mission Control bot: an update for today, a question as a voice message and the spoken answer with its text underneath",
+    items: [
+      {
+        title: "Questions by voice message",
+        text: "The voice message is understood just as on the Mac; the answer comes back as a voice message in the same voice, with the text underneath.",
+      },
+      {
+        title: "Checks in on its own",
+        text: "Every morning the day’s appointments and most important items arrive, even when the Mac is off.",
+      },
+      {
+        title: "The same assistant as on the Mac",
+        text: "Check the status, take notes, tick things off, plan the day or have an agent review something; its report comes back to the chat as a summary. Answers arrive while the Mac is running.",
+      },
+    ],
+  },
+  guards: {
+    title: "Every agent gets exactly the access the job needs.",
+    items: [
+      {
+        title: "Permissions per job",
+        text: "What an agent may do follows from the kind of job. Further levels, such as changes on a separate working copy, can be added.",
+      },
+      {
+        title: "Reviews in the background",
+        text: "For reviews, Claude Code and Codex get read-only access, enforced by the tools themselves, not just asked for in the prompt. Tested on a throwaway folder: neither could create a file.",
+      },
+      {
+        title: "Changes in a visible session",
+        text: "When something needs to change, Mission Control starts a Claude Code or Codex session in the project folder. It states its plan first and asks before it changes anything.",
+      },
+      {
+        title: "Limits in the background",
+        text: "At most three reviews at once, each with a 15-minute time limit.",
+      },
+      {
+        title: "List changes can be undone",
+        text: "Before the assistant checks off, adds or edits anything, it saves a backup; “undo” restores the previous state, on the Mac and in the Telegram bot.",
+      },
+      {
+        title: "Reachable from this Mac only",
+        text: "The server only accepts requests from the machine itself. The Telegram bot fetches messages on its own, opens no port to the outside and answers a single chat.",
+      },
+    ],
+  },
+  foundation: {
+    title: "Under the surface.",
+    figures: [
+      { value: "2,300", label: "cell bodies in the neural tissue" },
+      { value: "3.6 ms", label: "render time per frame at 2880 × 1800 pixels" },
+      { value: "0.35 s", label: "speech recognition per question, locally with Whisper" },
+      { value: "0", label: "npm dependencies, no build step" },
+    ],
+    items: [
+      {
+        title: "Custom shaders",
+        text: "The brain is dark glass; the veins in its folds glow in each project’s color and are computed per pixel, so they stay sharp at every zoom level.",
+      },
+      {
+        title: "Answers sentence by sentence",
+        text: "Claude writes the answer as a stream. Every finished sentence goes straight to the voice while the rest is still being written.",
+      },
+      {
+        title: "Reads what’s already there",
+        text: "Git, Markdown notes and the Claude Code and Codex sessions, read-only. A new project is one entry in a file.",
+      },
+      {
+        title: "Calendar without a password",
+        text: "A small Swift program reads appointments straight from the macOS Calendar app through EventKit.",
+      },
+      {
+        title: "Fast or thorough",
+        text: "Questions about the current state go to a fast model; requests and changes to the list go to a more thorough one.",
+      },
+      {
+        title: "Routines in the cloud",
+        text: "The morning briefing and the email triage run as Claude routines on a schedule; clear appointment confirmations go straight into the calendar.",
+      },
+    ],
+    stack:
+      "Node.js with no build step, three.js with custom shaders, whisper.cpp, ElevenLabs with a macOS voice as fallback, Claude Code and Codex, Swift with EventKit, Telegram Bot API, Claude routines. The server runs on my own Mac with no rented hosting; voice, AI models and routines come from cloud services.",
+  },
+};
+
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
   ownerCms,
+  missionControl,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

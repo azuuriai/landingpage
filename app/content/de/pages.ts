@@ -24,7 +24,7 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Showcase",
     title: "Was ich baue – live im Einsatz.",
     description:
-      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar. Zwei sind für einen Kunden entstanden, die Website eines Tanzstudios und das CMS dahinter; die anderen sind Produkte, die ich selbst baue und betreibe. Daher die Tiefe bei Betrieb und iOS.",
+      "Websites, Web-Apps und native iOS-Apps – durchdacht, gestaltet und bis zum Launch gebracht. Jedes Projekt hier ist im Einsatz, drei davon öffentlich nutzbar. Zwei sind für einen Kunden entstanden, die Website eines Tanzstudios und das CMS dahinter; die anderen sind Produkte und Werkzeuge, die ich selbst baue und betreibe. Daher die Tiefe bei Betrieb und iOS.",
     metaTitle: "Showcase · Web- und iOS-Projekte aus Wien",
     metaDescription:
       "Projekte von Lukas Kaffer: die Website des Tanzstudios Indeed Unique, Vienna Event Radar im Web und als native iOS-App sowie eine interne Operations-App.",

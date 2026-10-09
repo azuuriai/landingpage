@@ -140,6 +140,32 @@ export const ownerCms: CaseStudyData = {
   closing: "Should your team maintain the website itself, without the risk?",
 };
 
+// Lukas' own organising tool. Private and local, so there is no live link;
+// the showreel in the opening stands in for it. Every picture comes from the
+// demo mode with invented data.
+export const missionControl: CaseStudyData = {
+  ...caseStudyBase["mission-control"],
+  name: "Mission Control",
+  summary:
+    "My personal command center: a 3D brain with every project, questions by voice, agents that review or build, plus calendar, important emails and a Telegram bot for when I’m out.",
+  eyebrow: "Personal tool · AI assistant",
+  title: "Every project at a glance. And a voice that answers.",
+  description:
+    "A brain at the center, nerve fibers to every project: Mission Control shows what’s open, where AI agents such as Claude Code or Codex are working right now and what today holds. I ask by voice and hear the answer. Agents review tasks in the background or carry them out in a visible session; what they’re allowed to do depends on the job. Calendar and important emails are built in, and on the go the same assistant answers in a Telegram bot. Built for my own work, as an example of how an AI tool with its own design can fit the services you already use.",
+  facts: [
+    { label: "Scope", value: "Concept, design and development" },
+    { label: "Stack", value: "Node.js, three.js, Whisper, ElevenLabs, Claude Code" },
+    { label: "Use", value: "Private, server on my own Mac" },
+  ],
+  links: [],
+  metaTitle: "Case Study · Mission Control – AI Command Center with a 3D Brain",
+  metaDescription:
+    "A personal command center: 3D overview of every project in three.js, voice assistant with Whisper and ElevenLabs, agents with per-job permissions, calendar, email and a Telegram bot.",
+  tourLabel:
+    "Mission Control – showreel with sound: zoom into the brain, a voice question, an agent’s report, calendar and Telegram",
+  closing: "Want an AI tool built around your workflow, with permissions you decide?",
+};
+
 // All case study pages, in Showcase order (sitemap).
 export const caseStudies: CaseStudyData[] = [
   projects["indeed-unique"],
@@ -147,6 +173,7 @@ export const caseStudies: CaseStudyData[] = [
   iosApp,
   operationsApp,
   ownerCms,
+  missionControl,
 ];
 
 // Entries on the Showcase page. The page intro says which one was client work;
@@ -219,5 +246,18 @@ export const showcaseEntries: ShowcaseEntry[] = [
     ],
     href: ownerCms.path,
     media: showcaseMedia["betreiber-cms"],
+  },
+  {
+    id: "mission-control",
+    name: "Mission Control",
+    summary:
+      "A personal command center with a 3D brain: every project at a glance, questions by voice, agents that review or build, calendar, email and Telegram.",
+    facts: [
+      { label: "Controls", value: "Voice, click, Telegram" },
+      { label: "Agents", value: "Claude Code + Codex" },
+      { label: "Stack", value: "Node.js + three.js" },
+    ],
+    href: missionControl.path,
+    media: showcaseMedia["mission-control"],
   },
 ];

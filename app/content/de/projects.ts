@@ -140,6 +140,32 @@ export const ownerCms: CaseStudyData = {
   closing: "Dein Team soll die Website selbst pflegen, ohne Risiko?",
 };
 
+// Lukas' own organising tool. Private and local, so there is no live link;
+// the showreel in the opening stands in for it. Every picture comes from the
+// demo mode with invented data.
+export const missionControl: CaseStudyData = {
+  ...caseStudyBase["mission-control"],
+  name: "Mission Control",
+  summary:
+    "Mein persönliches Organisationstool: ein 3D-Gehirn mit allen Projekten, Fragen per Stimme, Agenten, die prüfen oder umsetzen, dazu Termine, wichtige Mails und ein Telegram-Bot für unterwegs.",
+  eyebrow: "Persönliches Werkzeug · KI-Assistent",
+  title: "Alle Projekte auf einen Blick. Und eine Stimme, die antwortet.",
+  description:
+    "Ein Gehirn in der Mitte, Nervenbahnen zu jedem Projekt: Mission Control zeigt, was offen ist, wo KI-Agenten wie Claude Code oder Codex gerade arbeiten und was heute ansteht. Ich frage per Stimme und höre die Antwort. Agenten prüfen Aufgaben im Hintergrund oder setzen sie in einer sichtbaren Sitzung um; welche Rechte sie dafür bekommen, hängt vom Auftrag ab. Termine und wichtige Mails sind eingebunden, unterwegs antwortet derselbe Assistent im Telegram-Bot. Gebaut für meine eigenen Abläufe, als Beispiel dafür, wie ein KI-Werkzeug mit eigener Gestaltung zu den Diensten passt, die man ohnehin nutzt.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design und Entwicklung" },
+    { label: "Technik", value: "Node.js, three.js, Whisper, ElevenLabs, Claude Code" },
+    { label: "Einsatz", value: "Privat, Server auf dem eigenen Mac" },
+  ],
+  links: [],
+  metaTitle: "Case Study · Mission Control – KI-Organisationstool mit 3D-Gehirn",
+  metaDescription:
+    "Persönliches Organisationstool: 3D-Übersicht aller Projekte in three.js, Sprachassistent mit Whisper und ElevenLabs, Agenten mit Rechten je Auftrag, Termine, Mails und Telegram-Bot.",
+  tourLabel:
+    "Mission Control – Showreel mit Ton: Zoom ins Gehirn, Frage per Stimme, Bericht eines Agenten, Termine und Telegram",
+  closing: "Du willst ein KI-Werkzeug für deine Abläufe, mit Rechten, die du festlegst?",
+};
+
 // All case study pages, in Showcase order (sitemap).
 export const caseStudies: CaseStudyData[] = [
   projects["indeed-unique"],
@@ -147,6 +173,7 @@ export const caseStudies: CaseStudyData[] = [
   iosApp,
   operationsApp,
   ownerCms,
+  missionControl,
 ];
 
 // Entries on the Showcase page. The page intro says which one was client work;
@@ -219,5 +246,18 @@ export const showcaseEntries: ShowcaseEntry[] = [
     ],
     href: ownerCms.path,
     media: showcaseMedia["betreiber-cms"],
+  },
+  {
+    id: "mission-control",
+    name: "Mission Control",
+    summary:
+      "Persönliches Organisationstool mit 3D-Gehirn: alle Projekte auf einen Blick, Fragen per Stimme, Agenten, die prüfen oder umsetzen, Termine, Mails und Telegram.",
+    facts: [
+      { label: "Bedienung", value: "Stimme, Klick, Telegram" },
+      { label: "Agenten", value: "Claude Code + Codex" },
+      { label: "Technik", value: "Node.js + three.js" },
+    ],
+    href: missionControl.path,
+    media: showcaseMedia["mission-control"],
   },
 ];

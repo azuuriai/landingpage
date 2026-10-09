@@ -1,6 +1,7 @@
 import type {
   CaseStudyCopy,
   IndeedUniqueCopy,
+  MissionControlCopy,
   OwnerCmsCopy,
   OperationsAppCopy,
   ViennaEventRadarCopy,
@@ -497,9 +498,132 @@ const ownerCms: OwnerCmsCopy = {
   },
 };
 
+// Mission Control: facts from the CLAUDE.md of the Mission Control repository
+// (October 2026), measurements as documented there. Pictures and showreel
+// come from the demo mode with invented data. No usage figures, no time saved.
+const missionControl: MissionControlCopy = {
+  playLabel: "Showreel ansehen · 1:08",
+  screens: {
+    title: "Ein Arbeitstag, gefragt und beantwortet.",
+    intro:
+      "Alle Bilder stammen aus dem Demo-Modus: erfundene Projekte, Termine, Mails und Berichte, damit keine echten Daten zu sehen sind. Oberfläche und Abläufe sind dieselben wie im echten Mission Control.",
+    items: [
+      {
+        image: "frage",
+        alt: "Mission Control mit der Karte des Projekts Shop-Relaunch und der Antwort auf „Was steht heute an?“ als Untertitel über dem Knopf „Frag Mission Control“",
+        title: "Fragen per Stimme",
+        text: "Ein Klick, eine Frage. Eine Spracherkennung (Whisper) versteht sie lokal auf dem Mac, Claude antwortet Satz für Satz, eine Stimme von ElevenLabs liest vor, und die Kamera fliegt zum Projekt, um das es geht.",
+      },
+      {
+        image: "bericht",
+        alt: "Bericht von Claude zur Aufgabe „Alt-Texte für Produktbilder ergänzen“ mit Kurzfassung, Befund, Vorschlag und nächstem Schritt",
+        title: "Berichte von Agenten",
+        text: "Claude Code oder Codex prüfen eine Aufgabe im Hintergrund und legen ihren Bericht in die Karte des Projekts: oben die Kurzfassung, darunter Befund, Vorschlag und nächster Schritt.",
+      },
+      {
+        image: "termine",
+        alt: "Übersicht mit dem Gehirn in der Mitte, den Projekten rundherum und den aufgeklappten Terminen der nächsten Tage",
+        title: "Termine und wichtige Mails",
+        text: "Oben rechts die Termine der nächsten Tage aus dem Kalender des Macs und die Mails, die etwas verlangen. Der Assistent kennt beides, und der Plan für heute richtet sich nach den Terminen.",
+      },
+      {
+        image: "gewebe",
+        alt: "Tiefer Zoom ins Nervengewebe: gläserne Zellkörper und leuchtende Fasern in den Farben der Projekte",
+        title: "Zoom ohne Ende",
+        text: "Scrollen führt durch die Glashülle ins Nervengewebe und in eine Zelle, in deren Kern wieder das Gehirn schwebt. Der Sprung zurück an den Anfang bleibt unsichtbar.",
+      },
+    ],
+  },
+  mobile: {
+    title: "Unterwegs, direkt in Telegram.",
+    alt: "Telegram-Chat mit dem Mission Control Bot: ein Update für heute, eine Frage als Sprachnachricht und die gesprochene Antwort mit Text darunter",
+    items: [
+      {
+        title: "Fragen per Sprachnachricht",
+        text: "Die Sprachnachricht wird verstanden wie am Mac; die Antwort kommt als Sprachnachricht in derselben Stimme zurück, der Text steht darunter.",
+      },
+      {
+        title: "Meldet sich von selbst",
+        text: "Jeden Morgen kommen die Termine und die wichtigsten Punkte des Tages, auch wenn der Mac aus ist.",
+      },
+      {
+        title: "Derselbe Assistent wie am Mac",
+        text: "Stand abfragen, notieren, abhaken, den Tag planen oder einen Agenten etwas prüfen lassen; sein Bericht kommt als Kurzfassung in den Chat. Antworten kommen, solange der Mac läuft.",
+      },
+    ],
+  },
+  guards: {
+    title: "Jeder Agent bekommt genau die Rechte, die der Auftrag braucht.",
+    items: [
+      {
+        title: "Rechte je Auftrag",
+        text: "Was ein Agent darf, ergibt sich aus der Art des Auftrags. Weitere Stufen, etwa Änderungen auf einer eigenen Arbeitskopie, lassen sich ergänzen.",
+      },
+      {
+        title: "Prüfen im Hintergrund",
+        text: "Für Prüfungen bekommen Claude Code und Codex nur Lesezugriff, durchgesetzt von den Werkzeugen selbst, nicht nur im Auftrag erbeten. Am Wegwerf-Ordner getestet: Keiner konnte eine Datei anlegen.",
+      },
+      {
+        title: "Umsetzen in einer sichtbaren Sitzung",
+        text: "Soll sich etwas ändern, startet Mission Control eine Sitzung mit Claude Code oder Codex im Projektordner. Sie nennt zuerst ihr Vorgehen und fragt vor Änderungen nach.",
+      },
+      {
+        title: "Grenzen im Hintergrund",
+        text: "Höchstens drei Prüfungen gleichzeitig, jede mit einem Zeitlimit von 15 Minuten.",
+      },
+      {
+        title: "Änderungen an der Liste lassen sich zurücknehmen",
+        text: "Vor jedem Abhaken, Notieren oder Ändern durch den Assistenten entsteht eine Sicherung; „Rückgängig“ stellt den alten Stand wieder her, am Mac wie im Telegram-Bot.",
+      },
+      {
+        title: "Nur auf diesem Mac erreichbar",
+        text: "Der Server nimmt nur Anfragen vom eigenen Rechner an. Der Telegram-Bot holt Nachrichten selbst ab, öffnet keinen Anschluss nach außen und antwortet nur einem Chat.",
+      },
+    ],
+  },
+  foundation: {
+    title: "Unter der Oberfläche.",
+    figures: [
+      { value: "2.300", label: "Zellkörper im Nervengewebe" },
+      { value: "3,6 ms", label: "Rechenzeit je Bild bei 2880 × 1800 Pixeln" },
+      { value: "0,35 s", label: "Spracherkennung je Frage, lokal mit Whisper" },
+      { value: "0", label: "npm-Abhängigkeiten, kein Build-Schritt" },
+    ],
+    items: [
+      {
+        title: "Eigene Shader",
+        text: "Das Gehirn ist dunkles Glas; die Adern in den Furchen leuchten in der Farbe des Projekts und werden pro Bildpunkt berechnet, deshalb bleiben sie in jeder Zoomstufe scharf.",
+      },
+      {
+        title: "Antwort Satz für Satz",
+        text: "Claude schreibt die Antwort fortlaufend. Jeder fertige Satz geht sofort an die Stimme, während der Rest noch entsteht.",
+      },
+      {
+        title: "Liest, was ohnehin da ist",
+        text: "Git, Markdown-Notizen und die Sitzungen von Claude Code und Codex, nur lesend. Ein neues Projekt ist ein Eintrag in einer Datei.",
+      },
+      {
+        title: "Kalender ohne Passwort",
+        text: "Ein kleines Swift-Programm liest die Termine über EventKit direkt aus der Kalender-App von macOS.",
+      },
+      {
+        title: "Schnell oder sorgfältig",
+        text: "Fragen zum Stand beantwortet ein schnelles Modell, Aufträge und Änderungen an der Liste ein sorgfältigeres.",
+      },
+      {
+        title: "Routinen in der Cloud",
+        text: "Morgen-Nachricht und Durchsicht der Mails laufen als Claude-Routinen zu festen Zeiten; eindeutige Terminbestätigungen tragen sie selbst in den Kalender ein.",
+      },
+    ],
+    stack:
+      "Node.js ohne Build-Schritt, three.js mit eigenen Shadern, whisper.cpp, ElevenLabs mit macOS-Stimme als Rückfall, Claude Code und Codex, Swift mit EventKit, Telegram Bot API, Claude-Routinen. Der Server läuft auf dem eigenen Mac, ohne gemietetes Hosting; Sprachausgabe, KI-Modelle und Routinen kommen über Cloud-Dienste.",
+  },
+};
+
 export const caseStudyCopy: CaseStudyCopy = {
   indeedUnique,
   ownerCms,
+  missionControl,
   viennaEventRadar,
   wienEventRadarIos,
   operationsApp,

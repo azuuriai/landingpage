@@ -4,6 +4,7 @@ import { imprint, privacy } from "./legal";
 import { detailPages } from "./pages";
 import {
   caseStudies,
+  missionControl,
   ownerCms,
   iosApp,
   operationsApp,
@@ -24,6 +25,7 @@ export const en: Content = {
   iosApp,
   operationsApp,
   ownerCms,
+  missionControl,
   caseStudies,
   showcaseEntries,
   services,

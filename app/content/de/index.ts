@@ -4,6 +4,7 @@ import { datenschutz, impressum } from "./legal";
 import { detailPages } from "./pages";
 import {
   caseStudies,
+  missionControl,
   ownerCms,
   iosApp,
   operationsApp,
@@ -24,6 +25,7 @@ export const de: Content = {
   iosApp,
   operationsApp,
   ownerCms,
+  missionControl,
   caseStudies,
   showcaseEntries,
   services,

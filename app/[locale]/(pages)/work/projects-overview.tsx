@@ -77,6 +77,22 @@ function EntryMedia({ entry, ui }: { entry: ShowcaseEntry; ui: UiCopy }) {
     );
   }
 
+  // A desktop app shown full screen: the recording in a plain frame, no
+  // browser bar.
+  if (media.kind === "screen") {
+    return (
+      <div className="flex aspect-[5/4] items-center">
+        <div className="relative aspect-video w-full overflow-hidden rounded-[12px] border border-[#181811]/10 bg-[#0a1338] shadow-[0_34px_90px_-40px_rgba(17,18,17,0.45)]">
+          <AutoplayVideo
+            recording={media.desktop}
+            label={withName(ui.appRecording, entry.name)}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative flex aspect-[5/4] items-center">
       {/* Every browser frame gets the full width; a phone recording overlaps

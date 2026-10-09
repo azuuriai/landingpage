@@ -32,4 +32,11 @@ export const RECORDINGS = {
   // theme and captured frame by frame: Start, a picture with its crop
   // preview, the building-block menu, the page picker, days off.
   ownerCms: recording("/case-studies/betreiber-cms/tour", 25_933),
+  // Mission Control in its demo mode (invented data). The showreel is the
+  // finished film with Gruber's voice and music, played with sound and
+  // controls, never automatically; re-encoded from the 1080p60 master
+  // (libx264 CRF 21, peaks up to 24 Mbit/s for the zoom into the tissue,
+  // audio copied unchanged). The loop is the endless zoom, silent, 960 px.
+  missionControlShowreel: recording("/case-studies/mission-control/showreel", 68_338),
+  missionControlLoop: recording("/case-studies/mission-control/loop", 6_000),
 } satisfies Record<string, Recording>;

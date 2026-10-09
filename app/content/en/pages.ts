@@ -24,7 +24,7 @@ export const detailPages: DetailPageData[] = [
     eyebrow: "Showcase",
     title: "Built, shipped and in use.",
     description:
-      "Websites, web apps and native iOS apps: thought through, designed and shipped. Every project here is in use, three of them open to the public. Two were built for a client, a dance studio’s website and the CMS behind it; the others are products I build and run myself, which is where the operations and iOS depth comes from.",
+      "Websites, web apps and native iOS apps: thought through, designed and shipped. Every project here is in use, three of them open to the public. Two were built for a client, a dance studio’s website and the CMS behind it; the others are products and tools I build and run myself, which is where the operations and iOS depth comes from.",
     metaTitle: "Showcase · Web and iOS Projects from Vienna",
     metaDescription:
       "Projects by Lukas Kaffer: the Indeed Unique dance studio website, Vienna Event Radar on the web and as a native iOS app, and an internal operations app.",

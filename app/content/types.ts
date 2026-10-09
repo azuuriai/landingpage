@@ -124,7 +124,8 @@ export type CaseStudySlug =
   | ProjectSlug
   | "wien-event-radar-ios"
   | "operations-app"
-  | "betreiber-cms";
+  | "betreiber-cms"
+  | "mission-control";
 export type CaseStudyPath = `/work/${CaseStudySlug}`;
 
 // `internal` links stay on this site; all others open the live product.
@@ -163,11 +164,14 @@ export type ShowcaseId =
   | "vienna-event-radar-web"
   | "vienna-event-radar-ios"
   | "operations-app"
-  | "betreiber-cms";
+  | "betreiber-cms"
+  | "mission-control";
 
+// `screen`: a desktop app shown full screen, without a browser bar.
 export type ShowcaseMedia =
   | { kind: "web"; domain: string; desktop: Recording; phone?: Recording }
-  | { kind: "app"; phone: Recording };
+  | { kind: "app"; phone: Recording }
+  | { kind: "screen"; desktop: Recording };
 
 // Entries on the Showcase page. Private tools have no `live` link.
 export type ShowcaseEntry = {
@@ -267,9 +271,23 @@ export type OwnerCmsCopy = {
   foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
 };
 
+// Mission Control, a personal tool shown in its demo mode (invented data):
+// the showreel, four screens, what agents may and may not do, the machinery.
+export type MissionControlImage = "frage" | "bericht" | "termine" | "gewebe";
+// mobile: the Telegram bot, a still of the showreel's phone scene.
+export type MissionControlCopy = {
+  // The button on the showreel's title.
+  playLabel: string;
+  screens: { title: string; intro: string; items: ScreenCopy<MissionControlImage>[] };
+  mobile: { title: string; items: TitledItem[]; alt: string };
+  guards: { title: string; items: TitledItem[] };
+  foundation: { title: string; figures: Figure[]; items: TitledItem[]; stack: string };
+};
+
 export type CaseStudyCopy = {
   indeedUnique: IndeedUniqueCopy;
   ownerCms: OwnerCmsCopy;
+  missionControl: MissionControlCopy;
   viennaEventRadar: ViennaEventRadarCopy;
   wienEventRadarIos: WienEventRadarIosCopy;
   operationsApp: OperationsAppCopy;
@@ -300,6 +318,7 @@ export type Content = {
   iosApp: CaseStudyData;
   operationsApp: CaseStudyData;
   ownerCms: CaseStudyData;
+  missionControl: CaseStudyData;
   caseStudies: CaseStudyData[];
   showcaseEntries: ShowcaseEntry[];
   services: Service[];
