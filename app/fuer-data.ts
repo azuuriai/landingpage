@@ -1,3 +1,6 @@
+import type { AppPathname } from "@/i18n/routing";
+import type { StudioPlan } from "./content/types";
+
 // Personal preview pages for the Swiss test (round 9, Business Studio OS):
 // one unlisted page per studio at /fuer/<slug>, reached only through a
 // hand-written mail. The slug carries a random suffix so it cannot be
@@ -19,16 +22,8 @@ export type FuerShowcase = {
   phone: { path: string; caption: string };
 };
 
-export type FuerPlan = {
-  id: "individuell" | "aktuell";
-  choice: string;
-  name: string;
-  price: string;
-  priceNote: string;
-  priceExtra?: string;
-  tagline: string;
-  includes: string[];
-};
+// The same card as on /studios, with Swiss prices.
+export type FuerPlan = StudioPlan;
 
 // How people sign up, in steps the studio can choose from. Only studio
 // websites, CMS and existing booking services; never an own booking system.
@@ -38,7 +33,7 @@ export type FuerBooking = {
   options: { name: string; text: string; note: string }[];
 };
 
-export type FuerReference = { title: string; text: string; href: string; linkLabel: string };
+export type FuerReference = { title: string; text: string; href: AppPathname; linkLabel: string };
 
 export type FuerPage = {
   slug: string;

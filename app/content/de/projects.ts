@@ -1,0 +1,267 @@
+import {
+  APP_STORE_URL,
+  caseStudyBase,
+  INDEED_UNIQUE_URL,
+  IOS_APP_PATH,
+  projectRecordings,
+  showcaseMedia,
+  STUDIO_PATH,
+  VER_PATH,
+  VIENNA_EVENT_RADAR_URL,
+} from "@/app/projects-data";
+import type { CaseStudyData, ProjectData, ProjectSlug, ShowcaseEntry } from "../types";
+
+export const projects: Record<ProjectSlug, ProjectData> = {
+  "indeed-unique": {
+    ...caseStudyBase["indeed-unique"],
+    ...projectRecordings["indeed-unique"],
+    name: "Indeed Unique",
+    summary:
+      "Neue Website für ein Tanzstudio in Wien und Mödling: Das Studio pflegt sie selbst, gebucht wird direkt über Eversports.",
+    eyebrow: "Website mit CMS und Online-Buchung",
+    title: "Eine Website, die das Tanzstudio selbst in der Hand hat.",
+    description:
+      "Für das Tanzstudio Indeed Unique in Wien und Mödling habe ich die Website von Grund auf neu konzipiert, gestaltet und gebaut. Das Team pflegt alle Inhalte in einem auf das Studio zugeschnittenen CMS selbst. Stundenplan, Preise und Buchung kommen über die Eversports-Anbindung direkt aus dem System, mit dem das Studio ohnehin arbeitet.",
+    facts: [
+      { label: "Umfang", value: "Konzept, Design, Entwicklung, CMS, Umzug und Go-live" },
+      { label: "Technik", value: "Astro, Sanity, Eversports, Cloudflare" },
+      {
+        label: "Laufende Kosten",
+        value:
+          "Website und CMS aktuell in kostenlosen Anbieterplänen. Domain, Buchungssystem und Zahlungsgebühren separat.",
+      },
+    ],
+    links: [
+      { label: "indeedunique.com öffnen", href: INDEED_UNIQUE_URL },
+      { label: "Zum CMS dahinter", href: STUDIO_PATH, internal: true },
+    ],
+    metaTitle: "Case Study · Indeed Unique – Website mit CMS und Eversports",
+    metaDescription:
+      "Neue Website für ein Tanzstudio in Wien und Mödling: Astro, ein Sanity CMS zum Selbstpflegen, Eversports-Buchung im eigenen Design, keine Plattformkosten.",
+    tourLabel: "Indeed Unique – Aufnahme der Website am Desktop",
+    closing: "Du willst eine Website, die du selbst pflegen kannst?",
+  },
+  "vienna-event-radar": {
+    ...caseStudyBase["vienna-event-radar"],
+    ...projectRecordings["vienna-event-radar"],
+    name: "Vienna Event Radar",
+    summary:
+      "Events in Wien an einem Ort: Plattform mit geprüften Empfehlungen, Filtern, Vorschlägen für Freunde und einem Assistenten.",
+    eyebrow: "Event-Plattform im Web",
+    title: "Wiens Events an einem Ort.",
+    description:
+      "Vienna Event Radar sammelt Events in Wien, prüft sie vor der Veröffentlichung und macht sie in wenigen Klicks findbar: nach Tag, Preis und Stimmung gefiltert, mit Vorschlägen für Freunde und einem Assistenten, der passende Ideen sucht. Produkt, Design, Entwicklung und Betrieb liegen bei mir.",
+    facts: [
+      { label: "Umfang", value: "Produkt, Design, Entwicklung, Redaktion und Betrieb" },
+      { label: "Technik", value: "Next.js, Supabase, Vercel" },
+      { label: "Sprachen", value: "Deutsch und Englisch" },
+    ],
+    links: [
+      { label: "viennaeventradar.at öffnen", href: VIENNA_EVENT_RADAR_URL },
+      { label: "Zur iOS-App", href: IOS_APP_PATH, internal: true },
+      { label: "Zur Operations-App", href: caseStudyBase["operations-app"].path, internal: true },
+    ],
+    metaTitle: "Case Study · Vienna Event Radar – Event-Plattform für Wien",
+    metaDescription:
+      "Vienna Event Radar: Next.js-Plattform mit Supabase, geprüfter Event-Recherche, Admin-Freigabe, Gruppenplanung und dem Assistenten „Frag dein Radar“.",
+    tourLabel: "Vienna Event Radar – Aufnahme der Website am Desktop",
+    closing: "Du planst eine Plattform mit echter Produktlogik?",
+  },
+};
+
+export const iosApp: CaseStudyData = {
+  ...caseStudyBase["wien-event-radar-ios"],
+  name: "Wien Event Radar für iOS",
+  summary:
+    "Native iPhone-App zu Vienna Event Radar: Entdecken, Suchen und gemeinsam planen, mit Widgets, Live-Aktivität und Kalender.",
+  eyebrow: "Native iOS-App",
+  title: "Wiens Events als echte iPhone-App.",
+  description:
+    "Die native App zu Vienna Event Radar: in SwiftUI gebaut, im App Store veröffentlicht und eng mit iOS verzahnt, von Widgets über die Live-Aktivität bis zum Kalender. Konten, Favoriten und Gruppen teilt sie mit der Webplattform.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design, Entwicklung und App-Store-Release" },
+    { label: "Technik", value: "SwiftUI, Supabase, optimiert für iOS 27" },
+    { label: "Verfügbar", value: "Im App Store" },
+  ],
+  links: [
+    { label: "Im App Store ansehen", href: APP_STORE_URL },
+    { label: "Zur Webplattform", href: VER_PATH, internal: true },
+  ],
+  metaTitle: "Case Study · Wien Event Radar – native iOS-App in SwiftUI",
+  metaDescription:
+    "Wien Event Radar für iOS: native SwiftUI-App mit Widgets, Live-Aktivität, Kalender, Karte und Gruppenplanung, im App Store und mit der Webplattform verbunden.",
+  tourLabel: "Wien Event Radar für iOS: Entdecken, Eventdetails, Merken und Karte",
+  closing: "Dein Produkt gehört aufs iPhone?",
+};
+
+// A private tool, so there is no live link: the page itself is the proof. It
+// links to the platform it runs, and that case study links back.
+export const operationsApp: CaseStudyData = {
+  ...caseStudyBase["operations-app"],
+  name: "Operations-App mit Social Studio",
+  summary:
+    "Die private iPhone-App, mit der ich Vienna Event Radar im Alltag betreibe: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+  eyebrow: "Internes Werkzeug · native iOS-App",
+  title: "Eine Plattform betreiben, direkt vom iPhone.",
+  description:
+    "Eine private iPhone-App, mit der Vienna Event Radar im Alltag läuft. Sie zeigt, ob alle Hintergrund-Jobs arbeiten, macht aus aktuellen Inhalten fertige Instagram-Grafiken, stellt den wöchentlichen Newsletter zusammen und legt fest, was oben auf der Startseite steht. Konzept, Design, App und die Schnittstellen im Backend stammen von mir.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design, iOS-App und Backend-Schnittstellen" },
+    { label: "Technik", value: "SwiftUI, Next.js-API, Supabase" },
+    { label: "Einsatz", value: "Privat, nicht im App Store" },
+  ],
+  links: [{ label: "Zu Vienna Event Radar", href: VER_PATH, internal: true }],
+  metaTitle: "Case Study · Operations-App mit Social Studio in SwiftUI",
+  metaDescription:
+    "Interne iPhone-App in SwiftUI: überwacht Hintergrund-Jobs und Fehler, entwirft Instagram-Karussells und Stories, betreut Newsletter und Startseite.",
+  tourLabel: "Operations-App: Monitor, Social Studio mit vier Slides und Top Picks",
+  closing: "Dein Team braucht ein Werkzeug für wiederkehrende Abläufe?",
+};
+
+// The CMS behind indeedunique.com, shown as what it is: an owner-facing
+// CMS on Sanity that can be adapted to any business. Login only, so there
+// is no live link; the website's case study links here.
+export const ownerCms: CaseStudyData = {
+  ...caseStudyBase["betreiber-cms"],
+  name: "CMS für Betreiber",
+  summary:
+    "Eigenes Content-Management-System (CMS) auf Sanity, für jedes Unternehmen anpassbar: ein Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker, Statuszeile und Schutzregeln, damit Betreiber ihre Website ohne Entwickler pflegen. Im Einsatz beim Tanzstudio Indeed Unique.",
+  eyebrow: "Eigenes CMS auf Sanity · für jedes Unternehmen anpassbar",
+  title: "Ein CMS für Betreiber, nicht für Entwickler.",
+  description:
+    "Ein eigenes Content-Management-System (CMS), also das Programm, mit dem Betreiber die Inhalte ihrer Website selbst pflegen: gebaut auf Sanity und auf das jeweilige Unternehmen programmierbar. Es öffnet mit den häufigsten Aufgaben, zeigt, ob die Website aktuell ist, baut neue Seiten aus gestalteten Bausteinen und verhindert, dass Seiten versehentlich gelöscht oder Layouts zerstört werden. Menü, Bausteine und Regeln werden je Unternehmen festgelegt; hier im Einsatz beim Tanzstudio Indeed Unique. Sanity liefert Editor, Datenhaltung und Bildpipeline, die Bedienlogik darauf stammt von mir.",
+  facts: [
+    { label: "Umfang", value: "Konzept, eigene Werkzeuge im CMS, Bausteine, Betrieb" },
+    { label: "Technik", value: "Sanity Studio, React, Astro, Cloudflare, GitHub Actions" },
+    { label: "Einsatz", value: "Täglich bei Indeed Unique, Zugang nur für die Betreiber" },
+  ],
+  links: [{ label: "Zur Website, die damit läuft", href: projects["indeed-unique"].path, internal: true }],
+  metaTitle: "Case Study · CMS für Betreiber – eigenes CMS auf Sanity",
+  metaDescription:
+    "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: Start nach Aufgaben, Statuszeile, Bausteine mit Vorschaubild, Seiten-Picker, Zuschnitt-Vorschau und Schutzregeln. Im Einsatz beim Tanzstudio Indeed Unique.",
+  tourLabel:
+    "CMS für Betreiber: Start, Bild mit Zuschnitt-Vorschau, Bausteine, Seiten-Picker und kursfreie Tage",
+  closing: "Dein Team soll die Website selbst pflegen, ohne Risiko?",
+};
+
+// Lukas' own organising tool. Private and local, so there is no live link;
+// the showreel in the opening stands in for it. Every picture comes from the
+// demo mode with invented data.
+export const missionControl: CaseStudyData = {
+  ...caseStudyBase["mission-control"],
+  name: "Mission Control",
+  summary:
+    "Mein persönliches Organisationstool: ein 3D-Gehirn mit allen Projekten, Fragen per Stimme, Agenten, die prüfen oder umsetzen, dazu Termine, wichtige Mails und ein Telegram-Bot für unterwegs.",
+  eyebrow: "Persönliches Werkzeug · KI-Assistent",
+  title: "Alle Projekte auf einen Blick. Und eine Stimme, die antwortet.",
+  description:
+    "Ein Gehirn in der Mitte, Nervenbahnen zu jedem Projekt: Mission Control zeigt, was offen ist, wo KI-Agenten wie Claude Code oder Codex gerade arbeiten und was heute ansteht. Ich frage per Stimme und höre die Antwort. Agenten prüfen Aufgaben im Hintergrund oder setzen sie in einer sichtbaren Sitzung um; welche Rechte sie dafür bekommen, hängt vom Auftrag ab. Termine und wichtige Mails sind eingebunden, unterwegs antwortet derselbe Assistent im Telegram-Bot. Gebaut für meine eigenen Abläufe, als Beispiel dafür, wie ein KI-Werkzeug mit eigener Gestaltung zu den Diensten passt, die man ohnehin nutzt.",
+  facts: [
+    { label: "Umfang", value: "Konzept, Design und Entwicklung" },
+    { label: "Technik", value: "Node.js, three.js, Whisper, ElevenLabs, Claude Code" },
+    { label: "Einsatz", value: "Privat, Server auf dem eigenen Mac" },
+  ],
+  links: [],
+  metaTitle: "Case Study · Mission Control – KI-Organisationstool mit 3D-Gehirn",
+  metaDescription:
+    "Persönliches Organisationstool: 3D-Übersicht aller Projekte in three.js, Sprachassistent mit Whisper und ElevenLabs, Agenten mit Rechten je Auftrag, Termine, Mails und Telegram-Bot.",
+  tourLabel:
+    "Mission Control – Showreel mit Ton: Zoom ins Gehirn, Frage per Stimme, Bericht eines Agenten, Termine und Telegram",
+  closing: "Du willst ein KI-Werkzeug für deine Abläufe, mit Rechten, die du festlegst?",
+};
+
+// All case study pages, in Showcase order (sitemap).
+export const caseStudies: CaseStudyData[] = [
+  projects["indeed-unique"],
+  projects["vienna-event-radar"],
+  iosApp,
+  operationsApp,
+  ownerCms,
+  missionControl,
+];
+
+// Entries on the Showcase page. The page intro says which one was client work;
+// the entries themselves say what each product does.
+export const showcaseEntries: ShowcaseEntry[] = [
+  {
+    id: "indeed-unique",
+    name: "Indeed Unique",
+    summary:
+      "Studio-Website mit eigenem CMS: Das Team pflegt Inhalte selbst, Kurse werden direkt über Eversports gebucht.",
+    facts: [
+      { label: "Redaktion", value: "Selbst pflegbar in Sanity" },
+      { label: "Buchung", value: "Eversports integriert" },
+      { label: "Betrieb", value: "Keine Kosten für CMS und Hosting" },
+    ],
+    href: projects["indeed-unique"].path,
+    live: { label: "indeedunique.com", href: INDEED_UNIQUE_URL },
+    media: showcaseMedia["indeed-unique"],
+  },
+  {
+    id: "vienna-event-radar-web",
+    name: "Vienna Event Radar",
+    summary:
+      "Event-Plattform mit kuratierten Empfehlungen, Filtern, Teilen und einem AI-Assistenten, der passende Ideen vorschlägt.",
+    facts: [
+      { label: "Inhalte", value: "AI-Recherche mit Review" },
+      { label: "Assistent", value: "Frag dein Radar" },
+      { label: "Technik", value: "Next.js + Supabase" },
+    ],
+    href: projects["vienna-event-radar"].path,
+    live: { label: "viennaeventradar.at", href: VIENNA_EVENT_RADAR_URL },
+    media: showcaseMedia["vienna-event-radar-web"],
+  },
+  {
+    id: "vienna-event-radar-ios",
+    name: "Wien Event Radar für iOS",
+    summary:
+      "Die native iPhone-App von Vienna Event Radar (im App Store: Wien Event Radar): Entdecken, Suchen und Planen, mit Karte, Kalender und Gruppen für gemeinsame Abende.",
+    facts: [
+      { label: "Funktionen", value: "Karte, Gruppen, Kalender" },
+      { label: "Technik", value: "SwiftUI, optimiert für iOS 27" },
+      { label: "Verfügbar", value: "Im App Store" },
+    ],
+    href: iosApp.path,
+    live: { label: "Im App Store", href: APP_STORE_URL },
+    media: showcaseMedia["vienna-event-radar-ios"],
+  },
+  {
+    id: "operations-app",
+    name: "Operations-App",
+    summary:
+      "Die private iPhone-App, mit der Vienna Event Radar läuft: Systemstatus, Social-Media-Grafiken aus echten Inhalten, Newsletter und Startseite an einem Ort.",
+    facts: [
+      { label: "Bereiche", value: "Monitor, Social Studio, Top Picks" },
+      { label: "Export", value: "Instagram-Karussell und Story" },
+      { label: "Technik", value: "SwiftUI + Next.js-API" },
+    ],
+    href: operationsApp.path,
+    media: showcaseMedia["operations-app"],
+  },
+  {
+    id: "betreiber-cms",
+    name: "CMS für Betreiber",
+    summary:
+      "Eigenes CMS auf Sanity, für jedes Unternehmen anpassbar: Start nach Aufgaben, Bausteine mit Vorschaubild, Seiten-Picker und Schutzregeln. Im Einsatz beim Tanzstudio Indeed Unique.",
+    facts: [
+      { label: "Werkzeuge", value: "Start, Statuszeile, Entwürfe, Vorschau" },
+      { label: "Bausteine", value: "22, mit Vorschaubild" },
+      { label: "Technik", value: "Sanity Studio + React" },
+    ],
+    href: ownerCms.path,
+    media: showcaseMedia["betreiber-cms"],
+  },
+  {
+    id: "mission-control",
+    name: "Mission Control",
+    summary:
+      "Persönliches Organisationstool mit 3D-Gehirn: alle Projekte auf einen Blick, Fragen per Stimme, Agenten, die prüfen oder umsetzen, Termine, Mails und Telegram.",
+    facts: [
+      { label: "Bedienung", value: "Stimme, Klick, Telegram" },
+      { label: "Agenten", value: "Claude Code + Codex" },
+      { label: "Technik", value: "Node.js + three.js" },
+    ],
+    href: missionControl.path,
+    media: showcaseMedia["mission-control"],
+  },
+];

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const isDevelopment = process.env.NODE_ENV === "development";
 
@@ -21,26 +22,7 @@ const contentSecurityPolicy = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-// Relaxed CSP for the standalone /clinic concept demo (Aurea Clinic).
-// It relies on the Tailwind Play CDN + Google Fonts, so those origins are
-// allowed here only — the main site keeps the strict policy above.
-const clinicContentSecurityPolicy = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'",
-  "object-src 'none'",
-  "img-src 'self' data: blob:",
-  "font-src 'self' data: https://fonts.gstatic.com",
-  "media-src 'self'",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com",
-  "connect-src 'self' https://cdn.tailwindcss.com",
-  "upgrade-insecure-requests",
-].join("; ");
-
-// Security headers shared by every route except the Content-Security-Policy,
-// which differs between the main site (strict) and /clinic (relaxed).
+// Security headers shared by every route.
 const baseSecurityHeaders = [
   {
     key: "Strict-Transport-Security",
@@ -65,22 +47,19 @@ const baseSecurityHeaders = [
   },
 ];
 
-const noindexHeaders = [
-  {
-    key: "X-Robots-Tag",
-    value: "noindex, follow",
-  },
-];
-
 const nextConfig: NextConfig = {
   devIndicators: false,
   poweredByHeader: false,
   async redirects() {
     return [
-      // Keep the concept files in the repository without publishing the
-      // fictional clinic as part of the portfolio.
+      // Legacy links to the former concept demo land on the showcase.
       { source: "/clinic", destination: "/work", permanent: false },
       { source: "/clinic/index.html", destination: "/work", permanent: false },
+      // The single image of the German-only site; link previews may still
+      // reference it.
+      { source: "/opengraph-image", destination: "/opengraph-image/de", permanent: true },
+      // The personal preview pages exist in German only.
+      { source: "/en/fuer/:path*", destination: "/fuer/:path*", permanent: false },
     ];
   },
   async headers() {
@@ -90,24 +69,8 @@ const nextConfig: NextConfig = {
         headers: baseSecurityHeaders,
       },
       {
-        // Strict CSP everywhere except the /clinic concept demo.
-        source: "/((?!clinic).*)",
+        source: "/(.*)",
         headers: [{ key: "Content-Security-Policy", value: contentSecurityPolicy }],
-      },
-      {
-        // Relaxed CSP for the standalone /clinic demo and its assets.
-        source: "/clinic/:path*",
-        headers: [
-          { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
-          ...noindexHeaders,
-        ],
-      },
-      {
-        source: "/clinic",
-        headers: [
-          { key: "Content-Security-Policy", value: clinicContentSecurityPolicy },
-          ...noindexHeaders,
-        ],
       },
       {
         // Personal preview pages for single studios: unlisted, never indexed.
@@ -127,8 +90,16 @@ const nextConfig: NextConfig = {
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
         ],
       },
+      {
+        // The mail pictures of the drafts, a local helper.
+        source: "/fuer/:slug/bild",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
     ];
   },
 };
 
-export default nextConfig;
+// Registers i18n/request.ts, which resolves the locale of every request.
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+export default withNextIntl(nextConfig);

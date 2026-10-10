@@ -8,17 +8,21 @@ import type { Recording } from "../media";
 // for visitors who prefer reduced motion (they see the poster), and — when
 // several recordings share one screen — only the `active` one plays. Becoming
 // active restarts it, so each turn in the showcase starts at the beginning.
+// `resume` continues a recording that played on the page before a language
+// switch: it jumps to the same spot and shows that moment's still meanwhile.
 export function AutoplayVideo({
   recording,
   label,
   active = true,
   preload = "metadata",
+  resume,
   className,
 }: {
   recording: Recording;
   label?: string;
   active?: boolean;
   preload?: "auto" | "metadata" | "none";
+  resume?: { time: number; frame?: string };
   className?: string;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
@@ -66,6 +70,17 @@ export function AutoplayVideo({
 
   useEffect(() => {
     const video = ref.current;
+    if (!video || !resume) return;
+    const seek = () => {
+      video.currentTime = resume.time;
+    };
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) seek();
+    else video.addEventListener("loadedmetadata", seek, { once: true });
+    return () => video.removeEventListener("loadedmetadata", seek);
+  }, [resume]);
+
+  useEffect(() => {
+    const video = ref.current;
     if (!video || activeRef.current === active) return;
     activeRef.current = active;
     if (active) video.currentTime = 0;
@@ -77,7 +92,7 @@ export function AutoplayVideo({
       ref={ref}
       className={className}
       src={recording.src}
-      poster={recording.poster}
+      poster={resume?.frame ?? recording.poster}
       preload={preload}
       muted
       loop

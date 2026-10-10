@@ -1,19 +1,41 @@
 # lukaskaffer.com
 
-Persönliche Portfolio-Website von Lukas Kaffer. Die Seite positioniert ihn als
-AI-native Product Builder mit Bildungshintergrund und belegt die Arbeitsweise an
-zwei Live-Projekten:
+**English summary.** Portfolio site of Lukas Kaffer, a web and iOS developer in
+Vienna who designs, builds and ships end to end. Built with Next.js (App Router),
+React, TypeScript and Tailwind, deployed on Vercel. The site shows four live
+pieces of work, each with its own case study and screen recordings:
 
-- **Indeed Unique**: Website eines Tanzstudios in Wien und
-  Mödling mit Astro, Sanity CMS zum Selbstpflegen, Eversports-Buchung und
-  Hosting auf Cloudflare. Der Footer von indeedunique.com verlinkt hierher.
-- **Vienna Event Radar**: Next.js-Webprodukt,
-  Supabase-Backend, Research- und Review-Workflow sowie native SwiftUI-App im
-  App Store.
+- **Indeed Unique** – dance studio website (Astro, Sanity CMS edited by the
+  studio team, Eversports booking, Cloudflare)
+- **Vienna Event Radar** – event platform for Vienna (Next.js, Supabase,
+  scheduled jobs, admin area, AI assistant)
+- **Wien Event Radar for iOS** – native SwiftUI app on the App Store
+  (widgets, Live Activities, maps)
+- **Operations app** – internal SwiftUI tool that runs the platform from an
+  iPhone, including a semi-automated social media studio
+
+The rest of this README is in German.
+
+## Überblick
+
+Persönliche Portfolio-Website von Lukas Kaffer, Web- und iOS-Entwickler in
+Wien: Er gestaltet, baut und veröffentlicht Websites, Web-Apps und iOS-Apps.
+Die Seite belegt die Arbeitsweise an vier Live-Projekten:
+
+- **Indeed Unique**: Website eines Tanzstudios in Wien und Mödling mit Astro,
+  Sanity CMS zum Selbstpflegen, Eversports-Buchung und Hosting auf Cloudflare.
+  Der Footer von indeedunique.com verlinkt hierher.
+- **Vienna Event Radar**: Next.js-Webprodukt mit Supabase-Backend, Research- und
+  Review-Workflow, Admin-Bereich und Assistent.
+- **Wien Event Radar für iOS**: native SwiftUI-App im App Store mit Widgets,
+  Live-Aktivität und Karte.
+- **Operations-App**: internes SwiftUI-Werkzeug, mit dem die Plattform vom
+  iPhone aus betrieben wird, inklusive halbautomatischem Social-Media-Studio.
 
 ## Stack
 
 - Next.js App Router, React und TypeScript
+- next-intl für das Routing der zwei Sprachen
 - Tailwind CSS
 - Web3Forms für das Kontaktformular
 - Vercel als Zielumgebung
@@ -28,6 +50,50 @@ npm run dev
 Vor einem Release prüft `npm run check` nacheinander ESLint, TypeScript und den
 Production-Build.
 
+## Sprachen
+
+Die Site gibt es auf Deutsch und Englisch. Deutsch bleibt an der Wurzel
+(`/services`), Englisch liegt unter `/en` (`/en/services`); nur die Rechtsseiten
+haben übersetzte Slugs (`/impressum` ↔ `/en/imprint`, `/datenschutz` ↔
+`/en/privacy`). Niemand wird nach Browsersprache umgeleitet: Besucher wählen
+über den Umschalter `DE / EN` in der Kopfzeile, der immer auf dieselbe Seite in
+der anderen Sprache führt. `/en`-Links lassen sich direkt teilen, etwa im
+Upwork-Profil.
+
+- `i18n/routing.ts` – Sprachen, Präfix-Regel und die Liste aller internen
+  Pfade (`pathnames`). Interne Links nutzen `Link` aus `i18n/navigation.ts`,
+  damit Präfix und übersetzte Slugs stimmen; `usePathname()` von dort liefert
+  den internen Pfad ohne Präfix. Einzige Ausnahme ist der Umschalter selbst:
+  Er baut seine Ziele mit `getPathname()` und nutzt `next/link`, weil
+  next-intls `Link` mit `locale`-Prop das Präfix immer erzwingen würde
+  (`/de/about` statt `/about`).
+- `proxy.ts` – bildet die öffentlichen URLs auf das Segment `app/[locale]` ab
+  (`/services` → `/de/services`, `/de/services` leitet auf `/services` um).
+- `app/content/de/` und `app/content/en/` – jeder Text der Site, je Sprache ein
+  Satz Module (`site`, `pages`, `projects`, `services`, `case-studies`,
+  `legal`). `app/content/types.ts` gibt die Form vor, deshalb fehlt in keiner
+  Sprache ein Text. Was in beiden Sprachen gleich ist (Pfade, Daten,
+  Aufnahmen, Bilddateien), liegt in `app/projects-data.ts`,
+  `app/services-data.ts` und `app/detail-pages-data.ts` und wird in die
+  Sprachmodule hineingespreizt.
+- Server-Komponenten holen sich `getContent(locale)`; Client-Komponenten
+  bekommen nur die Strings, die sie brauchen, als Props. So landet die jeweils
+  andere Sprache nicht im Browser-Bundle.
+- Unbekannte Pfade fängt `app/[locale]/(pages)/[...rest]` und zeigt die
+  übersetzte 404-Seite im Seitenrahmen. Next liefert solche dynamischen 404s
+  als leere Fehler-Hülle aus und rendert die Seite erst im Browser; Status
+  404 und Texte stimmen, das erste HTML hat aber kein `lang`. Ein
+  serverseitig gerendertes 404 bräuchte Nexts experimentelles
+  `global-not-found`.
+- Jede Seite trägt `canonical`, `hreflang` für `de`, `en` und `x-default`
+  (zeigt auf Englisch), das OG-Bild je Sprache (`/opengraph-image/de|en`) und
+  steht zweimal in der Sitemap. JSON-LD und `<html lang>` folgen der Sprache.
+- Die englische Fassung ist eine Lokalisierung, keine Übersetzung: US-Englisch,
+  Wien als Ort in Österreich, Remote-Arbeit und Zeitzonen auf FAQ und Kontakt.
+  Produktnamen bleiben; Funktionsnamen folgen der englischen Oberfläche der
+  Produkte. Bei den Rechtsseiten ist die deutsche Fassung maßgeblich, beide
+  englischen Seiten sagen das oben.
+
 ## Inhaltsprinzipien
 
 - Öffentliche Produktbelege vor generischen Fähigkeitslisten
@@ -39,8 +105,10 @@ Production-Build.
 
 ## Struktur
 
-- `app/_home/` – Startseite: Kopfzeile mit Kurzbeschreibung, Headline, vier
-  Links, ein Button und der Showcase (`showcase.tsx`). Monitor und iPhone
+- `app/_home/` – Startseite: Kopfzeile mit Kurzbeschreibung, Headline, die
+  Byline (Porträt aus `public/mail/lukas-kaffer.png`, dasselbe Bild wie in
+  E-Mail-Signatur und Google-Profil, Name und ein Satz, verlinkt auf Über
+  mich), vier Links, ein Button und der Showcase (`showcase.tsx`). Monitor und iPhone
   wechseln ohne Beschriftung selbständig zwischen den Projekten; jedes bleibt so
   lange, wie seine Aufnahmen dauern (`durationMs` in `app/media.ts`), mit
   weicher Überblendung. Die Projekte wechseln strikt abwechselnd und pausieren
@@ -50,23 +118,48 @@ Production-Build.
   Indeed Unique: keine Füllfarbe, ein Teal-Rahmen zieht sich von außen zusammen.
 - `app/_components/` – gemeinsame Bausteine (Seitenrahmen, Formular,
   Autoplay-Video, iPhone-Rahmen)
-- `app/projects-data.ts` – eine Quelle für Projekte (Startseite, Case Studies,
-  Sitemap), die iOS-App (`iosApp`) und die drei Einträge der Showcase-Seite
-  (`showcaseEntries`)
+- `app/projects-data.ts` – Struktur der Projekte (Pfade, Daten, Live-URLs,
+  Aufnahmen); die Texte dazu stehen in `app/content/<sprache>/projects.ts`
+  (Case Studies, `iosApp`, `operationsApp`, `showcaseEntries`)
 - `app/media.ts` – Bildschirmaufnahmen (H.264-MP4 plus Poster)
-- `app/services-data.ts` – Leistungen-Seite: drei Produktformen (Websites,
-  Web-Apps, iOS-Apps), jede mit Standbild aus einem Live-Projekt, und die fünf
-  Schritte von „Launch inklusive“. Die Formen stehen als Sprunglinks im Hero.
-- `app/(pages)/` – alle Unterseiten in einer Route-Gruppe. Ihr `layout.tsx` hält
+- `app/services-data.ts` – Standbilder der Leistungen-Seite; die drei
+  Produktformen (Websites, Web-Apps, iOS-Apps) und die fünf Schritte von
+  „Launch inklusive“ stehen in `app/content/<sprache>/services.ts`. Die Formen
+  stehen als Sprunglinks im Hero.
+- `app/studios-data.ts` – Struktur des Studio-Angebots `/studios` (Pfad,
+  Aufnahmen, Kontaktlink mit `?thema=studio`); die Texte, die zwei Modelle und
+  der Verweis unter „Websites“ auf der Leistungen-Seite stehen in
+  `app/content/<sprache>/studios.ts`. Das Kontaktformular stellt mit
+  `?thema=studio` Studio-Fragen (`contactForm.studio`).
+- `app/fuer-data.ts` und `app/_fuer/` – persönliche Vorschauseiten für einzelne
+  Studios (`/fuer/<slug>`, nur Deutsch, `noindex`, nicht in der Sitemap, Slug
+  mit Zufallsanhang) und die handgemachten Website-Entwürfe dazu, die unter
+  `app/[locale]/(entwurf)/` ohne Seitenrahmen laufen und auf der Vorschauseite
+  als Laptop und iPhone eingebettet sind (`scaled-frame.tsx`). Bilder für die
+  Mail: `scripts/fuer-bild.sh`.
+- `app/[locale]/` – Root-Layout (`<html lang>`, Metadaten je Sprache) und die
+  Startseite; `[...rest]` fängt unbekannte Pfade für die übersetzte 404-Seite.
+- `app/[locale]/(pages)/` – alle Unterseiten in einer Route-Gruppe. Ihr `layout.tsx` hält
   Kopfzeile, Hero (`subpage-hero.tsx`, feste Höhe) und Fußzeile beim
   Seitenwechsel stehen; nur Texte, Bild und Inhalt darunter wechseln.
   `work/` enthält Showcase-Übersicht und Case Studies. Case Studies teilen sich
   Rahmen (`case-study-page.tsx`: Titel, Eckdaten, Links, Medien) und Bausteine
   (`case-study-blocks.tsx`); Abschnitte zeigen zuerst das Produkt und kommen
-  ohne Eyebrow-Labels aus. Zahlen nur mit Quelle in der Projektdoku.
+  ohne Eyebrow-Labels aus. Zahlen nur mit Quelle in der Projektdoku. Die
+  Case-Study-Komponenten entscheiden nur, welche Aufnahme wo steht; ihre Worte
+  kommen aus `app/content/<sprache>/case-studies.ts`.
+
+Der Monitor (`app/_components/monitor-frame.tsx`) ist gezeichnet, kein Bild:
+Korpus in CSS (Alu-Hairline, matte schwarze Front mit schmaler Blende und
+Kamerapunkt, Panel mit kaum gerundeten Ecken), Standarm und Fußplatte als
+Inline-SVG mit Licht von oben links, Kontakt- und Umgebungsschatten. Alle Maße
+sind Container-Query-Einheiten der Monitorbreite (`cqw` bzw. viewBox), damit
+die Proportionen bei jeder Größe und Pixeldichte gleich bleiben.
 
 Das iPhone ist Apples offizieller iPhone-17-Pro-Rahmen
-(`public/devices/iphone-17-pro-frame.png`). Die Aufnahme liegt darunter und wird
+(`public/devices/iphone-17-pro-frame.png` als Vorlage, ausgeliefert als
+`iphone-17-pro-frame.webp`, erzeugt mit `cwebp -q 90 -alpha_q 100`; das WebP
+behält den Alpha-Kanal, ist aber nur ein Fünftel so groß). Die Aufnahme liegt darunter und wird
 per Maske aus dem Alpha-Kanal des Rahmens auf die Displayform zugeschnitten.
 Desktop- und Handy-Aufnahme eines Projekts sind gleich lang (Vienna Event
 Radar 26,4 s = das komplette App-Video, Indeed Unique 28,6 s mit Einstiegsanimation,
@@ -84,10 +177,25 @@ App-Store-Vorschauvideos im iOS-Repo (`Marketing/wer-reels/src/AppPreview.tsx`,
 
 ## Routen
 
+Jede Route gibt es auch unter `/en` (`/en/work`, `/en/about` …); die Rechtsseiten
+heißen dort `/en/imprint` und `/en/privacy`. Ausnahme sind die persönlichen
+Vorschauseiten `/fuer/<slug>`: nur Deutsch, `/en/fuer/…` leitet um, und der
+Sprachwechsel blendet sich dort aus (`GERMAN_ONLY_PATHS` in
+`i18n/routing.ts`).
+
+- `/studios` – Websites für Studios und Kursanbieter: zwei Modelle mit
+  Festpreisen, verlinkt von der Leistungen-Seite
+- `/fuer/<slug>` – persönliche Vorschauseite für ein Studio mit dessen
+  Entwurf (`/fuer/<slug>/entwurf`), unverlinkt
+
 - `/work` – Showcase: Website Indeed Unique, Plattform Vienna Event Radar, iOS-App
 - `/work/indeed-unique` – Case Study Indeed Unique
 - `/work/vienna-event-radar` – Case Study Vienna Event Radar (Webplattform)
 - `/work/wien-event-radar-ios` – Case Study Wien Event Radar für iOS
+- `/work/operations-app` – Case Study Operations-App mit Social Studio
+- `/work/betreiber-cms` – Case Study CMS für Betreiber (Sanity Studio von Indeed Unique)
+- `/work/mission-control` – Case Study Mission Control, persönliches Organisationstool
+  (Showreel mit Ton, Bilder nur aus dem Demo-Modus mit erfundenen Daten)
 - `/about` – Profil und Arbeitsweise
 - `/services` – Leistungen: Websites, Web-Apps, iOS-Apps und der Weg bis zum Launch
 - `/faq` – Fragen zur Zusammenarbeit
@@ -95,10 +203,10 @@ App-Store-Vorschauvideos im iOS-Repo (`Marketing/wer-reels/src/AppPreview.tsx`,
 - `/impressum` – Betreiberangaben und Offenlegung
 - `/datenschutz` – Datenverarbeitung, Dienste und Betroffenenrechte
 
-Die Clinic-Konzeptstudie (Aurea Clinic) ist keine eigene Seite: Aufrufe von
-`/clinic` und `/clinic/index.html` werden auf `/work` umgeleitet. Ein Ausschnitt
-daraus (`public/case-studies/aurea/treatments.jpg`) ist das Vorschaubild für
-Websites im Hero der Leistungen-Seite.
+Das Vorschaubild für Websites im Hero der Leistungen-Seite
+(`public/case-studies/aurea/treatments.jpg`) stammt aus einer fiktiven
+Designstudie (Aurea Clinic); die Studie selbst ist nicht Teil der Site, alte
+Links auf `/clinic` landen auf `/work`.
 
 Die Einstiegsanimation von Indeed Unique liegt als eigener Clip vor
 (`public/case-studies/indeed-unique/entry.mp4`, 2304 × 1440, aufgenommen mit

@@ -1,67 +1,47 @@
 "use client";
 
 import { Suspense, useState, type FormEvent } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
-import { CONTACT_EMAIL } from "../seo";
+import { Link } from "@/i18n/navigation";
+import type { ContactFormCopy } from "../content/types";
+import { CONTACT_EMAIL } from "../site";
 import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
-const COPY = {
-  name: "Name",
-  namePlaceholder: "Wie heißt du?",
-  email: "E-Mail",
-  emailPlaceholder: "name@beispiel.com",
-  message: "Deine Idee",
-  messageHint: undefined as string | undefined,
-  messagePlaceholder:
-    "In zwei, drei Sätzen: Was willst du launchen, für wen, und wo hakt es gerade?",
-  submit: "Idee schicken",
-  sending: "Wird gesendet …",
-  note: "Das Formular wird technisch über Web3Forms übermittelt.",
-  successTitle: "Angekommen – danke!",
-  successBody: "Ich habe deine Nachricht erhalten und melde mich persönlich zurück.",
-  errorBody: "Hat gerade nicht geklappt. Schreib mir gern direkt:",
-  fallbackPrefix: "Lieber direkt mailen?",
-};
-
-// /contact?thema=studio (from /studios): same form, studio questions.
-const STUDIO_COPY = {
-  ...COPY,
-  message: "Dein Studio oder Kursangebot",
-  messageHint:
-    "Hilfreich sind: deine jetzige Website, dein Buchungssystem (vorhanden oder geplant), der Anlass und bis wann die neue Seite stehen soll.",
-  messagePlaceholder:
-    "Wie heißt dein Studio oder Kursangebot, und was soll die neue Website können?",
-  submit: "Anfrage schicken",
-};
-
+// /contact?thema=studio (from /studios): the same form, studio questions.
 export type ContactTopic = "studio";
 
 function topicFrom(value: string | null): ContactTopic | undefined {
   return value === "studio" ? "studio" : undefined;
 }
 
+type Props = { copy: ContactFormCopy; privacyLabel: string };
+
 // Reads the topic from the URL. useSearchParams needs a Suspense boundary on
 // a static page; the fallback is the plain form, so the prerendered HTML
 // always contains a working form.
-export function ContactFormFromUrl() {
+export function ContactFormFromUrl(props: Props) {
   return (
-    <Suspense fallback={<ContactForm />}>
-      <ContactFormWithTopic />
+    <Suspense fallback={<ContactForm {...props} />}>
+      <ContactFormWithTopic {...props} />
     </Suspense>
   );
 }
 
-function ContactFormWithTopic() {
+function ContactFormWithTopic(props: Props) {
   const topic = topicFrom(useSearchParams().get("thema"));
-  return <ContactForm key={topic ?? "general"} topic={topic} />;
+  return <ContactForm key={topic ?? "general"} {...props} topic={topic} />;
 }
 
-export function ContactForm({ topic }: { topic?: ContactTopic } = {}) {
-  const t = topic === "studio" ? STUDIO_COPY : COPY;
+export function ContactForm({
+  copy,
+  privacyLabel,
+  topic,
+}: Props & { topic?: ContactTopic }) {
+  const studio = topic === "studio" ? copy.studio : undefined;
+  const t = { ...copy, ...studio };
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -86,14 +66,14 @@ export function ContactForm({ topic }: { topic?: ContactTopic } = {}) {
 
     setStatus("sending");
 
-    const subject =
-      topic === "studio"
-        ? `Studio-Anfrage über lukaskaffer.com – ${name}`
-        : `Neue Anfrage über lukaskaffer.com – ${name}`;
+    const subject = `${t.subject} – ${name}`;
+    // The language line tells which version of the site the message came
+    // from, so the reply can match it; the topic line marks studio requests.
     const body = [
-      `Name:    ${name}`,
-      `E-Mail:  ${email}`,
-      ...(topic === "studio" ? ["Thema:   Studio-Projekt (/studios)"] : []),
+      `${t.name}: ${name}`,
+      `${t.email}: ${email}`,
+      `${t.languageLabel}: ${t.languageName}`,
+      ...(studio ? [studio.topicLine] : []),
       "",
       message,
     ].join("\n");
@@ -183,9 +163,9 @@ export function ContactForm({ topic }: { topic?: ContactTopic } = {}) {
 
       <label className="mt-5 block">
         <span className={labelClass}>{t.message}</span>
-        {t.messageHint ? (
+        {studio ? (
           <span className="mt-1.5 block text-[13px] leading-5 text-[#5f5f56]">
-            {t.messageHint}
+            {studio.messageHint}
           </span>
         ) : null}
         <textarea
@@ -214,7 +194,7 @@ export function ContactForm({ topic }: { topic?: ContactTopic } = {}) {
         <p className="max-w-[46ch] text-[12px] leading-5 text-[#5f5f56]">
           {t.note}{" "}
           <Link href="/datenschutz" className={QUIET_LINK}>
-            Datenschutz
+            {privacyLabel}
           </Link>
         </p>
       </div>

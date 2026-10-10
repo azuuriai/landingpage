@@ -8,12 +8,16 @@ import Image from "next/image";
 // the shape in its alpha channel: CSS masks ignore brightness.
 const SCREEN_MASK = "url(/devices/iphone-17-pro-screen-mask.png)";
 
+// `priority` loads the bezel right away, for frames that are visible on
+// arrival (the homepage showcase); everywhere else it loads lazily.
 export function PhoneFrame({
   children,
   className = "",
+  priority = false,
 }: {
   children: ReactNode;
   className?: string;
+  priority?: boolean;
 }) {
   return (
     <div className={`relative aspect-[1350/2760] ${className}`}>
@@ -28,13 +32,16 @@ export function PhoneFrame({
       >
         {children}
       </div>
-      {/* Served as-is: re-encoding has dropped this PNG's alpha channel before. */}
+      {/* Served as-is: re-encoding has dropped the alpha channel before. The
+          WebP is encoded from the PNG master with cwebp -q 90 -alpha_q 100. */}
       <Image
-        src="/devices/iphone-17-pro-frame.png"
+        src="/devices/iphone-17-pro-frame.webp"
         alt=""
         width={675}
         height={1380}
         unoptimized
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         draggable={false}
         className="pointer-events-none absolute inset-0 h-full w-full select-none"
       />
