@@ -48,7 +48,7 @@ function FixedPrices({ copy }: { copy: FixedPricesCopy }) {
             <li key={card.path} className="min-w-0">
               <Link
                 href={card.path}
-                className="ui-row ui-row--card relative flex h-full flex-col overflow-hidden rounded-[12px] border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-7"
+                className="ui-row ui-row--card relative flex h-full flex-col border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-7"
               >
                 <span
                   aria-hidden="true"

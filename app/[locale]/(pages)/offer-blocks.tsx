@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight, Check, CornerDownRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import type { AppPathname } from "@/i18n/routing";
 import { ICON_UP, PRIMARY_BUTTON, TEXT_LINK } from "@/app/_components/button-styles";
 import { BackLink } from "@/app/_components/site-chrome";
 import type { LaunchStep, OfferPageCopy, PriceCard as PriceCardData } from "@/app/content/types";
@@ -86,13 +85,17 @@ export function OfferHero({
 // The everyday problem as a small line with a teal turn arrow, then the
 // answer as title and one sentence. Three or four in a row on desktop.
 export function FitList({ fit }: { fit: OfferPageCopy["fit"] }) {
-  const columns = fit.items.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3";
+  // Four items sit two by two on tablets and keep their row dividers
+  // there; the dividers go only where every item is in one row.
+  const four = fit.items.length === 4;
+  const columns = four ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3";
+  const row = four ? "lg:border-b-0 lg:pb-0" : "md:border-b-0 md:pb-0";
   return (
     <Band tone="tinted">
       <SectionHeading title={fit.title} intro={fit.intro} />
       <ul className={`mt-8 grid gap-x-10 border-t border-[#d9d9d3] ${columns}`}>
         {fit.items.map((item) => (
-          <li key={item.title} className="border-b border-[#e1e1dc] py-5 md:border-b-0 md:pb-0">
+          <li key={item.title} className={`border-b border-[#e1e1dc] py-5 ${row}`}>
             <p className="flex items-center gap-2 text-[14px] leading-6 text-[#6c6c61]">
               <CornerDownRight size={15} aria-hidden="true" className="shrink-0 text-[#00b8ad]" />
               {item.problem}
@@ -112,9 +115,23 @@ export function FitList({ fit }: { fit: OfferPageCopy["fit"] }) {
 // what is included. No button; the page's buttons are in the opening and
 // the closing band. `wide` lays the list out in columns for the ongoing
 // offer that spans the row.
-export function PriceCard({ plan, wide = false }: { plan: PriceCardData; wide?: boolean }) {
+// `compact` keeps a long price such as "from €1,200" on one line when three
+// cards share a row (two on tablets): smaller where the card is narrow, the
+// full size from 1280 px on.
+export function PriceCard({
+  plan,
+  wide = false,
+  compact = false,
+}: {
+  plan: PriceCardData;
+  wide?: boolean;
+  compact?: boolean;
+}) {
+  const priceSize = compact
+    ? "text-[40px] sm:text-[52px] md:text-[40px] xl:text-[52px]"
+    : "text-[40px] sm:text-[52px]";
   return (
-    <article className="relative flex min-w-0 flex-col overflow-hidden rounded-[12px] border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-8">
+    <article className="relative flex h-full min-w-0 flex-col overflow-hidden rounded-[12px] border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-8">
       <span
         aria-hidden="true"
         className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#006f68_0%,#00b8ad_100%)]"
@@ -126,7 +143,9 @@ export function PriceCard({ plan, wide = false }: { plan: PriceCardData; wide?: 
             {plan.name}
           </h3>
           <p className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-            <span className="font-display text-[40px] font-semibold leading-none tracking-[-0.03em] text-[#181811] sm:text-[52px]">
+            <span
+              className={`font-display font-semibold leading-none tracking-[-0.03em] text-[#181811] ${priceSize}`}
+            >
               {plan.price}
             </span>
             <span className="text-[15px] text-[#6c6c61]">{plan.priceNote}</span>
@@ -172,9 +191,16 @@ export function OfferCards({
       <p className="mt-5 max-w-[60ch] text-[16px] font-medium leading-7 text-[#181811] sm:text-[18px] sm:leading-8">
         {offer.question}
       </p>
+      {/* Two columns on tablets: a third card takes the whole second row
+          instead of standing alone in the first column. */}
       <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-        {plans.map((plan) => (
-          <PriceCard key={plan.id} plan={plan} />
+        {plans.map((plan, index) => (
+          <div
+            key={plan.id}
+            className={`min-w-0 ${index === 2 && plans.length === 3 ? "md:col-span-2 lg:col-span-1" : ""}`}
+          >
+            <PriceCard plan={plan} compact />
+          </div>
         ))}
       </div>
       <div className="mt-5 lg:mt-6">
@@ -219,7 +245,7 @@ export function ProofBand({ proof, media }: { proof: OfferPageCopy["proof"]; med
         {proof.links.map((link) => (
           <Link
             key={link.path}
-            href={link.path as AppPathname}
+            href={link.path}
             className={`${TEXT_LINK} text-[15px] text-[#006f68]`}
           >
             {link.label}

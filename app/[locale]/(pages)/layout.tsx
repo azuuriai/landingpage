@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ScrollToTop } from "@/app/_components/scroll-to-top";
 import { PageBackdrop, SiteFooter, SkipLink } from "@/app/_components/site-chrome";
 import { SiteHeader } from "@/app/_components/site-header";
 import { detailPage, getContent } from "@/app/content";
@@ -43,6 +44,7 @@ export default async function PagesLayout({
 
   return (
     <>
+      <ScrollToTop />
       <SkipLink target="content" label={ui.skipToContent} />
       <main id="content" className="min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
         <PageBackdrop />

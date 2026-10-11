@@ -26,7 +26,9 @@ export const ASSISTANT_CONTACT_HREF = {
 // id. A card without an entry here gets no Offer.
 export type OfferPrice =
   | { price: number; perMonth?: boolean }
-  | { minPrice: number; perMonth?: boolean };
+  | { minPrice: number; perMonth?: boolean }
+  // A start fee plus a monthly rate over a fixed number of months.
+  | { startFee: number; perMonthPrice: number; months: number };
 
 export const LAUNCH_PRICES: Record<string, OfferPrice> = {
   check: { price: 290 },
@@ -44,7 +46,8 @@ export const ASSISTANT_PRICES: Record<string, OfferPrice> = {
 
 export const STUDIO_PRICES: Record<string, OfferPrice> = {
   individuell: { price: 2900 },
-  aktuell: { price: 149, perMonth: true },
+  // "149 € im Monat · 12 Monate · plus 1.490 € zum Start", as on the card.
+  aktuell: { startFee: 1490, perMonthPrice: 149, months: 12 },
 };
 
 // The proof on /launch: Lukas' own platform and its iOS app, both live.
@@ -81,6 +84,25 @@ export function offerJsonLd(
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
   };
+  if ("startFee" in price) {
+    return {
+      ...base,
+      priceSpecification: {
+        "@type": "CompoundPriceSpecification",
+        priceCurrency: "EUR",
+        priceComponent: [
+          { "@type": "UnitPriceSpecification", price: price.startFee, priceCurrency: "EUR" },
+          {
+            "@type": "UnitPriceSpecification",
+            price: price.perMonthPrice,
+            priceCurrency: "EUR",
+            unitCode: "MON",
+            billingDuration: price.months,
+          },
+        ],
+      },
+    };
+  }
   if ("minPrice" in price) {
     return {
       ...base,

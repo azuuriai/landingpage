@@ -22,7 +22,7 @@ const TOPICS: Record<string, ContactTopic> = {
 };
 
 function topicFrom(value: string | null): ContactTopic | undefined {
-  return value ? TOPICS[value] : undefined;
+  return value && Object.hasOwn(TOPICS, value) ? TOPICS[value] : undefined;
 }
 
 type Props = { copy: ContactFormCopy; privacyLabel: string };

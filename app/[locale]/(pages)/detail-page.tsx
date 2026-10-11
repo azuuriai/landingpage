@@ -56,12 +56,15 @@ function detailJsonLd(page: DetailPageData, locale: Locale, content: Content) {
       "@id": `${url}#festpreise`,
       name: content.fixedPrices.title,
       url: `${url}#festpreise`,
-      itemListElement: content.fixedPrices.cards.map((card) => ({
-        "@type": "Offer",
-        name: card.name,
-        url: absoluteUrl(localizedPaths(card.path)[locale]),
-        itemOffered: { "@id": `${absoluteUrl(localizedPaths(card.path)[locale])}#service` },
-      })),
+      itemListElement: content.fixedPrices.cards.map((card) => {
+        const cardUrl = absoluteUrl(localizedPaths(card.path)[locale]);
+        return {
+          "@type": "Offer",
+          name: card.name,
+          url: cardUrl,
+          itemOffered: { "@type": "Service", name: card.name, url: cardUrl },
+        };
+      }),
     });
   }
 

@@ -127,9 +127,9 @@ Upwork-Profil.
   „Launch inklusive“ stehen in `app/content/<sprache>/services.ts`. Die Formen
   stehen als Sprunglinks im Hero.
 - `app/studios-data.ts` – Struktur des Studio-Angebots `/studios` (Pfad,
-  Aufnahmen, Kontaktlink mit `?thema=studio`); die Texte, die zwei Modelle und
-  der Verweis unter „Websites“ auf der Leistungen-Seite stehen in
-  `app/content/<sprache>/studios.ts`. Das Kontaktformular stellt mit
+  Aufnahmen, Kontaktlink mit `?thema=studio`); die Texte und die zwei Modelle
+  stehen in `app/content/<sprache>/studios.ts`. Von der Leistungen-Seite
+  führt die erste Karte des Blocks „Festpreise“ dorthin. Das Kontaktformular stellt mit
   `?thema=studio`, `?thema=launch` oder `?thema=assistent` Fragen zum
   jeweiligen Angebot (`contactForm.studio|launch|assistant`).
 - `app/offers-data.ts` – Struktur der beiden anderen Angebotsseiten `/launch`
