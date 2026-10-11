@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Launch Check · Vorbereitung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block" rel="stylesheet">
+<style>
+  /* Source of Launch-Check-Vorbereitung.pdf. The SQL in the appendix is
+     launch-check-struktur.sql (tested against a Supabase-like schema);
+     change both together. Print: Chrome headless, A4, no margins. */
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --paper: #f2f2f0;
+    --ink: #181811;
+    --body: #3a3a33;
+    --muted: #5f5f56;
+    --quiet: #6c6c61;
+    --line: #deded8;
+    --hair: rgba(24, 24, 17, 0.1);
+    --teal: #006f68;
+    --accent: #00b8ad;
+    --flow: linear-gradient(90deg, #006f68 0%, #00b8ad 100%);
+    --warn: #893d31;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: Inter, Arial, sans-serif;
+    font-size: 9.4pt;
+    line-height: 1.55;
+    color: var(--body);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    padding: 15mm 18mm 0;
+    overflow: hidden;
+    page-break-after: always;
+    background:
+      radial-gradient(circle at 12% -6%, rgba(255, 255, 255, 0.9), transparent 48%),
+      var(--paper);
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Running head: logo left, document name right, on a hairline. */
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 3.2mm;
+    border-bottom: 1px solid var(--hair);
+  }
+  .logo { display: inline-flex; align-items: center; gap: 2.6mm; }
+  .logo img { width: 9.2mm; height: 9.2mm; }
+  .wordmark {
+    position: relative;
+    padding-bottom: 1.6mm;
+    font-size: 12.5pt;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .wordmark span { color: var(--teal); }
+  .wordmark::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    border-radius: 1px;
+    background: rgba(0, 184, 173, 0.55);
+  }
+  .head-label, .eyebrow, .label {
+    font-size: 6.9pt;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+  }
+  .head-label { color: var(--muted); }
+
+  .foot {
+    position: absolute;
+    left: 18mm; right: 18mm; bottom: 10mm;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3mm;
+    border-top: 1px solid var(--hair);
+    font-size: 7.4pt;
+    color: var(--quiet);
+  }
+
+  .eyebrow { color: var(--teal); }
+  .label { color: var(--muted); }
+
+  h1 {
+    margin-top: 3.5mm;
+    font-size: 31pt;
+    font-weight: 600;
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h2 {
+    font-size: 17pt;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+  }
+  h3 {
+    font-size: 10.6pt;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  p + p { margin-top: 2.2mm; }
+  strong { font-weight: 600; color: var(--ink); }
+
+  .lead {
+    margin-top: 6mm;
+    max-width: 128mm;
+    font-size: 11.6pt;
+    line-height: 1.5;
+    color: var(--body);
+    text-wrap: pretty;
+  }
+
+  /* The teal line of the site's hover system, drawn once under a heading. */
+  .flow { display: block; width: 16mm; height: 2px; margin: 3mm 0 0; border-radius: 2px; background: var(--flow); }
+
+  .meta-row {
+    display: flex;
+    gap: 9mm;
+    margin-top: 8mm;
+    padding: 4mm 0;
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .meta-row div { display: flex; flex-direction: column; gap: 1mm; }
+  .meta-row b { font-size: 11pt; font-weight: 600; letter-spacing: -0.015em; color: var(--ink); }
+
+  .section-title { margin-top: 8.5mm; display: flex; align-items: baseline; justify-content: space-between; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.6mm; margin-top: 4.5mm; }
+  .card {
+    padding: 4.6mm 4.6mm 5mm;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .card .num {
+    display: block;
+    font-size: 20pt;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--teal);
+  }
+  .card h3 { margin-top: 3.4mm; }
+  .card p { margin-top: 1.6mm; font-size: 8.7pt; line-height: 1.5; }
+
+  .never {
+    margin-top: 5mm;
+    padding: 5mm 5.4mm;
+    border: 1px solid rgba(137, 61, 49, 0.22);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.55);
+  }
+  .never .label { color: var(--warn); }
+  .never ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6mm 8mm;
+    margin-top: 3mm;
+  }
+  .never li { position: relative; padding-left: 5mm; font-size: 8.9pt; color: var(--ink); }
+  .never li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.55em;
+    width: 2.6mm; height: 1.4px;
+    background: var(--warn);
+    transform: rotate(45deg);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  .never li::after {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.55em;
+    width: 2.6mm; height: 1.4px;
+    background: var(--warn);
+    transform: rotate(-45deg);
+  }
+  .never .ok {
+    margin-top: 4mm;
+    padding-top: 3.4mm;
+    border-top: 1px solid var(--line);
+    font-size: 8.6pt;
+    color: var(--muted);
+  }
+
+  /* Steps */
+  .step { margin-top: 8.5mm; }
+  .step:first-of-type { margin-top: 9mm; }
+  .step-head { display: grid; grid-template-columns: 15mm 1fr; align-items: start; }
+  .step-num {
+    font-size: 26pt;
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    color: var(--teal);
+  }
+  .step-body { min-width: 0; }
+  .step-body > p { margin-top: 2.6mm; max-width: 140mm; }
+
+  ol.do { list-style: none; counter-reset: do; margin-top: 4mm; border-top: 1px solid var(--hair); }
+  ol.do li {
+    counter-increment: do;
+    position: relative;
+    padding: 2.5mm 0 2.5mm 9mm;
+    border-bottom: 1px solid var(--hair);
+  }
+  ol.do li::before {
+    content: counter(do);
+    position: absolute;
+    left: 0; top: 2.5mm;
+    width: 5.4mm; height: 5.4mm;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 111, 104, 0.35);
+    color: var(--teal);
+    font-size: 7.4pt;
+    font-weight: 600;
+    line-height: 5.2mm;
+    text-align: center;
+  }
+  .ui {
+    display: inline-block;
+    padding: 0 1.6mm;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: #fff;
+    font-size: 8.4pt;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  code {
+    font-family: Inter, Arial, sans-serif;
+    font-variant-ligatures: none;
+    font-size: 8.5pt;
+    font-weight: 500;
+    color: var(--teal);
+  }
+
+  .variants { display: grid; grid-template-columns: 1fr 1fr; gap: 3.6mm; margin-top: 4mm; }
+  .variant {
+    padding: 4mm 4.4mm;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .variant h3 { font-size: 9.8pt; }
+  .variant p { margin-top: 1.4mm; font-size: 8.7pt; }
+  .variant .label { display: block; margin-bottom: 2mm; }
+
+  .note {
+    margin-top: 4mm;
+    padding: 3.4mm 4.4mm 3.6mm;
+    border-left: 2px solid var(--accent);
+    background: rgba(0, 184, 173, 0.07);
+    border-radius: 0 6px 6px 0;
+    font-size: 8.7pt;
+    color: var(--body);
+  }
+  .note strong { color: var(--teal); }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; }
+
+  /* Send */
+  .send {
+    margin-top: 9mm;
+    padding: 6mm 6.4mm 6.4mm;
+    border-radius: 10px;
+    background: var(--ink);
+    color: #d9d9d2;
+  }
+  .send h2 { color: #fff; }
+  .send .eyebrow { color: var(--accent); }
+  .send-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 8mm; margin-top: 5mm; }
+  .check { list-style: none; }
+  .check li {
+    position: relative;
+    padding: 1.9mm 0 1.9mm 7mm;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 8.9pt;
+    color: #ecece6;
+  }
+  .check li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 2.35mm;
+    width: 3.4mm; height: 3.4mm;
+    border: 1.2px solid rgba(0, 184, 173, 0.75);
+    border-radius: 3px;
+  }
+  .check li span { display: block; font-size: 7.8pt; color: #a4a49b; }
+  .then p { font-size: 8.8pt; }
+  .then .mail {
+    display: inline-block;
+    margin-top: 3mm;
+    padding: 2mm 4mm;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #0b1f1d;
+    font-size: 9.4pt;
+    font-weight: 600;
+  }
+  .timeline { list-style: none; margin-top: 4.5mm; }
+  .timeline li { display: grid; grid-template-columns: 22mm 1fr; gap: 2mm; padding: 1.3mm 0; font-size: 8.5pt; color: #ecece6; }
+  .timeline b { font-weight: 600; color: var(--accent); }
+
+  .byline { display: flex; align-items: center; gap: 4mm; margin-top: 8mm; }
+  .byline img { width: 13mm; height: 13mm; border-radius: 50%; box-shadow: 0 0 0 1px rgba(24, 24, 17, 0.08); }
+  .byline b { display: block; font-size: 10pt; font-weight: 600; color: var(--ink); }
+  .byline span { font-size: 8.6pt; color: var(--quiet); }
+
+  /* Appendix: the query */
+  .code {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm;
+    margin-top: 5mm;
+    padding: 5.4mm 6mm;
+    border-radius: 10px;
+    background: var(--ink);
+  }
+  pre {
+    color: #e9e9e3;
+    font-family: Inter, Arial, sans-serif;
+    font-variant-ligatures: none;
+    font-variant-numeric: tabular-nums;
+    font-size: 6.85pt;
+    line-height: 1.46;
+    white-space: pre-wrap;
+    tab-size: 2;
+  }
+  pre .c { color: var(--accent); }
+  pre .k { color: #ffffff; font-weight: 600; }
+  pre .s { color: #b7e7e2; }
+
+  .legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.4mm 4mm; margin-top: 5mm; }
+  .legend div { padding-top: 2mm; border-top: 1px solid var(--hair); font-size: 7.9pt; line-height: 1.45; }
+  .legend b { display: block; font-size: 8pt; font-weight: 600; color: var(--teal); }
+</style>
+</head>
+<body>
+
+<!-- 1 · Overview -->
+<section class="page">
+  <header class="head">
+    <span class="logo"><img src="../../public/logo-mark.svg" alt=""><span class="wordmark">Lukas <span>Kaffer</span></span></span>
+    <span class="head-label">Launch Check · Vorbereitung</span>
+  </header>
+
+  <div style="margin-top: 15mm">
+    <p class="eyebrow">Launch Check · Für Gründer mit fast fertigen Apps</p>
+    <h1>Was ich von dir brauche.<br>Und was nicht.</h1>
+    <p class="lead">Für den Launch Check brauche ich keinen Zugang zu deinem Live-System. Du schickst mir deinen Code und die Struktur deiner Datenbank, ohne einen einzigen Datensatz. Die Daten deiner Nutzer bleiben, wo sie sind.</p>
+  </div>
+
+  <div class="meta-row">
+    <div><span class="label">Zeitaufwand</span><b>etwa 15 Minuten</b></div>
+    <div><span class="label">Installieren</span><b>nichts</b></div>
+    <div><span class="label">Bericht</span><b>in zwei Werktagen</b></div>
+    <div><span class="label">Festpreis</span><b>290 €</b></div>
+  </div>
+
+  <div class="section-title">
+    <h2>Das schickst du mir</h2>
+    <span class="label">Drei Teile</span>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <span class="num">01</span>
+      <h3>Dein Code</h3>
+      <p>Als Einladung in dein Repository oder als ZIP-Datei. Seite 2.</p>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <h3>Die Datenbankstruktur</h3>
+      <p>Regeln, Rechte und Funktionen, ohne Inhalte. Für Supabase eine Abfrage, für Firebase drei Textdateien. Seite 2 und 3.</p>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <h3>Deine Dienste</h3>
+      <p>Eine kurze Liste, woran deine App hängt: Zahlungen, E-Mail, KI. Nur Namen. Seite 3.</p>
+    </div>
+  </div>
+
+  <div class="never">
+    <span class="label">Das schickst du nie, auch nicht auf Nachfrage</span>
+    <ul>
+      <li>Passwörter, auch nicht für mich angelegte</li>
+      <li>Supabase <code>service_role</code> oder <code>secret</code> Key</li>
+      <li>Datenbank-Passwort und Verbindungs-URL</li>
+      <li><code>.env</code>-Dateien</li>
+      <li>Firebase-Service-Account (JSON mit <code>private_key</code>)</li>
+      <li>Geheime Schlüssel von Stripe &amp; Co. (<code>sk_live_…</code>)</li>
+      <li>Exporte mit Nutzerdaten, auch keine „nur kurz“</li>
+      <li>Screenshots von Tabellen mit echten Einträgen</li>
+    </ul>
+    <p class="ok"><strong>Öffentliche Schlüssel sind kein Problem:</strong> der Supabase <code>anon</code> oder <code>publishable</code> Key und die Firebase-Konfiguration mit <code>apiKey</code> stehen ohnehin in deiner App. Ob sie richtig abgesichert sind, ist genau das, was ich prüfe.</p>
+  </div>
+
+  <footer class="foot"><span>lukaskaffer.com · hello@lukaskaffer.com</span><span>1 / 4</span></footer>
+</section>
+
+<!-- 2 · Code + Supabase -->
+<section class="page">
+  <header class="head">
+    <span class="logo"><img src="../../public/logo-mark.svg" alt=""><span class="wordmark">Lukas <span>Kaffer</span></span></span>
+    <span class="head-label">Launch Check · Vorbereitung</span>
+  </header>
+
+  <div class="step">
+    <div class="step-head">
+      <span class="step-num">01</span>
+      <div class="step-body">
+        <h2>Dein Code</h2>
+        <i class="flow"></i>
+        <p>Am einfachsten über GitHub. Lovable und Bolt können dein Projekt mit GitHub verbinden oder als ZIP exportieren; mit Cursor oder Claude Code liegt es meist schon dort.</p>
+        <div class="variants">
+          <div class="variant">
+            <span class="label">Repository einer Organisation</span>
+            <h3>Einladung mit Rolle <span class="ui">Read</span></h3>
+            <p>Im Repository unter <span class="ui">Settings</span>&nbsp;→ <span class="ui">Collaborators and teams</span> mich mit der Rolle Read hinzufügen. Ich kann dann lesen, aber nichts ändern.</p>
+          </div>
+          <div class="variant">
+            <span class="label">Persönliches Repository</span>
+            <h3>Lieber als ZIP-Datei</h3>
+            <p>Bei persönlichen Repositories gibt GitHub Eingeladenen immer auch Schreibrecht. Schick mir deshalb besser das ZIP: grüner Knopf <span class="ui">Code</span>&nbsp;→ <span class="ui">Download ZIP</span>.</p>
+          </div>
+        </div>
+        <div class="note"><strong>Schlüssel im Code?</strong> Wenn du weißt, dass welche drinstehen, sag es mir vorab. Finde ich trotzdem welche, ist das der erste Punkt im Bericht, und du solltest sie danach austauschen. Nach unserem Gespräch lösche ich deinen Code und alle Exporte.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <span class="step-num">02</span>
+      <div class="step-body">
+        <p class="eyebrow">Wenn deine App Supabase nutzt</p>
+        <h2 style="margin-top: 1.6mm">Eine Abfrage, ein Export</h2>
+        <i class="flow"></i>
+        <p>Die Abfrage liest nur die Systemtabellen deiner Datenbank: welche Regeln gelten, wer was darf, welche Buckets öffentlich sind. Keine Zeile aus deinen eigenen Tabellen. Du findest sie auf Seite 4 und als Datei <code>launch-check-struktur.sql</code> im Anhang meiner Mail.</p>
+        <ol class="do">
+          <li>Im Supabase-Dashboard dein Projekt öffnen, links <span class="ui">SQL Editor</span>.</li>
+          <li>Eine neue Abfrage anlegen, den Inhalt von <code>launch-check-struktur.sql</code> einfügen und auf <span class="ui">Run</span> klicken.</li>
+          <li>Das Ergebnis als CSV exportieren. Es hat drei Spalten: <code>bereich</code>, <code>objekt</code>, <code>details</code>.</li>
+          <li>Unter <span class="ui">Edge Functions</span>&nbsp;→ <span class="ui">Secrets</span> die <strong>Namen</strong> der Secrets abschreiben, nicht die Werte.</li>
+          <li>Unter <span class="ui">Authentication</span>&nbsp;→ <span class="ui">URL Configuration</span> einen Screenshot von Site URL und Redirect URLs machen.</li>
+        </ol>
+        <div class="note"><strong>Warum nicht <code>supabase db dump</code>?</strong> Der Export über die Kommandozeile braucht Docker und lässt die Schemas <code>auth</code> und <code>storage</code> weg, also genau die Regeln für deine Dateien. Arbeitest du ohnehin mit der CLI, schick die <code>schema.sql</code> gern dazu. Die Abfrage ersetzt sie nicht.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot"><span>lukaskaffer.com · hello@lukaskaffer.com</span><span>2 / 4</span></footer>
+</section>
+
+<!-- 3 · Firebase + services + send -->
+<section class="page">
+  <header class="head">
+    <span class="logo"><img src="../../public/logo-mark.svg" alt=""><span class="wordmark">Lukas <span>Kaffer</span></span></span>
+    <span class="head-label">Launch Check · Vorbereitung</span>
+  </header>
+
+  <div class="step">
+    <div class="step-head">
+      <span class="step-num">02</span>
+      <div class="step-body">
+        <p class="eyebrow">Wenn deine App Firebase nutzt</p>
+        <h2 style="margin-top: 1.6mm">Drei Regeln, zwei Screenshots</h2>
+        <i class="flow"></i>
+        <p>Bei Firebase steckt die Sicherheit in den Regeln. Kopier sie aus der Konsole, auch wenn Dateien dazu in deinem Code liegen: In der Konsole steht, was gerade wirklich gilt.</p>
+        <ol class="do">
+          <li><span class="ui">Firestore Database</span> → Tab <span class="ui">Regeln</span>: den Text in eine Datei <code>firestore.rules</code> kopieren.</li>
+          <li><span class="ui">Storage</span> → Tab <span class="ui">Regeln</span>: in <code>storage.rules</code>.</li>
+          <li>Nur falls genutzt: <span class="ui">Realtime Database</span>&nbsp;→ <span class="ui">Regeln</span>: in <code>database.rules.json</code>.</li>
+          <li><span class="ui">Authentication</span>: je ein Screenshot der aktiven Anmeldemethoden und der autorisierten Domains unter <span class="ui">Einstellungen</span>.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-head">
+      <span class="step-num">03</span>
+      <div class="step-body">
+        <h2>Deine Dienste</h2>
+        <i class="flow"></i>
+        <p>Eine kurze Liste, gern direkt in die Mail: welche Dienste an deiner App hängen und ob sie im Test- oder im Live-Modus laufen. Zum Beispiel <strong>Stripe</strong> (live), <strong>Resend</strong>, <strong>OpenAI</strong>, <strong>RevenueCat</strong>. Nur die Namen, keine Schlüssel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="send">
+    <p class="eyebrow">Fertig</p>
+    <h2 style="margin-top: 1.6mm">Alles in eine Mail</h2>
+    <div class="send-grid">
+      <ul class="check">
+        <li>Code<span>Einladung mit Read oder ZIP-Datei</span></li>
+        <li>Datenbankstruktur<span>Supabase: CSV, Secret-Namen, Screenshot · Firebase: Regeln, zwei Screenshots</span></li>
+        <li>Liste deiner Dienste<span>Namen und Test- oder Live-Modus</span></li>
+        <li>Die Antworten aus dem Aufnahmebogen<span>falls noch nicht geschickt</span></li>
+      </ul>
+      <div class="then">
+        <p>Fehlt etwas oder hakt ein Schritt, schreib mir einfach. Ich sage dir, was ich stattdessen brauche.</p>
+        <span class="mail">hello@lukaskaffer.com</span>
+        <ul class="timeline">
+          <li><b>Tag 0</b>Deine Mail ist da</li>
+          <li><b>+ 2 Werktage</b>Bericht in klarer Sprache</li>
+          <li><b>danach</b>Gespräch, 20 Minuten</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="byline">
+    <img src="../../public/mail/lukas-kaffer.png" alt="">
+    <div><b>Lukas Kaffer</b><span>Web- und iOS-Entwickler in Wien · lukaskaffer.com</span></div>
+  </div>
+
+  <footer class="foot"><span>lukaskaffer.com · hello@lukaskaffer.com</span><span>3 / 4</span></footer>
+</section>
+
+<!-- 4 · Appendix: the query -->
+<section class="page">
+  <header class="head">
+    <span class="logo"><img src="../../public/logo-mark.svg" alt=""><span class="wordmark">Lukas <span>Kaffer</span></span></span>
+    <span class="head-label">Launch Check · Vorbereitung</span>
+  </header>
+
+  <div style="margin-top: 7mm">
+    <p class="eyebrow">Anhang · Supabase</p>
+    <h2 style="margin-top: 1.6mm">Die Abfrage, Zeile für Zeile lesbar</h2>
+    <i class="flow"></i>
+    <p style="margin-top: 3mm; max-width: 150mm">Du musst sie nicht verstehen, aber du sollst sehen können, was sie tut. Sie liest nur, ändert nichts und fasst keine deiner Tabellen an. Zum Einfügen lieber die Datei nehmen als aus dem PDF kopieren.</p>
+  </div>
+
+  <div class="legend">
+    <div><b>tabelle</b>Ist RLS an oder aus?</div>
+    <div><b>regel</b>Jede Policy, auch für Storage</div>
+    <div><b>bucket</b>Öffentlich oder privat</div>
+    <div><b>recht</b>Was anon und authenticated dürfen</div>
+    <div><b>view</b>Umgeht sie die Regeln?</div>
+    <div><b>funktion</b>Eigene Funktionen und ihr Code</div>
+    <div><b>trigger</b>Was bei neuen Nutzern passiert</div>
+    <div><b>nie</b>Inhalte deiner Tabellen</div>
+  </div>
+
+  <div class="code"><pre><span class="c">-- Launch Check · Datenbankstruktur ohne Inhalte</span>
+<span class="c">-- Liest nur Systemtabellen: Regeln, Rechte, Buckets,</span>
+<span class="c">-- Funktionen und Trigger. Keine Zeile aus deinen</span>
+<span class="c">-- Tabellen, keine Daten deiner Nutzer.</span>
+
+<span class="k">select</span> <span class="s">&#x27;tabelle&#x27;</span> <span class="k">as</span> bereich,
+       schemaname || <span class="s">&#x27;.&#x27;</span> || tablename <span class="k">as</span> objekt,
+       <span class="k">case</span> <span class="k">when</span> rowsecurity <span class="k">then</span> <span class="s">&#x27;RLS an&#x27;</span>
+            <span class="k">else</span> <span class="s">&#x27;RLS AUS&#x27;</span> <span class="k">end</span> <span class="k">as</span> details
+<span class="k">from</span> pg_tables
+<span class="k">where</span> schemaname <span class="k">in</span> (<span class="s">&#x27;public&#x27;</span>, <span class="s">&#x27;storage&#x27;</span>)
+
+<span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;regel&#x27;</span>,
+       schemaname || <span class="s">&#x27;.&#x27;</span> || tablename
+         || <span class="s">&#x27; · &#x27;</span> || policyname,
+       cmd || <span class="s">&#x27; für &#x27;</span> || array_to_string(roles, <span class="s">&#x27;, &#x27;</span>)
+         || <span class="s">&#x27; · using: &#x27;</span> || coalesce(qual, <span class="s">&#x27;–&#x27;</span>)
+         || <span class="s">&#x27; · check: &#x27;</span> || coalesce(with_check, <span class="s">&#x27;–&#x27;</span>)
+<span class="k">from</span> pg_policies
+<span class="k">where</span> schemaname <span class="k">in</span> (<span class="s">&#x27;public&#x27;</span>, <span class="s">&#x27;storage&#x27;</span>)
+
+<span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;bucket&#x27;</span>,
+       name,
+       <span class="k">case</span> <span class="k">when</span> public <span class="k">then</span> <span class="s">&#x27;öffentlich&#x27;</span>
+            <span class="k">else</span> <span class="s">&#x27;privat&#x27;</span> <span class="k">end</span>
+<span class="k">from</span> storage.buckets
+
+<span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;recht&#x27;</span>,
+       table_schema || <span class="s">&#x27;.&#x27;</span> || table_name,
+       grantee || <span class="s">&#x27;: &#x27;</span> || string_agg(privilege_type, <span class="s">&#x27;, &#x27;</span>
+         <span class="k">order by</span> privilege_type)
+<span class="k">from</span> information_schema.role_table_grants
+<span class="k">where</span> grantee <span class="k">in</span> (<span class="s">&#x27;anon&#x27;</span>, <span class="s">&#x27;authenticated&#x27;</span>)
+  <span class="k">and</span> table_schema = <span class="s">&#x27;public&#x27;</span>
+<span class="k">group by</span> table_schema, table_name, grantee</pre><pre><span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;view&#x27;</span>,
+       n.nspname || <span class="s">&#x27;.&#x27;</span> || c.relname,
+       <span class="k">case</span> <span class="k">when</span> c.relkind = <span class="s">&#x27;m&#x27;</span> <span class="k">then</span> <span class="s">&#x27;materialized view&#x27;</span>
+            <span class="k">else</span> coalesce(array_to_string(c.reloptions, <span class="s">&#x27;, &#x27;</span>),
+                          <span class="s">&#x27;ohne security_invoker&#x27;</span>) <span class="k">end</span>
+<span class="k">from</span> pg_class c
+<span class="k">join</span> pg_namespace n <span class="k">on</span> n.oid = c.relnamespace
+<span class="k">where</span> n.nspname = <span class="s">&#x27;public&#x27;</span> <span class="k">and</span> c.relkind <span class="k">in</span> (<span class="s">&#x27;v&#x27;</span>, <span class="s">&#x27;m&#x27;</span>)
+
+<span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;funktion&#x27;</span>,
+       n.nspname || <span class="s">&#x27;.&#x27;</span> || p.proname,
+       <span class="k">case</span> <span class="k">when</span> p.prosecdef <span class="k">then</span> <span class="s">&#x27;SECURITY DEFINER&#x27;</span>
+            <span class="k">else</span> <span class="s">&#x27;SECURITY INVOKER&#x27;</span> <span class="k">end</span>
+         || chr(10) || pg_get_functiondef(p.oid)
+<span class="k">from</span> pg_proc p
+<span class="k">join</span> pg_namespace n <span class="k">on</span> n.oid = p.pronamespace
+<span class="k">where</span> n.nspname = <span class="s">&#x27;public&#x27;</span> <span class="k">and</span> p.prokind = <span class="s">&#x27;f&#x27;</span>
+  <span class="c">-- ohne Funktionen von Extensions wie pgvector</span>
+  <span class="k">and</span> <span class="k">not</span> <span class="k">exists</span> (
+    <span class="k">select</span> 1 <span class="k">from</span> pg_depend d
+    <span class="k">where</span> d.objid = p.oid <span class="k">and</span> d.deptype = <span class="s">&#x27;e&#x27;</span>)
+
+<span class="k">union all</span>
+<span class="k">select</span> <span class="s">&#x27;trigger&#x27;</span>,
+       n.nspname || <span class="s">&#x27;.&#x27;</span> || c.relname || <span class="s">&#x27; · &#x27;</span> || t.tgname,
+       pg_get_triggerdef(t.oid)
+<span class="k">from</span> pg_trigger t
+<span class="k">join</span> pg_class c <span class="k">on</span> c.oid = t.tgrelid
+<span class="k">join</span> pg_namespace n <span class="k">on</span> n.oid = c.relnamespace
+<span class="k">where</span> <span class="k">not</span> t.tgisinternal
+  <span class="k">and</span> n.nspname <span class="k">in</span> (<span class="s">&#x27;public&#x27;</span>, <span class="s">&#x27;auth&#x27;</span>)
+
+<span class="k">order by</span> 1, 2;</pre></div>
+
+  <footer class="foot"><span>lukaskaffer.com · hello@lukaskaffer.com</span><span>4 / 4</span></footer>
+</section>
+
+</body>
+</html>

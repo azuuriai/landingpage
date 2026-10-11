@@ -126,7 +126,7 @@ export const launchOffer: LaunchOfferCopy = {
     },
     {
       title: "Code and database structure",
-      body: "You invite me to your code with read access and send me an export of your database structure without any content; for Supabase and Firebase you get a short guide. Please don’t send any keys. If I still find some in the code, that is the first item in the report.",
+      body: "You invite me to your code with read access or send it as a ZIP, plus an export of your database structure without any content; for Supabase and Firebase you get a short guide. Please don’t send any keys. If I still find some in the code, that is the first item in the report.",
     },
     {
       title: "Report within two working days",

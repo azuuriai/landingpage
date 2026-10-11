@@ -131,7 +131,7 @@ export const launchOffer: LaunchOfferCopy = {
     },
     {
       title: "Code und Datenbankstruktur",
-      body: "Du lädst mich mit Leserecht in deinen Code ein und schickst mir einen Export deiner Datenbankstruktur ohne Inhalte; für Supabase und Firebase bekommst du dazu eine kurze Anleitung. Schlüssel bitte nicht mitschicken. Finde ich trotzdem welche im Code, ist das der erste Punkt im Bericht.",
+      body: "Du lädst mich mit Leserecht in deinen Code ein oder schickst ihn als ZIP, dazu einen Export deiner Datenbankstruktur ohne Inhalte; für Supabase und Firebase bekommst du von mir eine kurze Anleitung. Schlüssel bitte nicht mitschicken. Finde ich trotzdem welche im Code, ist das der erste Punkt im Bericht.",
     },
     {
       title: "Bericht in zwei Werktagen",
