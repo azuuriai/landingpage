@@ -3,8 +3,9 @@ import type { Locale } from "@/i18n/routing";
 // A language switch replaces the whole page: the locale is the top route
 // segment, so React mounts everything below it anew. What the visitor saw
 // before the click is handed over here, so the new page can carry on instead
-// of starting from scratch: no entrance animations, and the showcase resumes
-// the project and the spot in its recording where the old page left off.
+// of starting from scratch: no entrance animations, the showcase resumes
+// the project and the spot in its recording where the old page left off, and
+// the contact form keeps what the visitor has typed so far.
 // Module state, because it has to outlive the old page's components.
 
 // `time` in seconds; the frames are stills of both screens at that moment,
@@ -15,10 +16,13 @@ export type ShowcaseState = {
   frames: { desktop?: string; phone?: string };
 };
 
-type PendingSwitch = { locale: Locale; showcase?: ShowcaseState };
+export type ContactDraft = { name: string; email: string; message: string };
+
+type PendingSwitch = { locale: Locale; showcase?: ShowcaseState; contact?: ContactDraft };
 
 let pending: PendingSwitch | null = null;
 let readShowcase: (() => ShowcaseState) | null = null;
+let readContact: (() => ContactDraft | undefined) | null = null;
 let fallback: number | undefined;
 
 const STYLE_ID = "locale-switch";
@@ -41,9 +45,17 @@ export function registerShowcase(read: () => ShowcaseState) {
   };
 }
 
+// The contact form reports what has been typed into it.
+export function registerContactDraft(read: () => ContactDraft | undefined) {
+  readContact = read;
+  return () => {
+    if (readContact === read) readContact = null;
+  };
+}
+
 // Called on the click, while the old page is still mounted.
 export function beginLocaleSwitch(locale: Locale) {
-  pending = { locale, showcase: readShowcase?.() };
+  pending = { locale, showcase: readShowcase?.(), contact: readContact?.() };
 
   // React resets the attributes of <html> when the page is replaced, but
   // leaves added elements in <head> alone, so the rule goes there.

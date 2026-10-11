@@ -1,12 +1,14 @@
 "use client";
 
-import { Suspense, useState, type FormEvent } from "react";
+import { Suspense, useEffect, useRef, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { ContactFormCopy } from "../content/types";
 import { CONTACT_EMAIL } from "../site";
 import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
+import { pendingLocaleSwitch, registerContactDraft } from "./locale-switch";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
@@ -51,6 +53,24 @@ export function ContactForm({
   const topicCopy = topic ? copy[topic] : undefined;
   const t = { ...copy, ...topicCopy };
   const [status, setStatus] = useState<FormStatus>("idle");
+
+  // A language switch replaces the page; what was typed carries over.
+  const locale = useLocale();
+  const [draft] = useState(() => pendingLocaleSwitch(locale)?.contact);
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(
+    () =>
+      registerContactDraft(() => {
+        if (!formRef.current) return undefined;
+        const fd = new FormData(formRef.current);
+        return {
+          name: String(fd.get("name") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          message: String(fd.get("message") ?? ""),
+        };
+      }),
+    [],
+  );
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -135,7 +155,7 @@ export function ContactForm({
     "mt-2 w-full rounded-[8px] border border-[#d5d5cf] bg-white/70 px-3.5 py-2.5 text-[14px] leading-6 text-[#181811] outline-none transition placeholder:text-[#6c6c61] focus:border-[#006f68] focus:bg-white focus:ring-2 focus:ring-[#006f68]/25";
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form ref={formRef} onSubmit={handleSubmit}>
       {/* Honeypot – visually hidden, skipped by keyboard and screen readers. */}
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
@@ -152,6 +172,7 @@ export function ContactForm({
             name="name"
             required
             autoComplete="name"
+            defaultValue={draft?.name}
             placeholder={t.namePlaceholder}
             className={fieldClass}
           />
@@ -163,6 +184,7 @@ export function ContactForm({
             name="email"
             required
             autoComplete="email"
+            defaultValue={draft?.email}
             placeholder={t.emailPlaceholder}
             className={fieldClass}
           />
@@ -181,6 +203,7 @@ export function ContactForm({
           required
           minLength={10}
           rows={5}
+          defaultValue={draft?.message}
           placeholder={t.messagePlaceholder}
           className={`${fieldClass} resize-none`}
         />

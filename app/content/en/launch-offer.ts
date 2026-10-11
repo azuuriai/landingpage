@@ -12,7 +12,7 @@ export const launchOffer: LaunchOfferCopy = {
       "You built something real, maybe with Lovable, Bolt, Cursor or Claude Code. It works on your screen. Before real users and real payments go through it, I look under the hood: first a fixed-price check, then, if you want, the fixes, the App Store launch or ongoing support while you keep building.",
     metaTitle: "Launch Check, Launch Sprint and App Store Launch at fixed prices",
     metaDescription:
-      "Fixed prices for founders with almost-finished or AI-built apps: Launch Check €290, Launch Sprint from €1,200, App Store Launch €450, Build Partner €590 per month. Report within two working days, read-only access.",
+      "Fixed prices for founders with almost-finished or AI-built apps: Launch Check €290, Launch Sprint from €1,200, App Store Launch €450, Build Partner €590 per month. Report within two working days, no access to your live system.",
     breadcrumb: "Launch at fixed prices",
   },
   cta: "Request a Launch Check",
@@ -59,7 +59,7 @@ export const launchOffer: LaunchOfferCopy = {
         "An experienced second pair of eyes before you go live. Not a penetration test and not a security certificate.",
       includes: [
         "I check sign-in, database rules, keys, payments and the way to production; for iOS apps also signing and the points Apple rejects most often",
-        "Read-only access: I see code and settings, no passwords and none of your users’ data",
+        "No access to your live system: I work from your code and an export of your database structure without any content, so I never see your users’ data",
         "Within two working days a report in plain language: what is critical, what can wait, what is fine",
         "A fixed price for each fix, so you decide item by item",
         "A 20-minute call to go through the report",
@@ -125,8 +125,8 @@ export const launchOffer: LaunchOfferCopy = {
       body: "Seven short questions by e-mail: what the app does, what it was built with, which services it depends on, whether real users are on it yet, and where it is stuck.",
     },
     {
-      title: "Read-only access",
-      body: "You invite me to your code with read access and give me a read-only role in Supabase or Firebase. No passwords over chat, none of your users’ data.",
+      title: "Code and database structure",
+      body: "You invite me to your code with read access and send me an export of your database structure without any content; for Supabase and Firebase you get a short guide. Please don’t send any keys. If I still find some in the code, that is the first item in the report.",
     },
     {
       title: "Report within two working days",

@@ -257,7 +257,7 @@ function SlotBlock({ slot, base, dim, lane, count }: { slot: Slot; base: string;
   );
   const className = "di-card absolute overflow-hidden rounded-[8px] border border-transparent py-1.5 pl-4 pr-2 transition-opacity";
   return slot.href ? (
-    <Link href={`${base}/${slot.href}`} className={className} style={style} aria-label={`${slot.title}, ${dayNames[slot.day]} ${slot.time}: Termine und Anmeldung`}>
+    <Link href={slotHref(slot, base)} className={className} style={style} aria-label={`${slot.title}, ${dayNames[slot.day]} ${slot.time}: Termine und Anmeldung`}>
       {body}
       <ArrowUpRight size={14} aria-hidden="true" className="absolute right-1.5 top-1.5 text-[#1e1d1c]/60" />
     </Link>
@@ -266,6 +266,11 @@ function SlotBlock({ slot, base, dim, lane, count }: { slot: Slot; base: string;
       {body}
     </div>
   );
+}
+
+// The course page opens with the clicked date selected.
+function slotHref(slot: Slot, base: string) {
+  return `${base}/${slot.href}${slot.date ? `?termin=${slot.date}` : ""}`;
 }
 
 function SlotRow({ slot, base }: { slot: Slot; base: string }) {
@@ -284,7 +289,7 @@ function SlotRow({ slot, base }: { slot: Slot; base: string }) {
     </span>
   );
   return slot.href ? (
-    <Link href={`${base}/${slot.href}`} className="di-card block rounded-[12px] border border-transparent">
+    <Link href={slotHref(slot, base)} className="di-card block rounded-[12px] border border-transparent">
       {inner}
     </Link>
   ) : (

@@ -25,10 +25,7 @@ export function HomeSpread({ locale }: { locale: Locale }) {
   return (
     <>
       <SkipLink target="home-content" label={ui.skipToContent} />
-      <main
-        id="home-content"
-        className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]"
-      >
+      <div className="relative min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
         <PageBackdrop />
 
         <div className="relative mx-auto flex min-h-svh w-full max-w-[1240px] flex-col px-6 pt-6 sm:px-8 lg:h-svh lg:px-10 lg:pt-[clamp(0.4rem,calc(4.2vh-18.4px),1.25rem)]">
@@ -54,7 +51,12 @@ export function HomeSpread({ locale }: { locale: Locale }) {
             </p>
           </header>
 
-          <div className="flex flex-1 flex-col lg:min-h-0 lg:justify-center lg:py-[clamp(0.5rem,calc(4.2vh-24px),1.5rem)]">
+          {/* The skip link lands here, past the running head. */}
+          <main
+            id="home-content"
+            tabIndex={-1}
+            className="flex flex-1 flex-col focus:outline-none lg:min-h-0 lg:justify-center lg:py-[clamp(0.5rem,calc(4.2vh-24px),1.5rem)]"
+          >
             <div className="flex flex-col gap-10 pb-12 pt-8 lg:grid lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:grid-rows-[auto_minmax(0,1fr)_auto] lg:gap-x-20 lg:gap-y-0 lg:py-0">
               <h1
                 className="rise max-w-[14ch] text-balance font-display text-[40px] font-semibold leading-[1.04] tracking-[-0.035em] text-[#181811] sm:text-[50px] lg:col-start-1 lg:row-start-1 lg:text-[clamp(34px,calc(4.2vh+8px),48px)]"
@@ -128,9 +130,9 @@ export function HomeSpread({ locale }: { locale: Locale }) {
                 </Link>
               </div>
             </div>
-          </div>
+          </main>
 
-          <footer className="flex items-center justify-between gap-4 border-t border-[#181811]/10 py-5 text-[13px] text-[#8a8a80] lg:py-[clamp(0.6rem,calc(4.2vh-18px),1.1rem)]">
+          <footer className="flex items-center justify-between gap-4 border-t border-[#181811]/10 py-5 text-[13px] text-[#6c6c61] lg:py-[clamp(0.6rem,calc(4.2vh-18px),1.1rem)]">
             <span>{ui.copyrightHome}</span>
             <div className="flex gap-5">
               <Link href="/impressum" className={QUIET_LINK}>
@@ -142,7 +144,7 @@ export function HomeSpread({ locale }: { locale: Locale }) {
             </div>
           </footer>
         </div>
-      </main>
+      </div>
     </>
   );
 }

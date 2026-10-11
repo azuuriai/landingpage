@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { LayoutGroup, motion } from "framer-motion";
 import { ArrowLeft, Check } from "lucide-react";
 import { course1 } from "./data";
@@ -10,8 +11,24 @@ import { DISPLAY, Heading, Page, Ring } from "./ui";
 
 // Course page with booking at the date: pick a date, say who comes, see
 // the price, send. Nothing is sent in the draft; the last step says so.
+// ?termin=mi (from the week plan) preselects that date. useSearchParams needs
+// a Suspense boundary on a static page; the fallback starts with the first.
 export function DanceItKurs({ base }: { base: string }) {
-  const [dateId, setDateId] = useState(course1.dates[0].id);
+  return (
+    <Suspense fallback={<Kurs base={base} />}>
+      <KursFromUrl base={base} />
+    </Suspense>
+  );
+}
+
+function KursFromUrl({ base }: { base: string }) {
+  const termin = useSearchParams().get("termin");
+  const date = course1.dates.find((item) => item.id === termin);
+  return <Kurs key={date?.id} base={base} initialDate={date?.id} />;
+}
+
+function Kurs({ base, initialDate = course1.dates[0].id }: { base: string; initialDate?: string }) {
+  const [dateId, setDateId] = useState(initialDate);
   const [who, setWho] = useState<"person" | "couple">("couple");
   const [legi, setLegi] = useState(false);
   const [sent, setSent] = useState(false);

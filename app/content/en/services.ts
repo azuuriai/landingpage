@@ -115,7 +115,7 @@ export const fixedPrices: FixedPricesCopy = {
       path: STUDIOS_PATH,
       name: "Websites for studios and class providers",
       price: "€2,900",
-      priceNote: "one-time, or €149 per month",
+      priceNote: "one-time, or as a monthly plan with upkeep",
       text: "Individually designed, with your booking system built in. Update it yourself or have me do it.",
       link: "See the studio offer",
     },

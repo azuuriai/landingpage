@@ -10,14 +10,18 @@ import { usePathname } from "@/i18n/navigation";
 // (visible on phones, where the hero is taller than the screen). Back and
 // forward keep the browser's own restored position; the language switch
 // keeps the internal pathname and therefore the position as well.
+// Back and forward within one page (an anchor like #angebot) change no
+// pathname, so they must not leave the flag set for the next real move.
 export function ScrollToTop() {
   const pathname = usePathname();
   const previous = useRef(pathname);
   const restoring = useRef(false);
+  const shownAt = useRef("");
 
   useEffect(() => {
+    shownAt.current = window.location.pathname;
     const onPopState = () => {
-      restoring.current = true;
+      restoring.current = window.location.pathname !== shownAt.current;
     };
     window.addEventListener("popstate", onPopState);
     return () => window.removeEventListener("popstate", onPopState);
@@ -26,6 +30,7 @@ export function ScrollToTop() {
   useEffect(() => {
     if (pathname === previous.current) return;
     previous.current = pathname;
+    shownAt.current = window.location.pathname;
     if (restoring.current) {
       restoring.current = false;
       return;

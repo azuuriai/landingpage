@@ -19,8 +19,10 @@ export type Slot = {
   title: string;
   teacher: string;
   group: Group;
-  // Only the adult course 1 has its own page in the draft.
+  // Only the adult course 1 has its own page in the draft; `date` is the
+  // matching entry in course1.dates, preselected on that page.
   href?: "kurse/paartanz";
+  date?: string;
   english?: boolean;
 };
 
@@ -41,18 +43,18 @@ export const dayNames: Record<Slot["day"], string> = {
 export const week: Slot[] = [
   { day: "Mo", time: "11:00", end: "11:45", title: "Eltern-Kind-Tanzen", teacher: "Antonina", group: "jugend", english: true },
   { day: "Mo", time: "18:15", end: "19:15", title: "Hip-Hop ab 13", teacher: "Antonina", group: "jugend", english: true },
-  { day: "Mo", time: "19:30", end: "20:45", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", english: true },
+  { day: "Mo", time: "19:30", end: "20:45", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", date: "mo", english: true },
   { day: "Mo", time: "20:45", end: "22:00", title: "Jive und Disco Fox", teacher: "Antonina", group: "paare", english: true },
   { day: "Di", time: "16:00", end: "16:45", title: "Eltern-Kind-Tanzen", teacher: "Antonina", group: "jugend", english: true },
   { day: "Di", time: "18:00", end: "19:00", title: "Jazz Funk ab 13", teacher: "Antonina", group: "jugend", english: true },
   { day: "Mi", time: "11:00", end: "11:50", title: "Everdance®", teacher: "Monika, mit Pro Senectute", group: "sechzig" },
   { day: "Mi", time: "18:00", end: "19:00", title: "Paartanz Jugendliche", teacher: "Antonina", group: "jugend", english: true },
-  { day: "Mi", time: "20:15", end: "21:30", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", english: true },
+  { day: "Mi", time: "20:15", end: "21:30", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", date: "mi", english: true },
   { day: "Do", time: "09:30", end: "10:30", title: "Zumba", teacher: "Antonina", group: "fitness", english: true },
   { day: "Do", time: "10:00", end: "10:50", title: "Tanzen im Sitzen", teacher: "Antonina", group: "sechzig", english: true },
   { day: "Do", time: "20:45", end: "22:00", title: "Paartanz für Frauen", teacher: "Anastasia", group: "paare" },
   { day: "Fr", time: "15:25", end: "16:25", title: "Paartanz 60 plus", teacher: "Monika", group: "sechzig" },
-  { day: "Fr", time: "19:15", end: "20:30", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", english: true },
+  { day: "Fr", time: "19:15", end: "20:30", title: "Paartanz Kurs 1", teacher: "Antonina", group: "paare", href: "kurse/paartanz", date: "fr", english: true },
   { day: "Fr", time: "19:15", end: "20:30", title: "Lindy Hop", teacher: "Monika", group: "paare" },
   { day: "Sa", time: "20:00", end: "23:00", title: "Tanzabend", teacher: "Monika und Team", group: "paare" },
 ];

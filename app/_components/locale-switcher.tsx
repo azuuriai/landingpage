@@ -1,8 +1,8 @@
 "use client";
 
-import { Fragment, useEffect } from "react";
+import { Fragment, Suspense, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
 import { getPathname, usePathname } from "@/i18n/navigation";
 import { isAppPathname, isGermanOnly, routing, type Locale } from "@/i18n/routing";
@@ -16,15 +16,29 @@ import { beginLocaleSwitch, finishLocaleSwitch } from "./locale-switch";
 // Switching keeps the scroll position and hands the page's state over to the
 // new language (see locale-switch.ts), so only the text appears to change.
 // The other language loads on intent (hover, touch, focus), not on every view.
-export function LocaleSwitcher({
-  label,
-  names,
-  className = "",
-}: {
+// The query string comes along (e.g. /contact?thema=studio keeps its topic).
+type Props = {
   label: string;
   names: Record<Locale, string>;
   className?: string;
-}) {
+};
+
+// useSearchParams needs a Suspense boundary on a static page; the fallback
+// links without the query, so the prerendered HTML always has both links.
+export function LocaleSwitcher(props: Props) {
+  return (
+    <Suspense fallback={<Switcher {...props} />}>
+      <SwitcherWithQuery {...props} />
+    </Suspense>
+  );
+}
+
+function SwitcherWithQuery(props: Props) {
+  const query = useSearchParams().toString();
+  return <Switcher {...props} query={query} />;
+}
+
+function Switcher({ label, names, className = "", query = "" }: Props & { query?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
   const href = isAppPathname(pathname) ? pathname : "/";
@@ -41,7 +55,7 @@ export function LocaleSwitcher({
       className={`flex items-center text-[11px] font-medium uppercase tracking-[0.12em] text-[#5f5f56] ${className}`}
     >
       {routing.locales.map((target, index) => {
-        const targetHref = getPathname({ href, locale: target });
+        const targetHref = getPathname({ href, locale: target }) + (query ? `?${query}` : "");
         const isCurrent = target === locale;
         const prefetch = () => {
           if (!isCurrent) router.prefetch(targetHref);

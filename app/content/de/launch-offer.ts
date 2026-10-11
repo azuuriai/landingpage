@@ -17,7 +17,7 @@ export const launchOffer: LaunchOfferCopy = {
       "Du hast etwas Echtes gebaut, vielleicht mit Lovable, Bolt, Cursor oder Claude Code. Auf deinem Bildschirm funktioniert es. Bevor echte Nutzer und echte Zahlungen durchlaufen, schaue ich unter die Haube: erst eine Prüfung zum Festpreis, danach, wenn du willst, die Behebung, der App-Store-Start oder eine laufende Begleitung.",
     metaTitle: "Launch Check, Launch Sprint und App-Store-Start zum Festpreis",
     metaDescription:
-      "Festpreise für Gründer mit fast fertigen oder KI-gebauten Apps: Launch Check 290 €, Launch Sprint ab 1.200 €, App-Store-Start 450 €, Baubegleitung 590 € im Monat. Bericht in zwei Werktagen, Zugang nur lesend.",
+      "Festpreise für Gründer mit fast fertigen oder KI-gebauten Apps: Launch Check 290 €, Launch Sprint ab 1.200 €, App-Store-Start 450 €, Baubegleitung 590 € im Monat. Bericht in zwei Werktagen, ohne Zugang zu deinem Live-System.",
     breadcrumb: "Launch zum Festpreis",
   },
   cta: "Launch Check anfragen",
@@ -64,7 +64,7 @@ export const launchOffer: LaunchOfferCopy = {
         "Eine erfahrene zweite Meinung, bevor du live gehst. Kein Penetrationstest und kein Sicherheitszertifikat.",
       includes: [
         "Ich prüfe Anmeldung, Datenbankregeln, Schlüssel, Zahlungen und den Weg online; bei iOS-Apps dazu Signierung und die Punkte, die Apple am häufigsten ablehnt",
-        "Zugang nur lesend: Ich sehe Code und Einstellungen, keine Passwörter und keine Daten deiner Nutzer",
+        "Kein Zugang zu deinem Live-System: Ich arbeite mit deinem Code und einem Export deiner Datenbankstruktur ohne Inhalte, die Daten deiner Nutzer sehe ich nicht",
         "Innerhalb von zwei Werktagen ein Bericht in klarer Sprache: Was ist kritisch, was kann warten, was ist in Ordnung",
         "Zu jeder Behebung ein Festpreis, damit du Punkt für Punkt entscheidest",
         "Ein Gespräch von 20 Minuten, in dem wir den Bericht durchgehen",
@@ -130,8 +130,8 @@ export const launchOffer: LaunchOfferCopy = {
       body: "Sieben kurze Fragen per Mail: Was macht die App, womit ist sie gebaut, welche Dienste hängen daran, gibt es schon echte Nutzer, und wo hakt es gerade.",
     },
     {
-      title: "Zugang nur lesend",
-      body: "Du lädst mich mit Leserecht in deinen Code ein und gibst mir bei Supabase oder Firebase eine Rolle mit Leserecht. Keine Passwörter per Chat, keine Daten deiner Nutzer.",
+      title: "Code und Datenbankstruktur",
+      body: "Du lädst mich mit Leserecht in deinen Code ein und schickst mir einen Export deiner Datenbankstruktur ohne Inhalte; für Supabase und Firebase bekommst du dazu eine kurze Anleitung. Schlüssel bitte nicht mitschicken. Finde ich trotzdem welche im Code, ist das der erste Punkt im Bericht.",
     },
     {
       title: "Bericht in zwei Werktagen",

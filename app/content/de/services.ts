@@ -117,7 +117,7 @@ export const fixedPrices: FixedPricesCopy = {
       path: STUDIOS_PATH,
       name: "Websites für Studios und Kursanbieter",
       price: "2.900 €",
-      priceNote: "einmalig, oder 149 € im Monat",
+      priceNote: "einmalig, oder als Monatspaket mit Pflege",
       text: "Individuell gestaltet, mit deinem Buchungssystem eingebunden. Selbst pflegen oder pflegen lassen.",
       link: "Zum Studio-Angebot",
     },

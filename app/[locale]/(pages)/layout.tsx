@@ -46,7 +46,7 @@ export default async function PagesLayout({
     <>
       <ScrollToTop />
       <SkipLink target="content" label={ui.skipToContent} />
-      <main id="content" className="min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
+      <div className="min-h-svh overflow-x-hidden bg-[#f2f2f0] text-[#181811]">
         <PageBackdrop />
         <div className="relative z-10">
           <SiteHeader
@@ -56,16 +56,19 @@ export default async function PagesLayout({
             languageLabel={ui.languageSwitch}
             languageNames={ui.languageNames}
           />
-          <SubpageHero
-            pages={heroPages}
-            backLabel={ui.backHome}
-            services={serviceIndex}
-            servicesLabel={ui.serviceIndexLabel}
-          />
-          {children}
+          {/* The skip link lands here, past logo and navigation. */}
+          <main id="content" tabIndex={-1} className="focus:outline-none">
+            <SubpageHero
+              pages={heroPages}
+              backLabel={ui.backHome}
+              services={serviceIndex}
+              servicesLabel={ui.serviceIndexLabel}
+            />
+            {children}
+          </main>
           <SiteFooter copyright={ui.copyright} imprint={ui.imprint} privacy={ui.privacy} />
         </div>
-      </main>
+      </div>
     </>
   );
 }
