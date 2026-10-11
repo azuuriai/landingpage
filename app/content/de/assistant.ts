@@ -99,6 +99,7 @@ export const assistant: AssistantCopy = {
     name: "Betreuung",
     price: "149 €",
     priceNote: "im Monat",
+    priceExtra: "monatlich kündbar, zum Monatsende",
     tagline: "Der Assistent läuft weiter, auch wenn sich deine Werkzeuge ändern.",
     includes: [
       "Ich halte den Assistenten am Laufen und reagiere, wenn etwas hakt",

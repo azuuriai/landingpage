@@ -49,7 +49,7 @@ export const assistant: AssistantCopy = {
     {
       id: "briefing",
       choice: "Stage 1",
-      name: "Briefing",
+      name: "Morning Briefing",
       price: "€890",
       priceNote: "one-time",
       tagline: "The daily morning message, nothing more. A good first step.",
@@ -91,9 +91,10 @@ export const assistant: AssistantCopy = {
   ongoing: {
     id: "care",
     choice: "If you want · ongoing",
-    name: "Care",
+    name: "Care Plan",
     price: "€149",
     priceNote: "per month",
+    priceExtra: "cancel any month, to the end of the month",
     tagline: "The assistant keeps running, even when your tools change.",
     includes: [
       "I keep the assistant running and step in when something gets stuck",

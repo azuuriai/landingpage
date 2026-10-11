@@ -197,8 +197,8 @@ Sprachwechsel blendet sich dort aus (`GERMAN_ONLY_PATHS` in
 - `/studios` – Websites für Studios und Kursanbieter: zwei Modelle mit
   Festpreisen, verlinkt von der Leistungen-Seite
 - `/launch` – Festpreise für Gründer mit fast fertigen oder KI-gebauten Apps:
-  Launch Check, Launch Sprint, App-Store-Start, Baubegleitung (englisch
-  „Build Partner“), Ablauf des Checks, Beleg Vienna Event Radar
+  Launch Check, Launch Sprint, App-Store-Start (englisch „App Store
+  Launch“), Baubegleitung (englisch „Build Partner“), Ablauf des Checks, Beleg Vienna Event Radar
 - `/assistent` (`/en/assistant`) – persönlicher KI-Assistent auf Telegram mit
   Kalender und Postfach in drei Stufen plus Betreuung, Bedingungen sichtbar,
   Beleg Mission Control

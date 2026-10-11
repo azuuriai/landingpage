@@ -10,9 +10,9 @@ export const launchOffer: LaunchOfferCopy = {
     title: "Your app is almost done. I get it live, safely.",
     description:
       "You built something real, maybe with Lovable, Bolt, Cursor or Claude Code. It works on your screen. Before real users and real payments go through it, I look under the hood: first a fixed-price check, then, if you want, the fixes, the App Store launch or ongoing support while you keep building.",
-    metaTitle: "Launch Check, Launch Sprint and App Store launch at fixed prices",
+    metaTitle: "Launch Check, Launch Sprint and App Store Launch at fixed prices",
     metaDescription:
-      "Fixed prices for founders with almost-finished or AI-built apps: Launch Check €290, Launch Sprint from €1,200, App Store launch €450, Build Partner €590 per month. Report within two working days, read-only access.",
+      "Fixed prices for founders with almost-finished or AI-built apps: Launch Check €290, Launch Sprint from €1,200, App Store Launch €450, Build Partner €590 per month. Report within two working days, read-only access.",
     breadcrumb: "Launch at fixed prices",
   },
   cta: "Request a Launch Check",
@@ -87,7 +87,7 @@ export const launchOffer: LaunchOfferCopy = {
     {
       id: "app-store",
       choice: "Step 2 · for iOS apps",
-      name: "App Store launch",
+      name: "App Store Launch",
       price: "€450",
       priceNote: "fixed price",
       tagline:
@@ -149,7 +149,7 @@ export const launchOffer: LaunchOfferCopy = {
   },
   closing: "Almost done? Then this is the moment for the check.",
   service: {
-    name: "Launch Check, Launch Sprint, App Store launch and Build Partner",
+    name: "Launch Check, Launch Sprint, App Store Launch and Build Partner",
     type: "Review and completion of web and iOS apps",
   },
 };

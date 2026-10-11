@@ -124,7 +124,7 @@ export const fixedPrices: FixedPricesCopy = {
       name: "Launch Check",
       price: "€290",
       priceNote: "fixed price",
-      text: "A review of your almost-finished app, report within two working days. Then a sprint, the App Store launch or Build Partner.",
+      text: "A review of your almost-finished app, report within two working days. Then a sprint, the App Store Launch or Build Partner.",
       link: "See the launch offers",
     },
     {
