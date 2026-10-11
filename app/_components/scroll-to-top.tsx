@@ -3,13 +3,11 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "@/i18n/navigation";
 
-// Moving between pages inside the shared (pages) layout starts at the top.
-// Next only scrolls on its own when the first element of the new page is
-// out of view, and here that element is the invisible JSON-LD script, so
-// coming from the bottom of a long page the old scroll offset stayed
-// (visible on phones, where the hero is taller than the screen). Back and
-// forward keep the browser's own restored position; the language switch
-// keeps the internal pathname and therefore the position as well.
+// Mounted in the locale layout so it also observes home <-> subpage moves.
+// Next's viewport-based scrolling does not always reset the document here.
+// New pages start at the top; fragment destinations and browser history
+// keep Next's scrolling. A language switch remounts the locale layout, so
+// it preserves the position just like the initial page load.
 // Back and forward within one page (an anchor like #angebot) change no
 // pathname, so they must not leave the flag set for the next real move.
 export function ScrollToTop() {
@@ -35,6 +33,7 @@ export function ScrollToTop() {
       restoring.current = false;
       return;
     }
+    if (window.location.hash) return;
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
 

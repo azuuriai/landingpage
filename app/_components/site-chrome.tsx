@@ -19,7 +19,7 @@ export function SkipLink({ target, label }: { target: string; label: string }) {
   return (
     <a
       href={`#${target}`}
-      className="fixed left-4 top-3 z-[100] -translate-y-20 rounded-lg bg-[#181811] px-4 py-2 text-[13px] text-white transition focus:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#181811]"
+      className="skip-link fixed left-4 top-3 z-[100] rounded-lg bg-[#181811] px-4 py-2 text-[13px] text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#181811]"
     >
       {label}
     </a>

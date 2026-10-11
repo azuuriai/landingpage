@@ -6,6 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { localeFromParams, type LocaleParams } from "@/app/locale";
 import { siteMetadata } from "@/app/seo";
+import { ScrollToTop } from "@/app/_components/scroll-to-top";
 import "../globals.css";
 
 // Loaded with its optical-size axis: large headlines automatically use
@@ -39,7 +40,10 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} bg-[#f2f2f0] font-sans text-[#181811] antialiased`}
       >
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <ScrollToTop />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
