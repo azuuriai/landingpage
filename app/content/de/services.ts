@@ -1,6 +1,8 @@
 import { caseStudyBase } from "@/app/projects-data";
+import { ASSISTANT_PATH, LAUNCH_PATH } from "@/app/offers-data";
 import { iosAppsMedia, webAppsMedia, websitesMedia } from "@/app/services-data";
-import type { LaunchCopy, Service } from "../types";
+import { STUDIOS_PATH } from "@/app/studios-data";
+import type { FixedPricesCopy, LaunchCopy, Service } from "../types";
 
 export const services: Service[] = [
   {
@@ -99,6 +101,41 @@ export const launch: LaunchCopy = {
     {
       title: "Danach",
       body: "Fixes, Anpassungen und Weiterentwicklung. Code und Accounts gehören dir.",
+    },
+  ],
+};
+
+// The block "Festpreise" on the Leistungen page: the three offer pages with
+// their entry prices. Prices in euros without a tax line (small business,
+// like the FAQ); the pages themselves carry the details.
+export const fixedPrices: FixedPricesCopy = {
+  title: "Drei Angebote zum Festpreis.",
+  intro:
+    "Klar umrissen, mit dem Preis auf der Seite. Was darüber hinausgeht, biete ich nach einem Gespräch an.",
+  cards: [
+    {
+      path: STUDIOS_PATH,
+      name: "Websites für Studios und Kursanbieter",
+      price: "2.900 €",
+      priceNote: "einmalig, oder 149 € im Monat",
+      text: "Individuell gestaltet, mit deinem Buchungssystem eingebunden. Selbst pflegen oder pflegen lassen.",
+      link: "Zum Studio-Angebot",
+    },
+    {
+      path: LAUNCH_PATH,
+      name: "Launch Check",
+      price: "290 €",
+      priceNote: "Festpreis",
+      text: "Prüfung deiner fast fertigen App, Bericht in zwei Werktagen. Danach Sprint, App-Store-Start oder Baubegleitung.",
+      link: "Zu den Launch-Angeboten",
+    },
+    {
+      path: ASSISTANT_PATH,
+      name: "KI-Assistent einrichten",
+      price: "ab 890 €",
+      priceNote: "einmalig, Betreuung 149 € im Monat",
+      text: "Morgen-Briefing, Fragen und Termine auf Telegram, mit deinem Kalender und Postfach. Drei Stufen.",
+      link: "Zum Assistenten",
     },
   ],
 };

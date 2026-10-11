@@ -1,6 +1,8 @@
 import { caseStudyBase } from "@/app/projects-data";
+import { ASSISTANT_PATH, LAUNCH_PATH } from "@/app/offers-data";
 import { iosAppsMedia, webAppsMedia, websitesMedia } from "@/app/services-data";
-import type { LaunchCopy, Service } from "../types";
+import { STUDIOS_PATH } from "@/app/studios-data";
+import type { FixedPricesCopy, LaunchCopy, Service } from "../types";
 
 export const services: Service[] = [
   {
@@ -98,6 +100,40 @@ export const launch: LaunchCopy = {
     {
       title: "After launch",
       body: "Fixes, changes and further development. Code and accounts belong to you.",
+    },
+  ],
+};
+
+// The "Fixed prices" block on the Services page: the three offer pages with
+// their entry prices, in euros.
+export const fixedPrices: FixedPricesCopy = {
+  title: "Three offers at fixed prices.",
+  intro:
+    "Clearly scoped, with the price on the page. Anything beyond them I quote after a conversation.",
+  cards: [
+    {
+      path: STUDIOS_PATH,
+      name: "Websites for studios and class providers",
+      price: "€2,900",
+      priceNote: "one-time, or €149 per month",
+      text: "Individually designed, with your booking system built in. Update it yourself or have me do it.",
+      link: "See the studio offer",
+    },
+    {
+      path: LAUNCH_PATH,
+      name: "Launch Check",
+      price: "€290",
+      priceNote: "fixed price",
+      text: "A review of your almost-finished app, report within two working days. Then a sprint, the App Store launch or Build Partner.",
+      link: "See the launch offers",
+    },
+    {
+      path: ASSISTANT_PATH,
+      name: "Personal AI assistant",
+      price: "from €890",
+      priceNote: "one-time, care €149 per month",
+      text: "Morning briefing, questions and appointments on Telegram, with your calendar and inbox. Three stages.",
+      link: "See the assistant",
     },
   ],
 };

@@ -119,11 +119,6 @@ export const studios: StudiosCopy = {
     },
   ],
   closing: "Neue Saison, neue Website? Erzähl mir von deinem Studio.",
-  servicesHint: {
-    lead: "Du bietest Kurse an, ob Tanz, Yoga oder Fitness?",
-    text: "Dafür gibt es ein eigenes Angebot, einmalig zum Festpreis oder monatlich.",
-    link: "Websites für Studios und Kursanbieter",
-  },
   service: {
     name: "Websites für Studios und Kursanbieter",
     type: "Webdesign und Webentwicklung",

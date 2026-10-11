@@ -1,4 +1,5 @@
 import type { Content } from "../types";
+import { assistant } from "./assistant";
 import { caseStudyCopy } from "./case-studies";
 import { imprint, privacy } from "./legal";
 import { detailPages } from "./pages";
@@ -11,7 +12,8 @@ import {
   projects,
   showcaseEntries,
 } from "./projects";
-import { launch, services } from "./services";
+import { launchOffer } from "./launch-offer";
+import { fixedPrices, launch, services } from "./services";
 import { contactForm, contactSection, home, site, ui } from "./site";
 import { studios } from "./studios";
 
@@ -32,6 +34,9 @@ export const en: Content = {
   services,
   launch,
   studios,
+  launchOffer,
+  assistant,
+  fixedPrices,
   caseStudyCopy,
   legal: { impressum: imprint, datenschutz: privacy },
 };

@@ -1,11 +1,9 @@
-import { Fragment } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { ICON_UP, TEXT_LINK } from "@/app/_components/button-styles";
 import { PhoneFrame } from "@/app/_components/phone-frame";
-import type { LaunchCopy, Service, StudiosCopy } from "@/app/content/types";
-import { STUDIOS_PATH } from "@/app/studios-data";
+import type { FixedPricesCopy, LaunchCopy, Service } from "@/app/content/types";
 import { BrowserFrame } from "../work/project-media";
 
 // Body of the Leistungen page. Every product form is built the same way — words
@@ -15,39 +13,69 @@ import { BrowserFrame } from "../work/project-media";
 export function ServicesContent({
   services,
   launch,
-  studioHint,
+  fixedPrices,
 }: {
   services: Service[];
   launch: LaunchCopy;
-  studioHint: StudiosCopy["servicesHint"];
+  fixedPrices: FixedPricesCopy;
 }) {
   return (
     <>
       {services.map((service) => (
-        <Fragment key={service.id}>
-          <ServiceSection service={service} />
-          {service.id === "websites" ? <StudioHint copy={studioHint} /> : null}
-        </Fragment>
+        <ServiceSection key={service.id} service={service} />
       ))}
+      <FixedPrices copy={fixedPrices} />
       <LaunchSteps launch={launch} />
     </>
   );
 }
 
-// One quiet line under Websites for the studio offer on /studios.
-function StudioHint({ copy }: { copy: StudiosCopy["servicesHint"] }) {
+// The three offers with a price on the site, each card a link to its page
+// (/studios, /launch, /assistent). Entry prices only; the pages carry the
+// details. Prices in euros without a tax line, like the FAQ.
+function FixedPrices({ copy }: { copy: FixedPricesCopy }) {
   return (
-    <aside className="border-t border-[#deded8]">
-      <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3 px-6 py-6 sm:px-8 md:flex-row md:items-center md:justify-between md:gap-8 lg:px-10">
-        <p className="max-w-[70ch] text-[15px] leading-7 text-[#5f5f56]">
-          <span className="font-semibold text-[#181811]">{copy.lead}</span> {copy.text}
+    <section id="festpreise" className="scroll-mt-6 border-t border-[#deded8] bg-[#fafafa]">
+      <div className="reveal-on-scroll mx-auto w-full max-w-[1180px] px-6 py-14 sm:px-8 lg:px-10 lg:py-20">
+        <h2 className="text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[40px]">
+          {copy.title}
+        </h2>
+        <p className="mt-4 max-w-[52ch] text-[15px] leading-7 text-[#5f5f56] sm:text-[16px]">
+          {copy.intro}
         </p>
-        <Link href={STUDIOS_PATH} className={`${TEXT_LINK} shrink-0 text-[15px] text-[#006f68]`}>
-          {copy.link}
-          <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
-        </Link>
+        <ul className="mt-10 grid gap-5 md:grid-cols-3 lg:gap-6">
+          {copy.cards.map((card) => (
+            <li key={card.path} className="min-w-0">
+              <Link
+                href={card.path}
+                className="ui-row ui-row--card relative flex h-full flex-col overflow-hidden rounded-[12px] border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-7"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#006f68_0%,#00b8ad_100%)]"
+                />
+                <span className="block font-display text-[22px] font-semibold leading-tight tracking-[-0.02em] text-[#181811] sm:text-[24px]">
+                  {card.name}
+                </span>
+                <span className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                  <span className="font-display text-[34px] font-semibold leading-none tracking-[-0.03em] text-[#181811] sm:text-[40px]">
+                    {card.price}
+                  </span>
+                  <span className="text-[14px] text-[#6c6c61]">{card.priceNote}</span>
+                </span>
+                <span className="mt-4 block max-w-[40ch] text-[15px] leading-7 text-[#5f5f56]">
+                  {card.text}
+                </span>
+                <span className={`${TEXT_LINK} mt-auto pt-6 text-[15px] text-[#006f68]`}>
+                  {card.link}
+                  <ArrowUpRight size={15} aria-hidden="true" className={ICON_UP} />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </aside>
+    </section>
   );
 }
 

@@ -13,6 +13,7 @@ import {
   SITE_URL,
 } from "@/app/seo";
 import { withName } from "@/app/site";
+import { offersJsonLd, STUDIO_PRICES } from "@/app/offers-data";
 import { STUDIOS_PATH } from "@/app/studios-data";
 import { StudiosContent } from "./studios-content";
 
@@ -56,6 +57,7 @@ function studiosJsonLd(copy: StudiosCopy, locale: Locale, servicesLabel: string)
         description: copy.page.description,
         provider: { "@id": `${SITE_URL}/#person` },
         areaServed: { "@type": "Country", name: "Österreich" },
+        offers: offersJsonLd(copy.plans, STUDIO_PRICES, url),
       },
     ],
   };

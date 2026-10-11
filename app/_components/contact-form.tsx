@@ -10,11 +10,19 @@ import { ICON_UP, PRIMARY_BUTTON, QUIET_LINK } from "./button-styles";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 
-// /contact?thema=studio (from /studios): the same form, studio questions.
-export type ContactTopic = "studio";
+// /contact?thema=studio|launch|assistent (from the offer pages): the same
+// form with questions that fit the offer. The URL values are German, like
+// the parameter; the keys are the fields of ContactFormCopy.
+export type ContactTopic = "studio" | "launch" | "assistant";
+
+const TOPICS: Record<string, ContactTopic> = {
+  studio: "studio",
+  launch: "launch",
+  assistent: "assistant",
+};
 
 function topicFrom(value: string | null): ContactTopic | undefined {
-  return value === "studio" ? "studio" : undefined;
+  return value ? TOPICS[value] : undefined;
 }
 
 type Props = { copy: ContactFormCopy; privacyLabel: string };
@@ -40,8 +48,8 @@ export function ContactForm({
   privacyLabel,
   topic,
 }: Props & { topic?: ContactTopic }) {
-  const studio = topic === "studio" ? copy.studio : undefined;
-  const t = { ...copy, ...studio };
+  const topicCopy = topic ? copy[topic] : undefined;
+  const t = { ...copy, ...topicCopy };
   const [status, setStatus] = useState<FormStatus>("idle");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -68,12 +76,12 @@ export function ContactForm({
 
     const subject = `${t.subject} – ${name}`;
     // The language line tells which version of the site the message came
-    // from, so the reply can match it; the topic line marks studio requests.
+    // from, so the reply can match it; the topic line marks offer requests.
     const body = [
       `${t.name}: ${name}`,
       `${t.email}: ${email}`,
       `${t.languageLabel}: ${t.languageName}`,
-      ...(studio ? [studio.topicLine] : []),
+      ...(topicCopy ? [topicCopy.topicLine] : []),
       "",
       message,
     ].join("\n");
@@ -163,9 +171,9 @@ export function ContactForm({
 
       <label className="mt-5 block">
         <span className={labelClass}>{t.message}</span>
-        {studio ? (
+        {topicCopy ? (
           <span className="mt-1.5 block text-[13px] leading-5 text-[#5f5f56]">
-            {studio.messageHint}
+            {topicCopy.messageHint}
           </span>
         ) : null}
         <textarea

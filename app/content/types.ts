@@ -85,18 +85,21 @@ export type ContactFormCopy = {
   // Noted in the email, so a reply can be written in the visitor's language.
   languageLabel: string;
   languageName: string;
-  // /contact?thema=studio, linked from /studios: the same form asking
-  // studio questions. Overrides the fields above.
-  studio: ContactStudioCopy;
+  // /contact?thema=studio|launch|assistent, linked from the offer pages:
+  // the same form asking questions that fit the offer. Each overrides the
+  // fields above.
+  studio: ContactTopicCopy;
+  launch: ContactTopicCopy;
+  assistant: ContactTopicCopy;
 };
 
-export type ContactStudioCopy = {
+export type ContactTopicCopy = {
   message: string;
   messageHint: string;
   messagePlaceholder: string;
   submit: string;
   subject: string;
-  // Noted in the email, so the request is recognised as a studio project.
+  // Noted in the email, so the request is recognised as one for this offer.
   topicLine: string;
 };
 
@@ -272,10 +275,81 @@ export type StudiosCopy = {
   stepsTitle: string;
   steps: LaunchStep[];
   closing: string;
-  // One quiet line under Websites on the Leistungen page.
-  servicesHint: { lead: string; text: string; link: string };
   // schema.org Service on the page.
   service: { name: string; type: string };
+};
+
+// ---------- Fixed-price offers (/launch, /assistent, block on /services) ----------
+
+// One priced card on an offer page: the same shape as a StudioPlan, with an
+// id that matches the price table in app/offers-data.ts. No fine print: a
+// limit (hours included, what costs extra) is a line in `includes`.
+export type PriceCard = {
+  id: string;
+  // The small line above the name: the step, stage or role of this card.
+  choice: string;
+  name: string;
+  price: string;
+  priceNote: string;
+  priceExtra?: string;
+  tagline: string;
+  includes: string[];
+};
+
+// Shared shape of the two offer pages. Everything must stay provable: no
+// customer stories, no figures without a source, no guarantees. Plain words
+// for founders and business owners, no trade terms.
+export type OfferPageCopy = {
+  page: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    metaTitle: string;
+    metaDescription: string;
+    breadcrumb: string;
+  };
+  // The page's only two buttons (opening and closing band) and the quiet
+  // link to the offers.
+  cta: string;
+  offersLink: string;
+  // The everyday problem as a small line, the answer as title and sentence.
+  fit: { title: string; intro: string; items: { problem: string; title: string; text: string }[] };
+  offer: { title: string; question: string };
+  // The main cards, side by side.
+  plans: PriceCard[];
+  // The ongoing offer below them (Baubegleitung, Betreuung), full width.
+  ongoing: PriceCard;
+  stepsTitle: string;
+  steps: LaunchStep[];
+  // What backs the offer: Lukas' own products, linked to their case studies.
+  proof: { title: string; body: string; trust?: string; links: { label: string; path: AppPathname }[] };
+  closing: string;
+  // schema.org Service on the page.
+  service: { name: string; type: string };
+};
+
+export type LaunchOfferCopy = OfferPageCopy;
+
+// The assistant page adds the conditions as a visible list.
+export type AssistantCopy = OfferPageCopy & {
+  terms: { title: string; items: TitledItem[] };
+  // Alt text of the Telegram phone still in the opening.
+  phoneAlt: string;
+  loopLabel: string;
+};
+
+// The block on the Leistungen page: three cards, each a link to its page.
+export type FixedPricesCopy = {
+  title: string;
+  intro: string;
+  cards: {
+    path: AppPathname;
+    name: string;
+    price: string;
+    priceNote: string;
+    text: string;
+    link: string;
+  }[];
 };
 
 // ---------- Case study bodies ----------
@@ -393,6 +467,9 @@ export type Content = {
   services: Service[];
   launch: LaunchCopy;
   studios: StudiosCopy;
+  launchOffer: LaunchOfferCopy;
+  assistant: AssistantCopy;
+  fixedPrices: FixedPricesCopy;
   caseStudyCopy: CaseStudyCopy;
   legal: { impressum: LegalPageCopy; datenschutz: LegalPageCopy };
 };

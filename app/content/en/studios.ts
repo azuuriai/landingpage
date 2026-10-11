@@ -115,11 +115,6 @@ export const studios: StudiosCopy = {
     },
   ],
   closing: "New season, new website? Tell me about your studio.",
-  servicesHint: {
-    lead: "Do you offer classes, whether dance, yoga or fitness?",
-    text: "There is a dedicated offer for that, at a fixed price or monthly.",
-    link: "Websites for studios and class providers",
-  },
   service: {
     name: "Websites for studios and class providers",
     type: "Web design and web development",

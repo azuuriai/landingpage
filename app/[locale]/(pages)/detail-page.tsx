@@ -30,7 +30,7 @@ export async function detailMetadata(slug: DetailSlug, props: LocaleParams): Pro
   });
 }
 
-function detailJsonLd(page: DetailPageData, locale: Locale) {
+function detailJsonLd(page: DetailPageData, locale: Locale, content: Content) {
   // The page's own URL in this language; the person and website ids are shared.
   const url = absoluteUrl(localizedPaths(page.path)[locale]);
   const graph: object[] = [
@@ -47,6 +47,23 @@ function detailJsonLd(page: DetailPageData, locale: Locale) {
     },
     breadcrumbList(locale, url, [{ name: page.navLabel, path: page.path }]),
   ];
+
+  if (page.slug === "services") {
+    // The three fixed-price offers as a catalog, each pointing to its page,
+    // where the full Service with its Offers lives.
+    graph.push({
+      "@type": "OfferCatalog",
+      "@id": `${url}#festpreise`,
+      name: content.fixedPrices.title,
+      url: `${url}#festpreise`,
+      itemListElement: content.fixedPrices.cards.map((card) => ({
+        "@type": "Offer",
+        name: card.name,
+        url: absoluteUrl(localizedPaths(card.path)[locale]),
+        itemOffered: { "@id": `${absoluteUrl(localizedPaths(card.path)[locale])}#service` },
+      })),
+    });
+  }
 
   if (page.faq) {
     graph.push({
@@ -177,13 +194,13 @@ export function DetailPage({ slug, locale }: { slug: DetailSlug; locale: Locale 
 
   return (
     <>
-      <JsonLd data={detailJsonLd(page, locale)} />
+      <JsonLd data={detailJsonLd(page, locale, content)} />
       {slug === "work" ? <ProjectsOverview entries={content.showcaseEntries} ui={content.ui} /> : null}
       {slug === "services" ? (
         <ServicesContent
           services={content.services}
           launch={content.launch}
-          studioHint={content.studios.servicesHint}
+          fixedPrices={content.fixedPrices}
         />
       ) : null}
       {page.faq ? (

@@ -130,7 +130,18 @@ Upwork-Profil.
   Aufnahmen, Kontaktlink mit `?thema=studio`); die Texte, die zwei Modelle und
   der Verweis unter „Websites“ auf der Leistungen-Seite stehen in
   `app/content/<sprache>/studios.ts`. Das Kontaktformular stellt mit
-  `?thema=studio` Studio-Fragen (`contactForm.studio`).
+  `?thema=studio`, `?thema=launch` oder `?thema=assistent` Fragen zum
+  jeweiligen Angebot (`contactForm.studio|launch|assistant`).
+- `app/offers-data.ts` – Struktur der beiden anderen Angebotsseiten `/launch`
+  und `/assistent` (Pfade, Kontaktlinks mit `?thema=launch|assistent`, Preise
+  in Zahlen für schema.org `Offer`, Belege); die Texte stehen in
+  `app/content/<sprache>/launch-offer.ts` und `assistant.ts`, der Block
+  „Festpreise“ der Leistungen-Seite in `services.ts` (`fixedPrices`). Die
+  Bausteine der Angebotsseiten (Eröffnung, Problem/Antwort, Preiskarten ohne
+  Buttons, Schritte, Beleg, Schlussband) liegen in
+  `app/[locale]/(pages)/offer-blocks.tsx`; `/studios` nutzt dieselben Karten.
+  Preise stehen in Euro ohne Steuerzeile (Kleinunternehmer, wie im FAQ); jede
+  Grenze (inklusive Stunden, Aufpreis) steht als normale Zeile in der Karte.
 - `app/fuer-data.ts` und `app/_fuer/` – persönliche Vorschauseiten für einzelne
   Studios (`/fuer/<slug>`, nur Deutsch, `noindex`, nicht in der Sitemap, Slug
   mit Zufallsanhang) und die handgemachten Website-Entwürfe dazu, die unter
@@ -185,6 +196,12 @@ Sprachwechsel blendet sich dort aus (`GERMAN_ONLY_PATHS` in
 
 - `/studios` – Websites für Studios und Kursanbieter: zwei Modelle mit
   Festpreisen, verlinkt von der Leistungen-Seite
+- `/launch` – Festpreise für Gründer mit fast fertigen oder KI-gebauten Apps:
+  Launch Check, Launch Sprint, App-Store-Start, Baubegleitung (englisch
+  „Build Partner“), Ablauf des Checks, Beleg Vienna Event Radar
+- `/assistent` (`/en/assistant`) – persönlicher KI-Assistent auf Telegram mit
+  Kalender und Postfach in drei Stufen plus Betreuung, Bedingungen sichtbar,
+  Beleg Mission Control
 - `/fuer/<slug>` – persönliche Vorschauseite für ein Studio mit dessen
   Entwurf (`/fuer/<slug>/entwurf`), unverlinkt
 
@@ -197,7 +214,8 @@ Sprachwechsel blendet sich dort aus (`GERMAN_ONLY_PATHS` in
 - `/work/mission-control` – Case Study Mission Control, persönliches Organisationstool
   (Showreel mit Ton, Bilder nur aus dem Demo-Modus mit erfundenen Daten)
 - `/about` – Profil und Arbeitsweise
-- `/services` – Leistungen: Websites, Web-Apps, iOS-Apps und der Weg bis zum Launch
+- `/services` – Leistungen: Websites, Web-Apps, iOS-Apps, der Block „Festpreise“
+  (drei Karten zu `/studios`, `/launch`, `/assistent`) und der Weg bis zum Launch
 - `/faq` – Fragen zur Zusammenarbeit
 - `/contact` – Kontaktformular und E-Mail
 - `/impressum` – Betreiberangaben und Offenlegung

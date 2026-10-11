@@ -122,4 +122,22 @@ export const contactForm: ContactFormCopy = {
     subject: "Studio-Anfrage über lukaskaffer.com",
     topicLine: "Thema: Studio-Projekt (/studios)",
   },
+  launch: {
+    message: "Deine App",
+    messageHint:
+      "Hilfreich sind: Womit ist die App gebaut, welche Dienste hängen daran, gibt es schon echte Nutzer, und bis wann willst du live sein?",
+    messagePlaceholder: "Was macht deine App, und wo steht sie gerade?",
+    submit: "Anfrage schicken",
+    subject: "Launch-Anfrage über lukaskaffer.com",
+    topicLine: "Thema: Launch Check (/launch)",
+  },
+  assistant: {
+    message: "Dein Assistent",
+    messageHint:
+      "Hilfreich sind: Welchen Kalender und welches Postfach nutzt du, was soll der Assistent morgens melden, und soll er auch sprechen?",
+    messagePlaceholder: "Was soll dein Assistent für dich übernehmen?",
+    submit: "Anfrage schicken",
+    subject: "Assistenten-Anfrage über lukaskaffer.com",
+    topicLine: "Thema: KI-Assistent (/assistent)",
+  },
 };

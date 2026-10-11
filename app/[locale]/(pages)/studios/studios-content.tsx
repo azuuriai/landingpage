@@ -1,12 +1,14 @@
-import type { ReactNode } from "react";
-import { ArrowUpRight, Check, CornerDownRight } from "lucide-react";
+import { ArrowUpRight, CornerDownRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { ICON_UP, PRIMARY_BUTTON, TEXT_LINK } from "@/app/_components/button-styles";
 import { BackLink } from "@/app/_components/site-chrome";
 import type { ProjectData, StudioPlan, StudiosCopy } from "@/app/content/types";
 import { STUDIO_CONTACT_HREF, STUDIO_EXAMPLES } from "@/app/studios-data";
+import { Band, PriceCard } from "../offer-blocks";
 import { SectionHeading, VideoFeature } from "../work/case-study-blocks";
 import { ProjectMedia } from "../work/project-media";
+
+export { Band };
 
 // Short on purpose: what the website does, how it can look, the two ways
 // to get one, the way there and one next step. Built from the site's own
@@ -33,29 +35,6 @@ export function StudiosContent({
       <Steps copy={copy} />
       <ClosingBand copy={copy} />
     </>
-  );
-}
-
-// A CaseSection with tighter vertical rhythm, so the page stays compact.
-// Also used by the personal preview pages under /fuer.
-export function Band({
-  children,
-  tone = "plain",
-  id,
-}: {
-  children: ReactNode;
-  tone?: "plain" | "tinted";
-  id?: string;
-}) {
-  return (
-    <section
-      id={id}
-      className={`scroll-mt-6 border-t border-[#d9d9d3] ${tone === "tinted" ? "bg-[#fafafa]" : ""}`}
-    >
-      <div className="reveal-on-scroll mx-auto w-full max-w-[1180px] px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
-        {children}
-      </div>
-    </section>
   );
 }
 
@@ -181,40 +160,10 @@ function Offer({ copy }: { copy: StudiosCopy }) {
   );
 }
 
+// The studio models are priced cards like on the other offer pages; the
+// personal preview pages under /fuer use this too.
 export function PlanCard({ plan }: { plan: StudioPlan }) {
-  return (
-    <article className="relative flex min-w-0 flex-col overflow-hidden rounded-[12px] border border-[#181811]/10 bg-white/70 p-6 shadow-[0_34px_90px_-60px_rgba(17,18,17,0.45)] sm:p-8">
-      <span
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,#006f68_0%,#00b8ad_100%)]"
-      />
-      <p className="text-[15px] font-semibold tracking-[-0.005em] text-[#006f68]">{plan.choice}</p>
-      <h3 className="mt-4 font-display text-[24px] font-semibold leading-tight tracking-[-0.02em] text-[#181811] sm:text-[26px]">
-        {plan.name}
-      </h3>
-      <p className="mt-4 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-        <span className="font-display text-[40px] font-semibold leading-none tracking-[-0.03em] text-[#181811] sm:text-[52px]">
-          {plan.price}
-        </span>
-        <span className="text-[15px] text-[#6c6c61]">{plan.priceNote}</span>
-      </p>
-      {plan.priceExtra ? (
-        <p className="mt-2 text-[14px] text-[#5f5f56]">{plan.priceExtra}</p>
-      ) : null}
-      <p className="mt-5 max-w-[46ch] text-[15px] italic leading-7 text-[#5f5f56]">{plan.tagline}</p>
-      <ul className="mt-5 border-t border-[#e6e6e1]">
-        {plan.includes.map((item) => (
-          <li
-            key={item}
-            className="flex gap-3 border-b border-[#e6e6e1] py-2.5 text-[14px] leading-6 text-[#181811] last:border-b-0 sm:text-[15px]"
-          >
-            <Check size={16} aria-hidden="true" className="mt-1 shrink-0 text-[#00b8ad]" />
-            {item}
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
+  return <PriceCard plan={plan} />;
 }
 
 function Steps({ copy }: { copy: StudiosCopy }) {

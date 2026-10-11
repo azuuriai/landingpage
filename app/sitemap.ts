@@ -3,6 +3,7 @@ import { getPathname } from "@/i18n/navigation";
 import { routing, type AppPathname, type Locale } from "@/i18n/routing";
 import { detailPageBase } from "./detail-pages-data";
 import { caseStudyBase } from "./projects-data";
+import { ASSISTANT_PATH, LAUNCH_PATH, OFFERS_LAST_MODIFIED } from "./offers-data";
 import { HOME_LAST_MODIFIED, SITE_URL } from "./seo";
 import { STUDIOS_LAST_MODIFIED, STUDIOS_PATH } from "./studios-data";
 
@@ -41,6 +42,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    // The other two fixed-price offers, linked from the Leistungen page.
+    ...([LAUNCH_PATH, ASSISTANT_PATH] as AppPathname[]).map((path) => ({
+      path,
+      lastModified: OFFERS_LAST_MODIFIED,
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    })),
     ...Object.values(caseStudyBase).map((study) => ({
       path: study.path,
       lastModified: study.lastModified,
