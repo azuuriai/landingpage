@@ -161,7 +161,7 @@ function Week({ base }: { base: string }) {
       </LayoutGroup>
 
       {/* Desktop: a real timetable, courses placed by time and length. */}
-      <div id="stundenplan" className="mt-8 hidden scroll-mt-[88px] rounded-[16px] border border-[#1e1d1c]/10 bg-[#fafaf8] p-4 md:block">
+      <div id="stundenplan" className="mt-8 hidden scroll-mt-[88px] rounded-[16px] border border-[#1e1d1c]/10 bg-[color:var(--di-floor)] p-4 md:block">
         <div className="grid grid-cols-[52px_repeat(6,minmax(0,1fr))] gap-x-2">
           <span />
           {days.map((day) => (
@@ -206,7 +206,7 @@ function Week({ base }: { base: string }) {
 
       {/* Phone: pick a day, see its courses as a list. */}
       <div className="mt-6 md:hidden">
-        <div className="grid grid-cols-6 gap-1 rounded-full bg-[#f1f1ef] p-1">
+        <div className="grid grid-cols-6 gap-1 rounded-full bg-[color:var(--di-band)] p-1">
           {days.map((day) => (
             <button
               key={day}
@@ -299,9 +299,11 @@ function SlotRow({ slot, base }: { slot: Slot; base: string }) {
 
 // ---------------------------------------------------------------- attitude
 
+// Haltung, Anlässe and Team lie on the band: the ground's slightly warmer
+// sibling in the daylight variant, the ground itself in the sand variant.
 function Attitude() {
   return (
-    <Section id="haltung">
+    <Section id="haltung" className="bg-[color:var(--di-band)]">
       <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
         <div>
           <p className="text-[56px] font-extrabold uppercase leading-[0.88] md:text-[104px]" style={DISPLAY}>
@@ -390,7 +392,7 @@ function Everdance() {
 
 function Happenings() {
   return (
-    <Section id="anlaesse">
+    <Section id="anlaesse" className="bg-[color:var(--di-band)]">
       <Heading>Nach dem Kurs weitertanzen.</Heading>
       <p className="mt-5 max-w-[52ch] text-[17px] leading-7 text-[#5d5955]">
         Üben, was Sie gelernt haben: an den Tanzabenden am Samstag und beim Tanz-Tee am Sonntagnachmittag.
@@ -435,7 +437,7 @@ function HallPlan() {
           <line x1="360" y1="0" x2="360" y2="17.5" stroke="#1e1d1c" strokeOpacity="0.05" />
         </pattern>
       </defs>
-      <rect x="20" y="20" width="480" height="320" rx="6" fill="#fafaf8" />
+      <rect x="20" y="20" width="480" height="320" rx="6" style={{ fill: "var(--di-floor)" }} />
       <rect x="20" y="20" width="480" height="320" rx="6" fill="url(#hall-planks)" stroke="#1e1d1c" strokeWidth="3" />
       {[0, 1, 2, 3, 4, 5].map((i) => (
         <rect key={i} x={46 + i * 76} y="14" width="62" height="12" rx="2" fill="#dfe6ea" stroke="#1e1d1c" strokeWidth="2" />
@@ -446,7 +448,8 @@ function HallPlan() {
       <circle cx="460" cy="282" r="7" fill="none" stroke="#1e1d1c" strokeWidth="2" />
       <circle cx="460" cy="306" r="4" fill="#1e1d1c" />
       <path d="M232 340 A 44 44 0 0 1 276 296" fill="none" stroke="#8c8783" strokeWidth="2" strokeDasharray="4 5" />
-      <line x1="232" y1="340" x2="276" y2="340" stroke="#f1f1ef" strokeWidth="5" />
+      {/* The door: a gap in the wall, in the white of the section around the plan. */}
+      <line x1="232" y1="340" x2="276" y2="340" stroke="#ffffff" strokeWidth="5" />
       <text x="260" y="176" textAnchor="middle" fill="#1e1d1c" style={{ ...DISPLAY, fontSize: 64, fontWeight: 800 }}>
         108 m²
       </text>
@@ -500,12 +503,12 @@ function Room() {
 
 function Team() {
   return (
-    <Section id="team">
+    <Section id="team" className="bg-[color:var(--di-band)]">
       <Heading>Wer bei uns unterrichtet.</Heading>
       <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {team.map((person) => (
           <li key={person.name} className="di-card flex items-center gap-5 rounded-[16px] border border-[#1e1d1c]/10 bg-white p-5">
-            <span aria-hidden="true" className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#f1f1ef] text-[22px] font-extrabold" style={DISPLAY}>
+            <span aria-hidden="true" className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[color:var(--di-band)] text-[22px] font-extrabold" style={DISPLAY}>
               {person.name
                 .split(" ")
                 .map((part) => part[0])

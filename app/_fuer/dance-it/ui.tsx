@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useSyncExternalStore, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
+import { isLocalHost, paletteVars, VARIANTE, varianteAus, type Variante } from "./farben";
 
 // Shared pieces of the Dance it draft, second version: a daylight dance
 // floor. Orange is a signal only (the moving foot, active states, a few
 // numbers). Tokens, see Business Studio OS/…/dance-it/designplan.md:
-// Saal #f1f1ef, Weiss, Graphit #1e1d1c, Stein #8c8783, Orange #ff5a14,
-// Orange for small text #c2410c. Interactive controls are pills, cards
-// have a 16 px radius.
+// the ground comes from farben.ts (--di-ground, --di-band, --di-floor; warm
+// white or sand, see there), Weiss, Graphit #1e1d1c, Stein #8c8783, Orange
+// #ff5a14, Orange for small text #c2410c. Interactive controls are pills,
+// cards have a 16 px radius.
 
 export const ORANGE = "#ff5a14";
 // Orange for large type on the light ground (3:1) and for button text
@@ -73,7 +75,7 @@ export function Header({ base }: { base: string }) {
     ["Team", `${base}#team`],
   ];
   return (
-    <header className="sticky top-0 z-30 border-b border-[#1e1d1c]/[0.07] bg-[#f1f1ef]/85 backdrop-blur-md">
+    <header className="di-header sticky top-0 z-30 border-b border-[#1e1d1c]/[0.07] backdrop-blur-md">
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between gap-6 px-5 md:px-10">
         <Link href={base} className="rounded-[6px]">
           <Logo />
@@ -149,8 +151,21 @@ function OpenAtSection() {
   return null;
 }
 
+// The palette is read once per page load. The draft pages are static HTML,
+// so the server renders the fixed variant and the browser switches to the
+// one from the URL after hydration (local servers only, see farben.ts).
+const noop = () => () => {};
+function useVariante() {
+  return useSyncExternalStore(
+    noop,
+    () => varianteAus(new URLSearchParams(window.location.search).get("variante"), isLocalHost(window.location.hostname)),
+    () => VARIANTE,
+  );
+}
+
 const INTERACTION_CSS = `
   .di-page { --di-orange: #ff5a14; --di-ink: #1e1d1c; }
+  .di-header { background-color: var(--di-ground); background-color: color-mix(in srgb, var(--di-ground) 85%, transparent); }
   .di-page a:focus-visible, .di-page button:focus-visible, .di-page input:focus-visible, .di-page select:focus-visible {
     outline: 2px solid var(--di-ink); outline-offset: 2px; box-shadow: 0 0 0 5px #ffffff;
   }
@@ -208,10 +223,12 @@ const INTERACTION_CSS = `
 `;
 
 export function Page({ base, children }: { base: string; children: ReactNode }) {
+  const variante: Variante = useVariante();
   return (
     <div
-      className="di-page min-h-svh bg-[#f1f1ef] text-[#1e1d1c] antialiased"
-      style={{ fontFamily: "var(--font-di-text), Arial, sans-serif" }}
+      className="di-page min-h-svh bg-[color:var(--di-ground)] text-[#1e1d1c] antialiased"
+      data-variante={variante}
+      style={{ ...paletteVars(variante), fontFamily: "var(--font-di-text), Arial, sans-serif" }}
     >
       <style>{INTERACTION_CSS}</style>
       <OpenAtSection />

@@ -94,7 +94,7 @@ function Kurs({ base, initialDate = course1.dates[0].id }: { base: string; initi
                           setSent(false);
                         }}
                         className={`di-card relative grid w-full grid-cols-[76px_1fr_auto] items-center gap-4 overflow-hidden rounded-[16px] border px-5 py-5 text-left ${
-                          active ? "border-[#1e1d1c]" : "border-[#1e1d1c]/12 bg-[#fafaf8]"
+                          active ? "border-[#1e1d1c]" : "border-[#1e1d1c]/12 bg-[color:var(--di-floor)]"
                         }`}
                       >
                         {active ? (
@@ -128,7 +128,7 @@ function Kurs({ base, initialDate = course1.dates[0].id }: { base: string; initi
             <h2 className="mt-16 text-[28px] font-semibold tracking-[-0.01em] md:text-[34px]">Ihr Weg danach</h2>
             <ol className="mt-6 grid gap-3 md:grid-cols-5">
               {course1.levels.map((level, index) => (
-                <li key={level} className={`rounded-[14px] border p-4 ${index === 0 ? "border-[#ff5a14] bg-[#fff1ea]" : "border-[#1e1d1c]/10 bg-[#fafaf8]"}`}>
+                <li key={level} className={`rounded-[14px] border p-4 ${index === 0 ? "border-[#ff5a14] bg-[#fff1ea]" : "border-[#1e1d1c]/10 bg-[color:var(--di-floor)]"}`}>
                   <span className="block text-[22px] font-bold leading-none" style={DISPLAY}>
                     {level}
                   </span>
@@ -143,7 +143,7 @@ function Kurs({ base, initialDate = course1.dates[0].id }: { base: string; initi
 
           <aside
             id="anmelden"
-            className="scroll-mt-[72px] self-start rounded-[20px] border border-[#1e1d1c]/10 bg-[#f1f1ef] p-6 lg:sticky lg:top-[96px] md:p-8"
+            className="scroll-mt-[72px] self-start rounded-[20px] border border-[#1e1d1c]/10 bg-[color:var(--di-band)] p-6 lg:sticky lg:top-[96px] md:p-8"
             aria-label="Anmeldung"
           >
             <h2 className="text-[30px] font-semibold tracking-[-0.01em]">Anmelden</h2>

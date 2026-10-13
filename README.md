@@ -147,7 +147,9 @@ Upwork-Profil.
   mit Zufallsanhang) und die handgemachten Website-Entwürfe dazu, die unter
   `app/[locale]/(entwurf)/` ohne Seitenrahmen laufen und auf der Vorschauseite
   als Laptop und iPhone eingebettet sind (`scaled-frame.tsx`). Bilder für die
-  Mail: `scripts/fuer-bild.sh`.
+  Mail: `scripts/fuer-bild.sh`. Die Grundfarbe des Dance-it-Entwurfs ist ein
+  Token in `app/_fuer/dance-it/farben.ts` (feste Variante `VARIANTE`;
+  `?variante=tageslicht|sand` vergleicht die beiden lokal, auch im Mailbild).
 - `app/[locale]/` – Root-Layout (`<html lang>`, Metadaten je Sprache) und die
   Startseite; `[...rest]` fängt unbekannte Pfade für die übersetzte 404-Seite.
 - `app/[locale]/(pages)/` – alle Unterseiten in einer Route-Gruppe. Ihr `layout.tsx` hält

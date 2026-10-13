@@ -137,7 +137,7 @@ export function StepBoard({ compact = false, initial = "walzer" }: { compact?: b
   return (
     <div className={`rounded-[18px] border border-[#1e1d1c]/10 bg-white shadow-[0_40px_80px_-50px_rgba(30,29,28,0.45)] ${compact ? "p-4" : "p-5 md:p-6"}`}>
       <LayoutGroup id={`dances-${compact ? "c" : "f"}`}>
-        <div role="tablist" aria-label="Tanz wählen" className="flex flex-wrap gap-1 rounded-full bg-[#f1f1ef] p-1">
+        <div role="tablist" aria-label="Tanz wählen" className="flex flex-wrap gap-1 rounded-full bg-[color:var(--di-band)] p-1">
           {dances.map((item) => {
             const active = item.id === danceId;
             return (
@@ -168,7 +168,7 @@ export function StepBoard({ compact = false, initial = "walzer" }: { compact?: b
       </LayoutGroup>
 
       {/* The floor: light planks, the two feet, a fading trail. */}
-      <div className="relative mt-4 overflow-hidden rounded-[12px] bg-[#fafaf8]">
+      <div className="relative mt-4 overflow-hidden rounded-[12px] bg-[color:var(--di-floor)]">
         <svg viewBox="40 50 240 245" className="block w-full" role="img" aria-label={`Grundschritt ${dance.label}, Schritte des Herrn`}>
           <defs>
             {/* Laminate: long narrow planks, joints staggered by thirds. */}
