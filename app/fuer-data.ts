@@ -100,7 +100,7 @@ const plansSie: FuerPlan[] = [
 const stepsSie = [
   {
     title: "Gespräch",
-    body: "15 Minuten online. Ich zeige Ihnen den Entwurf, und wir klären, was Ihnen wichtig ist.",
+    body: "Sie schreiben oder rufen an, und wir klären in Ruhe, was Ihnen wichtig ist.",
   },
   {
     title: "Konzept",
@@ -127,7 +127,7 @@ export const fuerPages: FuerPage[] = [
       "Guten Tag Frau Stirnimann. Ich habe skizziert, wie die Website von Dance it aussehen könnte: Startseite, Wochenplan und Anmeldung, mit Ihren Kursen, Preisen und Farben, am Laptop und am Handy.",
     insightsTitle: "Aus Ihrer Schule entworfen.",
     insightsIntro:
-      "Der Entwurf baut auf dem auf, was Dance it heute schon ausmacht. Alle Kurse, Zeiten, Preise und Daten stammen von Ihrer Website.",
+      "Der Entwurf baut auf dem auf, was Dance it heute schon ausmacht. Alle Kurse, Zeiten, Preise und Daten stammen von Ihrer Website. Fotos aus Ihrer Schule kommen in die fertige Website; im Entwurf fehlen sie bewusst, weil auf Ihren Bildern Personen zu sehen sind.",
     insights: [
       {
         fact: "Paartanz in aufbauenden Stufen, dazu Kinder, 60 plus und Fitness",
@@ -193,9 +193,9 @@ export const fuerPages: FuerPage[] = [
     plans: plansSie,
     stepsTitle: "So geht es weiter.",
     steps: stepsSie,
-    closingTitle: "Soll ich Ihnen den Entwurf in 15 Minuten zeigen?",
-    closingText: "Online, zu einer Zeit, die Ihnen passt. Ein kurzes Nein genügt auch, dann melde ich mich nicht mehr.",
-    cta: "Gespräch vereinbaren",
+    closingTitle: "Gefällt Ihnen etwas davon?",
+    closingText: "Dann schreiben Sie mir oder rufen Sie an. Ich erzähle gern, wie es weitergehen könnte. Ein kurzes Nein genügt auch, dann melde ich mich nicht mehr.",
+    cta: "Schreiben Sie mir",
     mailSubject: "Entwurf Dance it",
     sourceNote:
       "Unverbindlicher Entwurf von Lukas Kaffer, nicht die Website von Dance it. Kurse, Zeiten, Preise und Kontaktdaten stammen von dance-it.ch (Stand September 2026). Diese Seite ist nur über den persönlichen Link erreichbar und wird nicht in Suchmaschinen aufgenommen.",
