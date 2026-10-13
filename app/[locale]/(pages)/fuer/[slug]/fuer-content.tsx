@@ -16,7 +16,7 @@ import { BrowserFrame } from "../../work/project-media";
 // Built from the /studios blocks so it reads as the same site.
 export function FuerContent({ page }: { page: FuerPage }) {
   const draftPath = `/fuer/${page.slug}/entwurf`;
-  const mailHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(page.mailSubject)}`;
+  const mailHref = page.mailSubject ? `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(page.mailSubject)}` : undefined;
 
   return (
     <>
@@ -127,6 +127,7 @@ export function FuerContent({ page }: { page: FuerPage }) {
 
       <Band tone="tinted">
         <SectionHeading title={page.booking.title} intro={page.booking.intro} />
+        {page.booking.options ? (
         <ol className="mt-8 grid gap-4 md:grid-cols-3">
           {page.booking.options.map((option, index) => (
             <li key={option.name} className="flex flex-col rounded-[12px] border border-[#181811]/10 bg-white/70 p-6">
@@ -137,6 +138,7 @@ export function FuerContent({ page }: { page: FuerPage }) {
             </li>
           ))}
         </ol>
+        ) : null}
       </Band>
 
       <Band>
@@ -147,6 +149,7 @@ export function FuerContent({ page }: { page: FuerPage }) {
         </Link>
       </Band>
 
+      {page.plans && page.plans.length > 0 ? (
       <Band tone="tinted">
         <h2 className="text-pretty font-display text-[31px] font-semibold leading-[1.04] tracking-[-0.025em] text-[#181811] sm:text-[42px]">
           {page.plansTitle}
@@ -160,9 +163,11 @@ export function FuerContent({ page }: { page: FuerPage }) {
           ))}
         </div>
       </Band>
+      ) : null}
 
+      {page.steps && page.steps.length > 0 ? (
       <Band>
-        <SectionHeading title={page.stepsTitle} />
+        <SectionHeading title={page.stepsTitle ?? ""} />
         <ol className="steps mt-8 lg:grid lg:grid-cols-4">
           {page.steps.map((step) => (
             <li key={step.title}>
@@ -174,17 +179,20 @@ export function FuerContent({ page }: { page: FuerPage }) {
           ))}
         </ol>
       </Band>
+      ) : null}
 
-      {/* The page's only button. */}
+      {/* The page's only button, if the page has one at all. */}
       <section className="border-t border-[#deded8]">
         <div className="mx-auto w-full max-w-[1180px] px-6 py-10 sm:px-8 lg:px-10 lg:py-14">
           <h2 className="max-w-[24ch] text-pretty font-display text-[28px] font-medium leading-[1.12] tracking-[-0.018em] text-[#181811] sm:text-[38px]">
             {page.closingTitle}
           </h2>
           <p className="mt-4 max-w-[60ch] text-[16px] leading-7 text-[#5f5f56]">{page.closingText}</p>
-          <a href={mailHref} className={`${PRIMARY_BUTTON} mt-7`}>
-            {page.cta}
-          </a>
+          {page.cta && mailHref ? (
+            <a href={mailHref} className={`${PRIMARY_BUTTON} mt-7`}>
+              {page.cta}
+            </a>
+          ) : null}
           <p className="mt-10 max-w-[72ch] border-t border-[#e1e1dc] pt-5 text-[14px] leading-6 text-[#6c6c61]">
             {page.sourceNote}
           </p>

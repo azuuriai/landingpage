@@ -30,7 +30,9 @@ export type FuerPlan = StudioPlan;
 export type FuerBooking = {
   title: string;
   intro: string;
-  options: { name: string; text: string; note: string }[];
+  // Optional: without options the section is the intro alone (Lukas,
+  // 13.10.2026: keep the sign-up to the essentials, no stages or prices).
+  options?: { name: string; text: string; note: string }[];
 };
 
 export type FuerReference = { title: string; text: string; href: AppPathname; linkLabel: string };
@@ -51,15 +53,18 @@ export type FuerPage = {
   showcase?: FuerShowcase;
   booking: FuerBooking;
   reference: FuerReference;
-  plansTitle: string;
-  plansQuestion: string;
-  plans: FuerPlan[];
-  stepsTitle: string;
-  steps: { title: string; body: string }[];
+  // Optional since 13.10.2026 (Lukas): prices and the way there are
+  // discussed in a conversation, not shown on the page; the mail has
+  // already been sent, so the page ends without a button.
+  plansTitle?: string;
+  plansQuestion?: string;
+  plans?: FuerPlan[];
+  stepsTitle?: string;
+  steps?: { title: string; body: string }[];
   closingTitle: string;
   closingText: string;
-  cta: string;
-  mailSubject: string;
+  cta?: string;
+  mailSubject?: string;
   // Where the draft's content comes from, shown at the end of the page.
   sourceNote: string;
 };
@@ -67,7 +72,8 @@ export type FuerPage = {
 // Swiss prices, agreed in round 9 (Claude and Codex, blind), not yet final:
 // CHF 3’400 and CHF 1’690 + 169/month (Swiss thousands separator), no introductory discount.
 // Formal address: Swiss studio owners are written to with "Sie".
-const plansSie: FuerPlan[] = [
+// Kept for a later page or conversation; not shown for Dance it since 13.10.2026.
+export const plansSie: FuerPlan[] = [
   {
     id: "individuell",
     choice: "Sie pflegen selbst",
@@ -97,7 +103,7 @@ const plansSie: FuerPlan[] = [
   },
 ];
 
-const stepsSie = [
+export const stepsSie = [
   {
     title: "Gespräch",
     body: "Sie schreiben oder rufen an, und wir klären in Ruhe, was Ihnen wichtig ist.",
@@ -163,24 +169,7 @@ export const fuerPages: FuerPage[] = [
     booking: {
       title: "Anmelden, so einfach wie möglich.",
       intro:
-        "Viele Ihrer Kundinnen und Kunden kommen zu zweit, viele sind über 60, und bezahlt wird am ersten Abend. Deshalb schlage ich drei Stufen vor. Sie entscheiden, wie weit es gehen soll.",
-      options: [
-        {
-          name: "Anmeldung beim Kurs",
-          text: "Termin wählen, zu zweit oder allein, Preis sehen, absenden. Ohne Konto und ohne Passwort. Sie und Ihre Gäste erhalten sofort eine Bestätigung per E-Mail. Bezahlt wird wie bisher am ersten Abend.",
-          note: "Im Entwurf zu sehen, in beiden Modellen enthalten",
-        },
-        {
-          name: "Mit Plätzen und QR-Rechnung",
-          text: "Dazu freie Plätze pro Kurs und eine QR-Rechnung in der Bestätigung. Weniger Bargeld, verbindlichere Anmeldungen, weiterhin ohne Konto.",
-          note: "Ausbau nach Absprache",
-        },
-        {
-          name: "Online buchen und bezahlen",
-          text: "Ein Buchungssystem wie SportsNow oder Eversports, mit TWINT, Warteliste und Vorauszahlung, eingebunden im Design Ihrer Website. Sinnvoll, wenn Sie Vorauszahlung möchten.",
-          note: "Laufende Kosten beim Anbieter",
-        },
-      ],
+        "Termin wählen, zu zweit oder allein, Preis sehen, absenden. Ohne Konto und ohne Passwort. Sie und Ihre Gäste erhalten sofort eine Bestätigung per E-Mail, bezahlt wird wie bisher. Wenn Sie später online buchen und bezahlen lassen möchten, lässt sich ein Buchungssystem im Design Ihrer Website einbinden.",
     },
     reference: {
       title: "Ein Beispiel aus Wien.",
@@ -188,15 +177,8 @@ export const fuerPages: FuerPage[] = [
       href: "/work/indeed-unique",
       linkLabel: "Case Study ansehen",
     },
-    plansTitle: "Zwei Wege zur neuen Website.",
-    plansQuestion: "Möchten Sie Änderungen selbst erledigen, oder soll ich mich darum kümmern?",
-    plans: plansSie,
-    stepsTitle: "So geht es weiter.",
-    steps: stepsSie,
-    closingTitle: "Gefällt Ihnen etwas davon?",
-    closingText: "Dann schreiben Sie mir oder rufen Sie an. Ich erzähle gern, wie es weitergehen könnte. Ein kurzes Nein genügt auch, dann melde ich mich nicht mehr.",
-    cta: "Schreiben Sie mir",
-    mailSubject: "Entwurf Dance it",
+    closingTitle: "Ich freue mich über Ihre Rückmeldung.",
+    closingText: "Antworten Sie einfach auf meine E-Mail oder rufen Sie an, dann besprechen wir in Ruhe, was Ihnen wichtig ist. Ein kurzes Nein genügt auch, dann melde ich mich nicht mehr.",
     sourceNote:
       "Unverbindlicher Entwurf von Lukas Kaffer, nicht die Website von Dance it. Kurse, Zeiten, Preise und Kontaktdaten stammen von dance-it.ch (Stand September 2026). Diese Seite ist nur über den persönlichen Link erreichbar und wird nicht in Suchmaschinen aufgenommen.",
   },
