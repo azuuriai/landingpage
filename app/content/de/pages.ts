@@ -132,7 +132,7 @@ export const detailPages: DetailPageData[] = [
     image: { ...PORTRAITS.seated, alt: "Lukas Kaffer sitzend" },
     sections: [
       {
-        label: "Guter Start",
+        label: "Start",
         title: "Drei Sätze reichen für die erste Einschätzung.",
         body: "Was willst du launchen? Für wen ist es? Was fehlt noch, damit es live gehen kann? Daraus kann ich meistens schon ableiten, ob und wie ich helfen kann.",
       },

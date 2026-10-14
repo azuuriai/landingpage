@@ -64,7 +64,7 @@ export type HomeCopy = {
   byline: { name: string; text: string };
 };
 
-export type ContactSectionCopy = { eyebrow: string; title: string; body: string };
+export type ContactSectionCopy = { title: string; body: string };
 
 export type ContactFormCopy = {
   name: string;

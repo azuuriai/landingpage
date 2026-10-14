@@ -171,10 +171,7 @@ function ContactFormSection({ content }: { content: Content }) {
     <section className="border-t border-[#deded8]">
       <div className="mx-auto grid w-full max-w-[1180px] gap-8 px-6 py-10 sm:px-8 lg:grid-cols-[minmax(220px,0.65fr)_minmax(0,1fr)] lg:px-10 lg:py-12">
         <div className="min-w-0">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#006f68]">
-            {contactSection.eyebrow}
-          </p>
-          <h2 className="mt-4 text-pretty font-display text-[31px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181811] sm:text-[40px]">
+          <h2 className="text-pretty font-display text-[31px] font-medium leading-[1.05] tracking-[-0.02em] text-[#181811] sm:text-[40px]">
             {contactSection.title}
           </h2>
           <p className="mt-5 max-w-[38ch] text-[15px] leading-7 text-[#6c6c61] sm:text-[16px]">

@@ -89,7 +89,6 @@ export const home: HomeCopy = {
 };
 
 export const contactSection: ContactSectionCopy = {
-  eyebrow: "Direkt an mich",
   title: "Schick mir die Kurzfassung.",
   body: "Du brauchst noch kein fertiges Briefing. Zwei, drei Sätze reichen, damit ich einschätzen kann, wie wir am besten starten.",
 };

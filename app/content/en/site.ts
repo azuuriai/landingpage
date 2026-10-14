@@ -88,7 +88,6 @@ export const home: HomeCopy = {
 };
 
 export const contactSection: ContactSectionCopy = {
-  eyebrow: "Straight to my inbox",
   title: "Send me the short version.",
   body: "You don’t need a finished brief yet. Two or three sentences are enough for me to tell how we’d best get started.",
 };

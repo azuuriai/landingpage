@@ -138,7 +138,7 @@ export const detailPages: DetailPageData[] = [
     image: { ...PORTRAITS.seated, alt: "Lukas Kaffer, seated" },
     sections: [
       {
-        label: "Start here",
+        label: "Start",
         title: "Three sentences are enough for a first read.",
         body: "What do you want to launch? Who is it for? What’s still missing before it can go live? From that I can usually tell whether and how I can help.",
       },
