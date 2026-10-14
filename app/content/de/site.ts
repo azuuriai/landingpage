@@ -43,7 +43,7 @@ export const site: SiteCopy = {
   ],
   og: {
     headline: "Websites, Webprodukte und native iOS Apps, gebaut bis zum Launch.",
-    location: "Vienna, AT",
+    location: "Wien",
     stack: "Astro · Next.js · Sanity · SwiftUI",
   },
 };

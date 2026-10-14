@@ -36,7 +36,7 @@ export const detailPages: DetailPageData[] = [
     ...detailPageBase.about,
     navLabel: "About",
     eyebrow: "Background",
-    title: "From the classroom to products.",
+    title: "From the classroom to websites and apps.",
     description:
       "Products of my own, teaching and community work: three chapters that shape how I break down problems, explain them and turn them into working products.",
     metaTitle: "About Lukas Kaffer · Products, Teaching, Community",
@@ -56,7 +56,7 @@ export const detailPages: DetailPageData[] = [
         body: "Teaching taught me to read where someone is starting from, structure complex material and make decisions easy to follow. In product work, that becomes clear scoping.",
       },
       {
-        label: "2017–2020",
+        label: "IT",
         title: "Outreach and tech support in a decentralized community.",
         body: "From 2017 to 2020 I was part of the outreach and support team of SmartCash, a community-governed blockchain project, and represented it in person at conferences in Zug and Porto, including talks about the project.",
       },

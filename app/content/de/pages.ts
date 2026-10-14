@@ -36,7 +36,7 @@ export const detailPages: DetailPageData[] = [
     ...detailPageBase.about,
     navLabel: "Über mich",
     eyebrow: "Mein Weg",
-    title: "Vom Klassenzimmer zu Produkten.",
+    title: "Vom Klassenzimmer zu Websites und Apps.",
     description:
       "Eigene Produkte, Bildung und Community-Arbeit: drei Stationen, die prägen, wie ich heute Probleme sortiere, erkläre und umsetze.",
     metaTitle: "Über Lukas Kaffer · Produkte, Bildung und Community",
@@ -53,10 +53,10 @@ export const detailPages: DetailPageData[] = [
       {
         label: "Bildung",
         title: "Zuhören, einordnen und verständlich erklären.",
-        body: "Aus der Bildung bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen nachvollziehbar zu machen. In der Produktarbeit wird daraus klares Scoping.",
+        body: "Aus der Arbeit im Klassenzimmer bringe ich die Fähigkeit mit, unterschiedliche Vorkenntnisse zu erkennen, komplexe Inhalte zu strukturieren und Entscheidungen nachvollziehbar zu machen. In der Produktarbeit wird daraus klares Scoping.",
       },
       {
-        label: "2017–2020",
+        label: "IT",
         title: "Outreach und Tech-Support in einer dezentralen Community.",
         body: "Von 2017 bis 2020 war ich im Outreach- und Support-Team von SmartCash aktiv, einem community-gesteuerten Blockchain-Projekt, und habe es persönlich auf Konferenzen in Zug und Porto vertreten, auch mit Vorträgen.",
       },
@@ -128,7 +128,7 @@ export const detailPages: DetailPageData[] = [
       "Eine grobe Idee reicht. Schreib mir, was entstehen soll, für wen es ist und wo es gerade steckt. Ich antworte direkt persönlich.",
     metaTitle: "Kontakt · Projektidee an Lukas Kaffer schicken",
     metaDescription: `Schreib an ${CONTACT_EMAIL}, wenn du eine Website, ein MVP oder eine native iOS App bauen willst.`,
-    chips: ["Kostenloses Erstgespräch", CONTACT_EMAIL, "Vienna, AT"],
+    chips: ["Kostenloses Erstgespräch", CONTACT_EMAIL, "Wien"],
     image: { ...PORTRAITS.seated, alt: "Lukas Kaffer sitzend" },
     sections: [
       {
