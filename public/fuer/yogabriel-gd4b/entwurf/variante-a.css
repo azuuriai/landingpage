@@ -1,0 +1,231 @@
+/* Vorschau Studio Yogabriel, Variante A: eine Seite, kürzer als B.
+   Ergänzt stil.css nur für variante-a.html: Gratlinie als Kapitelführung, Reiter, Wochenplan auf einen Blick, gestraffte Retreats. */
+.a-seite { --kopf-h: 76px; }
+.a-seite main > section[id] { scroll-margin-top: var(--kopf-h); }
+.a-seite main { overflow-x: clip; }
+@media (prefers-reduced-motion: no-preference) { html:has(.a-seite) { scroll-behavior: smooth; } }
+
+/* ---------- Kopf mit Gratlinie ---------- */
+.a-kopf, .a-kopf.unten { border-bottom-color: transparent; }
+.a-kopf .kopf { gap: 26px; }
+.a-kopf .grat { margin: 0 auto; gap: 0; }
+.grat-liste { display: flex; gap: clamp(26px, 3.6vw, 56px); margin: 0; padding: 0; list-style: none; }
+.grat-liste > li > a { display: block; padding: 24px 2px 26px; font-size: 15px; color: var(--leise); text-decoration: none; transition: color .3s; }
+.grat-liste > li > a:hover, .grat-liste > li > a[aria-current] { color: var(--tinte); }
+.grat-liste > li > a[aria-current] { font-weight: 600; }
+.grat-liste > li > a:focus-visible { outline: 2px solid var(--seeblau); outline-offset: -14px; border-radius: 10px; }
+.grat-unter, .grat-extra { display: none; }
+.a-kapitel { display: none; }
+.grat-linie { position: absolute; left: 0; bottom: -1px; width: 100%; height: 20px; overflow: visible; pointer-events: none; }
+.grat-linie path { fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.grat-grund { stroke: rgba(29,42,49,.24); stroke-width: 1; }
+.grat-weg { stroke: var(--licht); stroke-width: 1.8; }
+.grat-gipfel { fill: var(--licht) !important; stroke: none; opacity: .9; }
+
+/* ---------- Angebot: ein Bereich, drei Reiter ---------- */
+.a-angebot { padding-top: clamp(64px, 7.5vw, 108px); }
+.a-angebot > h2.serif { max-width: none; }
+.a-reiter { position: relative; display: flex; gap: clamp(24px, 3.6vw, 56px); margin-top: 36px; box-shadow: inset 0 -1px var(--linie); }
+.a-reiter [role="tab"] { padding: 0 0 22px; border: 0; background: none; cursor: pointer; font: 400 clamp(23px, 2.3vw, 32px)/1 "Newsreader", Georgia, serif; letter-spacing: -.015em; color: var(--leise); transition: color .3s; white-space: nowrap; }
+.a-reiter [role="tab"]:hover, .a-reiter [aria-selected="true"] { color: var(--tinte); }
+.a-reiter [role="tab"]:focus-visible { outline: 2px solid var(--seeblau); outline-offset: 6px; border-radius: 6px; }
+.a-reiter-gipfel { position: absolute; left: 0; bottom: 0; width: 30px; height: 14px; background: linear-gradient(var(--nebel), var(--nebel)) 0 100% / 100% 2px no-repeat; transform: translateX(var(--gx, 0px)); pointer-events: none; }
+.a-reiter-gipfel.bereit { transition: transform .6s var(--weich); }
+.a-reiter-gipfel svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.a-reiter-gipfel path { fill: none; stroke: var(--seeblau); stroke-width: 1.5; stroke-linejoin: round; }
+
+.a-felder { display: grid; margin-top: clamp(30px, 3.4vw, 46px); }
+.a-feld { grid-area: 1 / 1; min-width: 0; transition: opacity .4s var(--weich), transform .6s var(--weich), visibility 0s; }
+.a-feld.vor, .a-feld.nach { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .3s var(--weich), transform .5s var(--weich), visibility 0s .5s; }
+.a-feld.vor { transform: translateX(-34px); }
+.a-feld.nach { transform: translateX(34px); }
+.a-feld.an { transition-delay: .08s, .08s, 0s; }
+.a-feld h3.serif { font-size: clamp(32px, 3.1vw, 46px); line-height: 1.04; max-width: 16ch; }
+.a-feld .lead { margin-top: 16px; }
+.a-feld .aktionen { margin-top: 28px; }
+
+/* Für dich */
+.a-dich { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(30px, 5vw, 84px); align-items: start; }
+.a-gruppe-titel { margin: 0 0 4px; padding-bottom: 12px; border-bottom: 1px solid var(--linie); font: 600 15px "Hanken Grotesk"; color: var(--seeblau); }
+.a-gruppe-titel span { margin-left: 10px; font-weight: 400; color: var(--leise); }
+.a-dich .zeile { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 18px; padding: 14px 12px; margin: 0 -12px; width: calc(100% + 24px); border-radius: 14px; border-bottom: 0; background: linear-gradient(var(--linie), var(--linie)) 12px 100% / calc(100% - 24px) 1px no-repeat; transition: background-color .35s; }
+.a-dich .zeile:hover, .a-dich .zeile:focus-visible { background-color: #fff; }
+.a-dich .zeile:focus-visible { box-shadow: 0 0 0 2px var(--seeblau); }
+.a-dich .zeile h3 { background: linear-gradient(var(--licht), var(--licht)) 0 100% / 0 1.5px no-repeat; padding-bottom: 2px; justify-self: start; transition: background-size .45s var(--weich); }
+.a-dich .zeile:hover h3, .a-dich .zeile:focus-visible h3 { background-size: 100% 1.5px; }
+.a-dich .zeile > span:nth-child(2) { display: grid; justify-items: start; }
+.a-dich .zeile .mini { width: 60px; height: 66px; padding: 3px 3px 9px; border-radius: 3px; background: #fff; overflow: visible; box-shadow: 0 10px 22px -12px rgba(29,42,49,.5); transform: rotate(-2deg); transition: transform .5s var(--weich), box-shadow .5s var(--weich); }
+.a-dich .zeile:nth-child(even) .mini { transform: rotate(1.6deg); }
+.a-dich .zeile .mini img { border-radius: 2px; }
+.a-dich .zeile:hover .mini, .a-dich .zeile:focus-visible .mini { transform: rotate(0) translateY(-3px); box-shadow: 0 16px 28px -12px rgba(29,42,49,.55); }
+.a-dich .zeile:hover .mini img { transform: none; }
+.a-dich .zeile h3 { font-size: 25px; }
+.a-dich .zeile .satz { font-size: 14.5px; margin-top: 4px; }
+.a-dich .zeile .fakt { text-align: right; font-size: 14px; max-width: 18ch; }
+.a-dich .zeile .mehr { display: none; }
+.a-preis { margin-top: 34px; }
+.a-preis h4 { margin: 0; font: 400 24px "Newsreader"; letter-spacing: -.01em; }
+.a-preis dl { margin: 12px 0 0; }
+.a-preis dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--linie); font-size: 15px; }
+.a-preis dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+.a-preis dd small { font-weight: 400; color: var(--leise); font-size: 13.5px; margin-left: 6px; }
+.a-preis .quelle { margin-top: 12px; }
+
+/* Für Firmen */
+.a-firmen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 6vw, 100px); align-items: start; }
+.a-paket { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 30px 0 0; padding-top: 20px; border-top: 1px solid var(--linie); }
+.a-paket b { font: 400 clamp(38px, 3.6vw, 52px)/1 "Newsreader"; letter-spacing: -.02em; color: var(--seeblau); }
+.a-paket span { font-size: 15px; color: var(--leise); }
+
+/* Raum mieten */
+.a-raum-oben { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 6vw, 100px); align-items: center; }
+.a-raum .raum-bild { height: clamp(260px, 24vw, 340px); }
+.a-raum .nutzung { margin-top: 18px; }
+.a-raum .nutzung span { background: #fff; box-shadow: inset 0 0 0 1px var(--linie); }
+
+/* ---------- Woche: die ganze Woche auf einen Blick (16.10.2026, statt Pin und Querlauf) ---------- */
+.a-woche { --leise: #5d686d; --band: var(--stein-hell); position: relative; margin-top: clamp(64px, 7.5vw, 108px); padding: clamp(56px, 6vw, 88px) 0 clamp(40px, 4.4vw, 64px); background: var(--band); }
+.a-woche-kopf { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 40px; }
+.a-woche-kopf h2.serif { font-size: clamp(40px, 3.8vw, 60px); max-width: none; }
+.a-woche .filter { margin: 0; gap: 6px; }
+.a-woche .filter button { height: 38px; padding: 0 14px; font-size: 14px; border-color: rgba(29,42,49,.18); }
+.a-woche .quelle { margin-top: 14px; }
+.a-woche:not(.ueberbreit) .a-tage { display: none; }
+.a-tage { margin-top: 20px; }
+.a-plan { --kopf: 46px; --unten: 14px; --ppm: .9; position: relative; min-width: 0; height: clamp(640px, 80vh, 780px); margin-top: 26px; display: grid; grid-template-columns: 58px minmax(0, 1fr); }
+.a-spur { grid-column: 2; position: relative; min-width: 0; overflow-x: auto; scrollbar-width: thin; scroll-snap-type: x proximity; }
+.a-woche .woche { position: relative; display: flex; gap: 8px; width: 100%; height: 100%; margin: 0; padding: 0; overflow: visible; }
+.a-woche .tag { position: relative; flex: 1 1 0; min-width: 148px; height: 100%; scroll-snap-align: start; }
+.a-woche .slot { position: absolute; left: 0; right: 0; top: calc(var(--kopf) + var(--von) * var(--ppm) * 1px + 1px); min-height: calc(var(--dauer) * var(--ppm) * 1px - 4px); margin: 0; padding: 6px 9px; border-radius: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-content: start; font-size: 12px; container-type: inline-size; }
+.a-woche .slot.einzel { background: #fff; }
+.a-woche .slot.frei { border-color: rgba(29,42,49,.42); background: rgba(255,255,255,.35); }
+.a-woche .slot > span:first-child { grid-row: 1; grid-column: 1 / -1; font-variant-numeric: tabular-nums; }
+.a-woche .slot > b { grid-row: 2; grid-column: 1 / -1; font-size: 14.5px; line-height: 1.15; margin-top: 2px; }
+.a-woche .slot > span:last-child:not(:first-child) { grid-row: 3; grid-column: 1 / -1; margin-top: 1px; font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@container (min-width: 146px) {
+  .a-woche .slot > span:first-child { grid-column: 1; }
+  .a-woche .slot > span:last-child:not(:first-child) { grid-row: 1; grid-column: 2; margin-top: 0; text-align: right; }
+}
+.a-kreuz { position: absolute; width: 11px; height: 11px; pointer-events: none; background: linear-gradient(var(--tinte), var(--tinte)) 50% 0 / 1px 100% no-repeat, linear-gradient(var(--tinte), var(--tinte)) 0 50% / 100% 1px no-repeat; opacity: .5; }
+.a-kreuz:nth-of-type(1) { left: -5px; top: -5px; } .a-kreuz:nth-of-type(2) { right: -5px; top: -5px; }
+.a-kreuz:nth-of-type(3) { left: -5px; bottom: -5px; } .a-kreuz:nth-of-type(4) { right: -5px; bottom: -5px; }
+@media (min-width: 961px) { .a-woche.verschoben .a-spur { -webkit-mask: linear-gradient(90deg, transparent, #000 22px); mask: linear-gradient(90deg, transparent, #000 22px); } }
+.filter i.m-einzel { background: #fff; box-shadow: inset 0 0 0 1px var(--stein); }
+.filter i.m-kurs { background: var(--seeblau); }
+.filter i.m-einzel { background: var(--stein-hell); box-shadow: inset 0 0 0 1px var(--stein); }
+.filter i.m-frei { border: 1px dashed rgba(29,42,49,.5); }
+.filter button[aria-pressed="true"] i.m-kurs { background: #fff; }
+.a-tage { position: relative; display: flex; gap: 2px; margin-top: 26px; padding-bottom: 8px; }
+.a-tage button { position: relative; width: 44px; height: 44px; border: 0; border-radius: 12px; background: none; cursor: pointer; font: 600 14px "Hanken Grotesk"; color: var(--leise); transition: color .3s; }
+.a-tage button.sichtbar, .a-tage button:hover { color: var(--tinte); }
+.a-tage button:focus-visible { outline: 2px solid var(--seeblau); outline-offset: -2px; }
+.a-tage button.heute::after { content: ""; position: absolute; left: 50%; top: 7px; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: var(--licht); }
+.a-tage-spanne { position: absolute; left: 0; bottom: 4px; height: 2px; border-radius: 2px; background: var(--licht); transform-origin: left; pointer-events: none; }
+.a-raster { position: absolute; inset: 0; pointer-events: none; }
+.a-linie { position: absolute; left: 0; right: 0; top: calc(var(--kopf) + var(--m) * var(--ppm) * 1px); height: 1px; background: rgba(29,42,49,.1); transform: scaleX(var(--zeichne, 1)); transform-origin: left; }
+.a-linie { background: rgba(29,42,49,.12); }
+.a-linie b { position: absolute; left: 0; top: -9px; font: 500 12px "Hanken Grotesk"; color: var(--leise); font-variant-numeric: tabular-nums; background: var(--band); padding-right: 8px; }
+.a-mittag { position: absolute; left: 58px; right: 0; top: calc(var(--kopf) + var(--m) * var(--ppm) * 1px); height: calc(var(--d) * var(--ppm) * 1px); background: rgba(227,167,94,.16); }
+.a-mittag b { position: absolute; left: -58px; top: 50%; transform: translateY(-50%); font: italic 400 14px "Newsreader"; color: #8a5a1f; }
+.a-woche .tag h3 { height: var(--kopf); margin: 0; padding: 12px 2px 0; box-sizing: border-box; border-bottom: 1px solid var(--linie); font-size: 14.5px; }
+.a-woche .tag h3 .a-heute { margin-left: 8px; font-weight: 500; color: #8a5a1f; }
+.a-woche .slot:focus-visible { outline: 2px solid var(--licht); outline-offset: 2px; }
+.a-jetzt { position: absolute; z-index: 2; left: -6px; right: 0; top: calc(var(--kopf) + var(--jetzt) * var(--ppm) * 1px); height: 0; border-top: 1.5px solid var(--licht); pointer-events: none; }
+.a-jetzt::before { content: ""; position: absolute; left: 0; top: -4.5px; width: 7px; height: 7px; border-radius: 50%; background: var(--licht); }
+.a-jetzt b { position: absolute; right: 4px; top: -19px; font: 600 11.5px "Hanken Grotesk"; color: #8a5a1f; }
+
+/* ---------- Retreats: der Bruch mit der Bergkette, gestrafft ---------- */
+.a-retreat { min-height: 0; height: min(50vw, 720px); padding-top: clamp(64px, 7vw, 104px); }
+.a-retreat .kette { z-index: 0; right: -3vw; top: clamp(24px, 3vw, 44px); width: min(62vw, 1040px); }
+.a-retreat .konturwort { top: 52%; font-size: 21vw; }
+.a-retreat .b-rechts { z-index: 1; } .a-retreat .b-gross, .a-retreat .f2 { z-index: 2; } .a-retreat .b-links { z-index: 3; } .a-retreat .f3 { z-index: 4; background: var(--licht); }
+.a-retreat .retreat-text { max-width: 470px; padding-top: 0; }
+.a-retreat .retreat-text h2 { margin-top: 0; font-size: clamp(46px, 6vw, 94px); }
+.a-retreat .naechster { margin-top: 26px; }
+.a-termine { margin-top: -15vw; padding: calc(15vw + 24px) 0 clamp(60px, 6vw, 88px); }
+.a-seite #anfrage { padding-top: clamp(64px, 7.5vw, 108px); }
+.a-seite footer { margin-top: clamp(64px, 7.5vw, 108px); }
+.a-termine h2.serif { font-size: clamp(36px, 3.6vw, 54px); }
+.a-termine .jahreslinie { margin-top: 26px; }
+
+/* ---------- Handy und schmale Fenster ---------- */
+@media (max-width: 960px) {
+  .a-seite { --kopf-h: 66px; }
+  .a-kopf .kopf { gap: 10px; }
+  .a-kopf .marke { font-size: 25px; }
+  .a-kapitel { order: 1; display: inline-flex; align-items: center; gap: 8px; margin-left: auto; height: 42px; padding: 0 14px 0 16px; border: 0; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--linie); font: 600 14px "Hanken Grotesk"; color: var(--tinte); cursor: pointer; }
+  .a-kapitel svg { width: 13px; height: 8px; fill: none; stroke: var(--seeblau); stroke-width: 1.6; stroke-linejoin: round; transform: rotate(180deg); transition: transform .4s var(--weich); }
+  .a-kapitel[aria-expanded="true"] svg { transform: none; }
+  .a-kapitel:focus-visible { outline: 2px solid var(--seeblau); outline-offset: 3px; }
+  .a-kopf .kopf-tel { order: 2; margin-left: 0; flex: none; }
+
+  .a-kopf .grat { display: none; position: absolute; left: 0; right: 0; top: 100%; margin: 0; padding: 10px var(--gutter) 22px; background: var(--nebel); box-shadow: 0 30px 50px -30px rgba(29,42,49,.45); max-height: calc(100vh - var(--kopf-h)); overflow-y: auto; }
+  .a-kopf .grat.offen { display: block; animation: a-auf .45s var(--weich); }
+  .grat-liste { display: block; }
+  .grat-liste > li { border-bottom: 1px solid var(--linie); }
+  .grat-liste > li > a { position: relative; display: flex; align-items: center; gap: 14px; padding: 16px 0; font: 400 26px/1.1 "Newsreader"; color: var(--tinte); }
+  .grat-liste > li > a::before { content: ""; width: 18px; height: 11px; flex: none; clip-path: polygon(50% 0, 100% 100%, 0 100%); background: var(--linie); }
+  .grat-liste > li.vorbei > a::before { background: rgba(227,167,94,.55); }
+  .grat-liste > li > a[aria-current]::before { background: var(--licht); }
+  .grat-liste > li > a[aria-current] { font-weight: 400; }
+  .grat-liste > li > a:focus-visible { outline-offset: 2px; }
+  .grat-unter { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: -6px 0 0; padding: 0 0 16px 32px; list-style: none; }
+  .grat-unter a, .grat-extra a { font-size: 15px; font-weight: 600; color: var(--seeblau); text-decoration: none; background: linear-gradient(var(--licht), var(--licht)) 0 100% / 100% 1.5px no-repeat; padding-bottom: 2px; }
+  .grat-extra { display: flex; gap: 22px; padding-top: 20px; }
+  @keyframes a-auf { from { opacity: 0; transform: translateY(-10px); } }
+
+  .a-reiter { gap: 22px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); box-shadow: none; background: linear-gradient(var(--linie), var(--linie)) var(--gutter) 100% / calc(100% - 2 * var(--gutter)) 1px no-repeat; }
+  .a-reiter::-webkit-scrollbar { display: none; }
+  .a-reiter [role="tab"] { font-size: 22px; padding-bottom: 18px; }
+  .a-dich, .a-firmen { grid-template-columns: minmax(0, 1fr); }
+  .a-dich .a-gruppe + .a-gruppe { margin-top: 34px; }
+  .a-dich .zeile { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
+  .a-dich .zeile .mini { width: 52px; height: 57px; padding: 3px 3px 8px; }
+  .a-dich .zeile h3 { font-size: 22px; }
+  .a-dich .zeile { padding-block: 12px; }
+  .a-dich .zeile .fakt { grid-column: 2; text-align: left; max-width: none; font-size: 0; margin-top: -6px; }
+  .a-dich .zeile .fakt b { font-size: 14px; }
+  .a-firmen .formate { margin-top: 6px; }
+  .a-raum-oben { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .a-raum .raum-bild { height: 220px; }
+
+  .a-woche { margin-top: 80px; padding: 56px 0 30px; }
+  .a-woche-kopf { display: block; }
+  .a-woche-kopf h2.serif { max-width: 12ch; }
+  .a-woche .filter { margin-top: 20px; }
+  .a-woche .quelle { padding-top: 4px; }
+  .a-tage { margin-top: 18px; }
+  .a-plan { display: block; height: auto; margin: 10px calc(-1 * var(--gutter)) 0; }
+  .a-raster, .a-kreuz, .a-jetzt { display: none; }
+  .a-spur { overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+  .a-spur::-webkit-scrollbar { display: none; }
+  .a-woche .woche { width: max-content; height: auto; padding: 4px var(--gutter) 10px; gap: 12px; align-items: stretch; }
+  .a-woche .tag { flex: 0 0 min(78vw, 300px); min-width: 0; height: auto; padding: 0 14px 6px; border-radius: 18px; background: var(--nebel); box-shadow: inset 0 0 0 1px var(--linie); }
+  .a-woche .tag.heute { box-shadow: inset 0 0 0 1.5px var(--licht); }
+  .a-woche .tag h3 { margin-bottom: 10px; }
+  .a-woche .slot { position: static; min-height: 0; margin-bottom: 8px; }
+
+  .a-retreat { height: auto; padding-top: 70px; margin-top: 30px; }
+  .a-retreat .kette { position: relative; right: auto; top: 0; width: 100%; margin-top: 30px; }
+  .a-retreat .konturwort { top: 16%; font-size: 30vw; }
+  .a-termine { margin-top: -18vw; padding-top: calc(18vw + 34px); }
+  .a-feld.vor, .a-feld.nach { display: none; }
+  .a-felder[data-richtung="vor"] .a-feld.an { animation: a-von-rechts .55s var(--weich); }
+  .a-felder[data-richtung="zurueck"] .a-feld.an { animation: a-von-links .55s var(--weich); }
+  @keyframes a-von-rechts { from { opacity: 0; transform: translateX(28px); } }
+  @keyframes a-von-links { from { opacity: 0; transform: translateX(-28px); } }
+}
+
+@media (min-width: 961px) and (max-width: 1180px) {
+  .a-woche .filter button { padding: 0 11px; font-size: 13.5px; }
+}
+
+/* Preisliste im Angebotsfenster */
+.a-m-preise { margin-top: 30px; }
+.a-m-preise h3 { margin: 0; font: 400 24px "Newsreader"; letter-spacing: -.01em; }
+.a-m-preisgruppen { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0 22px; margin-top: 6px; }
+.a-m-preisgruppen h4 { margin: 12px 0 2px; font: 600 13px "Hanken Grotesk"; color: var(--leise); }
+.a-m-preisgruppen dl { margin: 0; }
+.a-m-preisgruppen dl > div { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--linie); font-size: 15px; }
+.a-m-preisgruppen dd { margin: 0; font-variant-numeric: tabular-nums; }
+.a-m-preise p { margin: 12px 0 0; font-size: 12.5px; color: var(--leise); }
