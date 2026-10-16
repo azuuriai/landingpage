@@ -229,3 +229,35 @@
 .a-m-preisgruppen dl > div { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--linie); font-size: 15px; }
 .a-m-preisgruppen dd { margin: 0; font-variant-numeric: tabular-nums; }
 .a-m-preise p { margin: 12px 0 0; font-size: 12.5px; color: var(--leise); }
+
+/* ---------- Für dich als Fotoabzüge, Preise auf einer Grundlinie (16.10.2026) ---------- */
+.a-dich { grid-template-columns: minmax(0, 2fr) minmax(0, 4fr); gap: 0 clamp(36px, 4.4vw, 72px); }
+.a-dich .a-gruppe-titel { border-bottom: 0; padding-bottom: 0; margin-bottom: 18px; }
+.a-dich .a-zeilen { display: grid; gap: clamp(14px, 1.6vw, 24px); }
+.a-dich .a-gruppe:first-child .a-zeilen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.a-dich .a-gruppe:nth-child(2) .a-zeilen { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.a-abzug { display: block; width: 100%; max-width: 188px; padding: 6px 6px 0; border: 0; border-radius: 6px; background: #fff; cursor: pointer; text-align: center; transform: rotate(var(--d, 0deg)); box-shadow: 0 1px 0 rgba(29,42,49,.05), 0 20px 36px -18px rgba(16,28,34,.5); transition: transform .5s var(--weich), box-shadow .5s var(--weich); }
+.a-abzug .foto { display: block; aspect-ratio: 1; border-radius: 3px; overflow: hidden; background: var(--stein-hell); }
+.a-abzug img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--weich); }
+.a-abzug .name { display: block; padding: .7em 4px .8em; font: italic 400 clamp(15px, 1.25vw, 18px)/1.1 "Newsreader", Georgia, serif; color: var(--tinte); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .3s; }
+.a-abzug:hover, .a-abzug:focus-visible { transform: translateY(-6px) rotate(0deg); box-shadow: 0 1px 0 rgba(29,42,49,.05), 0 30px 48px -18px rgba(16,28,34,.58); outline: none; }
+.a-abzug:hover img { transform: scale(1.05); }
+.a-abzug:hover .name, .a-abzug:focus-visible .name { color: var(--seeblau); }
+.a-abzug:focus-visible { box-shadow: 0 0 0 3px var(--nebel), 0 0 0 5px var(--seeblau); }
+.a-dich .a-preis { grid-column: 1 / -1; margin-top: clamp(40px, 4.4vw, 60px); padding-top: 22px; border-top: 1px solid var(--linie); }
+.a-preis h4 { font: 600 15px "Hanken Grotesk"; color: var(--seeblau); letter-spacing: 0; }
+.a-preis dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 48px); margin: 18px 0 0; }
+.a-preis dl > div { display: grid; grid-template-rows: auto auto auto; align-content: start; padding: 0; border: 0; }
+.a-preis dt { font-size: 14px; color: var(--leise); }
+.a-preis dd { margin: 6px 0 0; text-align: left; font-weight: 400; }
+.a-preis dd b { display: block; font: 300 clamp(34px, 3.2vw, 48px)/1 "Newsreader", Georgia, serif; letter-spacing: -.02em; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+.a-preis dd span { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.45; color: var(--text); max-width: 26ch; }
+.a-preis .quelle { margin-top: 20px; }
+@media (max-width: 960px) {
+  .a-dich { grid-template-columns: minmax(0, 1fr); }
+  .a-dich .a-gruppe + .a-gruppe { margin-top: 34px; }
+  .a-dich .a-gruppe:first-child .a-zeilen, .a-dich .a-gruppe:nth-child(2) .a-zeilen { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .a-abzug { max-width: none; }
+  .a-preis dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
+  .a-preis dd b { font-size: 32px; }
+}

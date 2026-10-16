@@ -1,4 +1,4 @@
-// Vorschau Studio Yogabriel, Variante A: Gratlinie als Kapitelführung, Reiter, gepinnte Woche, Preise in den Fenstern.
+// Vorschau Studio Yogabriel, Variante A: Gratlinie als Kapitelführung, Reiter, Wochenplan, Preise in den Fenstern.
 // Läuft nach app.js und liest nur dessen Ausgabe im DOM. Alle Inhalte und Zahlen stehen weiter allein in app.js.
 (() => {
   const $ = id => document.getElementById(id);
@@ -12,10 +12,15 @@
   const springe = (el, art = weich()) => el && scrollTo({ top: Math.max(0, obenVon(el) - kopfH() + 1), behavior: art });
   const zahl = t => +t.replace(/[^\d]/g, '');
 
-  // ---------- Für dich: Zeilen aus app.js in zwei Gruppen ----------
+  // ---------- Für dich: Fotoabzüge wie auf der Startseite von B, Bild und Name, ohne Untertext (Lukas, 16.10.2026) ----------
   const liste = $('liste');
-  document.querySelectorAll('.a-zeilen').forEach(z => z.dataset.ids.split(' ').forEach(id => {
-    const zeile = liste && liste.querySelector(`[data-oeffnen="${id}"]`); if (zeile) z.appendChild(zeile);
+  document.querySelectorAll('.a-zeilen').forEach(z => z.dataset.ids.split(' ').forEach((id, i) => {
+    const zeile = liste && liste.querySelector(`[data-oeffnen="${id}"]`); if (!zeile) return;
+    const kurz = document.querySelector(`#kacheln [data-oeffnen="${id}"] .name`);
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'a-abzug'; b.dataset.oeffnen = id; b.style.setProperty('--d', [-1.6, 1.2, -.8, 1.5][i % 4] + 'deg');
+    b.innerHTML = `<span class="foto"><img src="${zeile.querySelector('img').src}" alt=""></span><span class="name">${kurz ? kurz.textContent : zeile.querySelector('h3').textContent}</span>`;
+    z.appendChild(b);
   }));
   const raster = $('woche-raster');
   const kurse = raster ? raster.querySelectorAll('.slot.kurs').length : 0;
@@ -29,15 +34,17 @@
   const gruppe = t => preisgruppen.find(g => g.titel === t);
   const kurzPreis = $('a-preis');
   if (kurzPreis && preisgruppen.length) {
+    // vier Beträge auf einer Grundlinie: Wert gross, Einheit darunter
     const zeilen = [];
     const abos = gruppe('Abos');
     if (abos) {
-      const proStunde = abos.zeilen.map(([a, b]) => zahl(b) / zahl(a)).filter(isFinite);
+      const je = abos.zeilen.map(([a, b]) => ({ n: zahl(a), je: zahl(b) / zahl(a) })).filter(o => isFinite(o.je));
+      const g = je.reduce((x, o) => o.je < x.je ? o : x), t = je.reduce((x, o) => o.je > x.je ? o : x);
       const f = n => Number.isInteger(n) ? n : n.toFixed(2);
-      zeilen.push(['Gruppenstunde im Abo', `CHF ${f(Math.min(...proStunde))} bis ${f(Math.max(...proStunde))}`]);
+      zeilen.push(['Gruppenstunde', `ab CHF ${f(g.je)}`, `pro Stunde im ${g.n}er-Abo, CHF ${f(t.je)} im ${t.n}er-Abo`]);
     }
-    ['Monatsabos', 'Personal Training', 'Yogatherapie'].forEach(t => { const g = gruppe(t); if (g) zeilen.push([t === 'Monatsabos' ? 'Monatsabo' : t, `${g.zeilen[0][1]}<small>${g.zeilen[0][0]}</small>`]); });
-    kurzPreis.innerHTML = zeilen.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('');
+    [['Monatsabos', 'Monatsabo'], ['Personal Training', 'Personal Training'], ['Yogatherapie', 'Yogatherapie']].forEach(([t, n]) => { const g = gruppe(t); if (g) zeilen.push([n, g.zeilen[0][1], g.zeilen[0][0]]); });
+    kurzPreis.innerHTML = zeilen.map(([a, b, c]) => `<div><dt>${a}</dt><dd><b>${b}</b><span>${c}</span></dd></div>`).join('');
   }
 
   // Im Angebotsfenster: die ganze Preisliste zum jeweiligen Angebot

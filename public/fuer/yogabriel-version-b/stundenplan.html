@@ -4,36 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Vorschau · Studio Yogabriel · Variante B</title>
+<title>Vorschau · Studio Yogabriel · Stundenplan</title>
 <link rel="stylesheet" href="schrift/schriften.css">
-<link rel="stylesheet" href="stil.css?v=4.8">
+<link rel="stylesheet" href="stil.css?v=4.9">
 </head>
-<body data-variante="b" class="startseite-nur-hero">
+<body data-variante="b">
 <header id="kopf">
   <div class="innen kopf">
     <a class="marke" href="index.html"><small>Studio</small>Yogabriel</a>
-    <nav aria-label="Hauptnavigation" id="hauptnav"><a class="nav-start" href="index.html" aria-current="page">Startseite</a><a class="linie-link" href="stundenplan.html">Stundenplan</a><a class="linie-link" href="retreats.html">Retreats und Reisen</a><a class="linie-link" href="firmen.html">Für Firmen</a><a class="linie-link" href="raum.html">Raum mieten</a><a class="linie-link" href="preise.html">Preise</a><a class="linie-link" href="kontakt.html">Kontakt</a><span class="nav-extra"><a href="#gabriel" data-gabriel>Gabriels Seite</a><a href="tel:+41793524660">079 352 46 60</a></span></nav>
+    <nav aria-label="Hauptnavigation" id="hauptnav"><a class="nav-start" href="index.html">Startseite</a><a class="linie-link nav-aktiv" href="stundenplan.html" aria-current="page">Stundenplan</a><a class="linie-link" href="retreats.html">Retreats und Reisen</a><a class="linie-link" href="firmen.html">Für Firmen</a><a class="linie-link" href="raum.html">Raum mieten</a><a class="linie-link" href="preise.html">Preise</a><a class="linie-link" href="kontakt.html">Kontakt</a><span class="nav-extra"><a href="#gabriel" data-gabriel>Gabriels Seite</a><a href="tel:+41793524660">079 352 46 60</a></span></nav>
     <a class="kopf-tel" href="tel:+41793524660" aria-label="Gabriel anrufen: 079 352 46 60"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>079 352 46 60</span></a>
     <button class="menue-knopf" type="button" aria-expanded="false" aria-controls="hauptnav">Menü<svg viewBox="0 0 14 8" aria-hidden="true"><path d="M1 7.2 7 1l6 6.2"/></svg></button>
   </div>
 </header>
 
 <main id="haupt">
-  <section class="hero innen" aria-labelledby="titel">
-    <div>
-      <h1 class="serif motto" id="titel"><span>Gesünder leben,</span><span>gesünder arbeiten.</span></h1>
-      <p class="unter-motto"><i aria-hidden="true"></i>Studio in Zürich-Enge, seit 2006</p>
-      <p class="lead">Yoga, Pilates, Personal Training und Yogatherapie.</p>
-      <button class="byline" data-gabriel aria-haspopup="dialog"><img src="https://www.yogabriel.ch/bilder/Portraitfoto-153x218.jpg" alt=""><span><b>Gabriel Vecellio</b><span class="byline-motto">Ich unterstütze Menschen darin, sich weiterzuentwickeln.</span></span></button><br>
-      <a class="naechste" href="stundenplan.html"><span class="puls" aria-hidden="true"></span><span id="naechste">Nächste Stunde</span></a>
-    </div>
-    <div class="buehne-rahmen"><div class="buehne">
-      <svg class="gipfel-linie" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polygon points="50,0.6 99.6,99.6 0.4,99.6" pathLength="1"/></svg>
-      <div class="gipfel" aria-hidden="true"><video autoplay muted loop playsinline poster="https://images.pexels.com/videos/20392235/pexels-photo-20392235.jpeg?auto=compress&cs=tinysrgb&w=1400"><source src="https://videos.pexels.com/video-files/20392235/20392235-hd_1280_720_30fps.mp4" type="video/mp4"></video></div>
-      <div class="dreieck-licht" aria-hidden="true"></div><div class="dreieck-stein" aria-hidden="true"></div>
-      <div class="kacheln" id="kacheln" aria-label="Angebot"></div>
-    </div></div>
+  <section class="seitenkopf innen" aria-labelledby="seiten-titel">
+    <a class="zurueck" href="index.html"><i aria-hidden="true"></i><span>Startseite</span></a>
+    <h1 class="serif" id="seiten-titel">Stundenplan</h1>
+    <div class="kopf-berge" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
   </section>
+<div class="seite-inhalt">
+  <section class="innen" id="woche" aria-label="Stundenplan">
+    <div class="filter" role="group" aria-label="Anzeigen">
+      <button aria-pressed="true" data-art="alle">Alles</button>
+      <button aria-pressed="false" data-art="kurs"><i style="background:var(--seeblau)"></i>Gruppenstunden</button>
+      <button aria-pressed="false" data-art="einzel"><i style="background:var(--stein-hell);border:1px solid var(--stein)"></i>Personal Training und Therapie</button>
+      <button aria-pressed="false" data-art="frei"><i style="border:1px dashed rgba(29,42,49,.5)"></i>Raum frei</button>
+    </div>
+    <div class="woche" id="woche-raster"></div>
+    <p class="quelle">Stundenplan gültig ab April 2026, laut yogabriel.ch. Ein Klick auf eine Stunde zeigt das Angebot dazu.</p>
+  </section>
+</div>
 </main>
 
 <footer>
@@ -100,6 +102,6 @@
     <p class="b-hinweis">Porträt und Texte von yogabriel.ch, Zitate dort in der Ich-Form.</p>
   </div>
 </div>
-<script src="app.js?v=4.8"></script>
+<script src="app.js?v=4.9"></script>
 </body>
 </html>

@@ -368,7 +368,7 @@
       if (figur.classList.contains('gezeichnet')) return;
       figur.classList.add('gezeichnet');
       if (ruhig) return;
-      let i = 0; auto = setInterval(() => { if (nutzerHatGewaehlt) return clearInterval(auto); i = (i + 1) % knoepfe.length; waehlen(knoepfe[i].dataset.format); }, 3200);
+      let i = 0; auto = setInterval(() => { if (nutzerHatGewaehlt) return clearInterval(auto); i = (i + 1) % knoepfe.length; waehlen(knoepfe[i].dataset.format); }, 2600);
     };
     if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); zeichnen(); } }, { threshold: .2 }); io.observe(figur); setTimeout(() => { const r = figur.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) { io.disconnect(); zeichnen(); } }, 900); } else zeichnen();
   }

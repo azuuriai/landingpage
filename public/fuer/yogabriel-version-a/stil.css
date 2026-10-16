@@ -725,3 +725,20 @@
     .seite-kontakt .anfrage { grid-template-columns: minmax(0, 1fr); gap: 30px; }
     .anfrage-person .lead { max-width: none; }
   }
+
+  /* ===== 16.10.2026, zweite Runde (Lukas): Seitenköpfe tiefer, Firmen-Zeichnung kleiner und schneller, andere Pose für „Bewegung“ ===== */
+  .seitenkopf, .retreat-seite { padding-top: clamp(30px, 3.6vw, 56px); }
+  @media (min-width: 961px) {
+    .firmen-b { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .arbeitsplatz { width: 100%; max-width: 500px; justify-self: end; padding: 18px 20px 52px; }
+  }
+  #figur.gezeichnet [pathLength] { transition: stroke-dashoffset .65s var(--weich), stroke .35s; }
+  #figur.gezeichnet .koerper [pathLength] { transition-delay: .12s, 0s; }
+  #figur.gezeichnet .t-kopf { transition: opacity .35s .4s, fill .35s; }
+  #figur .koerper line { transition: stroke .35s; }
+  #oben, #arm, #unterarm { transition-duration: .5s; }
+  .glanz { transition: cx .5s var(--weich), cy .5s var(--weich), r .5s var(--weich), opacity .4s; }
+  /* Bewegung: der Arm streckt sich senkrecht nach oben, leicht nach hinten, hinter dem Kopf; kein nach vorn erhobener Arm */
+  #figur[data-format="bewegung"] #oben { transform: rotate(-4deg); }
+  #figur[data-format="bewegung"] #arm { transform: rotate(-156deg); }
+  #figur[data-format="bewegung"] #unterarm { transform: rotate(53deg); }

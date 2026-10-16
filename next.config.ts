@@ -72,10 +72,10 @@ const nextConfig: NextConfig = {
       { source: "/opengraph-image", destination: "/opengraph-image/de", permanent: true },
       // The personal preview pages exist in German only.
       { source: "/en/fuer/:path*", destination: "/fuer/:path*", permanent: false },
-      // Studio Yogabriel, draft version 3 as static files: short links for the
-      // mail, B (homepage with subpages) and A (everything on one page).
-      { source: "/fuer/yogabriel-gd4b", destination: "/fuer/yogabriel-gd4b/entwurf/index.html", permanent: false },
-      { source: "/fuer/yogabriel-gd4b/eine-seite", destination: "/fuer/yogabriel-gd4b/entwurf/variante-a.html", permanent: false },
+      // Studio Yogabriel, draft version 3 as static files: the links for the
+      // mail, version B (homepage with subpages) and A (everything on one page).
+      { source: "/fuer/yogabriel-version-b", destination: "/fuer/yogabriel-version-b/index.html", permanent: false },
+      { source: "/fuer/yogabriel-version-a", destination: "/fuer/yogabriel-version-a/index.html", permanent: false },
     ];
   },
   async headers() {
@@ -107,9 +107,13 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Studio Yogabriel, static draft version 3: its media hosts, see above.
-        source: "/fuer/yogabriel-gd4b/entwurf/:path*",
-        headers: [{ key: "Content-Security-Policy", value: yogabrielDraftPolicy }],
+        // Studio Yogabriel, static draft version 3 (versions A and B): its
+        // media hosts, see above; unlisted and never indexed.
+        source: "/fuer/:version(yogabriel-version-a|yogabriel-version-b)/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: yogabrielDraftPolicy },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
       },
       {
         // The mail pictures of the drafts, a local helper.
