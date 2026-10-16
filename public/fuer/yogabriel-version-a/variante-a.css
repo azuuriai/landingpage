@@ -44,33 +44,6 @@
 .a-feld .lead { margin-top: 16px; }
 .a-feld .aktionen { margin-top: 28px; }
 
-/* Für dich */
-.a-dich { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(30px, 5vw, 84px); align-items: start; }
-.a-gruppe-titel { margin: 0 0 4px; padding-bottom: 12px; border-bottom: 1px solid var(--linie); font: 600 15px "Hanken Grotesk"; color: var(--seeblau); }
-.a-gruppe-titel span { margin-left: 10px; font-weight: 400; color: var(--leise); }
-.a-dich .zeile { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 18px; padding: 14px 12px; margin: 0 -12px; width: calc(100% + 24px); border-radius: 14px; border-bottom: 0; background: linear-gradient(var(--linie), var(--linie)) 12px 100% / calc(100% - 24px) 1px no-repeat; transition: background-color .35s; }
-.a-dich .zeile:hover, .a-dich .zeile:focus-visible { background-color: #fff; }
-.a-dich .zeile:focus-visible { box-shadow: 0 0 0 2px var(--seeblau); }
-.a-dich .zeile h3 { background: linear-gradient(var(--licht), var(--licht)) 0 100% / 0 1.5px no-repeat; padding-bottom: 2px; justify-self: start; transition: background-size .45s var(--weich); }
-.a-dich .zeile:hover h3, .a-dich .zeile:focus-visible h3 { background-size: 100% 1.5px; }
-.a-dich .zeile > span:nth-child(2) { display: grid; justify-items: start; }
-.a-dich .zeile .mini { width: 60px; height: 66px; padding: 3px 3px 9px; border-radius: 3px; background: #fff; overflow: visible; box-shadow: 0 10px 22px -12px rgba(29,42,49,.5); transform: rotate(-2deg); transition: transform .5s var(--weich), box-shadow .5s var(--weich); }
-.a-dich .zeile:nth-child(even) .mini { transform: rotate(1.6deg); }
-.a-dich .zeile .mini img { border-radius: 2px; }
-.a-dich .zeile:hover .mini, .a-dich .zeile:focus-visible .mini { transform: rotate(0) translateY(-3px); box-shadow: 0 16px 28px -12px rgba(29,42,49,.55); }
-.a-dich .zeile:hover .mini img { transform: none; }
-.a-dich .zeile h3 { font-size: 25px; }
-.a-dich .zeile .satz { font-size: 14.5px; margin-top: 4px; }
-.a-dich .zeile .fakt { text-align: right; font-size: 14px; max-width: 18ch; }
-.a-dich .zeile .mehr { display: none; }
-.a-preis { margin-top: 34px; }
-.a-preis h4 { margin: 0; font: 400 24px "Newsreader"; letter-spacing: -.01em; }
-.a-preis dl { margin: 12px 0 0; }
-.a-preis dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--linie); font-size: 15px; }
-.a-preis dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
-.a-preis dd small { font-weight: 400; color: var(--leise); font-size: 13.5px; margin-left: 6px; }
-.a-preis .quelle { margin-top: 12px; }
-
 /* Für Firmen */
 .a-firmen { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(30px, 6vw, 100px); align-items: start; }
 .a-paket { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 30px 0 0; padding-top: 20px; border-top: 1px solid var(--linie); }
@@ -177,17 +150,11 @@
   .a-reiter { gap: 22px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); box-shadow: none; background: linear-gradient(var(--linie), var(--linie)) var(--gutter) 100% / calc(100% - 2 * var(--gutter)) 1px no-repeat; }
   .a-reiter::-webkit-scrollbar { display: none; }
   .a-reiter [role="tab"] { font-size: 22px; padding-bottom: 18px; }
-  .a-dich, .a-firmen { grid-template-columns: minmax(0, 1fr); }
-  .a-dich .a-gruppe + .a-gruppe { margin-top: 34px; }
-  .a-dich .zeile { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
-  .a-dich .zeile .mini { width: 52px; height: 57px; padding: 3px 3px 8px; }
-  .a-dich .zeile h3 { font-size: 22px; }
-  .a-dich .zeile { padding-block: 12px; }
-  .a-dich .zeile .fakt { grid-column: 2; text-align: left; max-width: none; font-size: 0; margin-top: -6px; }
-  .a-dich .zeile .fakt b { font-size: 14px; }
+  .a-firmen { grid-template-columns: minmax(0, 1fr); }
   .a-firmen .formate { margin-top: 6px; }
   .a-raum-oben { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .a-raum .raum-bild { height: 220px; }
+  .a-raum .raum-bild { height: 270px; place-items: start center; padding-top: 30px; }
+  .a-raum .raum-bild figcaption { left: 70px; bottom: 12px; }
 
   .a-woche { margin-top: 80px; padding: 56px 0 30px; }
   .a-woche-kopf { display: block; }
@@ -230,34 +197,10 @@
 .a-m-preisgruppen dd { margin: 0; font-variant-numeric: tabular-nums; }
 .a-m-preise p { margin: 12px 0 0; font-size: 12.5px; color: var(--leise); }
 
-/* ---------- Für dich als Fotoabzüge, Preise auf einer Grundlinie (16.10.2026) ---------- */
-.a-dich { grid-template-columns: minmax(0, 2fr) minmax(0, 4fr); gap: 0 clamp(36px, 4.4vw, 72px); }
-.a-dich .a-gruppe-titel { border-bottom: 0; padding-bottom: 0; margin-bottom: 18px; }
-.a-dich .a-zeilen { display: grid; gap: clamp(14px, 1.6vw, 24px); }
-.a-dich .a-gruppe:first-child .a-zeilen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.a-dich .a-gruppe:nth-child(2) .a-zeilen { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.a-abzug { display: block; width: 100%; max-width: 188px; padding: 6px 6px 0; border: 0; border-radius: 6px; background: #fff; cursor: pointer; text-align: center; transform: rotate(var(--d, 0deg)); box-shadow: 0 1px 0 rgba(29,42,49,.05), 0 20px 36px -18px rgba(16,28,34,.5); transition: transform .5s var(--weich), box-shadow .5s var(--weich); }
-.a-abzug .foto { display: block; aspect-ratio: 1; border-radius: 3px; overflow: hidden; background: var(--stein-hell); }
-.a-abzug img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--weich); }
-.a-abzug .name { display: block; padding: .7em 4px .8em; font: italic 400 clamp(15px, 1.25vw, 18px)/1.1 "Newsreader", Georgia, serif; color: var(--tinte); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: color .3s; }
-.a-abzug:hover, .a-abzug:focus-visible { transform: translateY(-6px) rotate(0deg); box-shadow: 0 1px 0 rgba(29,42,49,.05), 0 30px 48px -18px rgba(16,28,34,.58); outline: none; }
-.a-abzug:hover img { transform: scale(1.05); }
-.a-abzug:hover .name, .a-abzug:focus-visible .name { color: var(--seeblau); }
-.a-abzug:focus-visible { box-shadow: 0 0 0 3px var(--nebel), 0 0 0 5px var(--seeblau); }
-.a-dich .a-preis { grid-column: 1 / -1; margin-top: clamp(40px, 4.4vw, 60px); padding-top: 22px; border-top: 1px solid var(--linie); }
-.a-preis h4 { font: 600 15px "Hanken Grotesk"; color: var(--seeblau); letter-spacing: 0; }
-.a-preis dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 48px); margin: 18px 0 0; }
-.a-preis dl > div { display: grid; grid-template-rows: auto auto auto; align-content: start; padding: 0; border: 0; }
-.a-preis dt { font-size: 14px; color: var(--leise); }
-.a-preis dd { margin: 6px 0 0; text-align: left; font-weight: 400; }
-.a-preis dd b { display: block; font: 300 clamp(34px, 3.2vw, 48px)/1 "Newsreader", Georgia, serif; letter-spacing: -.02em; color: var(--tinte); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
-.a-preis dd span { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.45; color: var(--text); max-width: 26ch; }
-.a-preis .quelle { margin-top: 20px; }
-@media (max-width: 960px) {
-  .a-dich { grid-template-columns: minmax(0, 1fr); }
-  .a-dich .a-gruppe + .a-gruppe { margin-top: 34px; }
-  .a-dich .a-gruppe:first-child .a-zeilen, .a-dich .a-gruppe:nth-child(2) .a-zeilen { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-  .a-abzug { max-width: none; }
-  .a-preis dl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 18px; }
-  .a-preis dd b { font-size: 32px; }
-}
+/* ---------- Angebot nur mit Firmen und Raum; Yoga oben zeigt, dass man die Abzüge antippen kann (16.10.2026) ---------- */
+.kachel .tipp-welle { position: absolute; left: 50%; top: 42%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 0 0 1.5px rgba(255,255,255,.9); opacity: 0; pointer-events: none; }
+.kachel.tipp { animation: a-tipp 6.5s var(--weich) 3; }
+.kachel.tipp .tipp-welle { animation: a-welle 6.5s ease-out 3; }
+@keyframes a-tipp { 0%, 100% { scale: 1; } 4% { scale: .94; } 9% { scale: 1.02; } 14% { scale: 1; } }
+@keyframes a-welle { 0%, 2% { opacity: 0; transform: scale(.4); } 5% { opacity: 1; transform: scale(.6); } 16% { opacity: 0; transform: scale(2.2); } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .kachel.tipp, .kachel.tipp .tipp-welle { animation: none; } }

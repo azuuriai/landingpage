@@ -10,42 +10,15 @@
   const kopfH = () => kopf ? kopf.offsetHeight : 0;
   const obenVon = el => el.getBoundingClientRect().top + scrollY;
   const springe = (el, art = weich()) => el && scrollTo({ top: Math.max(0, obenVon(el) - kopfH() + 1), behavior: art });
-  const zahl = t => +t.replace(/[^\d]/g, '');
 
-  // ---------- Für dich: Fotoabzüge wie auf der Startseite von B, Bild und Name, ohne Untertext (Lukas, 16.10.2026) ----------
-  const liste = $('liste');
-  document.querySelectorAll('.a-zeilen').forEach(z => z.dataset.ids.split(' ').forEach((id, i) => {
-    const zeile = liste && liste.querySelector(`[data-oeffnen="${id}"]`); if (!zeile) return;
-    const kurz = document.querySelector(`#kacheln [data-oeffnen="${id}"] .name`);
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'a-abzug'; b.dataset.oeffnen = id; b.style.setProperty('--d', [-1.6, 1.2, -.8, 1.5][i % 4] + 'deg');
-    b.innerHTML = `<span class="foto"><img src="${zeile.querySelector('img').src}" alt=""></span><span class="name">${kurz ? kurz.textContent : zeile.querySelector('h3').textContent}</span>`;
-    z.appendChild(b);
-  }));
   const raster = $('woche-raster');
-  const kurse = raster ? raster.querySelectorAll('.slot.kurs').length : 0;
-  if ($('a-gruppen-zahl') && kurse) $('a-gruppen-zahl').textContent = `${kurse} Stunden pro Woche`;
 
-  // Preise aus der Preisliste von app.js; die Spanne pro Gruppenstunde wird aus den Abos berechnet
+  // Preise aus der Preisliste von app.js, für die Angebotsfenster
   const preisgruppen = [...document.querySelectorAll('#preis-raster > div')].map(g => ({
     titel: g.querySelector('h3').textContent,
     zeilen: [...g.querySelectorAll('dl > div')].map(d => [d.querySelector('dt').textContent, d.querySelector('dd').textContent]),
   }));
   const gruppe = t => preisgruppen.find(g => g.titel === t);
-  const kurzPreis = $('a-preis');
-  if (kurzPreis && preisgruppen.length) {
-    // vier Beträge auf einer Grundlinie: Wert gross, Einheit darunter
-    const zeilen = [];
-    const abos = gruppe('Abos');
-    if (abos) {
-      const je = abos.zeilen.map(([a, b]) => ({ n: zahl(a), je: zahl(b) / zahl(a) })).filter(o => isFinite(o.je));
-      const g = je.reduce((x, o) => o.je < x.je ? o : x), t = je.reduce((x, o) => o.je > x.je ? o : x);
-      const f = n => Number.isInteger(n) ? n : n.toFixed(2);
-      zeilen.push(['Gruppenstunde', `ab CHF ${f(g.je)}`, `pro Stunde im ${g.n}er-Abo, CHF ${f(t.je)} im ${t.n}er-Abo`]);
-    }
-    [['Monatsabos', 'Monatsabo'], ['Personal Training', 'Personal Training'], ['Yogatherapie', 'Yogatherapie']].forEach(([t, n]) => { const g = gruppe(t); if (g) zeilen.push([n, g.zeilen[0][1], g.zeilen[0][0]]); });
-    kurzPreis.innerHTML = zeilen.map(([a, b, c]) => `<div><dt>${a}</dt><dd><b>${b}</b><span>${c}</span></dd></div>`).join('');
-  }
 
   // Im Angebotsfenster: die ganze Preisliste zum jeweiligen Angebot
   const preiseImFenster = { 'Yoga': ['Abos', 'Monatsabos'], 'Pilates': ['Abos', 'Monatsabos'], 'Personal Training': ['Personal Training'], 'Yogatherapie': ['Yogatherapie'] };
@@ -63,7 +36,18 @@
     }).observe(mTitel, { childList: true, characterData: true, subtree: true });
   }
 
-  // ---------- Reiter: Für dich, Für Firmen, Raum mieten ----------
+  // ---------- Antippen: Yoga in der Eröffnung zeigt, dass die Abzüge Fenster öffnen (Lukas, 16.10.2026) ----------
+  const kacheln = $('kacheln'), yoga = kacheln && kacheln.querySelector('[data-oeffnen="yoga"]');
+  const tippen = () => { if (!yoga || ruhigMQ.matches) return; yoga.classList.remove('tipp'); void yoga.offsetWidth; yoga.classList.add('tipp'); };
+  if (yoga) {
+    yoga.insertAdjacentHTML('beforeend', '<span class="tipp-welle" aria-hidden="true"></span>');
+    setTimeout(tippen, 2600);
+    kacheln.addEventListener('click', () => yoga.classList.remove('tipp'));
+  }
+  // „Für dich“ im Menü führt zu den Abzügen oben: am Handy unter den Kopf, sonst an den Seitenanfang
+  const zuDenAngeboten = art => { if (!kacheln) return; if (schmalMQ.matches) scrollTo({ top: Math.max(0, obenVon(kacheln) - kopfH() - 18), behavior: art || weich() }); else scrollTo({ top: 0, behavior: art || weich() }); setTimeout(tippen, 700); };
+
+  // ---------- Reiter: Für Firmen, Raum mieten ----------
   const reiter = [...document.querySelectorAll('.a-reiter [role="tab"]')];
   const felder = reiter.map(t => $(t.getAttribute('aria-controls')));
   const gipfel = document.querySelector('.a-reiter-gipfel');
@@ -219,11 +203,13 @@
     const a = e.target.closest('a[href^="#"]'); if (!a || a.hasAttribute('data-gabriel') || a.hasAttribute('data-a-frei')) return;
     const id = a.getAttribute('href').slice(1);
     if (grat && grat.contains(a)) listeZu(false);
+    if (id === 'fuer-dich') { e.preventDefault(); zuDenAngeboten(); history.replaceState(null, '', '#' + id); return; }
     if (felder.some(f => f && f.id === id)) { e.preventDefault(); zumReiter(id); history.replaceState(null, '', '#' + id); setTimeout(() => reiter[aktivReiter].focus({ preventScroll: true }), 30); return; }
     const ziel = id && $(id);
     if (ziel && ziel.closest('main')) { e.preventDefault(); springe(ziel); history.replaceState(null, '', '#' + id); }
   });
   if (location.hash && felder.some(f => f && f.id === location.hash.slice(1))) setTimeout(() => zumReiter(location.hash.slice(1), 'instant'), 60);
+  if (location.hash === '#fuer-dich') setTimeout(() => zuDenAngeboten('instant'), 60);
 
   // ---------- Takt ----------
   let geplant = false;
