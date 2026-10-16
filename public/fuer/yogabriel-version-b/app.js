@@ -119,7 +119,7 @@
   setze('preis-raster', preise.map(([t, z]) => `<div><h3>${t}</h3><dl>${z.map(([a, b]) => `<div><dt>${a}</dt><dd>CHF ${b}</dd></div>`).join('')}</dl></div>`).join(''));
   setze('retreat-liste', retreats.map(r => `<li><span class="datum">${r[0]}<small>${r[1]}</small></span><span class="preis">${r[2]}</span></li>`).join(''));
   setze('anreise', anreise.map(a => `<li><span>${a[0]}</span><span class="balken"><i style="width:${a[1] / 171 * 100}%"></i></span><span>${a[2]}</span></li>`).join(''));
-  setze('nutzung', nutzungen.map(n => `<span>${n}</span>`).join(''));
+  setze('nutzung', `<span class="nutzung-band">${nutzungen.map(n => `<span>${n}</span>`).join('')}<span class="nutzung-kopie" aria-hidden="true">${nutzungen.map(n => `<span>${n}</span>`).join('')}</span></span>`);
   setze('leiste', tage.map(([k, n]) => `<div><strong>${n}</strong>${woche.filter(s => s[0] === k && s[3] === 'frei').map(s => `<i>${s[1]}–${s[2]}</i>`).join('') || '<span>ausgebucht</span>'}</div>`).join(''));
   // ---------- Retreats: nächster Termin, Jahreslinie, alle Termine ----------
   const heuteIso = new Date().toISOString().slice(0, 10);
@@ -319,6 +319,23 @@
   });
   if (location.hash === '#gabriel' && blatt) setTimeout(() => blattAuf(document.querySelector('.byline')), 300);
 
+  // ---------- Fenster und Blatt am Handy nach unten wegwischen ----------
+  const wischen = (el, zu) => {
+    if (!el) return;
+    let y0 = null, dy = 0;
+    el.addEventListener('touchstart', e => { y0 = innerWidth > 960 || el.scrollTop > 0 || e.touches.length > 1 ? null : e.touches[0].clientY; dy = 0; }, { passive: true });
+    el.addEventListener('touchmove', e => {
+      if (y0 === null) return;
+      dy = e.touches[0].clientY - y0;
+      if (dy <= 0) { el.style.transform = ''; el.style.transition = ''; return; }
+      el.style.transition = 'none'; el.style.transform = `translateY(${dy}px)`;
+      if (e.cancelable) e.preventDefault();
+    }, { passive: false });
+    const los = () => { if (y0 === null) return; el.style.transition = ''; el.style.transform = ''; if (dy > 110) zu(); y0 = null; dy = 0; };
+    el.addEventListener('touchend', los); el.addEventListener('touchcancel', los);
+  };
+  wischen(blatt, () => blattZu()); wischen(modal, () => schliessen());
+
   // ---------- Menü am Handy (Variante B) ----------
   const menueKnopf = document.querySelector('.menue-knopf'), hauptnav = $('hauptnav');
   if (menueKnopf && hauptnav) {
@@ -367,7 +384,7 @@
     const zeichnen = () => {
       if (figur.classList.contains('gezeichnet')) return;
       figur.classList.add('gezeichnet');
-      if (ruhig) return;
+      if (ruhig || matchMedia('(max-width: 960px)').matches) return;
       let i = 0; auto = setInterval(() => { if (nutzerHatGewaehlt) return clearInterval(auto); i = (i + 1) % knoepfe.length; waehlen(knoepfe[i].dataset.format); }, 2600);
     };
     if ('IntersectionObserver' in window) { const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); zeichnen(); } }, { threshold: .2 }); io.observe(figur); setTimeout(() => { const r = figur.getBoundingClientRect(); if (r.top < innerHeight && r.bottom > 0) { io.disconnect(); zeichnen(); } }, 900); } else zeichnen();
@@ -390,9 +407,10 @@
       const pt = (o, i) => [40 + (werte.length === 1 ? 0 : i / (werte.length - 1)) * (W - 80), 30 + (max === min ? 0 : (max - o.je) / (max - min)) * (H - 70)];
       const pfad = werte.map((o, i) => (i ? 'L' : 'M') + pt(o, i).map(v => v.toFixed(1)).join(' ')).join(' ');
       const w = werte[wahl], spar = Math.round((1 - w.je / max) * 100);
-      hang.innerHTML = `<div class="hang-zahl"><span class="ort">${w.a}</span><b class="serif">CHF ${w.roh}</b><span class="hang-je">${chf(w.je)} ${pro}${spar > 0 ? `<em>${spar} % weniger als ${basis}</em>` : ''}</span><div class="aktionen"><button class="knopf" data-anfrage="${titel === 'Personal Training' || titel === 'Yogatherapie' ? 'Personal Training oder Therapie' : 'Eine Stunde'}">Anfragen</button></div></div>`
-        + `<div class="hang-bild"><svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path class="hang-flaeche" d="${pfad} L ${W - 40} ${H - 20} L 40 ${H - 20} Z"/><path class="hang-linie${neu ? ' neu' : ''}" d="${pfad}" pathLength="1"/>${werte.map((o, i) => { const [x, y] = pt(o, i); return `<polygon class="hang-punkt${i === wahl ? ' an' : ''}" points="${x},${y - 11} ${x + 10},${y + 7} ${x - 10},${y + 7}"/>`; }).join('')}</svg>`
-        + `<div class="hang-wahl" role="group" aria-label="${titel}">${werte.map((o, i) => `<button type="button" aria-pressed="${i === wahl}" data-wahl="${i}"><b>${o.a}</b><span>CHF ${o.roh}</span></button>`).join('')}</div></div>`;
+      const gegen = basis.replace(/^beim /, 'dem ').replace(/^bei einer /, 'einer ');
+      hang.innerHTML = `<div class="hang-wahl" role="group" aria-label="${titel}" data-n="${werte.length}">${werte.map((o, i) => `<button type="button" aria-pressed="${i === wahl}" data-wahl="${i}"><b>${o.a}</b><span>CHF ${o.roh}</span></button>`).join('')}</div>`
+        + `<div class="hang-zahl"><span class="ort">${w.a}</span><b class="serif">CHF ${w.roh}</b><dl class="hang-fakten"><div><dt>${pro.charAt(0).toUpperCase() + pro.slice(1)}</dt><dd>${chf(w.je)}</dd></div>${spar > 0 ? `<div class="spar"><dt>Gegenüber ${gegen}</dt><dd>${spar} % günstiger</dd></div>` : ''}</dl><div class="aktionen"><button class="knopf" data-anfrage="${titel === 'Personal Training' || titel === 'Yogatherapie' ? 'Personal Training oder Therapie' : 'Eine Stunde'}">Anfragen</button></div></div>`
+        + `<div class="hang-bild"><svg viewBox="0 0 ${W} ${H}" aria-hidden="true"><path class="hang-flaeche" d="${pfad} L ${W - 40} ${H - 20} L 40 ${H - 20} Z"/><path class="hang-linie${neu ? ' neu' : ''}" d="${pfad}" pathLength="1"/>${werte.map((o, i) => { const [x, y] = pt(o, i); return `<polygon class="hang-punkt${i === wahl ? ' an' : ''}" points="${x},${y - 11} ${x + 10},${y + 7} ${x - 10},${y + 7}"/>`; }).join('')}</svg></div>`;
       const aktiv = reiter.querySelector('[aria-selected="true"]'), g = reiter.querySelector('.reiter-gipfel');
       if (aktiv && g) g.style.transform = `translateX(${aktiv.offsetLeft + aktiv.offsetWidth / 2 - 6}px)`;
       neu = false;
