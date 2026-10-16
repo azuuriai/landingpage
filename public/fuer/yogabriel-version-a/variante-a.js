@@ -153,7 +153,7 @@
   }));
 
   // ---------- Gratlinie: Kapitel, Fortschritt, Sprung ----------
-  const grat = $('grat'), linie = $('grat-linie'), kapitelKnopf = $('a-kapitel'), kapitelName = $('a-kapitel-name');
+  const grat = $('grat'), linie = $('grat-linie'), kapitelKnopf = $('a-kapitel');
   const kapLinks = grat ? [...grat.querySelectorAll('[data-kapitel]')] : [];
   const kapitel = kapLinks.map(a => $(a.dataset.kapitel));
   const [grund, weg, gipfelPfad] = linie ? [...linie.querySelectorAll('path')] : [];
@@ -166,7 +166,7 @@
     const xs = kapLinks.map((a, i) => { const r = a.getBoundingClientRect(); return breit && r.width ? r.left + r.width / 2 - kr.left : W * (i + 1) / (kapLinks.length + 1); });
     const pkt = [[0, y0]], spitzen = [];
     xs.forEach((x, i) => {
-      const h = HOEHEN[i % HOEHEN.length] * (breit ? 1 : .8);
+      const h = HOEHEN[i % HOEHEN.length] * (breit ? 1 : .5);
       if (i > 0) { const m = (xs[i - 1] + x) / 2 + 6; pkt.push([m - 6, y0], [m, y0 - 3.5], [m + 9, y0]); }
       const l = [x - h * 1.7, y0], s = [x, y0 - h], r = [x + h * 2.2, y0];
       pkt.push(l, s, r); spitzen.push([l, s, r]);
@@ -203,7 +203,6 @@
     kapLinks.forEach((a, i) => { if (i === neu) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current'); a.parentElement.classList.toggle('vorbei', i < neu); });
     if (neu >= 0) { const [l, s, r] = geo.spitzen[neu]; gipfelPfad.setAttribute('d', `M${l[0].toFixed(1)} ${l[1]} L${s[0].toFixed(1)} ${s[1]} L${r[0].toFixed(1)} ${r[1]} Z`); }
     else gipfelPfad.removeAttribute('d');
-    if (kapitelName) kapitelName.textContent = neu >= 0 ? kapLinks[neu].textContent : 'Inhalt';
   }
 
   // Kapitelliste am Handy

@@ -853,3 +853,24 @@
     .raum-b .nutzung { overflow-x: auto; -webkit-mask: none; mask: none; padding: 0 var(--gutter); }
     .raum-b .nutzung-kopie { display: none; }
   }
+
+  /* ===== 16.10.2026, spät: zweite Handy-Durchsicht (Lukas) ===== */
+  @media (max-width: 960px) {
+    /* Eröffnung luftiger, „Nächste Stunde“ als kleine Marke, Berg etwas tiefer, Abzüge mit mehr Luft */
+    .hero .byline, .startseite-nur-hero .byline { margin-top: 30px; }
+    .hero .naechste { width: fit-content; max-width: 100%; margin: 20px 0 0; padding: 8px 15px 8px 12px; gap: 10px; border-radius: 14px; font-size: 12.5px; line-height: 1.35; background: rgba(255,255,255,.88); box-shadow: inset 0 0 0 1px var(--linie); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .hero .naechste .komma { display: none; }
+    .hero .naechste .naechste-kurs { display: block; }
+    .hero .buehne-rahmen { margin-top: -232px; }
+    .hero .kacheln { margin-top: -11%; gap: 18px 12px; }
+
+    /* Retreats: nächster Termin kleiner, rechts und leicht durchscheinend */
+    .retreat-seite .kette { margin-top: -250px; }
+    .retreat-seite .naechster { max-width: 262px; margin-left: auto; padding: 14px 16px 16px; border-radius: 16px; background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(14px) saturate(1.2); backdrop-filter: blur(14px) saturate(1.2); box-shadow: inset 0 0 0 1px rgba(255,255,255,.6), 0 18px 40px -28px rgba(29,42,49,.5); }
+    .retreat-seite .naechster .ort { font-size: 12px; }
+    .retreat-seite .naechster b { margin-top: 4px; font-size: 23px; }
+    .retreat-seite .naechster > span:not(.ort) { margin-top: 6px; font-size: 13px; line-height: 1.4; }
+    .retreat-seite .naechster .aktionen { gap: 16px; margin-top: 12px; }
+    .retreat-seite .naechster .knopf { height: 38px; padding: 0 16px; font-size: 14px; }
+    .retreat-seite .naechster .text-link { font-size: 14px; }
+  }

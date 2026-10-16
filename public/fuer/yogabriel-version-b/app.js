@@ -112,7 +112,7 @@
     for (let d = 0; d < 8; d++) {
       const tag = reihe[(t0 + d) % 7];
       const k = woche.filter(s => s[3] === 'kurs' && s[0] === tag).find(s => { const [h, m] = s[1].split(':').map(Number); return d > 0 || h * 60 + m > min; });
-      if (k) { el.innerHTML = `Nächste Stunde <b>${d === 0 ? 'heute' : d === 1 ? 'morgen' : 'am ' + namen[tag]} um ${k[1]}</b>, ${k[4]} mit ${k[5]}`; return; }
+      if (k) { el.innerHTML = `Nächste Stunde <b>${d === 0 ? 'heute' : d === 1 ? 'morgen' : 'am ' + namen[tag]} um ${k[1]}</b><span class="komma">, </span><span class="naechste-kurs">${k[4]} mit ${k[5]}</span>`; return; }
     }
   })();
 

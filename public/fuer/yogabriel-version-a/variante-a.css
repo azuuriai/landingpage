@@ -150,14 +150,14 @@
 
 /* ---------- Handy und schmale Fenster ---------- */
 @media (max-width: 960px) {
-  .a-seite { --kopf-h: 66px; }
-  .a-kopf .kopf { gap: 10px; }
+  .a-seite { --kopf-h: 70px; }
+  .a-kopf .kopf { gap: 8px; height: 70px; padding-bottom: 6px; }
   .a-kopf .marke { font-size: 25px; }
-  .a-kapitel { order: 1; display: inline-flex; align-items: center; gap: 8px; margin-left: auto; height: 42px; padding: 0 14px 0 16px; border: 0; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--linie); font: 600 14px "Hanken Grotesk"; color: var(--tinte); cursor: pointer; }
+  .a-kapitel { order: 2; display: inline-flex; align-items: center; gap: 8px; margin-left: 0; height: 42px; padding: 0 14px 0 16px; border: 0; border-radius: 999px; background: #fff; box-shadow: inset 0 0 0 1px var(--linie); font: 600 14px "Hanken Grotesk"; color: var(--tinte); cursor: pointer; }
   .a-kapitel svg { width: 13px; height: 8px; fill: none; stroke: var(--seeblau); stroke-width: 1.6; stroke-linejoin: round; transform: rotate(180deg); transition: transform .4s var(--weich); }
   .a-kapitel[aria-expanded="true"] svg { transform: none; }
   .a-kapitel:focus-visible { outline: 2px solid var(--seeblau); outline-offset: 3px; }
-  .a-kopf .kopf-tel { order: 2; margin-left: 0; flex: none; }
+  .a-kopf .kopf-tel { order: 1; margin-left: auto; flex: none; }
 
   .a-kopf .grat { display: none; position: absolute; left: 0; right: 0; top: 100%; margin: 0; padding: 10px var(--gutter) 22px; background: var(--nebel); box-shadow: 0 30px 50px -30px rgba(29,42,49,.45); max-height: calc(100vh - var(--kopf-h)); overflow-y: auto; }
   .a-kopf .grat.offen { display: block; animation: a-auf .45s var(--weich); }
