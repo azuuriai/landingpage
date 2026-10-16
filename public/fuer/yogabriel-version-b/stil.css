@@ -874,3 +874,16 @@
     .retreat-seite .naechster .knopf { height: 38px; padding: 0 16px; font-size: 14px; }
     .retreat-seite .naechster .text-link { font-size: 14px; }
   }
+
+  /* ===== 16.10.2026, nachts: Tablet im Hochformat (600 bis 960 px), Berg und Bergkette nicht mehr auf volle Breite ===== */
+  @media (min-width: 600px) and (max-width: 960px) {
+    .hero .buehne-rahmen { width: min(100%, 640px); margin: -190px auto 0; }
+    .hero .gipfel { aspect-ratio: 1.35; }
+    .hero .kacheln { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px 14px; margin-top: -12%; }
+    .hero .kachel, .hero .kachel:nth-child(7), .hero .kachel:nth-child(8) { grid-column: auto; }
+    .hero .kachel .name { font-size: 13.5px; }
+
+    .retreat-seite .kette { width: min(92%, 640px); margin: -230px auto 0; }
+    .retreat-seite .naechster { margin-right: 2%; }
+    .retreat-seite + .termine { margin-top: -16vw; }
+  }
