@@ -84,7 +84,8 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 .marke { display: inline-flex; flex-direction: column; font: 500 calc(15px * var(--s))/1.02 "IBM Plex Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
 .marke span:first-child { color: var(--burgund); }
 .marke span:last-child { color: #b9937a; }
-.marke-hell span:first-child { color: var(--leinen); }
+/* Im dunklen Fuss: PILATES im Rot des Logos, etwas aufgehellt, damit es auf Tinte lesbar bleibt */
+.marke-hell span:first-child { color: #b5544b; }
 .marke-hell span:last-child { color: var(--sandrose); }
 .nav { position: relative; display: flex; gap: calc(30px * var(--s)); margin: 0 auto; font-size: calc(15px * var(--s)); }
 .nav-link { color: var(--tinte); }
@@ -164,7 +165,7 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 @keyframes schiene { from { transform: scaleY(0); } }
 @keyframes ero-titel { to { transform: translateY(-24vh); opacity: 0; } }
 /* Grösse so, dass die längste Zeile samt Einzug immer im Leinenfeld bleibt (--zb: Breite der längsten Zeile in em, je Sprache) */
-.eroeffnung { --zb: 6.2; --hs: min(4.4vw, calc(76px * var(--s)), calc((39.5vw - 2 * var(--rand)) / var(--zb))); }
+.eroeffnung { --zb: 6.2; --hs: min(5.6vw, calc(96px * var(--s)), calc((40vw - var(--rand) - 32px) / var(--zb))); }
 .eroeffnung:lang(de) { --zb: 8; }
 .ero-titel h1 { font-size: var(--hs); font-weight: 260; font-stretch: 114%; line-height: .98; letter-spacing: -.025em; color: var(--tinte); }
 .ero-titel .stark { color: var(--burgund); }
@@ -506,7 +507,7 @@ a.plan-stunde:focus-visible::after { --p: 100%; }
 }
 @media (max-width: 860px) {
   .ero-titel { right: var(--rand); top: calc(var(--kopf-h) + 18px); mix-blend-mode: normal; }
-  .eroeffnung { --hs: min(9.4vw, 56px, calc((100vw - 2 * var(--rand) - 4px) / var(--zb))); }
+  .eroeffnung { --hs: min(10.6vw, 66px, calc((100vw - 2 * var(--rand) - 4px) / var(--zb))); }
   .ero-bild { left: 0; top: calc(var(--kopf-h) + 18px + 4.08 * var(--hs) + 24px); bottom: 136px; }
   .ero-bild::after { display: none; }
   .ero-fuss { width: auto; right: var(--rand); bottom: 20px; padding-top: 18px; gap: 14px 18px; }
