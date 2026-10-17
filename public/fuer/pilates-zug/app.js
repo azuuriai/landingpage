@@ -217,6 +217,8 @@
   const angebot = $('#angebot'), spur = $('.spur');
   $$('.tafel').forEach(t => t.addEventListener('focus', () => {
     if (ruhig || !angebot || !t.matches(':focus-visible')) return;
+    // Schon ganz im Blick (etwa nach dem Schliessen des Fensters): nichts verschieben
+    const b = t.getBoundingClientRect(); if (b.left >= 0 && b.right <= innerWidth) return;
     const r = angebot.getBoundingClientRect(), max = r.height - innerHeight;
     const distanz = spur.scrollWidth - innerWidth;
     const ziel = clamp((t.offsetLeft - innerWidth * .3) / distanz);

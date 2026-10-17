@@ -219,7 +219,7 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 .tafel[data-format="solo"] .tafel-bild img { object-position: 62% 50%; }
 .tafel[data-format="trio"] .tafel-bild img { object-position: 18% 50%; }
 .tafel[data-format="gruppe"] .tafel-bild img { object-position: 62% 50%; }
-.tafel::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22,17,15,0) 40%, rgba(22,17,15,.3) 60%, rgba(22,17,15,.66) 100%); }
+.tafel::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(22,17,15,0) 36%, rgba(22,17,15,.36) 58%, rgba(22,17,15,.78) 100%); }
 /* Der Name liegt riesig auf dem Bild. Alle Namen stehen auf derselben Grundlinie, Unterlängen (g, p) haben darunter Platz.
    Grösse aus der Tafelbreite: auch „Gruppe“ passt ganz hinein */
 .tafel-name { position: absolute; left: 5cqw; bottom: calc(6cqw + 21cqw * .24); font-size: 21cqw; font-weight: 300; font-stretch: 112%; letter-spacing: -.045em; line-height: .74; color: var(--leinen); transition: transform .6s var(--weich); }
