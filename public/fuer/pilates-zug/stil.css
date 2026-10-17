@@ -238,6 +238,16 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 .scroll-hinweis { position: absolute; z-index: 2; top: clamp(12px, 2.6vh, 28px); right: var(--rand); display: flex; align-items: center; gap: 12px; font-size: calc(14px * var(--s)); letter-spacing: .01em; color: var(--stein); --zl-t: --angebot; --zl-r: contain 88% contain 96%; animation-name: hinweis-weg; }
 @keyframes hinweis-weg { to { opacity: 0; transform: translateX(18px); } }
 .scroll-hinweis .pfeil { width: 44px; height: 12px; overflow: visible; fill: none; stroke: var(--burgund); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; animation: pfeil 1.9s var(--weich) infinite; }
+/* Am Handy und Tablet wischt man nach unten, die Galerie läuft trotzdem seitlich: statt des Pfeils nach rechts
+   eine kurze senkrechte Linie, in der ein Strich nach unten läuft (zeigt die Geste, keine Richtung der Bilder) */
+.hinweis-linie { display: none; position: relative; width: 1.5px; height: 24px; overflow: hidden; background: var(--linie-stark); }
+.hinweis-linie i { position: absolute; left: 0; top: 0; width: 100%; height: 9px; background: var(--burgund); animation: linie-ab 1.7s var(--weich) infinite; }
+@keyframes linie-ab { from { transform: translateY(-100%); } to { transform: translateY(270%); } }
+@media (max-width: 1023px), (hover: none) {
+  .scroll-hinweis { gap: 10px; }
+  .scroll-hinweis .pfeil { display: none; }
+  .hinweis-linie { display: block; }
+}
 @keyframes pfeil { 0% { transform: translateX(-8px); opacity: 0; } 25% { opacity: 1; } 70% { transform: translateX(8px); opacity: 1; } 100% { transform: translateX(14px); opacity: 0; } }
 /* Schiene mit Wagen: zeigt, wo man in der Galerie steht */
 .spur-leiste { position: absolute; left: var(--rand); right: var(--rand); bottom: calc(clamp(20px, 4vh, 40px) + var(--luecke)); height: 1px; background: var(--linie-stark); }
