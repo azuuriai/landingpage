@@ -518,3 +518,84 @@ body {
   outline-offset: 6px;
   border-radius: 4px;
 }
+
+/* ==========================================================================
+   Custom cursor — a hairline teal ring trailing the system pointer, growing
+   slightly over anything clickable (after aneshk.design). Only active once
+   CustomCursor confirms a real mouse; the system pointer always stays.
+   ========================================================================== */
+
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10000;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  translate:
+    calc(var(--x, -100px) - 50% + var(--shift-x))
+    calc(var(--y, -100px) - 50% + var(--shift-y));
+  transition:
+    opacity 200ms ease,
+    scale 360ms var(--ease-out),
+    background-color 360ms var(--ease-out);
+
+  /* --x/--y is the hotspot; the shift moves the ring onto the middle of
+     the pointer's drawing. macOS values measured from NSCursor: the arrow
+     (hotspot 5,5) spans 4,3.5 → 14.4,20.8; the hand (hotspot 13,8) spans
+     8,7 → 22.5,26. Windows values are estimated from the Aero cursors. */
+  --shift-x: 4.2px;
+  --shift-y: 7.2px;
+}
+
+html[data-cursor-state="hover"] .cursor-ring {
+  --shift-x: 2.3px;
+  --shift-y: 8.5px;
+}
+
+html[data-cursor-os="windows"] .cursor-ring {
+  --shift-x: 6px;
+  --shift-y: 9.5px;
+}
+
+html[data-cursor-os="windows"][data-cursor-state="hover"] .cursor-ring {
+  --shift-x: 3px;
+  --shift-y: 11px;
+}
+
+/* An arrow everywhere except links and text fields: the browser's automatic
+   I-beam over plain text would sit off-centre in the ring. Text stays
+   selectable. */
+html.has-custom-cursor {
+  cursor: default;
+}
+
+html.has-custom-cursor :is(input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]), textarea, [contenteditable="true"]) {
+  cursor: text;
+}
+
+html[data-cursor="on"] .cursor-ring {
+  opacity: 1;
+}
+
+/* Over text fields the I-beam takes over and the ring steps aside. */
+html[data-cursor="on"][data-cursor-state="text"] .cursor-ring {
+  opacity: 0;
+}
+
+html[data-cursor-state="hover"] .cursor-ring {
+  scale: 1.3;
+  background-color: rgba(0, 184, 173, 0.08);
+}
+
+html[data-cursor-press="on"] .cursor-ring {
+  scale: 0.8;
+}
+
+html[data-cursor-press="on"][data-cursor-state="hover"] .cursor-ring {
+  scale: 1.15;
+}

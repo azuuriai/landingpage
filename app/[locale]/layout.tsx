@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import { localeFromParams, type LocaleParams } from "@/app/locale";
 import { siteMetadata } from "@/app/seo";
 import { ScrollToTop } from "@/app/_components/scroll-to-top";
+import { CustomCursor } from "@/app/_components/custom-cursor";
 import "../globals.css";
 
 // Loaded with its optical-size axis: large headlines automatically use
@@ -42,6 +43,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider>
           <ScrollToTop />
+          <CustomCursor />
           {children}
         </NextIntlClientProvider>
       </body>
