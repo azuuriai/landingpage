@@ -114,6 +114,15 @@
     haupt.inert = auf; fuss.inert = auf;
     if (auf) { $$('a', menue).forEach((a, k) => a.style.setProperty('--k', k)); $('a', menue).focus(); }
   }
+  // iOS lässt die Seite hinter Fenster und Menü trotz overflow: hidden mitlaufen. Wischen nur zulassen,
+  // wo innen wirklich etwas scrollt, und nie über dessen Anfang oder Ende hinaus.
+  let wischY = 0;
+  addEventListener('touchstart', e => { wischY = e.touches[0].clientY; }, { passive: true });
+  addEventListener('touchmove', e => {
+    if (!document.body.classList.contains('gesperrt')) return;
+    const box = e.target.closest('.f-inhalt, .menue'), dy = e.touches[0].clientY - wischY;
+    if (!box || box.scrollHeight <= box.clientHeight + 1 || (dy > 0 && box.scrollTop <= 0) || (dy < 0 && box.scrollTop + box.clientHeight >= box.scrollHeight - 1)) e.preventDefault();
+  }, { passive: false });
   menueKnopf.addEventListener('click', () => menueAuf(menueKnopf.getAttribute('aria-expanded') !== 'true'));
   menue.addEventListener('click', e => { if (e.target.closest('[data-menue-link]')) menueAuf(false); });
 
@@ -159,24 +168,12 @@
       const setzen = ein => { if (marke !== satzMarke) return; aussage.innerHTML = saetze[n].split('|').map((z, i) => `<span${ein ? ` class="ein" style="--i:${i}"` : ''}>${z}</span>`).join(''); aussage.classList.remove('weg'); };
       if (erst || sofort) setzen(false); else { aussage.classList.add('weg'); setTimeout(() => setzen(true), 330); }
     }
-    // Am Handy ist die Zeichnung fast doppelt so gross; die Ansicht fährt zu den Beschriftungen und folgt dann dem Wagen
-    const mobil = () => innerWidth <= 860;
-    function kamera(p, dx) {
-      const w = zeichnung.offsetWidth, k = w / 1200, halb = innerWidth / 2 / k;
-      let xc = 600;
-      const stufen = [[.22, 600], [.29, 830], [.35, 830], [.39, 390], [.44, 430]];
-      for (let i = 1; i < stufen.length; i++) if (p >= stufen[i - 1][0]) xc = lerp(stufen[i - 1][1], stufen[i][1], weich(bereich(p, stufen[i - 1][0], stufen[i][0])));
-      if (p > .44) xc = lerp(430, 580 + dx, weich(bereich(p, .44, .5)));
-      xc = clamp(xc, halb + 20, 1180 - halb);
-      return (600 - xc) * k;
-    }
     const massstab = () => svg.style.setProperty('--k', (zeichnung.offsetWidth / 1200).toFixed(4));
     massstab(); addEventListener('resize', massstab);
     function zeichne(p, still) {
       if (p === letzt && !still) return; letzt = p;
       const fahrt = still ? .55 : weich(bereich(p, .46, .70)) - .55 * weich(bereich(p, .62, .74));
       const dx = -230 * fahrt;
-      zeichnung.style.transform = mobil() && !still ? `translate(calc(-50% + ${kamera(p, dx).toFixed(1)}px), -50%)` : '';
       // Lesen
       const sb = svg.getBoundingClientRect(), bb = buehne.getBoundingClientRect();
       // 1 Linien zeichnen sich
@@ -262,7 +259,7 @@
   }
   function fuellenNonna() {
     const n = daten.nonna_fenster; aktivFormat = -1;
-    bildSetzen(daten.bilder.portrait, '50% 6%'); fImg.alt = n.alt;
+    bildSetzen(daten.bilder.portrait, '50% 34%'); fImg.alt = n.alt;
     fuellen({ titel: n.titel, satz: n.satz, satzHinweis: n.hinweis, zahlen: n.zahlen, text: n.text,
       aktionen: knopf(daten.bsport_privat, daten.buchen) + `<a class="text-link" href="#team" data-schliessen>${esc(n.team)}</a>` });
   }
@@ -303,6 +300,7 @@
     if (art === 'buchen') fuellenBuchen(); else if (art === 'nonna') fuellenNonna(); else fuellenFormat(formate.findIndex(f => f.id === art));
     quelle = ausloeser; offen = true;
     if (menue && !menue.hidden) menueAuf(false);
+    fenster.classList.toggle('ist-nonna', art === 'nonna');
     schleier.hidden = false; fenster.hidden = false;
     sperren(true);
     const vonBild = art !== 'buchen' && ausloeser ? $('img', ausloeser) : null;

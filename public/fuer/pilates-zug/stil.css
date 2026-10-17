@@ -94,11 +94,13 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 .nav-marke { position: absolute; left: 0; bottom: -11px; width: 18px; height: 3px; border-radius: 2px; background: var(--burgund); opacity: 0; transition: transform .7s var(--weich), opacity .3s; pointer-events: none; }
 .nav-marke.an { opacity: 1; }
 .kopf-rechts { display: flex; align-items: center; gap: 22px; }
-.sprache { display: inline-flex; align-items: center; gap: 10px; font-size: calc(14px * var(--s)); letter-spacing: .02em; }
-.sprache-aktiv { color: var(--tinte); font-weight: 600; }
+/* EN / DE wie auf lukaskaffer.com: aktive Sprache dunkel und unterstrichen, die andere ein Link */
+.sprache { display: inline-flex; align-items: center; gap: 9px; font-size: calc(14px * var(--s)); letter-spacing: .02em; }
+.sprache-strich { color: var(--linie-stark); }
+.sprache-aktiv { position: relative; padding: 2px 0; color: var(--tinte); font-weight: 600; }
+.sprache-aktiv::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1.5px; background: var(--burgund); }
 .sprache-link { color: var(--stein); }
-.sprache::before { content: ""; order: 1; width: 1px; height: 14px; background: var(--linie-stark); }
-.sprache-link { order: 2; }
+.menue .sprache { font-size: 17px; gap: 12px; }
 .knopf-kopf { min-height: calc(42px * var(--s)); padding: 0 18px; font-size: calc(14.5px * var(--s)); }
 /* Der Knopf im Kopf erscheint erst, wenn der Knopf der Eröffnung aus dem Blick ist */
 .knopf-kopf { opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .35s, transform .5s var(--weich), visibility 0s .35s; }
@@ -113,11 +115,12 @@ html:not(.tastatur) .tafel:focus-visible, html:not(.tastatur) [data-buchen]:focu
 .menue-nav a[aria-current="true"] { color: var(--burgund); }
 .menue-nav a { position: relative; }
 .menue-nav a[aria-current="true"]::after { content: ""; position: absolute; left: 1px; bottom: 6px; width: 18px; height: 3px; border-radius: 2px; background: var(--burgund); }
-.menue-fuss { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 26px; padding-top: 34px; }
+.menue-fuss { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; padding-top: 34px; }
+.menue-zeile { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; width: 100%; }
 @media (min-width: 600px) { .menue { justify-content: flex-start; } .menue-fuss { padding-top: 48px; } }
 
 @media (max-width: 1023px) {
-  .nav, .sprache, .knopf-kopf { display: none; }
+  .nav, .kopf-rechts .sprache, .knopf-kopf { display: none; }
   .kopf-innen { justify-content: space-between; }
   .menue-knopf { display: inline-flex; align-items: center; gap: 12px; min-height: calc(44px * var(--s)); padding: 0 2px; border: 0; background: none; cursor: pointer; font-size: calc(15px * var(--s)); }
   .menue-zeichen { position: relative; width: 22px; height: 10px; }
@@ -513,8 +516,9 @@ a.plan-stunde:focus-visible::after { --p: 100%; }
   .ero-fuss { width: auto; right: var(--rand); bottom: 20px; padding-top: 18px; gap: 14px 18px; }
   .r-kopf { left: 30px; top: 30px; }
   .r-aussage { left: 30px; right: 30px; bottom: calc(34px + var(--luecke)); }
-  .r-zeichnung { top: 42%; width: max(120vw, 690px); }
-  .beschriftung { font-size: 25px; }
+  /* Die Zeichnung bleibt ganz im Rahmen; dafür etwas grössere Beschriftungen */
+  .r-zeichnung { top: 42%; width: calc(100vw - 64px); }
+  .beschriftung { font-size: 40px; }
   .beschriftung .klein { display: none; }
   .strich { --sw: 1.2; }
 }
@@ -547,6 +551,8 @@ a.plan-stunde:focus-visible::after { --p: 100%; }
   .fenster.offen { transform: none; }
   .f-bild { height: min(30svh, 340px); }
   .f-bild img { object-position: 50% 28%; }
+  /* Nonna: mehr vom Bild, damit das helle Gemälde hinter ihr nicht wie ein Schein um den Kopf wirkt */
+  .fenster.ist-nonna .f-bild { height: min(46svh, 100vw); }
   .f-inhalt { max-height: none; padding: 28px var(--rand) calc(26px + env(safe-area-inset-bottom)); }
   .schliessen { right: 16px; top: 14px; width: 44px; height: 44px; }
 }
@@ -578,4 +584,4 @@ a.plan-stunde:focus-visible::after { --p: 100%; }
   .nonna-buehne { position: relative; top: 0; }
   .wort { opacity: 1; }
 }
-@media (prefers-reduced-motion: reduce) and (max-width: 860px) { .r-zeichnung { width: 128vw; } }
+@media (prefers-reduced-motion: reduce) and (max-width: 860px) { .r-zeichnung { width: calc(100vw - 64px); } }
