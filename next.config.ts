@@ -34,6 +34,16 @@ const yogabrielDraftPolicy = contentSecurityPolicy
   .replace("img-src 'self' data: blob:", `img-src 'self' data: blob: ${yogabrielImages}`)
   .replace("media-src 'self'", `media-src 'self' ${yogabrielMedia}`);
 
+// Pilates Zug, draft as one scroll page (static files in public/): the
+// studio's own photos come straight from pilateszug.ch, teacher portraits
+// from bsport, and the timetable reads the public bsport API in the browser.
+// Only this draft path allows these hosts (Lukas, 17.10.2026); the fonts are
+// self-hosted next to the draft.
+const pilatesZugDraftPolicy = contentSecurityPolicy
+  .replace("frame-ancestors 'none'", "frame-ancestors 'self'")
+  .replace("img-src 'self' data: blob:", "img-src 'self' data: blob: https://www.pilateszug.ch https://assets.production.bsport.io")
+  .replace(/connect-src 'self'/, "connect-src 'self' https://api.production.bsport.io");
+
 // Security headers shared by every route.
 const baseSecurityHeaders = [
   {
@@ -76,6 +86,8 @@ const nextConfig: NextConfig = {
       // mail, version B (homepage with subpages) and A (everything on one page).
       { source: "/fuer/yogabriel-version-b", destination: "/fuer/yogabriel-version-b/index.html", permanent: false },
       { source: "/fuer/yogabriel-version-a", destination: "/fuer/yogabriel-version-a/index.html", permanent: false },
+      // Pilates Zug, draft as one scroll page (English, German in de.html).
+      { source: "/fuer/pilates-zug", destination: "/fuer/pilates-zug/index.html", permanent: false },
     ];
   },
   async headers() {
@@ -112,6 +124,15 @@ const nextConfig: NextConfig = {
         source: "/fuer/:version(yogabriel-version-a|yogabriel-version-b)/:path*",
         headers: [
           { key: "Content-Security-Policy", value: yogabrielDraftPolicy },
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
+        // Pilates Zug, static draft: its photo hosts and the bsport API, see
+        // above; unlisted and never indexed.
+        source: "/fuer/pilates-zug/:path*",
+        headers: [
+          { key: "Content-Security-Policy", value: pilatesZugDraftPolicy },
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
         ],
       },
