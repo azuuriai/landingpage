@@ -547,7 +547,7 @@ body {
   /* --x/--y is the hotspot; the shift moves the ring onto the middle of
      the pointer's drawing. macOS values measured from NSCursor: the arrow
      (hotspot 5,5) spans 4,3.5 → 14.4,20.8; the hand (hotspot 13,8) spans
-     8,7 → 22.5,26. Windows values are estimated from the Aero cursors. */
+     8,7 → 22.5,26. */
   --shift-x: 4.2px;
   --shift-y: 7.2px;
 }
@@ -557,14 +557,29 @@ html[data-cursor-state="hover"] .cursor-ring {
   --shift-y: 8.5px;
 }
 
+/* Windows values measured from the Windows 11 Aero cursors (aero_arrow,
+   aero_link). The 32 px drawing used at 100–125 % scaling differs from the
+   48/64 px ones used at 150 % and up, so each gets its own pair. */
 html[data-cursor-os="windows"] .cursor-ring {
-  --shift-x: 6px;
+  --shift-x: 5.75px;
   --shift-y: 9.5px;
 }
 
 html[data-cursor-os="windows"][data-cursor-state="hover"] .cursor-ring {
-  --shift-x: 3px;
-  --shift-y: 11px;
+  --shift-x: 3.25px;
+  --shift-y: 12.25px;
+}
+
+@media (min-resolution: 1.5dppx) {
+  html[data-cursor-os="windows"] .cursor-ring {
+    --shift-x: 6.1px;
+    --shift-y: 9.25px;
+  }
+
+  html[data-cursor-os="windows"][data-cursor-state="hover"] .cursor-ring {
+    --shift-x: 1.85px;
+    --shift-y: 11.1px;
+  }
 }
 
 /* An arrow everywhere except links and text fields: the browser's automatic
