@@ -45,6 +45,7 @@ export function CustomCursor() {
 
     const onMove = (event: PointerEvent) => {
       if (event.pointerType !== "mouse") return;
+      if (event.target instanceof HTMLIFrameElement) return;
       target.x = event.clientX;
       target.y = event.clientY;
       if (!shown) {
@@ -66,6 +67,12 @@ export function CustomCursor() {
       shown = false;
       root.dataset.cursor = "";
     };
+    // An embedded frame (video, map, widget) keeps the pointer's moves to
+    // itself, so the ring would freeze at its edge: hide it until the
+    // pointer is back on the page.
+    const onOver = (event: PointerEvent) => {
+      if (event.target instanceof HTMLIFrameElement) onLeave();
+    };
     const onDown = () => (root.dataset.cursorPress = "on");
     const onUp = () => (root.dataset.cursorPress = "");
 
@@ -73,6 +80,7 @@ export function CustomCursor() {
     window.addEventListener("pointerdown", onDown);
     window.addEventListener("pointerup", onUp);
     document.addEventListener("pointerleave", onLeave);
+    document.addEventListener("pointerover", onOver);
     window.addEventListener("blur", onLeave);
 
     return () => {
@@ -81,6 +89,7 @@ export function CustomCursor() {
       window.removeEventListener("pointerdown", onDown);
       window.removeEventListener("pointerup", onUp);
       document.removeEventListener("pointerleave", onLeave);
+      document.removeEventListener("pointerover", onOver);
       window.removeEventListener("blur", onLeave);
       root.classList.remove("has-custom-cursor");
       delete root.dataset.cursor;
