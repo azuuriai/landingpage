@@ -92,7 +92,8 @@ export const showcaseMedia: Record<ShowcaseId, ShowcaseMedia> = {
   "operations-app": { kind: "app", phone: RECORDINGS.operationsAppTour },
   "betreiber-cms": {
     kind: "web",
-    domain: "indeed-unique.sanity.studio",
+    // The studio address stays private; the frame shows a neutral label.
+    domain: "CMS · Indeed Unique",
     desktop: RECORDINGS.ownerCms,
   },
   "mission-control": { kind: "screen", desktop: RECORDINGS.missionControlLoop },
