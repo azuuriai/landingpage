@@ -169,8 +169,8 @@ const viennaEventRadar: ViennaEventRadarCopy = {
         text: "In groups, members suggest events, vote and settle on a date.",
       },
       {
-        title: "Monday Radar",
-        text: "The weekly Monday Radar newsletter with the best tips for the week ahead, double opt-in included.",
+        title: "Weekly Radar",
+        text: "A weekly newsletter with the best tips for the week ahead, double opt-in included.",
       },
       {
         title: "Easy to find",

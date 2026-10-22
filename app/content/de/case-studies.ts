@@ -169,7 +169,7 @@ const viennaEventRadar: ViennaEventRadarCopy = {
         text: "In Gruppen schlagen Mitglieder Events vor, stimmen ab und legen einen Termin fest.",
       },
       {
-        title: "Montagsradar",
+        title: "Wochenradar",
         text: "Ein wöchentlicher Newsletter mit den besten Tipps für die kommende Woche, mit Double-Opt-in.",
       },
       {
